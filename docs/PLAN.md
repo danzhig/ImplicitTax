@@ -206,8 +206,7 @@ All money is entered in **USD** and converted at a fixed exchange rate for the t
 **Wealth (balance sheet)**
 - Cash and deposits, bonds, equities (taxable vs. retirement accounts), primary residence
   (value + mortgage), other real estate, business equity, vehicles
-- Used for wealth tax (CH, NO), property tax, the inflation tax on cash and bonds, and
-  investment income
+- Used for wealth tax (CH, NO), property tax and investment income
 
 **Housing**
 - Own or rent; home value or rent; purchase this year? (transfer and stamp duty, either
@@ -248,7 +247,6 @@ financial services). An "advanced" panel can override the split, but nobody has 
 | Wealth tax | Net wealth × cantonal/national schedule | Zurich, Oslo; Spain/NL if added later |
 | Transfer and stamp duty | On purchase; annualized option | Toronto double LTT, UK SDLT, SG ABSD, foreign buyer surcharges |
 | Tariffs | Customs revenue ÷ household consumption → effective rate on goods | US effective tariff rate rose sharply in 2025. This belongs in the consumption tax bucket. |
-| Inflation tax (optional) | (Inflation − nominal yield) × cash and bond holdings | A real hidden tax on savers, but not formally a tax. Off by default. |
 | Mandatory "tax-like" costs (optional) | Flat inputs | Swiss/Dutch mandatory health premiums, US employer health insurance, CPF, Swiss pillar 2 (decision D2) |
 | Corporate tax incidence (optional) | Your share-ownership × effective corporate rate | For business owners and investors. Off by default. |
 | Deferred tax (deficit) | §1.2 per level | Federal, provincial/state, city, plus regional bodies (TransLink, MTA, GLA) where data exists |
@@ -332,8 +330,6 @@ checked against current-year sources):
 | Hidden tax | What it is | Default |
 |---|---|---|
 | Benefit clawbacks | Benefits shrink as income rises (Canada Child Benefit, GST credit, OAS, UK child benefit charge, US ACA subsidy cliff), which works like an extra marginal tax | **On** in marginal rates and in "net of transfers" (D13) |
-| Tax on inflation | Interest and gains are taxed even when they only kept up with inflation. Uses the wealth inputs already entered. | **On** as a "real tax rate on savings" figure |
-| Inflation tax on cash and bonds | Inflation erodes cash and bond savings, which is also how public debt gets inflated away. History adds context on years when rates were held below inflation. | **Toggle** |
 | Tariff price effect | Domestic competitors raise prices to match tariffed imports, so you pay more but no tax is collected (the tariff revenue itself is already counted in §4) | **Toggle** |
 | Corporate tax incidence | Part of corporate tax comes out of your wages and investment returns | **Toggle** |
 | Tax on tax | VAT/GST charged on top of fuel excise | **On** (calculation rule, not a separate line) |
@@ -343,7 +339,6 @@ checked against current-year sources):
 | Hidden tax | What it is |
 |---|---|
 | Employer-side payroll and health taxes | Taxes moved from your paycheque to your employer (BC Employer Health Tax replaced MSP premiums; German employer contributions). Already the D3 info line. |
-| Fiscal drag | Brackets not raised with inflation, so tax rises with no rate change. Shown in the history view. |
 | Tax inside retirement accounts | Part of every RRSP/401k/pillar 3a balance is future tax, so net worth is overstated. Shown as a net-of-tax wealth line. |
 
 **One checkbox**
@@ -358,7 +353,8 @@ markups; broadcast fees; telecom surcharges; insurance premium taxes; utility fr
 fees; travel taxes; tolls and congestion charges; supply management; VAT hidden in exempt
 services; industrial carbon pricing in prices; probate fees; share transaction taxes;
 foreign dividend withholding; Swiss military exemption tax; student loan repayments; tax
-filing costs; interest-free over-withholding.
+filing costs; interest-free over-withholding. Inflation-related items (inflation tax on
+cash and bonds, tax on nominal gains, bracket creep) are excluded on purpose (D18).
 
 ---
 
@@ -471,7 +467,7 @@ calendar year it mostly covers, and document the choice.
 | **2. USA** | Federal (current law), NY + NYC, CA, WA, TX (Houston), FICA, sales tax, property, tariffs, federal/state/city fiscal history | First cross-border "move my persona" |
 | **3. Europe** | CH (ZH), LU, IE, NO, DK, UK, DE | Wealth tax, church tax, VAT-heavy regimes, surplus regimes |
 | **4. Singapore** | SG | CPF handling, COE, ABSD |
-| **5. Depth** | Rate curves, r−g view, inflation tax, newcomer regimes, corporate incidence, sensitivity toggles | Credibility and nuance |
+| **5. Depth** | Rate curves, r−g view, newcomer regimes, corporate incidence, sensitivity toggles | Credibility and nuance |
 | **6. Hardening** | Golden tests for all places, source citations everywhere, accessibility, mobile layout | Public-ready |
 
 Realistic sizing: Phase 1 is the largest single step (it builds the core engine, the
@@ -503,7 +499,7 @@ My recommendation is in **bold** for each. ✅ = decided.
 | D15 | Citizenship effects | Ignore / model US citizenship tax, departure taxes | **Flag them in "move" view** (US citizens owe US tax anywhere; Canada departure tax on emigration) but don't fully model them in v1 |
 | D16 | Newcomer regimes (UK 4-year FIG regime, Swiss lump-sum, DK researcher scheme, IE SARP, NL 30%) | Ignore / toggle | **Toggle per city, v2** |
 | D17 | Base tax year | 2025 (final) / 2026 (current) | **2026 rules**, with fiscal data through the latest audited year plus budget estimates clearly marked |
-| D18 | Tariffs and inflation tax | Include / exclude | **Tariffs on, inflation tax off by default** |
+| D18 ✅ | Tariffs and inflation | Include / exclude | **Tariffs on. Everything inflation-related is excluded** (inflation tax, tax on nominal gains, bracket creep). Deficits are already counted, and inflating debt away is just one way they get paid, so including it would double count. |
 | D19 | Regional bodies (TransLink, MTA, GLA, King County, Metro Vancouver) | Fold into city / separate / skip | **Fold into "local" level** with a note |
 | D20 | Tech stack | Vite+React / Next static export / SvelteKit / Astro | **Vite + React + TS + ECharts + Tailwind + Zustand + Vitest** |
 | D21 | Public or personal tool? | Personal / public site | This changes how much effort goes into citations, disclaimers, accessibility and analytics. **Assume public-quality, but ship personal-quality first.** |
@@ -524,8 +520,11 @@ My recommendation is in **bold** for each. ✅ = decided.
   tool wrong.
 - **r − g.** If growth beats interest rates, debt is never fully repaid by taxes. The
   "delayed tax" is then smaller than the deficit. Offer it as a sensitivity view.
-- **Inflation is the other way debt gets repaid**, and it falls on holders of cash and
-  bonds. Your wealth inputs make this computable.
+- **Inflation is deliberately excluded.** Deficits are already counted in full, and
+  inflating debt away is just one of the ways they get paid, so counting both would be
+  double counting. The methodology page should say this explicitly, since inflation is
+  the first thing critics will ask about. (Inflation from other causes, like supply shocks
+  or central bank policy unrelated to deficits, is also out of scope.)
 - **Who repays?** Future taxpayers may not include you (you move, retire, die). The metric
   is "your fair share if it were settled now", not a prediction of your personal bill.
 - **Tax incidence.** Employer payroll taxes, corporate taxes and even property taxes on
