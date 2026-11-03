@@ -29,7 +29,7 @@ IITR = (taxes you pay now + your share of this year's government net borrowing)
   information line ("your employer also pays $X on your behalf"), off by default.
 
 - "Taxes you pay now" covers income tax, payroll and social contributions, VAT/GST/HST/sales
-  tax, excise taxes (fuel, energy, alcohol, tobacco, vehicles), property tax, wealth tax,
+  tax, fuel and home-energy taxes, vehicle taxes, property tax, wealth tax,
   transfer and stamp duties, and tariffs.
 - "Your share of net borrowing" is the deferred tax: what governments spent on your behalf
   this year but didn't collect. It's computed separately for each level (federal,
@@ -175,13 +175,19 @@ All money is entered in **USD** and converted at a fixed exchange rate for the t
   annualized or one-off, decision D8); first-time buyer; foreign buyer status
 
 **Consumption (what consumption taxes are applied to)**
-- Spending = income − taxes − savings, so there's a savings-rate slider
-- Spending split by category with sensible defaults per income level: groceries,
-  restaurants, alcohol, tobacco, clothing, electronics, services, travel, financial
-  services, insurance, rent (usually VAT-exempt), utilities
-- **Energy and transport**: car (fuel/EV/none), km/year, fuel economy; home heating type
-  (gas/oil/electric/heat pump/district) and usage; electricity kWh
-- Big purchases this year: new car (registration tax DK/NO, COE in SG)
+
+No receipts-level questions. The user sets a **savings rate**; spending = income − taxes −
+savings. That spending is split automatically using national household spending survey
+averages for that income level. This fixes the VAT-exempt vs. taxed share (rent, groceries,
+financial services). An "advanced" panel can override the split, but nobody has to touch it.
+
+**Energy and transport (only the inputs that move the number)**
+- Car: none / gas / EV, and rough km per year (low / average / high). Fuel economy uses a
+  default.
+- Home heating: gas / oil / electric / heat pump / district, with usage estimated from home
+  size.
+- New car this year? (registration taxes in DK/NO and the COE in SG are large enough to
+  matter)
 
 **Retirement and deductions**
 - RRSP/401k/pillar 3a/CPF top-up contributions, mortgage interest (deductible in US, CH, NO,
@@ -197,14 +203,14 @@ All money is entered in **USD** and converted at a fixed exchange rate for the t
 | Payroll / social contributions | **Full engine**: rates, ceilings; employee side in the headline, employer side as an info line only | CPP/CPP2/EI, FICA, NI, German social contributions, AHV/IV/EO, PRSI, CPF, Ontario Health Premium. **How each one feeds back into income tax is in §4.1.** |
 | Capital income | Engine | Dividend tax credits, CG inclusion rates, NIIT, box-style systems, WA capital gains tax |
 | VAT / GST / HST / sales tax | Basket × effective rate per category | Prices include tax: `tax = spend × r / (1 + r)`. US sales tax mostly excludes services. |
-| Excise: fuel, energy, alcohol, tobacco | Quantity × per-unit rate | Carbon pricing (Canada's consumer carbon tax ended April 2025, EU ETS2 from 2027–28), electricity levies (DE, DK are large) |
+| Excise: fuel and home energy | Estimated quantity × per-unit rate | Carbon pricing (Canada's consumer carbon tax ended April 2025, EU ETS2 from 2027–28), electricity levies (DE, DK are large) |
 | Vehicles | Purchase/registration + annual fees | DK/NO registration tax, SG COE + ARF, UK VED |
 | Property tax | Assessed value × mill rate (city + school + regional) | Prop 13 assessment caps, UK council tax bands, Irish LPT bands, Swiss imputed rent (voted to be abolished in 2025, date of effect still to come) |
 | Wealth tax | Net wealth × cantonal/national schedule | Zurich, Oslo; Spain/NL if added later |
 | Transfer and stamp duty | On purchase; annualized option | Toronto double LTT, UK SDLT, SG ABSD, foreign buyer surcharges |
 | Tariffs | Customs revenue ÷ household consumption → effective rate on goods | US effective tariff rate rose sharply in 2025. This belongs in the consumption tax bucket. |
 | Inflation tax (optional) | (Inflation − nominal yield) × cash and bond holdings | A real hidden tax on savers, but not formally a tax. Off by default. |
-| Mandatory "tax-like" costs (optional) | Flat inputs | Swiss/Dutch mandatory health premiums, US employer health insurance, UK TV licence, CPF, Swiss pillar 2 (decision D2) |
+| Mandatory "tax-like" costs (optional) | Flat inputs | Swiss/Dutch mandatory health premiums, US employer health insurance, CPF, Swiss pillar 2 (decision D2) |
 | Corporate tax incidence (optional) | Your share-ownership × effective corporate rate | For business owners and investors. Off by default. |
 | Deferred tax (deficit) | §1.2 per level | Federal, provincial/state, city, plus regional bodies (TransLink, MTA, GLA) where data exists |
 
@@ -272,62 +278,48 @@ checked against current-year sources):
 | Germany | Pension, health, long-term care, unemployment | Pension contributions deductible. Basic health and care deductible. Unemployment limited within a capped allowance. Soli and church tax computed on income tax. |
 | Singapore | CPF (employee) | CPF relief on mandatory contributions up to the ceiling. |
 
-### 4.2 Hidden and "effective" taxes
+### 4.2 Hidden and "effective" taxes (shortlist)
 
-These are costs most people never think of as tax, but government imposes them, or they
-work the same way as a tax. Each one gets a default treatment:
+**Rule for what's included.** A hidden tax only makes the list if it meets all four tests:
+1. **Large enough to matter:** typically ≥ ~0.5% of income for a normal persona, or it
+   creates a big jump in marginal rates.
+2. **Recurring:** paid every year, or a one-off that can sensibly be spread over years.
+3. **Data is public and easy to get** for all 15 cities.
+4. **Needs no personal detail.** It runs off inputs the persona already has (income, wealth,
+   home, car) or no inputs at all.
 
-- **On**: in the headline when the persona's inputs trigger it
-- **Toggle**: available, off by default
-- **Info**: shown as context, never added to the rate
+**Automatic: no extra questions**
 
-**Taxes stacked on or inside prices**
+| Hidden tax | What it is | Default |
+|---|---|---|
+| Benefit clawbacks | Benefits shrink as income rises (Canada Child Benefit, GST credit, OAS, UK child benefit charge, US ACA subsidy cliff), which works like an extra marginal tax | **On** in marginal rates and in "net of transfers" (D13) |
+| Tax on inflation | Interest and gains are taxed even when they only kept up with inflation. Uses the wealth inputs already entered. | **On** as a "real tax rate on savings" figure |
+| Inflation tax on cash and bonds | Inflation erodes cash and bond savings, which is also how public debt gets inflated away. History adds context on years when rates were held below inflation. | **Toggle** |
+| Tariff price effect | Domestic competitors raise prices to match tariffed imports, so you pay more but no tax is collected (the tariff revenue itself is already counted in §4) | **Toggle** |
+| Corporate tax incidence | Part of corporate tax comes out of your wages and investment returns | **Toggle** |
+| Tax on tax | VAT/GST charged on top of fuel excise | **On** (calculation rule, not a separate line) |
 
-| Hidden tax | What it is | Where it's big | Default |
-|---|---|---|---|
-| Tax on tax | GST/VAT charged on top of fuel, alcohol and tobacco excise | Everywhere with VAT | **On** (calculation rule) |
-| Insurance premium taxes | Sales or premium tax on home, auto and life insurance (insurance is VAT-exempt, so it's taxed separately) | Ontario 8% retail sales tax on insurance, UK insurance premium tax, Germany 19% insurance tax, provincial premium taxes | **On** |
-| VAT you can't see on exempt services | Banks, insurers and landlords can't reclaim VAT on their inputs, so it's built into fees and rents | Every VAT country | **Toggle** (rough factor) |
-| Alcohol and cannabis monopoly markups | Government retailers' markup on top of excise, paid back to government as profit | LCBO (ON), BC Liquor, Norway Vinmonopolet | **On** |
-| Industrial carbon pricing | Carbon costs on industry and power plants, passed into prices | Canada (industrial system remains after the consumer tax ended), EU ETS | **Toggle** |
-| Tariffs that raise domestic prices | Domestic competitors raise prices to match tariffed imports, so you pay more but no tax is collected | US in particular | **Toggle** (the tariff revenue itself is already **On**) |
-| Supply management / farm price supports | Quotas and price floors raise food prices: a transfer to producers, not to government | Canada dairy, eggs and poultry; EU farm policy; US sugar | **Toggle** (low confidence) |
+**Info lines: shown, never added to the rate**
 
-**Fees, levies and charges that work like taxes**
+| Hidden tax | What it is |
+|---|---|
+| Employer-side payroll and health taxes | Taxes moved from your paycheque to your employer (BC Employer Health Tax replaced MSP premiums; German employer contributions). Already the D3 info line. |
+| Fiscal drag | Brackets not raised with inflation, so tax rises with no rate change. Shown in the history view. |
+| Tax inside retirement accounts | Part of every RRSP/401k/pillar 3a balance is future tax, so net worth is overstated. Shown as a net-of-tax wealth line. |
 
-| Hidden tax | What it is | Where it's big | Default |
-|---|---|---|---|
-| Broadcast / media levies | Mandatory per-household fee whether or not you watch | Germany Rundfunkbeitrag, Swiss Serafe, UK TV licence | **On** |
-| Utility franchise fees and city utility levies | Cities charge utilities for access and it's passed into your bill; water, sewer, garbage and stormwater fees above cost | Calgary (electricity and gas franchise fees), most US cities | **On** (estimate) |
-| Telecom surcharges | Universal service fees, 911 fees, state and local telecom taxes on phone bills | US (often 15–25% of a phone bill) | **On** |
-| Development charges / impact fees | Charges on new housing, built into the price of new homes and passed into rents | Toronto, Vancouver (very high per unit), Houston impact fees | **On** if buying new, annualized like land transfer tax |
-| Travel taxes | Air passenger duties, airport fees, security charges, hotel taxes | UK APD, Canadian airport fees, US ticket taxes | **On** if travel spending is entered |
-| Tolls and congestion charges | Road pricing | London congestion charge / ULEZ, NYC congestion pricing (2025), Oslo toll ring | **On** if commuting by car |
-| Probate and estate fees | Fees on estates at death, annualized like a wealth tax | Ontario estate administration tax (1.5%), BC probate fees | **Toggle** |
-| Swiss military exemption tax | Extra income-based tax on Swiss men who don't do military service | Switzerland (citizens) | **On** with citizenship flag |
-| UK student loan repayments | 9% of income above a threshold. Legally a loan, but it acts like an income tax for graduates. | UK | **Toggle** |
+**One checkbox**
 
-**Taxes on savers and investors**
+| Hidden tax | What it is | Default |
+|---|---|---|
+| Development charges | Charges on new homes, built into the purchase price; tens of thousands of dollars per home in Toronto and Vancouver | **On** if "bought a new-build" is ticked, spread over the holding period like land transfer tax |
 
-| Hidden tax | What it is | Where it's big | Default |
-|---|---|---|---|
-| Inflation tax on cash | Inflation erodes cash and bond value, and that's also how public debt gets inflated away | Everywhere; worst in high-inflation years | **Toggle** (already in §4) |
-| Tax on inflation itself | Interest and capital gains are taxed in nominal terms, so you pay tax on returns that only kept up with inflation. Real tax rates on interest can exceed 100%. | Everywhere | **Toggle**, as a "real tax rate on savings" metric |
-| Financial repression | Central bank rates held below inflation, and rules pushing banks and pensions into government bonds | 2010–2021 era especially | **Info** (history chart) |
-| Unrecoverable foreign dividend withholding | e.g. 15% US withholding on dividends held in a Canadian TFSA, which can't be credited back | Investors with foreign holdings | **On** |
-| Share transaction taxes | Stamp duty on share purchases, securities turnover tax | UK 0.5% stamp duty, Swiss securities transfer tax | **On** if trading is entered |
-| Tax inside retirement balances | Part of your RRSP/401k/pillar 3a balance is future tax owed. Your net worth is overstated. | Everyone with tax-deferred accounts | **Info** (net-of-tax wealth line) |
-
-**Invisible because of how they're collected**
-
-| Hidden tax | What it is | Where it's big | Default |
-|---|---|---|---|
-| Fiscal drag / bracket creep | Brackets and allowances not raised with inflation, so tax rises without any rate change | UK (thresholds frozen for years), and any unindexed credit anywhere | **Info** in history: "rate rise from frozen thresholds" |
-| Employer-side health and payroll taxes | Taxes moved from your paycheque to your employer, so they vanish from view | BC Employer Health Tax (replaced MSP premiums), Ontario EHT, NYC-area MTA payroll tax, German employer contributions | **Info** (D3 info line). Watch for governments moving taxes to the employer side. |
-| Benefit clawbacks | Benefits shrinking as income rises: an extra marginal tax | Canada Child Benefit, GST credit, OAS clawback, UK child benefit charge, US ACA subsidy cliff | **On** in marginal rates; **On** in the headline when "net of transfers" is on (D13) |
-| Corporate tax incidence | Part of corporate tax comes out of your wages and investment returns | Everywhere | **Toggle** (already in §4) |
-| Compliance cost | Hours and fees spent filing taxes | US (complex returns, city + state + federal), US citizens abroad | **Toggle**: hours × your hourly income |
-| Interest-free loans to government | Over-withholding refunded months later, with no interest | Everywhere | **Info** (small) |
+**Dropped** (too small, too personal, or poor data). Mention them once on the methodology
+page so they don't look forgotten: alcohol, tobacco and cannabis excise and liquor board
+markups; broadcast fees; telecom surcharges; insurance premium taxes; utility franchise
+fees; travel taxes; tolls and congestion charges; supply management; VAT hidden in exempt
+services; industrial carbon pricing in prices; probate fees; share transaction taxes;
+foreign dividend withholding; Swiss military exemption tax; student loan repayments; tax
+filing costs; interest-free over-withholding.
 
 ---
 
@@ -430,7 +422,7 @@ calendar year it mostly covers, and document the choice.
 | Phase | Scope | Result |
 |---|---|---|
 | **0. Decisions + schema** | Answer §9, define persona, rule, fiscal and output schemas | Specs + empty engine skeleton, Vercel deploy working |
-| **1. Canada end-to-end** | Federal + AB/ON/BC income tax, CPP/EI, GST/HST/PST, fuel/alcohol/tobacco excise, property tax, LTT, fiscal history for 3 levels × 3 cities | Calgary vs Toronto vs Vancouver fully working: all charts, 3 persona slots. Proves the concept. |
+| **1. Canada end-to-end** | Federal + AB/ON/BC income tax, CPP/EI, GST/HST/PST, fuel and home-energy taxes, property tax, LTT, fiscal history for 3 levels × 3 cities | Calgary vs Toronto vs Vancouver fully working: all charts, 3 persona slots. Proves the concept. |
 | **2. USA** | Federal (current law), NY + NYC, CA, WA, TX (Houston), FICA, sales tax, property, tariffs, federal/state/city fiscal history | First cross-border "move my persona" |
 | **3. Europe** | CH (ZH), LU, IE, NO, DK, UK, DE | Wealth tax, church tax, VAT-heavy regimes, surplus regimes |
 | **4. Singapore** | SG | CPF handling, COE, ABSD |
