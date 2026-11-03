@@ -17,8 +17,16 @@ answer before (or during) the build. Section 10 lists things that are easy to mi
 ```
 IITR = (taxes you pay now + your share of this year's government net borrowing)
        ─────────────────────────────────────────────────────────────────────────
-                         your gross income (see decision D3)
+                         your gross income (decision D3 ✅)
 ```
+
+- **Gross income** is the number you'd quote as your income: salary, bonus and
+  self-employment profit, plus investment income (interest, dividends, realized gains,
+  rent). $100k USD in Calgary and $100k USD in Munich are the same $100k, and the question
+  is what comes off it before it reaches your life.
+- **Employer-side contributions are not in the headline.** They never touch your
+  paycheque, so they aren't counted on top or underneath. They're shown as an
+  information line ("your employer also pays $X on your behalf"), off by default.
 
 - "Taxes you pay now" covers income tax, payroll and social contributions, VAT/GST/HST/sales
   tax, excise taxes (fuel, energy, alcohol, tobacco, vehicles), property tax, wealth tax,
@@ -186,7 +194,7 @@ All money is entered in **USD** and converted at a fixed exchange rate for the t
 | Tax family | How it's modeled | Notes |
 |---|---|---|
 | Personal income tax (all levels) | **Full engine**: brackets, credits, deductions, surtaxes | Ontario surtax, Swiss communal multiplier, NYC tax, DK municipal rate, German Soli, US AMT (possibly simplified) |
-| Payroll / social contributions | **Full engine**: rates, ceilings, employee + employer side | CPP/CPP2/EI, FICA, NI, German social contributions, AHV/IV/EO, PRSI, CPF, Medicare levy |
+| Payroll / social contributions | **Full engine**: rates, ceilings; employee side in the headline, employer side as an info line only | CPP/CPP2/EI, FICA, NI, German social contributions, AHV/IV/EO, PRSI, CPF, Medicare levy |
 | Capital income | Engine | Dividend tax credits, CG inclusion rates, NIIT, box-style systems, WA capital gains tax |
 | VAT / GST / HST / sales tax | Basket × effective rate per category | Prices include tax: `tax = spend × r / (1 + r)`. US sales tax mostly excludes services. |
 | Excise: fuel, energy, alcohol, tobacco | Quantity × per-unit rate | Carbon pricing (Canada's consumer carbon tax ended April 2025, EU ETS2 from 2027–28), electricity levies (DE, DK are large) |
@@ -319,14 +327,14 @@ Phase 1 effort, and most of that goes into income tax, payroll and fiscal data.
 
 ## 9. Decisions you need to make
 
-My recommendation is in **bold** for each.
+My recommendation is in **bold** for each. ✅ = decided.
 
 | # | Decision | Options | Recommendation |
 |---|---|---|---|
 | D1 | City list | Strict GDP-per-capita ranking vs. curated | **Curated 15 in §2**, Dubai as the first alternate |
-| D2 | Do mandatory savings and insurance count as tax? (CPP, CPF, super, Swiss pillar 2, Swiss health premiums, US employer health) | Tax / not tax / separate bucket | **Separate "mandatory, tax-like" bucket**, shown and toggleable. CPP and public pensions count as tax by default; private mandatory accounts (CPF, super, BVG) don't by default. Without this, Singapore and Sydney comparisons are misleading. |
-| D3 | Denominator of the rate | Gross salary / gross + employer payroll tax ("total labor cost") / total economic income incl. investment income | **Total labor cost + investment income** as default, gross salary as a toggle. Employer contributions are economically paid by you (very large in DE and FR). |
-| D4 | Deficit allocation method | Tax-share / per capita / per taxpayer / income-share | **Tax-share** default, others as a toggle with side-by-side sensitivity |
+| D2 ✅ | Do mandatory savings and insurance count as tax? (CPP, CPF, super, Swiss pillar 2, Swiss health premiums, US employer health) | Tax / not tax / separate bucket | **Separate "mandatory, tax-like" bucket**, shown and toggleable. CPP and public pensions count as tax by default; private mandatory accounts (CPF, super, BVG) don't by default. Without this, Singapore and Sydney comparisons are misleading. |
+| D3 ✅ | Denominator of the rate | Gross salary / gross + employer payroll tax ("total labor cost") / total economic income incl. investment income | **Decided: your gross income** (salary + self-employment + investment income) — the paycheque view. Employer-side contributions are excluded from the headline and shown only as an info line. |
+| D4 ✅ | Deficit allocation method | Tax-share / per capita / per taxpayer / income-share | **Tax-share** default, others as a toggle with side-by-side sensitivity |
 | D5 | Currency conversion | Market FX / PPP | **Market FX** for "move my USD", plus a PPP-adjusted disposable income line, so you see both the tax and the cost-of-living picture |
 | D6 | "Same USD" vs. "same life" when moving | Keep the USD house value / keep an equivalent house (local median multiple) | **Same USD by default**, "equivalent lifestyle" as v2. Also show your income percentile in each city ($200k is top 2% in Oslo, upper-middle in SF). |
 | D7 | Investment income | Entered directly / derived from wealth × yields | **Derived, with override** |
@@ -366,8 +374,10 @@ My recommendation is in **bold** for each.
 - **Who repays?** Future taxpayers may not include you (you move, retire, die). The metric
   is "your fair share if it were settled now", not a prediction of your personal bill.
 - **Tax incidence.** Employer payroll taxes, corporate taxes and even property taxes on
-  rentals are partly passed on to you as lower wages or higher rents. Be explicit about
-  which incidence assumptions are in the headline number.
+  rentals are partly passed on to you as lower wages or higher rents. The headline uses the
+  paycheque view (D3), so Germany, France and others with heavy employer contributions will
+  show a lower rate than the OECD "tax wedge". Golden tests must compare against the
+  employee-side OECD figures, not the full wedge.
 - **Non-tax revenue funds some governments** (Alberta oil royalties, Norway's fund, Swiss
   National Bank profits, Singapore's reserve returns). Low taxes there don't mean low
   spending. Your share of resource revenue is a hidden subsidy, not a tax.
@@ -438,7 +448,6 @@ My recommendation is in **bold** for each.
 
 ## 11. Suggested next step
 
-Answer D1–D4 (cities, mandatory savings, denominator, allocation). Those four shape every
-chart. Then start **Phase 1 (Canada)**: it exercises every part of the system (3 levels,
+D2, D3 and D4 are decided (✅). Confirm D1 (the city list), which shapes every chart. Then start **Phase 1 (Canada)**: it exercises every part of the system (3 levels,
 3 provinces, deficits at all levels, provincial sales tax differences, property and land
 transfer tax) using data that's easy to get and easy to check.
