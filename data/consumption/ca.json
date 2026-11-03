@@ -1,0 +1,167 @@
+{
+ "generated": "2026-11-03",
+ "salesTaxYear": 2024,
+ "notes": [
+  "Effective rates = sales tax actually paid / spending excluding sales tax, StatCan table 36-10-0432, 2024.",
+  "2024 includes the temporary GST/HST holiday (Dec 14, 2024 - Feb 15, 2025), so some rates are slightly understated.",
+  "'other' = all household spending except groceries, rent, home energy and water, motor fuel, new vehicles and imputed bank charges; includes spending abroad (untaxed).",
+  "Grocery share curve: Survey of Household Spending 2023, Canada, by income quintile (table 11-10-0223).",
+  "Tariff rate = federal taxes on international trade (GFS 10-10-0172) / household consumption excl. rent (2024 base)."
+ ],
+ "salesTax": {
+  "ON": {
+   "groceries": {
+    "gst": 0.00482,
+    "pst": 0.00779,
+    "spendingMillions": 54578
+   },
+   "other": {
+    "gst": 0.02904,
+    "pst": 0.05042,
+    "spendingMillions": 373962
+   },
+   "electricity": {
+    "gst": 0.05564,
+    "pst": 0.08902,
+    "spendingMillions": 7581
+   },
+   "naturalGas": {
+    "gst": 0.0492,
+    "pst": 0.07954,
+    "spendingMillions": 3346
+   },
+   "motorFuel": {
+    "gst": 0.04921,
+    "pst": 0.07953,
+    "spendingMillions": 20069
+   }
+  },
+  "AB": {
+   "groceries": {
+    "gst": 0.00617,
+    "pst": 0.0,
+    "spendingMillions": 16876
+   },
+   "other": {
+    "gst": 0.03111,
+    "pst": 0.0,
+    "spendingMillions": 119734
+   },
+   "electricity": {
+    "gst": 0.04895,
+    "pst": 0.0,
+    "spendingMillions": 2268
+   },
+   "naturalGas": {
+    "gst": 0.04893,
+    "pst": 0.0,
+    "spendingMillions": 1713
+   },
+   "motorFuel": {
+    "gst": 0.04896,
+    "pst": 0.0,
+    "spendingMillions": 6861
+   }
+  },
+  "BC": {
+   "groceries": {
+    "gst": 0.00532,
+    "pst": 0.0,
+    "spendingMillions": 20497
+   },
+   "other": {
+    "gst": 0.02947,
+    "pst": 0.02773,
+    "spendingMillions": 141303
+   },
+   "electricity": {
+    "gst": 0.04877,
+    "pst": 0.0,
+    "spendingMillions": 2100
+   },
+   "naturalGas": {
+    "gst": 0.0488,
+    "pst": 0.0,
+    "spendingMillions": 1164
+   },
+   "motorFuel": {
+    "gst": 0.04879,
+    "pst": 0.00168,
+    "spendingMillions": 6732
+   }
+  },
+  "CA": {
+   "groceries": {
+    "gst": 0.00537,
+    "pst": 0.00686,
+    "spendingMillions": 141527
+   },
+   "other": {
+    "gst": 0.02994,
+    "pst": 0.04274,
+    "spendingMillions": 941042
+   },
+   "electricity": {
+    "gst": 0.05122,
+    "pst": 0.06448,
+    "spendingMillions": 21858
+   },
+   "naturalGas": {
+    "gst": 0.04894,
+    "pst": 0.04288,
+    "spendingMillions": 7108
+   },
+   "motorFuel": {
+    "gst": 0.04899,
+    "pst": 0.05834,
+    "spendingMillions": 51796
+   }
+  }
+ },
+ "groceryShareCurve": [
+  {
+   "quintile": "Lowest quintile",
+   "basketSpend": 23118,
+   "groceryShare": 0.2414
+  },
+  {
+   "quintile": "Second quintile",
+   "basketSpend": 33725,
+   "groceryShare": 0.2129
+  },
+  {
+   "quintile": "Third quintile",
+   "basketSpend": 42352,
+   "groceryShare": 0.1866
+  },
+  {
+   "quintile": "Fourth quintile",
+   "basketSpend": 52982,
+   "groceryShare": 0.1899
+  },
+  {
+   "quintile": "Highest quintile",
+   "basketSpend": 72669,
+   "groceryShare": 0.1672
+  }
+ ],
+ "homeEnergyAndWater": {
+  "ON": 3193.0,
+  "AB": 4459.0,
+  "BC": 2444.0,
+  "CA": 2907.0
+ },
+ "tariffRateByYear": {
+  "2015": 0.00412,
+  "2016": 0.00434,
+  "2017": 0.00445,
+  "2018": 0.00528,
+  "2019": 0.00437,
+  "2020": 0.0032,
+  "2021": 0.00413,
+  "2022": 0.00482,
+  "2023": 0.00462,
+  "2024": 0.00454,
+  "2025": 0.00812
+ }
+}

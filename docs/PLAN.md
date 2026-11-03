@@ -5,7 +5,7 @@
 > persona across 15 cities so you can see what kind of tax regime you're leaving and
 > entering.
 
-Status: planning. Nothing is built yet. Section 9 lists the decisions that need an
+Status: **Phase 1 (Canada) built**: Calgary, Toronto, Vancouver. See README.md and data/rules/ca/RESEARCH.md. Section 9 lists the decisions that need an
 answer before (or during) the build. Section 10 lists things that are easy to miss.
 
 ---
@@ -463,7 +463,7 @@ calendar year it mostly covers, and document the choice.
 | Phase | Scope | Result |
 |---|---|---|
 | **0. Decisions + schema** | Answer §9, define persona, rule, fiscal and output schemas | Specs + empty engine skeleton, Vercel deploy working |
-| **1. Canada end-to-end** | Federal + AB/ON/BC income tax, CPP/EI, GST/HST/PST, fuel and home-energy taxes, property tax, LTT, fiscal history for 3 levels × 3 cities | Calgary vs Toronto vs Vancouver fully working: all charts, 3 persona slots. Proves the concept. |
+| **1. Canada end-to-end** ✅ | Federal + AB/ON/BC income tax, CPP/EI, GST/HST/PST, fuel and home-energy taxes, property tax, LTT, fiscal history for 3 levels × 3 cities | Calgary vs Toronto vs Vancouver fully working: all charts, 3 persona slots. Proves the concept. |
 | **2. USA** | Federal (current law), NY + NYC, CA, WA, TX (Houston), FICA, sales tax, property, tariffs, federal/state/city fiscal history | First cross-border "move my persona" |
 | **3. Europe** | CH (ZH), LU, IE, NO, DK, UK, DE | Wealth tax, church tax, VAT-heavy regimes, surplus regimes |
 | **4. Singapore** | SG | CPF handling, COE, ABSD |
@@ -491,7 +491,7 @@ My recommendation is in **bold** for each. ✅ = decided.
 | D7 | Investment income | Entered directly / derived from wealth × yields | **Derived, with override** |
 | D8 | One-off taxes (land transfer, stamp duty, car registration) | Year of purchase / annualized over a holding period | **Annualized over a user-set holding period (default 10 yr)** |
 | D9 ✅ | History method | Hold today's tax rules and apply historical fiscal ratios / rebuild past tax law | **Today's rules × historical ratios** (rebuilding past law is impractical) |
-| D10 | Gross or net debt | Gross / net (minus financial assets) | **Net borrowing (flow) and net debt (stock)**. Gross numbers make Norway and Singapore look indebted when they hold huge asset funds. |
+| D10 ✅ | Gross or net debt; which deficit measure | Gross / net; net lending vs. operating balance | **Net debt (stock) and the accrual operating balance (flow)**. Gross numbers make Norway and Singapore look indebted. Decided in Phase 1: StatCan's provincial net lending includes asset revaluations (e.g. Alberta oil reserves), so the GFS *net operating balance* is used at every level. It treats infrastructure through depreciation. It differs from provincial budget deficits; see RESEARCH.md. |
 | D11 | Social security funds (CPP/QPP, US Social Security trust funds, DE Sozialversicherung) | Fold into federal / separate level | **Separate "social security" level** in the breakdown |
 | D12 | Unfunded pension liabilities and implicit debt | Ignore / show as an info stock | **Info only** (not in IITR), with a footnote. US state/city pension gaps are large. |
 | D13 | Cash benefits received (child benefit, refundable credits) | Ignore / net them off | **Show gross IITR and a "net of cash transfers" toggle**. Public services (healthcare, schools) are not valued, with a clear disclaimer. |
@@ -501,7 +501,7 @@ My recommendation is in **bold** for each. ✅ = decided.
 | D17 | Base tax year | 2025 (final) / 2026 (current) | **2026 rules**, with fiscal data through the latest audited year plus budget estimates clearly marked |
 | D18 ✅ | Tariffs and inflation | Include / exclude | **Tariffs on. Everything inflation-related is excluded** (inflation tax, tax on nominal gains, bracket creep). Deficits are already counted, and inflating debt away is just one way they get paid, so including it would double count. |
 | D19 | Regional bodies (TransLink, MTA, GLA, King County, Metro Vancouver) | Fold into city / separate / skip | **Fold into "local" level** with a note |
-| D20 | Tech stack | Vite+React / Next static export / SvelteKit / Astro | **Vite + React + TS + ECharts + Tailwind + Zustand + Vitest** |
+| D20 ✅ | Tech stack | Vite+React / Next static export / SvelteKit / Astro | **Vite + React + TS + ECharts + Zustand + Vitest**, plain CSS with light/dark tokens (Tailwind dropped as unnecessary). Single package; the engine lives in `src/engine` with no DOM access. |
 | D21 | Public or personal tool? | Personal / public site | This changes how much effort goes into citations, disclaimers, accessibility and analytics. **Assume public-quality, but ship personal-quality first.** |
 
 ---
