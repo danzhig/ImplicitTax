@@ -92,22 +92,61 @@ Alternatives to offer as a toggle, so users can see how sensitive the result is 
    deferred tax" number for economists. It belongs in a footnote toggle, since it
    undercuts the simple framing but makes the tool credible.
 
-### 1.4 History over time
+### 1.4 History over time (every city, every year)
 
-For each place, levels × years (≈2000 → latest):
+Every city gets a full year-by-year version of the breakdown, ≈2000 → latest year. The
+persona and **today's tax rules stay fixed** (your income, taxes paid now and taxes per
+level don't change). What changes each year is each government's borrowing and interest,
+at the federal, provincial/state and city level (decision D9 ✅).
 
-- Deficit surcharge ratio `net_borrowing / tax_revenue` and interest ratio
-  `interest / tax_revenue`, per level.
-- Apply those ratios to the persona's **current** tax bill per level, holding the persona
-  and today's tax rules constant. Re-implementing 25 years of tax law for 10 countries is
-  out of scope (decision D9).
-- Result: "If you had lived in Toronto in 2009 with today's tax bill, governments would
-  have borrowed an extra 11% of your income on your behalf, and 4% of your income went to
-  interest."
-- Show history as **% of income**. This removes currency and inflation noise. Absolute
-  per-capita amounts (real, base-year dollars) go in a secondary view.
-- Cumulative chart: running sum of B + D since 2000 against interest paid (C + D). This
-  shows the compounding visually.
+**Per year t, per level L** (fed / prov-state / city, plus social security funds where
+separate):
+
+```
+your_taxes_L          = today's tax bill to level L (fixed across years)
+deficit_ratio_L,t     = net_borrowing_L,t / tax_revenue_L,t
+interest_ratio_L,t    = interest_L,t      / tax_revenue_L,t
+
+Primary balance convention (interest counts as borrowed first):
+  D  (borrowed interest)      = your_taxes_L × min(max(deficit_ratio, 0), interest_ratio)
+  C  (interest paid by taxes) = your_taxes_L × interest_ratio − D
+  B  (borrowed for programs)  = your_taxes_L × deficit_ratio − D      (negative in surplus years = credit)
+```
+
+Each of these, divided by your income, gives a percentage layer for that year. Taxes paid
+now are the same in every year, so the year-to-year movement in the chart comes entirely
+from government borrowing and interest.
+
+Example result: "If you had lived in Toronto in 2009 with today's income and tax bill,
+the federal government would have borrowed 6% of your income on your behalf, Ontario 4%,
+and the City 0.3%. Of that, 2.5% was borrowing just to pay interest."
+
+**What the history view shows** (details in §5, chart 8):
+- The **same stacked percentage breakdown as the current-year view**, for every year.
+  Layers: taxes paid now (flat band) → deferred programs (B) and borrowed interest (D),
+  split by federal / provincial / city → interest paid from taxes (C) as an overlay.
+- A **year slider**: drag it and every other chart (waterfall, Sankey, city ranking) shows
+  that year's numbers.
+- **All cities over time**: one line per city for the total implicit rate, or for just the
+  deferred part, so you can see which places borrowed through which crises.
+- **By level**: small multiples per city with federal / provincial / city on separate rows.
+  This shows whether a city's change came from Ottawa, the province or city hall.
+- **Cumulative**: running total of B + D since 2000 against interest paid (C + D). This
+  shows the compounding. Plus a stock line: "your share of public debt, in years of income".
+- **Event markers**: 2008–09 crisis, 2014–15 oil crash (Calgary, Houston, Oslo), 2020
+  pandemic, 2022 rate rises, 2025 tariffs.
+
+**Data rules:**
+- Everything is shown as **% of your income**, which removes currency and inflation noise.
+  Per-capita amounts in real base-year dollars go in a secondary view.
+- If a level's data starts later than 2000 (likely for some cities), the chart shows a
+  gap. Gaps are never filled with guesses.
+- Years based on budget estimates rather than audited results are drawn hatched.
+- Fiscal years are mapped to calendar years (§7).
+
+**Possible v2 toggle:** apply the biggest historical rate changes to the "taxes paid now"
+band too (e.g. Canadian GST 7% → 6% → 5%, consumer carbon tax on/off, US 2017 and 2025 tax
+changes) without rebuilding full historical tax law.
 
 ---
 
@@ -342,9 +381,15 @@ filing costs; interest-free over-withholding.
 7. **Rate curve**: effective and **marginal** IITR as income goes from $30k to $1M, one
    line per city. This shows how progressive each place is and where the cliffs are
    (e.g. UK personal allowance taper, Canadian clawbacks).
-8. **History (per city)**: stacked area of deferred programs (B), compounding interest
-   (D) and interest paid from taxes (C) as % of your income, 2000 → latest, split by
-   level. Plus a stock line: "your share of public debt, in years of income".
+8. **History (per city, every year)**: the full percentage breakdown as a stacked area,
+   2000 → latest:
+   - taxes paid now (flat band)
+   - deferred programs (B) and borrowed interest (D), split federal / provincial / city
+   - interest paid from taxes (C) as an overlay
+
+   Plus a year slider that drives every other chart, an all-cities line comparison,
+   by-level small multiples, a cumulative compounding chart and a "public debt in years of
+   income" stock line. See §1.4.
 9. **Persona × City heatmap**: 3 saved personas × 15 cities, IITR in each cell.
 10. **Uncertainty**: each number has a confidence badge (high: statutory calculation;
     medium: basket estimate; low: allocation assumption).
@@ -372,7 +417,7 @@ ImplicitTax/
 ├─ data/
 │  ├─ rules/{country}/{year}.json     # brackets, rates, thresholds (zod-validated)
 │  ├─ rules/{country}/RESEARCH.md     # filled-in §4.1 checklist with sources
-│  ├─ fiscal/{place}/{level}.json     # revenue, tax revenue, spending, interest, net borrowing, net debt by year
+│  ├─ fiscal/{place}/{level}.json     # per year: total revenue, tax revenue, spending, interest, net borrowing, net debt, audited/estimate flag, source
 │  ├─ fx/{year}.json, ppp/{year}.json
 │  └─ baskets/{country}.json          # default spending shares, VAT category mapping
 ├─ scripts/                   # data fetch/clean (run manually, outputs committed)
@@ -449,7 +494,7 @@ My recommendation is in **bold** for each. ✅ = decided.
 | D6 | "Same USD" vs. "same life" when moving | Keep the USD house value / keep an equivalent house (local median multiple) | **Same USD by default**, "equivalent lifestyle" as v2. Also show your income percentile in each city ($200k is top 2% in Oslo, upper-middle in SF). |
 | D7 | Investment income | Entered directly / derived from wealth × yields | **Derived, with override** |
 | D8 | One-off taxes (land transfer, stamp duty, car registration) | Year of purchase / annualized over a holding period | **Annualized over a user-set holding period (default 10 yr)** |
-| D9 | History method | Hold today's tax rules and apply historical fiscal ratios / rebuild past tax law | **Today's rules × historical ratios** (rebuilding past law is impractical) |
+| D9 ✅ | History method | Hold today's tax rules and apply historical fiscal ratios / rebuild past tax law | **Today's rules × historical ratios** (rebuilding past law is impractical) |
 | D10 | Gross or net debt | Gross / net (minus financial assets) | **Net borrowing (flow) and net debt (stock)**. Gross numbers make Norway and Singapore look indebted when they hold huge asset funds. |
 | D11 | Social security funds (CPP/QPP, US Social Security trust funds, DE Sozialversicherung) | Fold into federal / separate level | **Separate "social security" level** in the breakdown |
 | D12 | Unfunded pension liabilities and implicit debt | Ignore / show as an info stock | **Info only** (not in IITR), with a footnote. US state/city pension gaps are large. |
