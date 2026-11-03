@@ -99,7 +99,7 @@ For each place, levels × years (≈2000 → latest):
 - Deficit surcharge ratio `net_borrowing / tax_revenue` and interest ratio
   `interest / tax_revenue`, per level.
 - Apply those ratios to the persona's **current** tax bill per level, holding the persona
-  and today's tax rules constant. Re-implementing 25 years of tax law for 11 countries is
+  and today's tax rules constant. Re-implementing 25 years of tax law for 10 countries is
   out of scope (decision D9).
 - Result: "If you had lived in Toronto in 2009 with today's tax bill, governments would
   have borrowed an extra 11% of your income on your behalf, and 4% of your income went to
@@ -115,8 +115,8 @@ For each place, levels × years (≈2000 → latest):
 
 A strict "top 15 by GDP per capita" list would be almost all US metros, plus Luxembourg,
 Zurich, Oslo and Dublin, and Canada would not appear at all. So the list is **curated**:
-all three Canadian cities, at most three US cities, a strong European group, and
-Asia-Pacific (decision D1).
+all three Canadian cities, four US cities (two of them, Seattle and Houston, with no state
+income tax), a strong European group, and Singapore (decision D1 ✅).
 
 | # | City | Country | Levels of government to model | Why it's interesting |
 |---|------|---------|-------------------------------|----------------------|
@@ -134,13 +134,13 @@ Asia-Pacific (decision D1).
 | 12 | London | UK | Central · GLA · Borough (council tax) | Stamp duty, non-dom changes, frozen thresholds |
 | 13 | Munich | Germany | Federal · Bavaria · City | Solidarity surcharge, church tax, heavy social contributions |
 | 14 | Singapore | Singapore | Single level | CPF (is it a tax?), car COE, ABSD for foreigners, reserves |
-| 15 | Sydney | Australia | Commonwealth · NSW · City | Superannuation guarantee, Medicare levy, stamp duty, GST 10% |
+| 15 | Houston | USA | Federal · Texas · Harris County · City · school district (+ special districts: flood control, community college, MUDs) | No state income tax, 8.25% sales tax, high property tax that funds schools, oil economy (pairs with Calgary), city pension debt |
 
-Alternates if you want to swap any in: **Dubai** (zero income tax, very useful contrast),
-Amsterdam (30% ruling, box 3), Stockholm, Geneva, Boston, Austin/Houston (Texas: no income
-tax, high property tax), Hong Kong, Tokyo, Paris.
+Alternates if you want to swap any in later: **Dubai** (zero income tax, very useful
+contrast), Sydney, Amsterdam (30% ruling, box 3), Stockholm, Geneva, Boston, Hong Kong,
+Tokyo, Paris.
 
-That gives 11 countries, 15 sub-national regimes and 15+ municipal regimes. Only the
+That gives 10 countries, 15 sub-national regimes and 15+ municipal regimes. Only the
 income tax and payroll parts need full engines. Every other tax type uses a simpler,
 data-driven calculation (see §4).
 
@@ -184,7 +184,7 @@ All money is entered in **USD** and converted at a fixed exchange rate for the t
 - Big purchases this year: new car (registration tax DK/NO, COE in SG)
 
 **Retirement and deductions**
-- RRSP/401k/pillar 3a/super contributions, mortgage interest (deductible in US, CH, NO,
+- RRSP/401k/pillar 3a/CPF top-up contributions, mortgage interest (deductible in US, CH, NO,
   DK), charitable giving
 
 ---
@@ -194,23 +194,140 @@ All money is entered in **USD** and converted at a fixed exchange rate for the t
 | Tax family | How it's modeled | Notes |
 |---|---|---|
 | Personal income tax (all levels) | **Full engine**: brackets, credits, deductions, surtaxes | Ontario surtax, Swiss communal multiplier, NYC tax, DK municipal rate, German Soli, US AMT (possibly simplified) |
-| Payroll / social contributions | **Full engine**: rates, ceilings; employee side in the headline, employer side as an info line only | CPP/CPP2/EI, FICA, NI, German social contributions, AHV/IV/EO, PRSI, CPF, Medicare levy |
+| Payroll / social contributions | **Full engine**: rates, ceilings; employee side in the headline, employer side as an info line only | CPP/CPP2/EI, FICA, NI, German social contributions, AHV/IV/EO, PRSI, CPF, Ontario Health Premium. **How each one feeds back into income tax is in §4.1.** |
 | Capital income | Engine | Dividend tax credits, CG inclusion rates, NIIT, box-style systems, WA capital gains tax |
 | VAT / GST / HST / sales tax | Basket × effective rate per category | Prices include tax: `tax = spend × r / (1 + r)`. US sales tax mostly excludes services. |
 | Excise: fuel, energy, alcohol, tobacco | Quantity × per-unit rate | Carbon pricing (Canada's consumer carbon tax ended April 2025, EU ETS2 from 2027–28), electricity levies (DE, DK are large) |
 | Vehicles | Purchase/registration + annual fees | DK/NO registration tax, SG COE + ARF, UK VED |
 | Property tax | Assessed value × mill rate (city + school + regional) | Prop 13 assessment caps, UK council tax bands, Irish LPT bands, Swiss imputed rent (voted to be abolished in 2025, date of effect still to come) |
 | Wealth tax | Net wealth × cantonal/national schedule | Zurich, Oslo; Spain/NL if added later |
-| Transfer and stamp duty | On purchase; annualized option | Toronto double LTT, UK SDLT, NSW stamp duty, SG ABSD, foreign buyer surcharges |
+| Transfer and stamp duty | On purchase; annualized option | Toronto double LTT, UK SDLT, SG ABSD, foreign buyer surcharges |
 | Tariffs | Customs revenue ÷ household consumption → effective rate on goods | US effective tariff rate rose sharply in 2025. This belongs in the consumption tax bucket. |
 | Inflation tax (optional) | (Inflation − nominal yield) × cash and bond holdings | A real hidden tax on savers, but not formally a tax. Off by default. |
-| Mandatory "tax-like" costs (optional) | Flat inputs | Swiss/Dutch mandatory health premiums, US employer health insurance, UK TV licence, CPF/super (decision D2) |
+| Mandatory "tax-like" costs (optional) | Flat inputs | Swiss/Dutch mandatory health premiums, US employer health insurance, UK TV licence, CPF, Swiss pillar 2 (decision D2) |
 | Corporate tax incidence (optional) | Your share-ownership × effective corporate rate | For business owners and investors. Off by default. |
 | Deferred tax (deficit) | §1.2 per level | Federal, provincial/state, city, plus regional bodies (TransLink, MTA, GLA) where data exists |
 
 **Explainability is required.** Every number needs a line-item trace ("Ontario basic
 personal amount credit: −$X") and a source link. Without that, nobody will trust a
 comparison across 15 cities.
+
+### 4.1 Contributions ↔ income tax interactions (must be done for every place)
+
+Payroll contributions are not separate from income tax. Most of them reduce income tax
+through a **credit** or a **deduction**, so their real cost is lower than the amount
+withheld. CPP and EI are the clearest examples. If the engine misses these links, every
+place's number is wrong in a different way, and the comparison is worthless. So this is a
+required part of the research phase for each country, written up in
+`data/rules/{country}/RESEARCH.md` before any code for that country is written.
+
+**Calculation order (same skeleton everywhere):**
+1. Payroll contributions (employee side; both sides if self-employed), with floors and
+   ceilings.
+2. Turn those contributions into **deductions** (lower taxable income) or **credit bases**
+   (lower tax directly), separately for each level. Federal and provincial/state treatment
+   can differ.
+3. Income tax per level: brackets → credits (incl. those from step 2) → surtaxes and
+   add-ons computed on tax (Ontario surtax, Ontario Health Premium, German Soli, church
+   tax, Swiss communal/cantonal multipliers).
+4. Report each contribution **gross** and the **tax relief it generates** as a linked
+   negative line: "CPP $4,0xx paid → −$5xx back through credits → net cost $3,5xx". Show
+   the same for EI and every other contribution, so you see both sides.
+
+**Self-employed personas pay both sides.** A self-employed person pays the employee *and*
+employer share themselves, out of their own income. So both halves count in the headline
+(consistent with D3), along with whatever relief applies to the employer half.
+
+**Research checklist per country and level:**
+- [ ] Every mandatory contribution: rate, floor, ceiling, employee vs. employer vs.
+      self-employed rates
+- [ ] For each one: deductible, credit (at what rate?), or neither? Federal and
+      sub-national separately
+- [ ] Credit rate ≠ lowest bracket rate? (check, since provinces/states can set them
+      differently)
+- [ ] Employment-linked credits/deductions (e.g. Canada employment amount, Norway minimum
+      deduction, Denmark employment deduction)
+- [ ] Add-ons computed on tax or on income (surtaxes, health premiums, Soli, church tax)
+- [ ] Do contributions above the ceiling stop? That causes a drop in the marginal rate,
+      which should show up on the rate curve
+- [ ] Employer-paid items that are taxable benefits to the employee
+- [ ] Retirement savings deductions and their limits (RRSP, 401k, pillar 3a, CPF top-ups)
+- [ ] Are benefits later received from the contribution taxable? (CPP pension, EI benefits:
+      info only, not in the annual number)
+- [ ] One golden test per country that exercises the contribution → tax link
+
+**Starting hypotheses to verify during research** (from general knowledge, not yet
+checked against current-year sources):
+
+| Place | Contributions | Expected income tax treatment (verify) |
+|---|---|---|
+| Canada (fed + AB/ON/BC) | CPP base, CPP enhanced (first additional), CPP2, EI | Base CPP and EI → non-refundable credits at federal and provincial level. Enhanced CPP and CPP2 → deductions. Self-employed: employer half deductible. Plus the Canada employment amount credit. Ontario Health Premium is an extra tax. |
+| USA (fed + NY/NYC, CA, WA, TX) | Social Security, Medicare, Additional Medicare 0.9%; CA SDI; NY SDI/PFL; WA Cares and PFML | Employee FICA not deductible. Self-employed deduct half of SE tax. State payroll programs vary, so check each state. |
+| Switzerland (ZH) | AHV/IV/EO, ALV, BVG (pillar 2), accident insurance | Employee contributions deductible at federal, cantonal and communal levels. Pillar 3a deductible up to a cap. Health premiums partly deductible (capped). |
+| Luxembourg | Pension, health, dependence insurance | Social contributions largely deductible; check dependence insurance. |
+| Ireland | PRSI, USC | Neither deductible. Pension contributions get relief at marginal rate within age-based limits. |
+| Norway | National insurance (trygdeavgift) | Not deductible. Two income bases (ordinary income vs. personal income for bracket tax), plus the minimum deduction. |
+| Denmark | AM-bidrag 8%, ATP | AM-bidrag is deducted before income tax. Employment deduction. Municipal + church tax rates. |
+| UK | Employee NI | Not deductible. Pension contributions get relief; salary sacrifice also cuts NI. |
+| Germany | Pension, health, long-term care, unemployment | Pension contributions deductible. Basic health and care deductible. Unemployment limited within a capped allowance. Soli and church tax computed on income tax. |
+| Singapore | CPF (employee) | CPF relief on mandatory contributions up to the ceiling. |
+
+### 4.2 Hidden and "effective" taxes
+
+These are costs most people never think of as tax, but government imposes them, or they
+work the same way as a tax. Each one gets a default treatment:
+
+- **On**: in the headline when the persona's inputs trigger it
+- **Toggle**: available, off by default
+- **Info**: shown as context, never added to the rate
+
+**Taxes stacked on or inside prices**
+
+| Hidden tax | What it is | Where it's big | Default |
+|---|---|---|---|
+| Tax on tax | GST/VAT charged on top of fuel, alcohol and tobacco excise | Everywhere with VAT | **On** (calculation rule) |
+| Insurance premium taxes | Sales or premium tax on home, auto and life insurance (insurance is VAT-exempt, so it's taxed separately) | Ontario 8% retail sales tax on insurance, UK insurance premium tax, Germany 19% insurance tax, provincial premium taxes | **On** |
+| VAT you can't see on exempt services | Banks, insurers and landlords can't reclaim VAT on their inputs, so it's built into fees and rents | Every VAT country | **Toggle** (rough factor) |
+| Alcohol and cannabis monopoly markups | Government retailers' markup on top of excise, paid back to government as profit | LCBO (ON), BC Liquor, Norway Vinmonopolet | **On** |
+| Industrial carbon pricing | Carbon costs on industry and power plants, passed into prices | Canada (industrial system remains after the consumer tax ended), EU ETS | **Toggle** |
+| Tariffs that raise domestic prices | Domestic competitors raise prices to match tariffed imports, so you pay more but no tax is collected | US in particular | **Toggle** (the tariff revenue itself is already **On**) |
+| Supply management / farm price supports | Quotas and price floors raise food prices: a transfer to producers, not to government | Canada dairy, eggs and poultry; EU farm policy; US sugar | **Toggle** (low confidence) |
+
+**Fees, levies and charges that work like taxes**
+
+| Hidden tax | What it is | Where it's big | Default |
+|---|---|---|---|
+| Broadcast / media levies | Mandatory per-household fee whether or not you watch | Germany Rundfunkbeitrag, Swiss Serafe, UK TV licence | **On** |
+| Utility franchise fees and city utility levies | Cities charge utilities for access and it's passed into your bill; water, sewer, garbage and stormwater fees above cost | Calgary (electricity and gas franchise fees), most US cities | **On** (estimate) |
+| Telecom surcharges | Universal service fees, 911 fees, state and local telecom taxes on phone bills | US (often 15–25% of a phone bill) | **On** |
+| Development charges / impact fees | Charges on new housing, built into the price of new homes and passed into rents | Toronto, Vancouver (very high per unit), Houston impact fees | **On** if buying new, annualized like land transfer tax |
+| Travel taxes | Air passenger duties, airport fees, security charges, hotel taxes | UK APD, Canadian airport fees, US ticket taxes | **On** if travel spending is entered |
+| Tolls and congestion charges | Road pricing | London congestion charge / ULEZ, NYC congestion pricing (2025), Oslo toll ring | **On** if commuting by car |
+| Probate and estate fees | Fees on estates at death, annualized like a wealth tax | Ontario estate administration tax (1.5%), BC probate fees | **Toggle** |
+| Swiss military exemption tax | Extra income-based tax on Swiss men who don't do military service | Switzerland (citizens) | **On** with citizenship flag |
+| UK student loan repayments | 9% of income above a threshold. Legally a loan, but it acts like an income tax for graduates. | UK | **Toggle** |
+
+**Taxes on savers and investors**
+
+| Hidden tax | What it is | Where it's big | Default |
+|---|---|---|---|
+| Inflation tax on cash | Inflation erodes cash and bond value, and that's also how public debt gets inflated away | Everywhere; worst in high-inflation years | **Toggle** (already in §4) |
+| Tax on inflation itself | Interest and capital gains are taxed in nominal terms, so you pay tax on returns that only kept up with inflation. Real tax rates on interest can exceed 100%. | Everywhere | **Toggle**, as a "real tax rate on savings" metric |
+| Financial repression | Central bank rates held below inflation, and rules pushing banks and pensions into government bonds | 2010–2021 era especially | **Info** (history chart) |
+| Unrecoverable foreign dividend withholding | e.g. 15% US withholding on dividends held in a Canadian TFSA, which can't be credited back | Investors with foreign holdings | **On** |
+| Share transaction taxes | Stamp duty on share purchases, securities turnover tax | UK 0.5% stamp duty, Swiss securities transfer tax | **On** if trading is entered |
+| Tax inside retirement balances | Part of your RRSP/401k/pillar 3a balance is future tax owed. Your net worth is overstated. | Everyone with tax-deferred accounts | **Info** (net-of-tax wealth line) |
+
+**Invisible because of how they're collected**
+
+| Hidden tax | What it is | Where it's big | Default |
+|---|---|---|---|
+| Fiscal drag / bracket creep | Brackets and allowances not raised with inflation, so tax rises without any rate change | UK (thresholds frozen for years), and any unindexed credit anywhere | **Info** in history: "rate rise from frozen thresholds" |
+| Employer-side health and payroll taxes | Taxes moved from your paycheque to your employer, so they vanish from view | BC Employer Health Tax (replaced MSP premiums), Ontario EHT, NYC-area MTA payroll tax, German employer contributions | **Info** (D3 info line). Watch for governments moving taxes to the employer side. |
+| Benefit clawbacks | Benefits shrinking as income rises: an extra marginal tax | Canada Child Benefit, GST credit, OAS clawback, UK child benefit charge, US ACA subsidy cliff | **On** in marginal rates; **On** in the headline when "net of transfers" is on (D13) |
+| Corporate tax incidence | Part of corporate tax comes out of your wages and investment returns | Everywhere | **Toggle** (already in §4) |
+| Compliance cost | Hours and fees spent filing taxes | US (complex returns, city + state + federal), US citizens abroad | **Toggle**: hours × your hourly income |
+| Interest-free loans to government | Over-withholding refunded months later, with no interest | Everywhere | **Info** (small) |
 
 ---
 
@@ -258,10 +375,11 @@ ImplicitTax/
 │  ├─ jurisdictions/
 │  │   ├─ ca/  (federal.ts, ab.ts, on.ts, bc.ts, cities/…)
 │  │   ├─ us/  (federal.ts, ny.ts, nyc.ts, ca.ts, wa.ts, …)
-│  │   └─ ch/, lu/, ie/, no/, dk/, uk/, de/, sg/, au/
+│  │   └─ ch/, lu/, ie/, no/, dk/, uk/, de/, sg/
 │  └─ trace/                  # line-item explanation output
 ├─ data/
 │  ├─ rules/{country}/{year}.json     # brackets, rates, thresholds (zod-validated)
+│  ├─ rules/{country}/RESEARCH.md     # filled-in §4.1 checklist with sources
 │  ├─ fiscal/{place}/{level}.json     # revenue, tax revenue, spending, interest, net borrowing, net debt by year
 │  ├─ fx/{year}.json, ppp/{year}.json
 │  └─ baskets/{country}.json          # default spending shares, VAT category mapping
@@ -280,9 +398,9 @@ ImplicitTax/
   export/import, and a share link that encodes the persona in the URL hash
   (lz-string compressed). Nothing leaves the browser, which is worth stating in the UI.
 - **Testing**: Vitest unit tests on the engine, plus **golden tests** checked against
-  official calculators (HMRC, Swiss ESTV, Skatteetaten, IRAS, ATO, Revenue.ie, SKAT) and
+  official calculators (HMRC, Swiss ESTV, Skatteetaten, IRAS, Revenue.ie, SKAT, CRA payroll calculator, IRS withholding estimator) and
   the **OECD *Taxing Wages*** tax-wedge figures at 67/100/167% of average wage. That's a
-  ready-made benchmark for all 11 countries.
+  ready-made benchmark for all 10 countries.
 
 ---
 
@@ -292,17 +410,17 @@ ImplicitTax/
 |---|---|
 | National + sub-national government finance, harmonized | IMF GFS & WEO, OECD Government at a Glance / National Accounts by sub-sector, Eurostat `gov_10a_main` (sub-sectors S1311 central, S1312 state, S1313 local, S1314 social security) |
 | Canada | Statistics Canada Canadian Government Finance Statistics, Fiscal Reference Tables (Finance Canada), provincial Public Accounts, city annual financial reports (use **change in net debt**, not the PSAB "annual surplus", which counts capital) |
-| USA | CBO / Treasury (federal), Census Annual Survey of State & Local Government Finances, state & city ACFRs (NYC, SF, Seattle, King County) |
+| USA | CBO / Treasury (federal), Census Annual Survey of State & Local Government Finances, state & city ACFRs (NYC, SF, Seattle, King County, Houston, Harris County), Texas Comptroller and Texas Bond Review Board (local and school district debt) |
 | Switzerland | Federal Finance Administration financial statistics (Confederation, cantons, communes) |
 | UK | ONS Public Sector Finances, MHCLG local authority revenue/capital outturn, GLA accounts |
 | Germany | Destatis (Bund, Länder, Gemeinden), Bavarian statistics office, Munich budget |
-| Others | STATEC (LU), CSO / Dept. of Finance (IE), SSB (NO), Statistics Denmark, ABS GFS (AU), Singapore MOF budget statements |
+| Others | STATEC (LU), CSO / Dept. of Finance (IE), SSB (NO), Statistics Denmark, Singapore MOF budget statements |
 | Tax rules | Official revenue agency sites + OECD Tax Database + PwC Worldwide Tax Summaries for cross-checking |
 | FX / PPP | Central bank annual average rates; World Bank / OECD PPP |
 | Consumption baskets | National household spending surveys (StatCan SHS, BLS CEX, ONS LCF, Eurostat HBS) |
 
 Calendar alignment matters: fiscal years differ (Canada Apr–Mar, US federal Oct–Sep, most
-states Jul–Jun, UK Apr–Mar, AU Jul–Jun, NYC Jul–Jun). Assign each fiscal year to the
+states Jul–Jun but Texas Sep–Aug, UK Apr–Mar, NYC and Houston Jul–Jun). Assign each fiscal year to the
 calendar year it mostly covers, and document the choice.
 
 ---
@@ -313,9 +431,9 @@ calendar year it mostly covers, and document the choice.
 |---|---|---|
 | **0. Decisions + schema** | Answer §9, define persona, rule, fiscal and output schemas | Specs + empty engine skeleton, Vercel deploy working |
 | **1. Canada end-to-end** | Federal + AB/ON/BC income tax, CPP/EI, GST/HST/PST, fuel/alcohol/tobacco excise, property tax, LTT, fiscal history for 3 levels × 3 cities | Calgary vs Toronto vs Vancouver fully working: all charts, 3 persona slots. Proves the concept. |
-| **2. USA** | Federal (current law), NY + NYC, CA, WA, FICA, sales tax, property, tariffs, federal/state/city fiscal history | First cross-border "move my persona" |
+| **2. USA** | Federal (current law), NY + NYC, CA, WA, TX (Houston), FICA, sales tax, property, tariffs, federal/state/city fiscal history | First cross-border "move my persona" |
 | **3. Europe** | CH (ZH), LU, IE, NO, DK, UK, DE | Wealth tax, church tax, VAT-heavy regimes, surplus regimes |
-| **4. Asia-Pacific** | SG, AU | CPF/super handling, COE, stamp duties |
+| **4. Singapore** | SG | CPF handling, COE, ABSD |
 | **5. Depth** | Rate curves, r−g view, inflation tax, newcomer regimes, corporate incidence, sensitivity toggles | Credibility and nuance |
 | **6. Hardening** | Golden tests for all places, source citations everywhere, accessibility, mobile layout | Public-ready |
 
@@ -331,8 +449,8 @@ My recommendation is in **bold** for each. ✅ = decided.
 
 | # | Decision | Options | Recommendation |
 |---|---|---|---|
-| D1 | City list | Strict GDP-per-capita ranking vs. curated | **Curated 15 in §2**, Dubai as the first alternate |
-| D2 ✅ | Do mandatory savings and insurance count as tax? (CPP, CPF, super, Swiss pillar 2, Swiss health premiums, US employer health) | Tax / not tax / separate bucket | **Separate "mandatory, tax-like" bucket**, shown and toggleable. CPP and public pensions count as tax by default; private mandatory accounts (CPF, super, BVG) don't by default. Without this, Singapore and Sydney comparisons are misleading. |
+| D1 ✅ | City list | Strict GDP-per-capita ranking vs. curated | **Decided: curated 15 in §2** (Houston in place of Sydney). Dubai is the first alternate. |
+| D2 ✅ | Do mandatory savings and insurance count as tax? (CPP, CPF, Swiss pillar 2, Swiss health premiums, US employer health) | Tax / not tax / separate bucket | **Separate "mandatory, tax-like" bucket**, shown and toggleable. CPP and public pensions count as tax by default; private mandatory accounts (CPF, BVG) don't by default. Without this, Singapore and Zurich comparisons are misleading. |
 | D3 ✅ | Denominator of the rate | Gross salary / gross + employer payroll tax ("total labor cost") / total economic income incl. investment income | **Decided: your gross income** (salary + self-employment + investment income) — the paycheque view. Employer-side contributions are excluded from the headline and shown only as an info line. |
 | D4 ✅ | Deficit allocation method | Tax-share / per capita / per taxpayer / income-share | **Tax-share** default, others as a toggle with side-by-side sensitivity |
 | D5 | Currency conversion | Market FX / PPP | **Market FX** for "move my USD", plus a PPP-adjusted disposable income line, so you see both the tax and the cost-of-living picture |
@@ -421,7 +539,7 @@ My recommendation is in **bold** for each. ✅ = decided.
   the US exit tax for renouncing citizenship, and US citizenship-based taxation. A US
   citizen in Zurich still files US returns.
 - **Foreign buyer rules**: Canada's foreign buyer ban, Singapore ABSD (60% for
-  foreigners), Australian foreign surcharges, BC speculation tax. Your residency status
+  foreigners), BC speculation tax. Your residency status
   changes the property picture.
 - **Retirement accounts don't move cleanly.** An RRSP or 401k held abroad may lose its
   tax shelter (e.g. a Canadian TFSA isn't sheltered in the US).
@@ -448,6 +566,7 @@ My recommendation is in **bold** for each. ✅ = decided.
 
 ## 11. Suggested next step
 
-D2, D3 and D4 are decided (✅). Confirm D1 (the city list), which shapes every chart. Then start **Phase 1 (Canada)**: it exercises every part of the system (3 levels,
+D1–D4 are decided (✅). Next: the Canada research dossier (§4.1 checklist for federal, AB,
+ON, BC), then Phase 1. Then start **Phase 1 (Canada)**: it exercises every part of the system (3 levels,
 3 provinces, deficits at all levels, provincial sales tax differences, property and land
 transfer tax) using data that's easy to get and easy to check.

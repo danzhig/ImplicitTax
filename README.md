@@ -7,7 +7,7 @@ percentage of income.
 
 Build a persona (income, wealth, housing, spending) in USD, then move it across 15 cities
 (Calgary, Toronto, Vancouver, New York, San Francisco, Seattle, Zurich, Luxembourg, Dublin,
-Oslo, Copenhagen, London, Munich, Singapore, Sydney) to see which kind of tax regime you'd be
+Oslo, Copenhagen, London, Munich, Singapore, Houston) to see which kind of tax regime you'd be
 leaving and entering.
 
 Status: planning. See [docs/PLAN.md](docs/PLAN.md).
