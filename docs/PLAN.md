@@ -1,0 +1,444 @@
+# ImplicitTax — Build Plan
+
+> **One-line idea:** Add up every tax a person pays *and* their share of government
+> borrowing, then express the total as one "implicit income tax rate". Do this for one
+> persona across 15 cities so you can see what kind of tax regime you're leaving and
+> entering.
+
+Status: planning. Nothing is built yet. Section 9 lists the decisions that need an
+answer before (or during) the build. Section 10 lists things that are easy to miss.
+
+---
+
+## 1. The core metric
+
+**Implicit Income Tax Rate (IITR)**
+
+```
+IITR = (taxes you pay now + your share of this year's government net borrowing)
+       ─────────────────────────────────────────────────────────────────────────
+                         your gross income (see decision D3)
+```
+
+- "Taxes you pay now" covers income tax, payroll and social contributions, VAT/GST/HST/sales
+  tax, excise taxes (fuel, energy, alcohol, tobacco, vehicles), property tax, wealth tax,
+  transfer and stamp duties, and tariffs.
+- "Your share of net borrowing" is the deferred tax: what governments spent on your behalf
+  this year but didn't collect. It's computed separately for each level (federal,
+  provincial/state, city).
+- Surpluses produce a **negative** deferred tax, a credit. Norway, Singapore and
+  Luxembourg will often show one.
+
+### 1.1 Splitting it into "debt issuance" and "interest" without double counting
+
+This is the subtle part. Interest on old debt is already part of this year's spending, so
+some of it is paid by your current taxes and some by new borrowing. If you simply add
+"deficit tax" and "interest tax" on top of the taxes you pay, interest gets counted twice.
+
+The clean breakdown, for each level of government L:
+
+|                                  | Paid now (your taxes) | Deferred (new borrowing) | Covered by non-tax revenue* |
+|----------------------------------|-----------------------|--------------------------|-----------------------------|
+| **Programs** (non-interest spending) | A                 | B = your primary deficit | E                           |
+| **Interest** on past debt        | C                     | D = borrowing to pay interest | F                     |
+
+\* Resource royalties, fees, investment income, central bank profits. This matters a lot
+for Alberta, Norway and Singapore.
+
+- **Headline IITR** = A + B + C + D (everything you pay or will owe).
+- **"Debt issuance tax"** = B + D (this year's new borrowing on your behalf).
+- **"Interest tax"** = C + D (what servicing past debt costs you this year).
+- **D is the compounding**: borrowing to pay interest. When D > 0, debt grows on its own.
+  This should be its own highlighted color in every chart.
+
+Charts show B, C and D as layers inside the headline, never added on top of it.
+
+### 1.2 How to allocate a government's borrowing to one person
+
+Recommended default: the **tax-share method**. Your share of a level's borrowing equals
+your share of what that level collects in taxes:
+
+```
+deferred_L = your_taxes_to_L × (net_borrowing_L / total_tax_revenue_L)
+```
+
+This gives a very intuitive number, the **deficit surcharge**: "Ottawa borrowed $0.X for
+every $1 it collected, so your federal tax bill is really X% bigger." The logic is that
+future repayment will most likely use roughly today's tax mix.
+
+Alternatives to offer as a toggle, so users can see how sensitive the result is (decision D4):
+
+- **Per capita**: equal share per resident. This is regressive and makes the deficit look
+  huge for low earners.
+- **Per taxpayer**: equal share per tax filer.
+- **Income share**: your income ÷ total personal income in that jurisdiction.
+
+### 1.3 Three ways to view debt
+
+1. **Flow (default):** this year's net borrowing, as above.
+2. **Stock:** your share of the outstanding net debt, shown as "years of your income"
+   ("you carry 0.9 years of income in public debt across 3 levels of government").
+3. **Sustainability (r − g):** if the economy grows faster than the interest rate, debt
+   can be rolled over forever and never repaid by taxes. This optional view shows the
+   primary surplus needed to keep debt/GDP stable, which is a more defensible "true
+   deferred tax" number for economists. It belongs in a footnote toggle, since it
+   undercuts the simple framing but makes the tool credible.
+
+### 1.4 History over time
+
+For each place, levels × years (≈2000 → latest):
+
+- Deficit surcharge ratio `net_borrowing / tax_revenue` and interest ratio
+  `interest / tax_revenue`, per level.
+- Apply those ratios to the persona's **current** tax bill per level, holding the persona
+  and today's tax rules constant. Re-implementing 25 years of tax law for 11 countries is
+  out of scope (decision D9).
+- Result: "If you had lived in Toronto in 2009 with today's tax bill, governments would
+  have borrowed an extra 11% of your income on your behalf, and 4% of your income went to
+  interest."
+- Show history as **% of income**. This removes currency and inflation noise. Absolute
+  per-capita amounts (real, base-year dollars) go in a secondary view.
+- Cumulative chart: running sum of B + D since 2000 against interest paid (C + D). This
+  shows the compounding visually.
+
+---
+
+## 2. Places: 15 cities
+
+A strict "top 15 by GDP per capita" list would be almost all US metros, plus Luxembourg,
+Zurich, Oslo and Dublin, and Canada would not appear at all. So the list is **curated**:
+all three Canadian cities, at most three US cities, a strong European group, and
+Asia-Pacific (decision D1).
+
+| # | City | Country | Levels of government to model | Why it's interesting |
+|---|------|---------|-------------------------------|----------------------|
+| 1 | Calgary | Canada | Federal · Alberta · City | No provincial sales tax, resource revenue, Heritage Fund |
+| 2 | Toronto | Canada | Federal · Ontario · City | HST 13%, double land transfer tax, large provincial debt |
+| 3 | Vancouver | Canada | Federal · BC · City (+ Metro Van/TransLink) | PST + GST, speculation and vacancy tax, empty homes tax |
+| 4 | New York City | USA | Federal · NY State · NYC (+ MTA) | City income tax, high SALT |
+| 5 | San Francisco | USA | Federal · California · City & County | Top state income tax rate, Prop 13 property tax |
+| 6 | Seattle | USA | Federal · Washington · King County · City | No wage income tax, high sales tax, WA capital gains tax |
+| 7 | Zurich | Switzerland | Confederation · Canton · Commune (+ church) | 3-level income tax, wealth tax, imputed rent, mandatory health premiums |
+| 8 | Luxembourg City | Luxembourg | State · Commune | Highest GDP per capita, low VAT, surplus-ish |
+| 9 | Dublin | Ireland | State · City Council (Local Property Tax) | High marginal rates at low thresholds, USC, multinational corporate tax windfall |
+| 10 | Oslo | Norway | State · Municipality | Wealth tax, sovereign wealth fund (large net *assets*) |
+| 11 | Copenhagen | Denmark | State · Region · Municipality | Municipal income tax, 25% VAT, car registration tax |
+| 12 | London | UK | Central · GLA · Borough (council tax) | Stamp duty, non-dom changes, frozen thresholds |
+| 13 | Munich | Germany | Federal · Bavaria · City | Solidarity surcharge, church tax, heavy social contributions |
+| 14 | Singapore | Singapore | Single level | CPF (is it a tax?), car COE, ABSD for foreigners, reserves |
+| 15 | Sydney | Australia | Commonwealth · NSW · City | Superannuation guarantee, Medicare levy, stamp duty, GST 10% |
+
+Alternates if you want to swap any in: **Dubai** (zero income tax, very useful contrast),
+Amsterdam (30% ruling, box 3), Stockholm, Geneva, Boston, Austin/Houston (Texas: no income
+tax, high property tax), Hong Kong, Tokyo, Paris.
+
+That gives 11 countries, 15 sub-national regimes and 15+ municipal regimes. Only the
+income tax and payroll parts need full engines. Every other tax type uses a simpler,
+data-driven calculation (see §4).
+
+---
+
+## 3. Persona inputs
+
+All money is entered in **USD** and converted at a fixed exchange rate for the tax year
+(PPP is optional, see decision D5). Each section can be switched on or off.
+
+**Identity and household**
+- Age (some credits and pensions depend on it), citizenship (US citizens are taxed
+  everywhere), years since arrival (newcomer regimes), religion (church tax in DE, CH, DK)
+- Filing status: single, or married with 1 or 2 earners. Number and ages of children.
+
+**Income**
+- Employment salary and bonus; self-employment profit
+- Investment income: interest, dividends (domestic/foreign), realized capital gains
+  (short/long)
+- Rental income, pension withdrawals
+- Default: investment income is *derived from wealth × yield assumptions*, with a manual
+  override (decision D7)
+
+**Wealth (balance sheet)**
+- Cash and deposits, bonds, equities (taxable vs. retirement accounts), primary residence
+  (value + mortgage), other real estate, business equity, vehicles
+- Used for wealth tax (CH, NO), property tax, the inflation tax on cash and bonds, and
+  investment income
+
+**Housing**
+- Own or rent; home value or rent; purchase this year? (transfer and stamp duty, either
+  annualized or one-off, decision D8); first-time buyer; foreign buyer status
+
+**Consumption (what consumption taxes are applied to)**
+- Spending = income − taxes − savings, so there's a savings-rate slider
+- Spending split by category with sensible defaults per income level: groceries,
+  restaurants, alcohol, tobacco, clothing, electronics, services, travel, financial
+  services, insurance, rent (usually VAT-exempt), utilities
+- **Energy and transport**: car (fuel/EV/none), km/year, fuel economy; home heating type
+  (gas/oil/electric/heat pump/district) and usage; electricity kWh
+- Big purchases this year: new car (registration tax DK/NO, COE in SG)
+
+**Retirement and deductions**
+- RRSP/401k/pillar 3a/super contributions, mortgage interest (deductible in US, CH, NO,
+  DK), charitable giving
+
+---
+
+## 4. What the tax engine must calculate
+
+| Tax family | How it's modeled | Notes |
+|---|---|---|
+| Personal income tax (all levels) | **Full engine**: brackets, credits, deductions, surtaxes | Ontario surtax, Swiss communal multiplier, NYC tax, DK municipal rate, German Soli, US AMT (possibly simplified) |
+| Payroll / social contributions | **Full engine**: rates, ceilings, employee + employer side | CPP/CPP2/EI, FICA, NI, German social contributions, AHV/IV/EO, PRSI, CPF, Medicare levy |
+| Capital income | Engine | Dividend tax credits, CG inclusion rates, NIIT, box-style systems, WA capital gains tax |
+| VAT / GST / HST / sales tax | Basket × effective rate per category | Prices include tax: `tax = spend × r / (1 + r)`. US sales tax mostly excludes services. |
+| Excise: fuel, energy, alcohol, tobacco | Quantity × per-unit rate | Carbon pricing (Canada's consumer carbon tax ended April 2025, EU ETS2 from 2027–28), electricity levies (DE, DK are large) |
+| Vehicles | Purchase/registration + annual fees | DK/NO registration tax, SG COE + ARF, UK VED |
+| Property tax | Assessed value × mill rate (city + school + regional) | Prop 13 assessment caps, UK council tax bands, Irish LPT bands, Swiss imputed rent (voted to be abolished in 2025, date of effect still to come) |
+| Wealth tax | Net wealth × cantonal/national schedule | Zurich, Oslo; Spain/NL if added later |
+| Transfer and stamp duty | On purchase; annualized option | Toronto double LTT, UK SDLT, NSW stamp duty, SG ABSD, foreign buyer surcharges |
+| Tariffs | Customs revenue ÷ household consumption → effective rate on goods | US effective tariff rate rose sharply in 2025. This belongs in the consumption tax bucket. |
+| Inflation tax (optional) | (Inflation − nominal yield) × cash and bond holdings | A real hidden tax on savers, but not formally a tax. Off by default. |
+| Mandatory "tax-like" costs (optional) | Flat inputs | Swiss/Dutch mandatory health premiums, US employer health insurance, UK TV licence, CPF/super (decision D2) |
+| Corporate tax incidence (optional) | Your share-ownership × effective corporate rate | For business owners and investors. Off by default. |
+| Deferred tax (deficit) | §1.2 per level | Federal, provincial/state, city, plus regional bodies (TransLink, MTA, GLA) where data exists |
+
+**Explainability is required.** Every number needs a line-item trace ("Ontario basic
+personal amount credit: −$X") and a source link. Without that, nobody will trust a
+comparison across 15 cities.
+
+---
+
+## 5. Outputs and charts
+
+1. **Headline card per city**: IITR %, total $ (USD + local), net disposable income, and
+   purchasing-power-adjusted disposable income.
+2. **Stacked bar, all 15 cities sorted**: IITR split into labor / consumption / property /
+   wealth / deferred-programs / deferred-interest. This is the main comparison view.
+3. **Waterfall for one city**: gross income → income tax → payroll → consumption →
+   property → **paid-now total** → deferred (B) → compounding interest (D) → implicit
+   total.
+4. **Sankey**: your income → each tax → each level of government → (programs | interest
+   | deferred). Very good for "where does my dollar go".
+5. **Move my persona (origin → destination)**: diverging bar of the change per tax type
+   ("+$14k income tax, −$3k VAT, +$2k deferred"), plus a one-line verdict ("You'd move
+   from a consumption-heavy, low-borrowing regime to a labor-heavy, high-borrowing one").
+6. **Regime fingerprint**: a small chart per city of the burden mix (labor vs. consumption
+   vs. capital/wealth vs. deferred). This shows the kind of regime, not just its size.
+7. **Rate curve**: effective and **marginal** IITR as income goes from $30k to $1M, one
+   line per city. This shows how progressive each place is and where the cliffs are
+   (e.g. UK personal allowance taper, Canadian clawbacks).
+8. **History (per city)**: stacked area of deferred programs (B), compounding interest
+   (D) and interest paid from taxes (C) as % of your income, 2000 → latest, split by
+   level. Plus a stock line: "your share of public debt, in years of income".
+9. **Persona × City heatmap**: 3 saved personas × 15 cities, IITR in each cell.
+10. **Uncertainty**: each number has a confidence badge (high: statutory calculation;
+    medium: basket estimate; low: allocation assumption).
+
+Charting library: **Apache ECharts** (stacked bar, waterfall, sankey, heatmap and line in
+one library, good performance, works on static sites).
+
+---
+
+## 6. Architecture
+
+```
+ImplicitTax/
+├─ apps/web/                  # Vite + React + TypeScript static site
+│  ├─ src/components/charts/  # ECharts wrappers
+│  ├─ src/features/persona/   # input forms, 3 local slots, import/export, share link
+│  └─ src/features/compare/   # city compare, move, history views
+├─ packages/engine/           # pure TS, no DOM — the calculation engine
+│  ├─ core/                   # bracket engine, credits, caps, basket VAT, allocation math
+│  ├─ jurisdictions/
+│  │   ├─ ca/  (federal.ts, ab.ts, on.ts, bc.ts, cities/…)
+│  │   ├─ us/  (federal.ts, ny.ts, nyc.ts, ca.ts, wa.ts, …)
+│  │   └─ ch/, lu/, ie/, no/, dk/, uk/, de/, sg/, au/
+│  └─ trace/                  # line-item explanation output
+├─ data/
+│  ├─ rules/{country}/{year}.json     # brackets, rates, thresholds (zod-validated)
+│  ├─ fiscal/{place}/{level}.json     # revenue, tax revenue, spending, interest, net borrowing, net debt by year
+│  ├─ fx/{year}.json, ppp/{year}.json
+│  └─ baskets/{country}.json          # default spending shares, VAT category mapping
+├─ scripts/                   # data fetch/clean (run manually, outputs committed)
+└─ tests/golden/              # known-answer cases vs. official calculators
+```
+
+- **Rules are data where possible, code where needed.** Brackets and rates go in JSON,
+  and quirks go in small per-jurisdiction functions. Everything is versioned by tax year.
+- **Engine is a pure function**: `calculate(persona, placeId, year, options) →
+  { lineItems[], totals, byLevel, trace }`. It's easy to test and runs quickly in the
+  browser for rate curves (≈100 incomes × 15 cities).
+- **Static only**: no backend. All data is bundled JSON. Deploy on Vercel from GitHub
+  (Vite preset, `dist/`); every PR gets a preview URL.
+- **Personas**: 3 slots in `localStorage` with a schema version for migrations, JSON
+  export/import, and a share link that encodes the persona in the URL hash
+  (lz-string compressed). Nothing leaves the browser, which is worth stating in the UI.
+- **Testing**: Vitest unit tests on the engine, plus **golden tests** checked against
+  official calculators (HMRC, Swiss ESTV, Skatteetaten, IRAS, ATO, Revenue.ie, SKAT) and
+  the **OECD *Taxing Wages*** tax-wedge figures at 67/100/167% of average wage. That's a
+  ready-made benchmark for all 11 countries.
+
+---
+
+## 7. Data sources (fiscal / borrowing side)
+
+| Need | Sources |
+|---|---|
+| National + sub-national government finance, harmonized | IMF GFS & WEO, OECD Government at a Glance / National Accounts by sub-sector, Eurostat `gov_10a_main` (sub-sectors S1311 central, S1312 state, S1313 local, S1314 social security) |
+| Canada | Statistics Canada Canadian Government Finance Statistics, Fiscal Reference Tables (Finance Canada), provincial Public Accounts, city annual financial reports (use **change in net debt**, not the PSAB "annual surplus", which counts capital) |
+| USA | CBO / Treasury (federal), Census Annual Survey of State & Local Government Finances, state & city ACFRs (NYC, SF, Seattle, King County) |
+| Switzerland | Federal Finance Administration financial statistics (Confederation, cantons, communes) |
+| UK | ONS Public Sector Finances, MHCLG local authority revenue/capital outturn, GLA accounts |
+| Germany | Destatis (Bund, Länder, Gemeinden), Bavarian statistics office, Munich budget |
+| Others | STATEC (LU), CSO / Dept. of Finance (IE), SSB (NO), Statistics Denmark, ABS GFS (AU), Singapore MOF budget statements |
+| Tax rules | Official revenue agency sites + OECD Tax Database + PwC Worldwide Tax Summaries for cross-checking |
+| FX / PPP | Central bank annual average rates; World Bank / OECD PPP |
+| Consumption baskets | National household spending surveys (StatCan SHS, BLS CEX, ONS LCF, Eurostat HBS) |
+
+Calendar alignment matters: fiscal years differ (Canada Apr–Mar, US federal Oct–Sep, most
+states Jul–Jun, UK Apr–Mar, AU Jul–Jun, NYC Jul–Jun). Assign each fiscal year to the
+calendar year it mostly covers, and document the choice.
+
+---
+
+## 8. Phased roadmap
+
+| Phase | Scope | Result |
+|---|---|---|
+| **0. Decisions + schema** | Answer §9, define persona, rule, fiscal and output schemas | Specs + empty engine skeleton, Vercel deploy working |
+| **1. Canada end-to-end** | Federal + AB/ON/BC income tax, CPP/EI, GST/HST/PST, fuel/alcohol/tobacco excise, property tax, LTT, fiscal history for 3 levels × 3 cities | Calgary vs Toronto vs Vancouver fully working: all charts, 3 persona slots. Proves the concept. |
+| **2. USA** | Federal (current law), NY + NYC, CA, WA, FICA, sales tax, property, tariffs, federal/state/city fiscal history | First cross-border "move my persona" |
+| **3. Europe** | CH (ZH), LU, IE, NO, DK, UK, DE | Wealth tax, church tax, VAT-heavy regimes, surplus regimes |
+| **4. Asia-Pacific** | SG, AU | CPF/super handling, COE, stamp duties |
+| **5. Depth** | Rate curves, r−g view, inflation tax, newcomer regimes, corporate incidence, sensitivity toggles | Credibility and nuance |
+| **6. Hardening** | Golden tests for all places, source citations everywhere, accessibility, mobile layout | Public-ready |
+
+Realistic sizing: Phase 1 is the largest single step (it builds the core engine, the
+chart system and the data pipeline). Each later country takes roughly a third of the
+Phase 1 effort, and most of that goes into income tax, payroll and fiscal data.
+
+---
+
+## 9. Decisions you need to make
+
+My recommendation is in **bold** for each.
+
+| # | Decision | Options | Recommendation |
+|---|---|---|---|
+| D1 | City list | Strict GDP-per-capita ranking vs. curated | **Curated 15 in §2**, Dubai as the first alternate |
+| D2 | Do mandatory savings and insurance count as tax? (CPP, CPF, super, Swiss pillar 2, Swiss health premiums, US employer health) | Tax / not tax / separate bucket | **Separate "mandatory, tax-like" bucket**, shown and toggleable. CPP and public pensions count as tax by default; private mandatory accounts (CPF, super, BVG) don't by default. Without this, Singapore and Sydney comparisons are misleading. |
+| D3 | Denominator of the rate | Gross salary / gross + employer payroll tax ("total labor cost") / total economic income incl. investment income | **Total labor cost + investment income** as default, gross salary as a toggle. Employer contributions are economically paid by you (very large in DE and FR). |
+| D4 | Deficit allocation method | Tax-share / per capita / per taxpayer / income-share | **Tax-share** default, others as a toggle with side-by-side sensitivity |
+| D5 | Currency conversion | Market FX / PPP | **Market FX** for "move my USD", plus a PPP-adjusted disposable income line, so you see both the tax and the cost-of-living picture |
+| D6 | "Same USD" vs. "same life" when moving | Keep the USD house value / keep an equivalent house (local median multiple) | **Same USD by default**, "equivalent lifestyle" as v2. Also show your income percentile in each city ($200k is top 2% in Oslo, upper-middle in SF). |
+| D7 | Investment income | Entered directly / derived from wealth × yields | **Derived, with override** |
+| D8 | One-off taxes (land transfer, stamp duty, car registration) | Year of purchase / annualized over a holding period | **Annualized over a user-set holding period (default 10 yr)** |
+| D9 | History method | Hold today's tax rules and apply historical fiscal ratios / rebuild past tax law | **Today's rules × historical ratios** (rebuilding past law is impractical) |
+| D10 | Gross or net debt | Gross / net (minus financial assets) | **Net borrowing (flow) and net debt (stock)**. Gross numbers make Norway and Singapore look indebted when they hold huge asset funds. |
+| D11 | Social security funds (CPP/QPP, US Social Security trust funds, DE Sozialversicherung) | Fold into federal / separate level | **Separate "social security" level** in the breakdown |
+| D12 | Unfunded pension liabilities and implicit debt | Ignore / show as an info stock | **Info only** (not in IITR), with a footnote. US state/city pension gaps are large. |
+| D13 | Cash benefits received (child benefit, refundable credits) | Ignore / net them off | **Show gross IITR and a "net of cash transfers" toggle**. Public services (healthcare, schools) are not valued, with a clear disclaimer. |
+| D14 | Household scope v1 | Single only / single + couples + kids | **Single + couple (1 or 2 earners) + children count** |
+| D15 | Citizenship effects | Ignore / model US citizenship tax, departure taxes | **Flag them in "move" view** (US citizens owe US tax anywhere; Canada departure tax on emigration) but don't fully model them in v1 |
+| D16 | Newcomer regimes (UK 4-year FIG regime, Swiss lump-sum, DK researcher scheme, IE SARP, NL 30%) | Ignore / toggle | **Toggle per city, v2** |
+| D17 | Base tax year | 2025 (final) / 2026 (current) | **2026 rules**, with fiscal data through the latest audited year plus budget estimates clearly marked |
+| D18 | Tariffs and inflation tax | Include / exclude | **Tariffs on, inflation tax off by default** |
+| D19 | Regional bodies (TransLink, MTA, GLA, King County, Metro Vancouver) | Fold into city / separate / skip | **Fold into "local" level** with a note |
+| D20 | Tech stack | Vite+React / Next static export / SvelteKit / Astro | **Vite + React + TS + ECharts + Tailwind + Zustand + Vitest** |
+| D21 | Public or personal tool? | Personal / public site | This changes how much effort goes into citations, disclaimers, accessibility and analytics. **Assume public-quality, but ship personal-quality first.** |
+
+---
+
+## 10. Things you might not have thought about
+
+**Accounting and economics**
+- **Interest double counting** (§1.1). Interest is already inside current spending.
+  "Deficit tax" and "interest tax" overlap and should be shown as layers, not summed.
+- **Primary vs. total deficit.** A government can run a primary surplus and still borrow,
+  just to pay interest. That case is pure compounding, and it's the thing you want to see.
+- **Present value view.** If you discount future repayment at the government's own
+  borrowing rate, today's deficit already *equals* the present value of the future taxes,
+  so interest isn't an extra burden in present value terms. It is an extra burden in
+  cash-flow terms. Worth one sentence in the methodology page so nobody can call the
+  tool wrong.
+- **r − g.** If growth beats interest rates, debt is never fully repaid by taxes. The
+  "delayed tax" is then smaller than the deficit. Offer it as a sensitivity view.
+- **Inflation is the other way debt gets repaid**, and it falls on holders of cash and
+  bonds. Your wealth inputs make this computable.
+- **Who repays?** Future taxpayers may not include you (you move, retire, die). The metric
+  is "your fair share if it were settled now", not a prediction of your personal bill.
+- **Tax incidence.** Employer payroll taxes, corporate taxes and even property taxes on
+  rentals are partly passed on to you as lower wages or higher rents. Be explicit about
+  which incidence assumptions are in the headline number.
+- **Non-tax revenue funds some governments** (Alberta oil royalties, Norway's fund, Swiss
+  National Bank profits, Singapore's reserve returns). Low taxes there don't mean low
+  spending. Your share of resource revenue is a hidden subsidy, not a tax.
+- **Intergovernmental transfers.** Federal transfers to provinces/states are spending at
+  one level and revenue at another. Allocate each level's deficit using its own taxes, so
+  transfers aren't counted twice.
+- **City deficits look small** because Canadian municipalities can't borrow for operating
+  costs, and many US states and cities have balanced-budget rules. Their debt is mostly
+  capital debt, plus large unfunded pensions in the US. Use change in net debt, and show
+  pension gaps as a stock (D12).
+- **Singapore's government debt doesn't fund spending.** It's issued for the CPF and
+  invested, so the deficit tax there should be about zero, not its large gross debt.
+
+**Tax mechanics**
+- **US sales tax vs. VAT.** Sales tax mostly skips services, so a 10% sales tax can
+  raise less than a 10% VAT. Your consumption basket matters more than the headline rate.
+- **Embedded and cascading taxes**: BC PST and US sales taxes on business inputs, and
+  fuel taxes built into delivery costs. These are hidden in prices. Possibly a rough
+  "embedded tax" factor in v2.
+- **Prices include VAT.** Use `spend × r/(1+r)`, not `spend × r`.
+- **Energy taxes go beyond gasoline**: German and Danish electricity levies, natural gas
+  taxes, EU ETS2 (household carbon pricing from 2027–28). Canada's *consumer* carbon tax
+  ended in April 2025, so history charts should show the drop.
+- **Car taxes can dominate**: Denmark's registration tax, Singapore's COE (often more
+  than the car itself), Norway's vehicle taxes. These need a "car owner" switch.
+- **Church tax** (DE, CH, DK) depends on a personal choice. It needs an input.
+- **Mortgage interest deductibility** and **imputed rent** (CH) make owning vs. renting
+  very different between cities.
+- **Benefit clawbacks create hidden marginal rates** (UK personal allowance taper
+  between £100k–£125k gives a ~60%+ marginal rate; Canadian OAS clawback; Canada Child
+  Benefit phase-out). The marginal rate curve chart is where these show up.
+- **Joint vs. individual filing** (US joint returns, German income splitting) can change
+  the result a lot for one-earner couples.
+- **Recent and upcoming changes to track**: US 2025 tax law changes (SALT cap, new
+  deductions), UK non-dom abolition (April 2025), Swiss imputed-rent abolition (voted
+  2025, date of effect still to come), the end of Canada's consumer carbon tax, and the
+  US tariff level.
+
+**Moving the persona**
+- **Exit and entry costs**: Canada's departure tax (deemed sale of assets on leaving),
+  the US exit tax for renouncing citizenship, and US citizenship-based taxation. A US
+  citizen in Zurich still files US returns.
+- **Foreign buyer rules**: Canada's foreign buyer ban, Singapore ABSD (60% for
+  foreigners), Australian foreign surcharges, BC speculation tax. Your residency status
+  changes the property picture.
+- **Retirement accounts don't move cleanly.** An RRSP or 401k held abroad may lose its
+  tax shelter (e.g. a Canadian TFSA isn't sheltered in the US).
+- **Same USD ≠ same position.** Your income percentile and the size of home you can buy
+  change completely between cities. Show this beside the tax result.
+- **Tax treaties and foreign tax credits** matter if income stays in the origin country
+  (rental property back home, pensions). Out of scope for v1, but flag it.
+
+**Data and product**
+- **Fiscal years don't line up** across countries (§7).
+- **Sources are in German, Norwegian, Danish and French.** Budget time to read
+  primary sources, or rely on OECD/Eurostat harmonized data where possible.
+- **Data goes stale every year.** You need an annual update routine, every number needs
+  an as-of date, and the UI should show the data vintage.
+- **Calculating the rate curve and all 15 cities live** means the engine has to be fast
+  (pure functions, no I/O). That's easy if planned for, painful to retrofit.
+- **Legal and trust**: a "not tax advice" disclaimer, a methodology page, and
+  open-sourced rule files so people can check them.
+- **Persona privacy**: everything stays local. Say so, since people will be entering
+  their net worth.
+- **Share links** let you send a persona or comparison to someone without a backend.
+
+---
+
+## 11. Suggested next step
+
+Answer D1–D4 (cities, mandatory savings, denominator, allocation). Those four shape every
+chart. Then start **Phase 1 (Canada)**: it exercises every part of the system (3 levels,
+3 provinces, deficits at all levels, provincial sales tax differences, property and land
+transfer tax) using data that's easy to get and easy to check.
