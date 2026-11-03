@@ -7,6 +7,12 @@ OUT="${1:?cache dir required}"
 mkdir -p "$OUT"
 cd "$OUT"
 TABLES=(
+  36100450 # National accounts: government revenue, spending and net lending by province and level, 2007+
+  10100016 # GFS federal government, fiscal years 2007+
+  10100048 # Federal government net debt, fiscal years to 2007-08
+  10100055 # Net financial debt by government and province, to 2006
+  10100002 # Central government debt (public accounts net debt), monthly 2009+
+  10100133 # Central government operations (public debt charges, revenues), monthly 2009+
   10100172 # GFS annual, by government sector (federal, provinces combined, local combined), calendar years 1990+
   10100017 # GFS, provincial and territorial governments, by province, fiscal years 2007+
   10100020 # GFS, municipalities and other local public administrations, by province, 2007+

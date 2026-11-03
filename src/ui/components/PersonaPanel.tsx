@@ -1,11 +1,21 @@
 import { useRef, useState, type ReactNode } from 'react';
+import { placeById } from '../../engine';
 import { normalizePersona } from '../../engine/personas';
 import type { Persona } from '../../engine/types';
 import { shareLink, SLOT_COUNT, useStore } from '../store';
 
+/** Shows the local-currency equivalent of a USD amount for the city being viewed. */
+function useLocal() {
+  const cityId = useStore((s) => s.cityId);
+  const place = placeById(cityId);
+  return (usd: number) =>
+    `≈ ${(usd * place.fx).toLocaleString('en-US', { maximumFractionDigits: 0 })} ${place.currency} in ${place.name} (${place.fx.toFixed(3)} ${place.currency}/USD)`;
+}
+
 function Num({ label, value, onChange, step = 1000, hint, suffix = 'USD' }: {
   label: string; value: number; onChange: (v: number) => void; step?: number; hint?: string; suffix?: string;
 }) {
+  const local = useLocal();
   return (
     <label className="field">
       <span className="field-label">{label}{hint && <span className="hint" title={hint}> ⓘ</span>}</span>
@@ -14,6 +24,7 @@ function Num({ label, value, onChange, step = 1000, hint, suffix = 'USD' }: {
           onChange={(e) => onChange(Math.max(0, Number(e.target.value) || 0))} />
         <span className="suffix">{suffix}</span>
       </span>
+      {suffix === 'USD' && value > 0 && <span className="local">{local(value)}</span>}
     </label>
   );
 }
@@ -101,6 +112,8 @@ export function PersonaPanel() {
 
   return (
     <aside className="panel" aria-label="Persona">
+      <p className="fine currency-note">Enter amounts in US dollars. Each one is converted to the local currency of the city you're viewing at the
+        2026 average exchange rate; the local amount shows under each field.</p>
       <label className="field name-field">
         <span className="field-label">Persona name</span>
         <input value={p.name} onChange={(e) => set((x) => { x.name = e.target.value; })} />

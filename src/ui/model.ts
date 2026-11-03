@@ -5,7 +5,7 @@ import { calculate, PLACES } from '../engine';
 import type { CalcOptions, Persona, PlaceResult } from '../engine/types';
 
 export interface Segment {
-  key: 'income' | 'payroll' | 'consumption' | 'property' | 'programs' | 'interest' | 'benefit';
+  key: 'income' | 'payroll' | 'consumption' | 'property' | 'borrowed' | 'benefit';
   label: string;
   slot: number;
   hint: string;
@@ -17,15 +17,13 @@ export const SEGMENTS: Segment[] = [
   { key: 'payroll', label: 'CPP / EI', slot: 1, hint: 'Payroll contributions (employee side; both sides if self-employed)' },
   { key: 'consumption', label: 'Sales, fuel & tariffs', slot: 2, hint: 'GST/HST/PST, fuel taxes, vehicle taxes, customs duties' },
   { key: 'property', label: 'Property & transfer', slot: 3, hint: 'Property tax, land transfer tax, development charges' },
-  { key: 'programs', label: 'Borrowed for programs', slot: 4, hint: 'Your share of borrowing beyond the interest bill (negative = surplus credit)' },
-  { key: 'interest', label: 'Borrowed to pay interest', slot: 5, hint: 'Your share of borrowing that only covers interest: the compounding part' },
-  { key: 'benefit', label: 'Benefits received', slot: 6, hint: 'Cash benefits, when "net of cash transfers" is on' },
+  { key: 'borrowed', label: 'Borrowed on your behalf', slot: 4, hint: 'Your share of the increase in each government\'s net debt this year (negative = debt paid down)' },
+  { key: 'benefit', label: 'Benefits received', slot: 5, hint: 'Cash benefits, when "net of cash transfers" is on' },
 ];
 
 export function segmentValue(r: PlaceResult, key: Segment['key']): number {
   switch (key) {
-    case 'programs': return r.borrowedForPrograms;
-    case 'interest': return r.borrowedForInterest;
+    case 'borrowed': return r.borrowed;
     default: return r.byCategory[key];
   }
 }
@@ -47,6 +45,6 @@ export function fingerprint(r: PlaceResult) {
     labour: (r.byCategory.income + r.byCategory.payroll) / total,
     consumption: r.byCategory.consumption / total,
     property: r.byCategory.property / total,
-    deferred: (r.borrowedForPrograms + r.borrowedForInterest) / total,
+    deferred: r.borrowed / total,
   };
 }

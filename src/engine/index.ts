@@ -1,8 +1,8 @@
 // Public API of the engine.
 
 import { calculateCanada } from './ca/calculate';
-import { CITIES } from './ca/params2026';
-import { seriesYears } from './fiscal';
+import { CITIES, FX_CAD_PER_USD } from './ca/params2026';
+import { debtShareAtFixedShare, seriesYears } from './fiscal';
 import type { CalcOptions, Persona, PlaceResult } from './types';
 
 export * from './types';
@@ -14,6 +14,8 @@ export interface Place {
   region: string;
   country: string;
   currency: string;
+  /** Local currency per USD. */
+  fx: number;
   /** Fiscal series behind each level, for the history views. */
   series: { federal: string; provincial: string; local: string };
   calculate: (p: Persona, opts: CalcOptions) => PlaceResult;
@@ -25,6 +27,7 @@ export const PLACES: Place[] = Object.values(CITIES).map((c) => ({
   region: c.province === 'AB' ? 'Alberta' : c.province === 'ON' ? 'Ontario' : 'British Columbia',
   country: 'Canada',
   currency: 'CAD',
+  fx: FX_CAD_PER_USD,
   series: { federal: 'CA-federal', provincial: `CA-${c.province}`, local: `CA-${c.province}-local` },
   calculate: (p, o) => calculateCanada(p, c.id, o),
 }));
@@ -59,37 +62,46 @@ export function rateCurve(persona: Persona, placeId: string, opts: CalcOptions, 
   });
 }
 
+type Lvl = 'federal' | 'provincial' | 'local';
+const LVLS: Lvl[] = ['federal', 'provincial', 'local'];
+
 export interface HistoryRow {
   year: number;
-  /** Shares of gross income. */
+  /** Taxes paid now, share of gross income (same every year: today's rules). */
   paidNow: number;
-  byLevel: Record<'federal' | 'provincial' | 'local', { programs: number | null; borrowedInterest: number | null; interestFromTaxes: number | null; basis: string | null }>;
+  /** Per level, shares of gross income (null = no data). */
+  borrowed: Record<Lvl, number | null>;
+  interest: Record<Lvl, number | null>;
+  /** Your share of each government's net debt, local currency, using your share of today's tax revenue. */
+  debt: Record<Lvl, number | null>;
   implicit: number | null;
-  debtYears: number | null;
+  estimate: boolean;
 }
 
-/** Today's persona and tax rules, with each year's borrowing and interest ratios (docs/PLAN.md §1.4). */
+/** Today's persona and tax rules, with each year's borrowing and interest (docs/PLAN.md §1.4). */
 export function history(persona: Persona, placeId: string, opts: CalcOptions): HistoryRow[] {
   const place = placeById(placeId);
   const years = new Set<number>();
   for (const id of Object.values(place.series)) seriesYears(id).forEach((y) => years.add(y));
-  const sorted = [...years].sort((a, b) => a - b);
-  return sorted.map((year) => {
+  const now = calculate(persona, placeId, { ...opts, year: 'latest' });
+  const taxesNow = Object.fromEntries(now.deferred.map((d) => [d.level, d.yourTaxes])) as Record<Lvl, number>;
+  return [...years].sort((a, b) => a - b).map((year) => {
     const r = calculate(persona, placeId, { ...opts, year });
     const g = r.grossIncome || 1;
-    const byLevel = {} as HistoryRow['byLevel'];
+    const borrowed = {} as HistoryRow['borrowed'];
+    const interest = {} as HistoryRow['interest'];
+    const debt = {} as HistoryRow['debt'];
     let complete = true;
-    for (const lvl of ['federal', 'provincial', 'local'] as const) {
+    let estimate = false;
+    for (const lvl of LVLS) {
       const d = r.deferred.find((x) => x.level === lvl)!;
-      const has = d.deficitRatio !== null;
+      const has = d.borrowRatio !== null;
       if (!has) complete = false;
-      byLevel[lvl] = {
-        programs: has ? d.borrowedForPrograms / g : null,
-        borrowedInterest: has ? d.borrowedForInterest / g : null,
-        interestFromTaxes: has ? d.interestFromTaxes / g : null,
-        basis: d.basis,
-      };
+      if (d.estimate) estimate = true;
+      borrowed[lvl] = has ? d.borrowed / g : null;
+      interest[lvl] = d.interestRatio !== null ? d.interestCost / g : null;
+      debt[lvl] = debtShareAtFixedShare(place.series[lvl], taxesNow[lvl], year);
     }
-    return { year, paidNow: r.paidNowRate, byLevel, implicit: complete ? r.implicitRate : null, debtYears: complete ? r.debtShareYears : null };
+    return { year, paidNow: r.paidNowRate, borrowed, interest, debt, implicit: complete ? r.implicitRate : null, estimate };
   });
 }

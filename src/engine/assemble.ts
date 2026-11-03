@@ -31,10 +31,9 @@ export function assembleResult(a: AssembleInput): PlaceResult {
   const paidNow = items.reduce((s, i) => s + i.amount, 0);
   const deferred = a.deferred(taxesByLevel);
   const sum = (f: (d: LevelDeferred) => number) => deferred.reduce((s, d) => s + f(d), 0);
-  const B = sum((d) => d.borrowedForPrograms);
-  const C = sum((d) => d.interestFromTaxes);
-  const D = sum((d) => d.borrowedForInterest);
-  const implicitTotal = paidNow + B + D;
+  const borrowed = sum((d) => d.borrowed);
+  const interestCost = sum((d) => d.interestCost);
+  const implicitTotal = paidNow + borrowed;
   const debtKnown = deferred.every((d) => d.debtShare !== null) ? deferred : [];
   const g = a.grossIncome;
   return {
@@ -49,9 +48,8 @@ export function assembleResult(a: AssembleInput): PlaceResult {
     byCategory,
     byLevel,
     deferred,
-    borrowedForPrograms: B,
-    interestFromTaxes: C,
-    borrowedForInterest: D,
+    borrowed,
+    interestCost,
     implicitTotal,
     implicitRate: g > 0 ? implicitTotal / g : 0,
     paidNowRate: g > 0 ? paidNow / g : 0,

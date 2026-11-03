@@ -13,7 +13,7 @@ export function HeadlineCards({ results }: { results: PlaceResult[] }) {
   return (
     <div className="cards">
       {sorted.map((r) => {
-        const deferred = r.borrowedForPrograms + r.borrowedForInterest;
+        const deferred = r.borrowed;
         return (
           <button key={r.placeId} className="card" onClick={() => { setCity(r.placeId); setTab('city'); }}>
             <div className="card-title">{placeName(r.placeId)}</div>
@@ -76,7 +76,7 @@ export function LevelBars({ results }: { results: PlaceResult[] }) {
     ];
     const val = (r: PlaceResult, k: string) => {
       const d = r.deferred.find((x) => x.level === k);
-      return (r.byLevel[k as keyof typeof r.byLevel] + (d ? d.borrowedForPrograms + d.borrowedForInterest : 0)) / r.grossIncome;
+      return (r.byLevel[k as keyof typeof r.byLevel] + (d ? d.borrowed : 0)) / r.grossIncome;
     };
     return {
       ...baseOption(),
@@ -154,7 +154,7 @@ export function CompareView({ results }: { results: PlaceResult[] }) {
       <HeadlineCards results={results} />
       <section className="block">
         <h2>Where the implicit rate comes from</h2>
-        <p className="lede">Every tax you pay plus your share of what each government borrowed this year, as a share of your gross income. Click a city card for its full breakdown.</p>
+        <p className="lede">Every tax you pay plus your share of what each government borrowed this year (the increase in its net debt), as a share of your gross income. Click a city card for its full breakdown.</p>
         <CategoryBars results={results} height={330} />
         <CompareTable results={results} />
       </section>

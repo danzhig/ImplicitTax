@@ -12,23 +12,22 @@ export function MethodView() {
         <p>Government borrowing is treated as a delayed tax: spending done on your behalf now that someone has to pay for later.</p>
       </section>
       <section className="block">
-        <h2>How borrowing is split</h2>
+        <h2>How borrowing is counted</h2>
         <ul>
-          <li><b>Your share</b> of a government's deficit = the taxes you pay it × (its deficit ÷ its tax revenue). If Ottawa borrows 9¢ for every $1 of tax,
-            your federal taxes are effectively 9% higher.</li>
-          <li><b>Interest is counted once.</b> Interest on past debt is already part of this year's spending. Some of it is paid by your taxes and some is borrowed.
-            Interest counts as borrowed first, so "borrowed to pay interest" is the compounding part: debt growing just to service itself.</li>
-          <li>Surplus years produce a <b>credit</b> (negative borrowing).</li>
-          <li><b>Deficit measure:</b> the accrual operating balance from Statistics Canada's government finance statistics (revenue minus expenses, where expenses
-            include depreciation, so roads and buildings are spread over their useful life). This is a consistent standard across levels, but it is not the same
-            as the deficit in provincial budget documents. For example, Ontario reported a $1.1B deficit for 2024-25, while this measure shows about $16B, mainly
-            because Ontario's own accounts include profits of provincially owned businesses (OPG, LCBO, Hydro One) and pension gains.</li>
-          <li><b>Provinces</b> include their hospitals, school boards, colleges and universities. <b>Cities</b> use all municipalities in the province as a stand-in.
-            StatCan's city-level figures for Toronto, Calgary and Vancouver (2018-2020) show similar ratios.</li>
-          <li><b>CPP</b> is a pre-funded pension plan outside the government budgets, so it is counted as a tax you pay but never gets a deficit share.</li>
-          <li><b>History</b> holds your persona and today's tax rules fixed and applies each year's borrowing and interest ratios.</li>
-          <li><b>Inflation is excluded on purpose.</b> Deficits are already counted in full, and inflating debt away is one way they get paid, so counting both would be
-            double counting.</li>
+          <li><b>Borrowing = the increase in a government's net debt</b> (its debts minus its financial assets) over the year. That is the money actually
+            borrowed on your behalf: operating deficits plus borrowing for roads, transit and buildings. It only goes negative when a government pays debt down.</li>
+          <li><b>Your share</b> = the taxes you pay that government × (what it borrowed ÷ its tax revenue). If Ottawa's net debt rose 12¢ for every $1 of tax it
+            collected, your federal taxes are effectively 12% higher.</li>
+          <li><b>Interest</b> on past debt is shown separately. It is already part of what your taxes pay for, so it is never added again.</li>
+          <li><b>Sources, chosen to avoid accounting adjustments:</b> federal public-accounts net debt (Statistics Canada); each province's own published
+            net debt (Ontario budgets, Alberta annual reports, BC Financial and Economic Reviews); municipal net borrowing from the national accounts, which
+            records only actual transactions. CPP and QPP are separate pension funds and are excluded, and pension-fund surpluses never reduce debt here.</li>
+          <li><b>Provinces</b> include their hospitals, school boards, colleges and universities. <b>Cities</b> use all municipalities in the province as a
+            stand-in. Municipalities mostly run surpluses because they may not borrow for operating costs.</li>
+          <li><b>History</b> holds your persona and today's tax rules fixed and applies each year's borrowing and interest. Years are fiscal years starting
+            in April (2016 = 2016-17), except municipal years, which are calendar years.</li>
+          <li><b>Inflation is excluded on purpose.</b> Borrowing is already counted in full, and inflating debt away is one way it gets paid, so counting both
+            would be double counting.</li>
         </ul>
       </section>
       <section className="block">

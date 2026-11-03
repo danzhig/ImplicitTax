@@ -66,24 +66,36 @@ the City of Toronto / City of Calgary websites.
 
 ## Fiscal data (borrowing)
 
-All from StatCan via the WDS API (scripts/fetch_statcan.sh → scripts/build_fiscal_ca.py → data/fiscal/ca.json).
+**Measure (revised after review):** borrowing = the yearly increase in each government's **net debt**
+(debts minus financial assets). It counts operating deficits plus borrowing for infrastructure, and
+only falls when debt is actually paid down. Interest on past debt is shown separately (it is already
+inside the taxes you pay).
 
-| Level | Series | Years | Notes |
-|---|---|---|---|
-| Federal | GFS annual, table 10-10-0172 | 2000–2025 (calendar) | CPP/QPP separate sector, excluded |
-| Provincial | Consolidated provincial + local (10-10-0147) minus municipalities (10-10-0020) | 2008–2024 GFS; 2000–2007 FMS (10-10-0040, core government only) | includes hospitals, school boards, colleges |
-| City | All municipalities in the province (10-10-0020; FMS 10-10-0042 before 2006) | 2000–2005, 2008–2024 | proxy; 2006–2007 missing. City-specific GFS for 2018–2020 (10-10-0169) kept as a cross-check |
+Why not the earlier measure: StatCan's accrual operating balance and national-accounts net lending
+put Ottawa's 2016 deficit at about 2.5 to 7 billion dollars, against 17.8 to 19 billion in the
+public accounts. StatCan's provincial net debt values debt at market prices, so it "falls" when
+interest rates rise (it showed Ontario repaying 24 billion dollars in 2021, which did not happen).
 
-**Deficit measure decision:** GFS *net operating balance* (accrual; expenses include depreciation).
-GFS *net lending/borrowing* could not be used for provinces because StatCan's non-financial asset
-flows include revaluations (Alberta's swings by up to $250B a year). The operating balance differs
-from provincial public-accounts deficits. For 2024-25, Ontario reported −$1.1B and this measure shows
-about −$16B, mostly because of how government business enterprise income and pensions are treated.
+| Level | Source | Years |
+|---|---|---|
+| Federal | Public accounts net debt at March 31, StatCan 10-10-0002 (monthly); historical net federal debt 10-10-0048 before | 2000-01 to 2025-26; FY2008-09 blank (series changes definition) |
+| Ontario | 2026 Budget Table 3.12 and 2019 Budget Table 3.15 (10-year reviews); Form 18-K 2010 (net debt 2007-2010); StatCan FMS before 2006 | 2000-01 to 2025-26 (interim) |
+| Alberta | Annual Report 2013-14 (Historical Fiscal Summary 1995-96 to 2013-14) and 2024-25 (2013-14 to 2024-25); Budget 2026 tables for 2025-26 forecast | 2000-01 to 2025-26 |
+| BC | Financial and Economic Review 2010, 2014 and 2025 (Statement of Financial Position, net liabilities); FMS for 2000-01 | 2000-01 to 2024-25 |
+| Municipal | National accounts net borrowing (StatCan 36-10-0450, transactions only) from 2007; FMS before; net debt level from GFS 10-10-0020 | 2000 to 2024; 2006 missing |
 
-**Latest public-accounts figures (for reference only, not used):** federal 2024-25 deficit $36.3B
-(revenue $511.0B, debt charges $53.4B); Ontario 2024-25 −$1.1B (taxation $151.5B, interest $15.1B);
-Alberta 2024-25 +$8.3B (revenue $82.5B, taxes $30.4B, debt servicing $3.2B); BC 2024-25 −$7.3B,
-2025-26 −$7.7B. City reports: Toronto net debt +$403M in 2024; Calgary net financial assets +$374M.
+All official provincial figures are in data/fiscal/ca_official_net_debt.csv with their source.
+Taxes and interest (the base for splitting borrowing) come from StatCan GFS (2008+) and FMS (before).
+CPP/QPP are excluded everywhere, and StatCan treats public-sector pension plans as outside
+government, so pension-fund surpluses never reduce net debt.
+
+**Year labels:** older StatCan FMS tables label a fiscal year by the year it ends; GFS by the year it
+starts. Everything is now labelled by the start year (2016 = 2016-17). The first version had the
+pre-2008 provincial years shifted by one; fixed.
+
+**Spot check against published deficits (2016-17):** federal deficit 17.8B vs net debt +23.0B;
+Alberta deficit 10.8B vs net debt +12.8B; Alberta municipalities in surplus (borrowing -0.8B).
+The net debt increase is larger than the deficit because it includes infrastructure borrowing.
 
 ## Exchange rate
 

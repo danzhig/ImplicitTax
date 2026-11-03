@@ -14,16 +14,15 @@ function Waterfall({ r }: { r: PlaceResult }) {
   const option = useMemo<EChartsOption>(() => {
     const t = chartTheme();
     const u = (x: number) => toUsd(r, x);
-    const steps: { label: string; value: number; kind: 'total' | 'down' | 'up'; color: string }[] = [
+    const steps: { label: string; value: number; kind: 'total' | 'step'; color: string }[] = [
       { label: 'Gross income', value: u(r.grossIncome), kind: 'total', color: t.axis },
-      { label: 'Income tax', value: -u(r.byCategory.income), kind: 'down', color: t.series[0] },
-      { label: 'CPP / EI', value: -u(r.byCategory.payroll), kind: 'down', color: t.series[1] },
-      { label: 'Sales & fuel', value: -u(r.byCategory.consumption), kind: 'down', color: t.series[2] },
-      { label: 'Property', value: -u(r.byCategory.property), kind: 'down', color: t.series[3] },
-      ...(Math.abs(r.byCategory.benefit) > 0.5 ? [{ label: 'Benefits', value: -u(r.byCategory.benefit), kind: 'up' as const, color: t.series[6] }] : []),
+      { label: 'Income tax', value: -u(r.byCategory.income), kind: 'step', color: t.series[0] },
+      { label: 'CPP / EI', value: -u(r.byCategory.payroll), kind: 'step', color: t.series[1] },
+      { label: 'Sales & fuel', value: -u(r.byCategory.consumption), kind: 'step', color: t.series[2] },
+      { label: 'Property', value: -u(r.byCategory.property), kind: 'step', color: t.series[3] },
+      ...(Math.abs(r.byCategory.benefit) > 0.5 ? [{ label: 'Benefits', value: -u(r.byCategory.benefit), kind: 'step' as const, color: t.series[5] }] : []),
       { label: 'Kept (paid-now view)', value: u(r.grossIncome - r.paidNow), kind: 'total', color: t.muted },
-      { label: 'Borrowed for programs', value: -u(r.borrowedForPrograms), kind: 'down', color: t.series[4] },
-      { label: 'Borrowed for interest', value: -u(r.borrowedForInterest), kind: 'down', color: t.series[5] },
+      { label: 'Borrowed on your behalf', value: -u(r.borrowed), kind: 'step', color: t.series[4] },
       { label: 'Kept (implicit view)', value: u(r.grossIncome - r.implicitTotal), kind: 'total', color: t.textSecondary },
     ];
     let running = 0;
@@ -48,7 +47,8 @@ function Waterfall({ r }: { r: PlaceResult }) {
         formatter: (ps: unknown) => {
           const p = (ps as { dataIndex: number }[])[0];
           const s = steps[p.dataIndex];
-          return `${s.label}<br/><b>${s.kind === 'total' ? usd(s.value) : (s.value <= 0 ? '−' : '+') + usd(Math.abs(s.value))}</b> (${pct(Math.abs(s.value) / u(r.grossIncome))} of income)`;
+          const amount = s.kind === 'total' ? usd(s.value) : `${s.value <= 0 ? '−' : '+'}${usd(Math.abs(s.value))}`;
+          return `${s.label}<br/><b>${amount}</b> (${pct(Math.abs(s.value) / u(r.grossIncome))} of income)`;
         },
       },
       xAxis: { type: 'category', data: steps.map((s) => s.label), ...axisStyle(), axisLabel: { color: t.textSecondary, interval: 0, rotate: 35, fontSize: 11 } },
@@ -62,96 +62,122 @@ function Waterfall({ r }: { r: PlaceResult }) {
   return <EChart option={option} height={360} ariaLabel="Waterfall from gross income to what you keep" />;
 }
 
+/**
+ * Money flow, left to right: where it comes from → what kind of tax → which government → what it pays for.
+ * Nodes are listed in a fixed top-to-bottom order in every column (layoutIterations: 0) so streams keep
+ * their order and only cross where they genuinely split. Hovering a stream highlights its whole path.
+ */
 function FlowSankey({ r }: { r: PlaceResult }) {
   const v = useThemeVersion();
   const option = useMemo<EChartsOption>(() => {
     const t = chartTheme();
-    const u = (x: number) => Math.round(toUsd(r, x));
+    const u = (x: number) => Math.max(0, Math.round(toUsd(r, x)));
+    const nodes: { name: string; depth: number; itemStyle: { color: string } }[] = [];
+    const links: { source: string; target: string; value: number; lineStyle?: object }[] = [];
+    const node = (name: string, depth: number, color: string) => { if (!nodes.find((n) => n.name === name)) nodes.push({ name, depth, itemStyle: { color } }); };
+    const link = (source: string, target: string, value: number) => {
+      if (value <= 0) return;
+      const l = links.find((x) => x.source === source && x.target === target);
+      if (l) l.value += value; else links.push({ source, target, value });
+    };
+
+    // Column 0: your income. Column 1: borrowing (a future tax, on top) then the tax types, so no
+    // stream has to cross another before it splits.
+    const borrowedTotal = r.deferred.reduce((s, d) => s + Math.max(0, d.borrowed), 0);
+    node('Your income', 0, t.axis);
+    if (u(borrowedTotal) > 0) node('Borrowed on your behalf', 1, t.series[4]);
     const cats: [string, keyof PlaceResult['byCategory'], number][] = [
       ['Income tax', 'income', 0], ['CPP / EI', 'payroll', 1], ['Sales & fuel', 'consumption', 2], ['Property', 'property', 3],
     ];
-    const nodes: { name: string; itemStyle?: object }[] = [{ name: 'Your income', itemStyle: { color: t.axis } }];
-    const links: { source: string; target: string; value: number }[] = [];
-    for (const [label, key, slot] of cats) {
-      if (r.byCategory[key] > 0.5) { nodes.push({ name: label, itemStyle: { color: t.series[slot] } }); links.push({ source: 'Your income', target: label, value: u(r.byCategory[key]) }); }
-    }
-    const kept = r.grossIncome - r.paidNow;
-    if (kept > 0) { nodes.push({ name: 'You keep', itemStyle: { color: t.muted } }); links.push({ source: 'Your income', target: 'You keep', value: u(kept) }); }
+    for (const [label, key, slot] of cats) if (r.byCategory[key] > 0.5) { node(label, 1, t.series[slot]); link('Your income', label, u(r.byCategory[key])); }
+
+    // Column 2: governments.
     const levels: Level[] = ['federal', 'provincial', 'local', 'social'];
-    for (const l of levels) nodes.push({ name: LEVEL_LABEL[l], itemStyle: { color: t.textSecondary } });
+    for (const l of levels) node(LEVEL_LABEL[l], 2, t.textSecondary);
     for (const i of r.lineItems) {
-      if (i.amount <= 0) continue;
       const cat = cats.find((c) => c[1] === i.category);
-      if (cat) {
-        const existing = links.find((x) => x.source === cat[0] && x.target === LEVEL_LABEL[i.level]);
-        if (existing) existing.value += u(i.amount); else links.push({ source: cat[0], target: LEVEL_LABEL[i.level], value: u(i.amount) });
-      }
+      if (cat && i.amount > 0) link(cat[0], LEVEL_LABEL[i.level], u(i.amount));
     }
-    const borrowed = r.deferred.filter((d) => d.borrowedForPrograms + d.borrowedForInterest > 0.5);
-    if (borrowed.length) {
-      nodes.push({ name: 'Borrowed on your behalf', itemStyle: { color: t.series[4] } });
-      for (const d of borrowed) links.push({ source: 'Borrowed on your behalf', target: LEVEL_LABEL[d.level], value: u(Math.max(0, d.borrowedForPrograms) + d.borrowedForInterest) });
-    }
-    nodes.push({ name: 'Programs & services', itemStyle: { color: t.series[0] } }, { name: 'Interest on past debt', itemStyle: { color: t.series[5] } });
+    for (const d of r.deferred) if (d.borrowed > 0) link('Borrowed on your behalf', LEVEL_LABEL[d.level], u(d.borrowed));
+
+    // Column 3: what the money pays for, then what you keep (bottom).
+    node('Interest on past debt', 3, t.series[6]);
+    node('Programs & services', 3, t.series[0]);
     for (const l of levels) {
-      const d = r.deferred.find((x) => x.level === l);
       const inflow = links.filter((x) => x.target === LEVEL_LABEL[l]).reduce((s, x) => s + x.value, 0);
       if (inflow <= 0) continue;
-      const interest = d ? u(d.interestFromTaxes + d.borrowedForInterest) : 0;
-      const surplus = d && d.borrowedForPrograms < 0 ? u(-d.borrowedForPrograms) : 0;
-      if (interest > 0) links.push({ source: LEVEL_LABEL[l], target: 'Interest on past debt', value: Math.min(interest, inflow) });
-      if (surplus > 0) {
-        if (!nodes.find((n) => n.name === 'Surplus (pays down debt)')) nodes.push({ name: 'Surplus (pays down debt)', itemStyle: { color: t.series[2] } });
-        links.push({ source: LEVEL_LABEL[l], target: 'Surplus (pays down debt)', value: Math.min(surplus, inflow - interest) });
-      }
-      const programs = inflow - Math.min(interest, inflow) - Math.min(surplus, Math.max(0, inflow - interest));
-      if (programs > 0) links.push({ source: LEVEL_LABEL[l], target: 'Programs & services', value: programs });
+      const d = r.deferred.find((x) => x.level === l);
+      const interest = Math.min(d ? u(d.interestCost) : 0, inflow);
+      const repaid = d && d.borrowed < 0 ? Math.min(u(-d.borrowed), inflow - interest) : 0;
+      link(LEVEL_LABEL[l], 'Interest on past debt', interest);
+      if (repaid > 0) { node('Paying down debt', 3, t.series[2]); link(LEVEL_LABEL[l], 'Paying down debt', repaid); }
+      link(LEVEL_LABEL[l], 'Programs & services', inflow - interest - repaid);
+    }
+    const kept = r.grossIncome - r.paidNow;
+    if (kept > 0) { node('You keep', 3, t.muted); link('Your income', 'You keep', u(kept)); }
+
+    // Colour each stream by what it carries: income flows take their destination's colour, flows out of
+    // a tax type keep that colour, and flows out of a government take the colour of what they pay for.
+    const colorOf = (name: string) => nodes.find((n) => n.name === name)?.itemStyle.color ?? t.muted;
+    const levelNames = new Set(levels.map((l) => LEVEL_LABEL[l]));
+    for (const l of links) {
+      const c = l.source === 'Your income' || levelNames.has(l.source) ? colorOf(l.target) : colorOf(l.source);
+      l.lineStyle = { color: c };
     }
     const used = new Set(links.flatMap((x) => [x.source, x.target]));
     return {
       ...baseOption(),
       tooltip: { ...(baseOption().tooltip as object), trigger: 'item', valueFormatter: (x) => usd(Number(x)) },
       series: [{
-        type: 'sankey', left: 10, right: 150, top: 10, bottom: 10, nodeGap: 10, nodeWidth: 12, draggable: false,
+        type: 'sankey', left: 10, right: 160, top: 10, bottom: 10, nodeGap: 8, nodeWidth: 12, draggable: false,
+        layoutIterations: 0,
         data: nodes.filter((n) => used.has(n.name)),
-        links: links.filter((x) => x.value > 0),
+        links,
         label: { color: t.text, fontSize: 12 },
-        lineStyle: { color: 'gradient', opacity: 0.35, curveness: 0.5 },
-        emphasis: { focus: 'adjacency' },
+        lineStyle: { opacity: 0.4, curveness: 0.5 },
+        emphasis: { focus: 'trajectory', lineStyle: { opacity: 0.7 } },
+        blur: { lineStyle: { opacity: 0.06 }, itemStyle: { opacity: 0.3 } },
       }],
     };
   }, [r, v]);
-  return <EChart option={option} height={440} ariaLabel="Flow from your income to taxes, governments, programs and interest" />;
+  return <EChart option={option} height={460} ariaLabel="Flow from your income and borrowing to taxes, governments, programs and interest" />;
 }
 
-function DeferredGrid({ r }: { r: PlaceResult }) {
+function BorrowingTable({ r }: { r: PlaceResult }) {
   const u = (x: number) => usd(toUsd(r, x));
   return (
     <div className="scroll-x">
       <table className="grid2">
         <thead>
-          <tr><th>Government (data year)</th><th>Taxes you pay it</th><th>Deficit ÷ its tax revenue</th><th>Interest ÷ its tax revenue</th>
-            <th>Borrowed for programs</th><th>Borrowed to pay interest</th><th>Interest paid from your taxes</th></tr>
+          <tr><th>Government (data year)</th><th className="num">Taxes you pay it</th><th className="num">Borrowing ÷ its tax revenue</th>
+            <th className="num">Borrowed on your behalf</th><th className="num">Interest ÷ its tax revenue</th><th className="num">Interest share of your taxes</th>
+            <th className="num">Your share of its net debt</th></tr>
         </thead>
         <tbody>
           {r.deferred.map((d) => (
             <tr key={d.level}>
-              <td>{d.seriesLabel}{d.isProxy ? ' *' : ''} <span className="muted">({d.year ?? 'no data'}{d.basis === 'FMS' ? ', older basis' : ''})</span></td>
+              <td>{d.seriesLabel}{d.isProxy ? ' *' : ''} <span className="muted">({d.year === null ? 'no data' : fy(d.year, d.level)}{d.estimate ? ', estimate' : ''})</span></td>
               <td className="num">{u(d.yourTaxes)}</td>
-              <td className="num">{d.deficitRatio === null ? '–' : pct(d.deficitRatio)}</td>
+              <td className="num">{d.borrowRatio === null ? '–' : pct(d.borrowRatio)}</td>
+              <td className="num strong">{u(d.borrowed)}</td>
               <td className="num">{d.interestRatio === null ? '–' : pct(d.interestRatio)}</td>
-              <td className="num">{u(d.borrowedForPrograms)}</td>
-              <td className="num strong">{u(d.borrowedForInterest)}</td>
-              <td className="num">{u(d.interestFromTaxes)}</td>
+              <td className="num">{u(d.interestCost)}</td>
+              <td className="num">{d.debtShare === null ? '–' : u(d.debtShare)}</td>
             </tr>
           ))}
+          <tr className="total"><td>Total</td><td className="num">{u(r.deferred.reduce((s, d) => s + d.yourTaxes, 0))}</td><td />
+            <td className="num">{u(r.borrowed)}</td><td /><td className="num">{u(r.interestCost)}</td>
+            <td className="num">{u(r.deferred.reduce((s, d) => s + (d.debtShare ?? 0), 0))}</td></tr>
         </tbody>
       </table>
-      <p className="fine">Negative "deficit" = surplus. Interest counts as borrowed first, so when a government borrows less than its interest bill, all of its borrowing is compounding.
-        "Interest paid from your taxes" is already inside the taxes you pay, so it is not added again. * City figures use all municipalities in the province.</p>
+      <p className="fine">Borrowing = the increase in each government's net debt that year (debts minus financial assets), so it includes borrowing for
+        infrastructure; negative = debt paid down. Interest is already inside the taxes you pay, so it is shown but not added again.
+        * City figures use all municipalities in the province.</p>
     </div>
   );
 }
+
+const fy = (year: number, level: Level) => (level === 'local' ? String(year) : `${year}-${String((year + 1) % 100).padStart(2, '0')}`);
 
 function LineItems({ r }: { r: PlaceResult }) {
   const [open, setOpen] = useState<string | null>(null);
@@ -166,8 +192,8 @@ function LineItems({ r }: { r: PlaceResult }) {
               detail={[i.note, ...(i.trace ?? [])].filter(Boolean) as string[]} />
           ))}
           <tr className="total"><td>Taxes paid now</td><td /><td className="num">{usd(toUsd(r, r.paidNow))}</td><td className="num">{money(r.paidNow, r.currency)}</td><td className="num">{pct(r.paidNowRate)}</td><td /></tr>
-          <tr><td>Borrowed on your behalf (programs + interest)</td><td /><td className="num">{usd(toUsd(r, r.borrowedForPrograms + r.borrowedForInterest))}</td>
-            <td className="num">{money(r.borrowedForPrograms + r.borrowedForInterest, r.currency)}</td><td className="num">{pct((r.borrowedForPrograms + r.borrowedForInterest) / r.grossIncome)}</td><td /></tr>
+          <tr><td>Borrowed on your behalf</td><td /><td className="num">{usd(toUsd(r, r.borrowed))}</td>
+            <td className="num">{money(r.borrowed, r.currency)}</td><td className="num">{pct(r.borrowed / r.grossIncome)}</td><td /></tr>
           <tr className="total"><td>Implicit total</td><td /><td className="num">{usd(toUsd(r, r.implicitTotal))}</td><td className="num">{money(r.implicitTotal, r.currency)}</td><td className="num">{pct(r.implicitRate)}</td><td /></tr>
         </tbody>
       </table>
@@ -207,6 +233,7 @@ export function CityView({ results }: { results: PlaceResult[] }) {
         <div className="kpis">
           <div><span>Implicit rate</span><b>{pct(r.implicitRate)}</b></div>
           <div><span>Paid now</span><b>{pct(r.paidNowRate)}</b></div>
+          <div><span>Of which interest on past debt</span><b>{pct(r.interestCost / r.grossIncome)}</b></div>
           <div><span>Public debt you carry</span><b>{r.debtShareYears === null ? '–' : `${r.debtShareYears.toFixed(2)} yrs of income`}</b></div>
           <div><span>Exchange rate</span><b>{r.fx.toFixed(3)} {r.currency}/USD</b></div>
         </div>
@@ -216,12 +243,13 @@ export function CityView({ results }: { results: PlaceResult[] }) {
         <Waterfall r={r} />
       </section>
       <section className="block">
-        <h2>Borrowing on your behalf</h2>
-        <p className="lede">Each government's operating balance and interest bill, applied to the taxes you pay it.</p>
-        <DeferredGrid r={r} />
+        <h2>Borrowing and interest on your behalf</h2>
+        <p className="lede">Each government's new borrowing and interest bill, applied to your share of the taxes it collects.</p>
+        <BorrowingTable r={r} />
       </section>
       <section className="block">
         <h2>Where your money goes</h2>
+        <p className="lede">Hover a stream to follow it from start to finish.</p>
         <FlowSankey r={r} />
       </section>
       <section className="block">

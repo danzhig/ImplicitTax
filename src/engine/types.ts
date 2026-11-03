@@ -114,7 +114,7 @@ export const DEFAULT_OPTIONS: CalcOptions = {
   rentersPayPropertyTax: true,
 };
 
-/** Your share of one government's operating balance and interest for one year. */
+/** Your share of one government's borrowing and interest for one year. */
 export interface LevelDeferred {
   level: Level;
   seriesId: string;
@@ -122,19 +122,19 @@ export interface LevelDeferred {
   year: number | null;
   /** Taxes you pay to this level (local currency). */
   yourTaxes: number;
-  /** Deficit ÷ tax revenue (positive = deficit, negative = surplus). */
-  deficitRatio: number | null;
-  /** Interest ÷ tax revenue. */
+  /** Borrowing (increase in net debt) ÷ its tax revenue. Negative = debt paid down. */
+  borrowRatio: number | null;
+  /** Interest on its debt ÷ its tax revenue. */
   interestRatio: number | null;
-  /** B: borrowed for programs (negative in surplus years = credit). */
-  borrowedForPrograms: number;
-  /** C: interest paid out of your taxes (already inside "taxes paid now"). */
-  interestFromTaxes: number;
-  /** D: borrowed to pay interest (the compounding part). */
-  borrowedForInterest: number;
-  /** Your share of this government's net debt (stock), local currency. Null if unknown. */
+  /** Your share of what it borrowed this year (added to your implicit rate). */
+  borrowed: number;
+  /** Your share of its interest bill. Already inside the taxes you pay, so never added again. */
+  interestCost: number;
+  /** Your share of its net debt (stock), local currency. Null if unknown. */
   debtShare: number | null;
-  basis: string | null;
+  /** Where the borrowing figure comes from. */
+  source: string | null;
+  estimate: boolean;
   isProxy: boolean;
 }
 
@@ -151,10 +151,11 @@ export interface PlaceResult {
   byCategory: Record<Category, number>;
   byLevel: Record<Level, number>;
   deferred: LevelDeferred[];
-  borrowedForPrograms: number;
-  interestFromTaxes: number;
-  borrowedForInterest: number;
-  /** paidNow + borrowedForPrograms + borrowedForInterest */
+  /** Your share of all governments' borrowing this year. */
+  borrowed: number;
+  /** Your share of all governments' interest bills (already inside paidNow). */
+  interestCost: number;
+  /** paidNow + borrowed */
   implicitTotal: number;
   /** implicitTotal / grossIncome */
   implicitRate: number;

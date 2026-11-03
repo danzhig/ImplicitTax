@@ -3,506 +3,231 @@
  "currency": "CAD",
  "unit": "millions",
  "notes": [
-  "Federal: calendar years (GFS annual, table 10-10-0172). CPP/QPP are a separate sector and excluded.",
-  "Provinces and municipalities: GFS 2008+ uses the fiscal year closest to Dec 31 (e.g. 2024 = FY2024-25).",
-  "Provincial level = consolidated provincial + local public sector minus municipalities, so hospitals, school boards and colleges count with the province.",
-  "Before 2008 the older FMS basis is used (tables 10-10-0040 and 10-10-0042); there is a series break at 2008. FMS provincial figures cover core government only.",
-  "Local government 2006-2007 is missing (FMS ends 2005, GFS operating balances start 2008).",
-  "balance = accrual operating balance (GFS net operating balance); negative = deficit.",
-  "City lines use all municipalities in the province as a proxy; city-specific data (2018-2020) is kept in cityCheck."
+  "Borrowing = increase in net debt (debts minus financial assets): operating deficits plus borrowing for infrastructure. Negative = debt paid down.",
+  "Federal and provincial years are fiscal years labelled by the year they start (2016 = April 2016 to March 2017). Municipal years are calendar years.",
+  "Federal: public accounts net debt (StatCan 10-10-0002) from 2009; historical net federal debt (10-10-0048) before.",
+  "Provinces: each province's own published net debt (Ontario budgets and Form 18-K, Alberta annual reports, BC Financial and Economic Reviews); see data/fiscal/ca_official_net_debt.csv. Ontario before 2006 uses StatCan FMS net debt.",
+  "Municipalities: national accounts net borrowing (transactions only, StatCan 36-10-0450) from 2007; StatCan FMS before; 2006 missing. City lines use all municipalities in the province.",
+  "Taxes and interest come from StatCan government finance statistics. CPP/QPP are excluded everywhere."
  ],
  "series": {
   "CA-federal": {
    "label": "Government of Canada",
    "years": {
     "2000": {
-     "revenue": 201807.0,
-     "taxes": 183087.0,
-     "interest": 45626.0,
-     "balance": 19902.0,
-     "netFinancialWorth": -554593.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 180982.0,
+     "interest": 45650.0,
+     "borrowing": -16433.0,
+     "netDebt": 545300.0,
+     "borrowingSource": "change in historical net debt",
+     "status": "actual"
     },
     "2001": {
-     "revenue": 198850.0,
-     "taxes": 180656.0,
-     "interest": 42172.0,
-     "balance": 11741.0,
-     "netFinancialWorth": -535809.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 179249.0,
+     "interest": 40139.0,
+     "borrowing": -10610.0,
+     "netDebt": 534690.0,
+     "borrowingSource": "change in historical net debt",
+     "status": "actual"
     },
     "2002": {
-     "revenue": 194747.0,
-     "taxes": 177900.0,
-     "interest": 37108.0,
-     "balance": 8767.0,
-     "netFinancialWorth": -527897.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 177647.0,
+     "interest": 36473.0,
+     "borrowing": -8198.0,
+     "netDebt": 526492.0,
+     "borrowingSource": "change in historical net debt",
+     "status": "actual"
     },
     "2003": {
-     "revenue": 200818.0,
-     "taxes": 183822.0,
-     "interest": 35527.0,
-     "balance": 4203.0,
-     "netFinancialWorth": -526534.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 186605.0,
+     "interest": 34670.0,
+     "borrowing": -2844.0,
+     "netDebt": 523648.0,
+     "borrowingSource": "change in historical net debt",
+     "status": "actual"
     },
     "2004": {
-     "revenue": 209705.0,
-     "taxes": 195421.0,
-     "interest": 33808.0,
-     "balance": 10519.0,
-     "netFinancialWorth": -521739.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 199341.0,
+     "interest": 32753.0,
+     "borrowing": -304.0,
+     "netDebt": 523344.0,
+     "borrowingSource": "change in historical net debt",
+     "status": "actual"
     },
     "2005": {
-     "revenue": 221385.0,
-     "taxes": 206892.0,
-     "interest": 32467.0,
-     "balance": 901.0,
-     "netFinancialWorth": -527823.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 211590.0,
+     "interest": 32076.0,
+     "borrowing": -9245.0,
+     "netDebt": 514099.0,
+     "borrowingSource": "change in historical net debt",
+     "status": "actual"
     },
     "2006": {
-     "revenue": 232403.0,
-     "taxes": 216715.0,
-     "interest": 32529.0,
-     "balance": 12229.0,
-     "netFinancialWorth": -518507.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 217226.0,
+     "interest": 32045.0,
+     "borrowing": -5977.0,
+     "netDebt": 508122.0,
+     "borrowingSource": "change in historical net debt",
+     "status": "actual"
     },
     "2007": {
-     "revenue": 246104.0,
-     "taxes": 227860.0,
-     "interest": 31932.0,
-     "balance": 14926.0,
-     "netFinancialWorth": -498467.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 235413.0,
+     "interest": 31225.0,
+     "borrowing": -17710.0,
+     "netDebt": 490412.0,
+     "borrowingSource": "change in historical net debt",
+     "status": "actual"
     },
     "2008": {
-     "revenue": 240976.0,
-     "taxes": 222450.0,
-     "interest": 30645.0,
-     "balance": -3441.0,
-     "netFinancialWorth": -505649.0,
-     "basis": "GFS",
+     "taxes": 217645.0,
+     "interest": 29319.0,
+     "borrowing": null,
+     "netDebt": 524804.0,
+     "borrowingSource": null,
      "status": "actual",
-     "table": "10-10-0172"
+     "notes": [
+      "March 2009 net debt estimated from September 2009 and the monthly budget balances in between.",
+      "No figure: the net debt series switches from StatCan's historical federal debt to public accounts net debt here."
+     ]
     },
     "2009": {
-     "revenue": 226301.0,
-     "taxes": 210382.0,
-     "interest": 27703.0,
-     "balance": -28713.0,
-     "netFinancialWorth": -532079.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 209245.0,
+     "interest": 29502.0,
+     "borrowing": 49911.0,
+     "netDebt": 574715.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2010": {
-     "revenue": 229780.0,
-     "taxes": 213205.0,
-     "interest": 28272.0,
-     "balance": -45319.0,
-     "netFinancialWorth": -569595.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 215426.0,
+     "interest": 30892.0,
+     "borrowing": 41748.0,
+     "netDebt": 616463.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2011": {
-     "revenue": 245703.0,
-     "taxes": 227894.0,
-     "interest": 28856.0,
-     "balance": -25944.0,
-     "netFinancialWorth": -626914.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 228091.0,
+     "interest": 31005.0,
+     "borrowing": 26403.0,
+     "netDebt": 642866.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2012": {
-     "revenue": 252380.0,
-     "taxes": 232984.0,
-     "interest": 27307.0,
-     "balance": -19103.0,
-     "netFinancialWorth": -645323.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 236095.0,
+     "interest": 28993.0,
+     "borrowing": 27556.0,
+     "netDebt": 670422.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2013": {
-     "revenue": 261667.0,
-     "taxes": 243183.0,
-     "interest": 27259.0,
-     "balance": -11835.0,
-     "netFinancialWorth": -620723.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 249922.0,
+     "interest": 28121.0,
+     "borrowing": 17222.0,
+     "netDebt": 687644.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2014": {
-     "revenue": 275229.0,
-     "taxes": 258313.0,
-     "interest": 25182.0,
-     "balance": 1135.0,
-     "netFinancialWorth": -619388.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 258886.0,
+     "interest": 26633.0,
+     "borrowing": -5515.0,
+     "netDebt": 682129.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2015": {
-     "revenue": 287521.0,
-     "taxes": 270065.0,
-     "interest": 23781.0,
-     "balance": 4687.0,
-     "netFinancialWorth": -624732.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 272093.0,
+     "interest": 25537.0,
+     "borrowing": 10836.0,
+     "netDebt": 692965.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2016": {
-     "revenue": 293186.0,
-     "taxes": 277041.0,
-     "interest": 22430.0,
-     "balance": -2484.0,
-     "netFinancialWorth": -645686.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 279449.0,
+     "interest": 24344.0,
+     "borrowing": 23025.0,
+     "netDebt": 715990.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2017": {
-     "revenue": 312261.0,
-     "taxes": 290673.0,
-     "interest": 21876.0,
-     "balance": -2639.0,
-     "netFinancialWorth": -628608.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 295301.0,
+     "interest": 22011.0,
+     "borrowing": 33316.0,
+     "netDebt": 749306.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2018": {
-     "revenue": 337092.0,
-     "taxes": 314138.0,
-     "interest": 24198.0,
-     "balance": 9996.0,
-     "netFinancialWorth": -629772.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 316507.0,
+     "interest": 23396.0,
+     "borrowing": 19110.0,
+     "netDebt": 768416.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2019": {
-     "revenue": 340589.0,
-     "taxes": 318020.0,
-     "interest": 25216.0,
-     "balance": -10238.0,
-     "netFinancialWorth": -665636.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 316680.0,
+     "interest": 24586.0,
+     "borrowing": 26010.0,
+     "netDebt": 794426.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2020": {
-     "revenue": 340571.0,
-     "taxes": 322579.0,
-     "interest": 22462.0,
-     "balance": -219762.0,
-     "netFinancialWorth": -883200.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 333264.0,
+     "interest": 20490.0,
+     "borrowing": 338394.0,
+     "netDebt": 1132820.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2021": {
-     "revenue": 409340.0,
-     "taxes": 378681.0,
-     "interest": 24111.0,
-     "balance": -90002.0,
-     "netFinancialWorth": -936568.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 390149.0,
+     "interest": 24770.0,
+     "borrowing": 111540.0,
+     "netDebt": 1244360.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2022": {
-     "revenue": 438882.0,
-     "taxes": 418507.0,
-     "interest": 30693.0,
-     "balance": -8421.0,
-     "netFinancialWorth": -835846.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 427261.0,
+     "interest": 35174.0,
+     "borrowing": 44000.0,
+     "netDebt": 1288360.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2023": {
-     "revenue": 460790.0,
-     "taxes": 436464.0,
-     "interest": 42044.0,
-     "balance": -20860.0,
-     "netFinancialWorth": -855493.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 433562.0,
+     "interest": 47487.0,
+     "borrowing": 53902.0,
+     "netDebt": 1342262.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2024": {
-     "revenue": 486736.0,
-     "taxes": 458569.0,
-     "interest": 50922.0,
-     "balance": -75342.0,
-     "netFinancialWorth": -972940.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
+     "taxes": 456456.0,
+     "interest": 53653.0,
+     "borrowing": 56759.0,
+     "netDebt": 1399021.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "actual"
     },
     "2025": {
-     "revenue": 502830.0,
-     "taxes": 472220.0,
-     "interest": 50976.0,
-     "balance": -40789.0,
-     "netFinancialWorth": -1010242.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0172"
-    }
-   }
-  },
-  "CA-ON-local": {
-   "label": "All municipalities in Ontario",
-   "years": {
-    "2000": {
-     "revenue": 21052.795000000002,
-     "taxes": 10762.438,
-     "interest": 512.76,
-     "balance": -420.959,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
-    },
-    "2001": {
-     "revenue": 22541.003,
-     "taxes": 11488.458,
-     "interest": 492.446,
-     "balance": 609.308,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
-    },
-    "2002": {
-     "revenue": 23934.987,
-     "taxes": 11949.264,
-     "interest": 515.747,
-     "balance": 505.249,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
-    },
-    "2003": {
-     "revenue": 25069.88,
-     "taxes": 12760.219000000001,
-     "interest": 519.7520000000001,
-     "balance": -107.557,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
-    },
-    "2004": {
-     "revenue": 26077.12,
-     "taxes": 13323.955,
-     "interest": 516.783,
-     "balance": -203.393,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
-    },
-    "2005": {
-     "revenue": 26900.713,
-     "taxes": 13748.073,
-     "interest": 530.476,
-     "balance": 13.58,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
-    },
-    "2008": {
-     "revenue": 33905.0,
-     "taxes": 18866.0,
-     "interest": 572.0,
-     "balance": 1470.0,
-     "netFinancialWorth": 2469.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2009": {
-     "revenue": 37408.0,
-     "taxes": 18876.0,
-     "interest": 624.0,
-     "balance": 2312.0,
-     "netFinancialWorth": 1383.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2010": {
-     "revenue": 39857.0,
-     "taxes": 19774.0,
-     "interest": 701.0,
-     "balance": 3294.0,
-     "netFinancialWorth": -1460.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2011": {
-     "revenue": 38454.0,
-     "taxes": 20242.0,
-     "interest": 734.0,
-     "balance": 304.0,
-     "netFinancialWorth": -3385.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2012": {
-     "revenue": 40055.0,
-     "taxes": 21223.0,
-     "interest": 788.0,
-     "balance": 1490.0,
-     "netFinancialWorth": -2579.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2013": {
-     "revenue": 40769.0,
-     "taxes": 21539.0,
-     "interest": 831.0,
-     "balance": 1402.0,
-     "netFinancialWorth": -3167.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2014": {
-     "revenue": 42483.0,
-     "taxes": 22589.0,
-     "interest": 877.0,
-     "balance": 908.0,
-     "netFinancialWorth": -2410.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2015": {
-     "revenue": 44878.0,
-     "taxes": 23870.0,
-     "interest": 885.0,
-     "balance": 2406.0,
-     "netFinancialWorth": -4594.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2016": {
-     "revenue": 46738.0,
-     "taxes": 24618.0,
-     "interest": 893.0,
-     "balance": 3477.0,
-     "netFinancialWorth": -4459.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2017": {
-     "revenue": 49436.0,
-     "taxes": 26078.0,
-     "interest": 889.0,
-     "balance": 5087.0,
-     "netFinancialWorth": -4501.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2018": {
-     "revenue": 52443.0,
-     "taxes": 26936.0,
-     "interest": 908.0,
-     "balance": 4311.0,
-     "netFinancialWorth": -1498.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2019": {
-     "revenue": 54077.0,
-     "taxes": 28792.0,
-     "interest": 921.0,
-     "balance": 4739.0,
-     "netFinancialWorth": -1540.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2020": {
-     "revenue": 58009.0,
-     "taxes": 28504.0,
-     "interest": 946.0,
-     "balance": 8372.0,
-     "netFinancialWorth": -1088.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2021": {
-     "revenue": 57279.0,
-     "taxes": 30668.0,
-     "interest": 939.0,
-     "balance": 4993.0,
-     "netFinancialWorth": 4398.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2022": {
-     "revenue": 63310.0,
-     "taxes": 32117.0,
-     "interest": 973.0,
-     "balance": 6825.0,
-     "netFinancialWorth": 9204.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2023": {
-     "revenue": 68266.0,
-     "taxes": 34122.0,
-     "interest": 1033.0,
-     "balance": 8161.0,
-     "netFinancialWorth": 881.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
-    },
-    "2024": {
-     "revenue": 69834.0,
-     "taxes": 34974.0,
-     "interest": 1023.0,
-     "balance": 8103.0,
-     "netFinancialWorth": 6751.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 461260.3144803056,
+     "interest": 53707.0,
+     "borrowing": 68114.0,
+     "netDebt": 1467135.0,
+     "borrowingSource": "change in public accounts net debt",
+     "status": "estimate",
+     "notes": [
+      "Tax revenue estimated from monthly revenue growth; StatCan GFS figures not yet published."
+     ]
     }
    }
   },
@@ -510,475 +235,412 @@
    "label": "Government of Ontario (incl. hospitals, schools, colleges)",
    "years": {
     "2000": {
-     "revenue": 67139.0,
-     "taxes": 53668.0,
-     "interest": 9824.0,
-     "balance": 1164.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
-    },
-    "2001": {
-     "revenue": 69850.0,
      "taxes": 57538.0,
      "interest": 9951.0,
-     "balance": 25.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -4269.0,
+     "netDebt": 103140.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
-    "2002": {
-     "revenue": 68627.0,
+    "2001": {
      "taxes": 56794.0,
      "interest": 9461.0,
-     "balance": -37.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": 370.0,
+     "netDebt": 103510.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
-    "2003": {
-     "revenue": 70947.0,
+    "2002": {
      "taxes": 56860.0,
      "interest": 9773.0,
-     "balance": -3573.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -899.0,
+     "netDebt": 102611.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
-    "2004": {
-     "revenue": 75131.0,
+    "2003": {
      "taxes": 57536.0,
      "interest": 9795.0,
-     "balance": -5865.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": 6092.0,
+     "netDebt": 108703.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
-    "2005": {
-     "revenue": 83815.0,
+    "2004": {
      "taxes": 64971.0,
      "interest": 9586.0,
-     "balance": -886.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": 1786.0,
+     "netDebt": 110489.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
-    "2006": {
-     "revenue": 86422.0,
+    "2005": {
      "taxes": 68307.0,
      "interest": 9348.0,
-     "balance": -4036.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": 4036.0,
+     "netDebt": null,
+     "borrowingSource": "StatCan FMS deficit (10-10-0040); no net debt figure for this year",
+     "status": "actual"
     },
-    "2007": {
-     "revenue": 92796.0,
+    "2006": {
      "taxes": 73068.0,
      "interest": 9295.0,
-     "balance": -1827.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": 1827.0,
+     "netDebt": 153742.0,
+     "borrowingSource": "StatCan FMS deficit (10-10-0040); no net debt figure for this year",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 78881.0,
+     "interest": 9447.0,
+     "borrowing": 2874.0,
+     "netDebt": 156616.0,
+     "borrowingSource": "change in official net debt: Province of Ontario Form 18-K annual report 2010 (SEC), net debt at March 31",
+     "status": "actual"
     },
     "2008": {
-     "revenue": 106363.0,
      "taxes": 79372.0,
      "interest": 9508.0,
-     "balance": -8654.0,
-     "netFinancialWorth": -148777.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 12969.0,
+     "netDebt": 169585.0,
+     "borrowingSource": "change in official net debt: Province of Ontario Form 18-K annual report 2010 (SEC), net debt at March 31",
+     "status": "actual"
     },
     "2009": {
-     "revenue": 108045.0,
      "taxes": 75631.0,
      "interest": 9620.0,
-     "balance": -15840.0,
-     "netFinancialWorth": -176273.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 24004.0,
+     "netDebt": 193589.0,
+     "borrowingSource": "change in official net debt: Province of Ontario Form 18-K annual report 2010 (SEC), net debt at March 31",
+     "status": "actual"
     },
     "2010": {
-     "revenue": 112549.0,
      "taxes": 83259.0,
      "interest": 10495.0,
-     "balance": -22452.0,
-     "netFinancialWorth": -198515.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 24165.0,
+     "netDebt": 217754.0,
+     "borrowingSource": "change in official net debt across editions: 2019 Ontario Budget, Table 3.15 Ten-Year Review (budget.ontario.ca/2019/chapter-3.html)",
+     "status": "actual"
     },
     "2011": {
-     "revenue": 119752.0,
      "taxes": 87525.0,
      "interest": 11105.0,
-     "balance": -20809.0,
-     "netFinancialWorth": -233026.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 24158.0,
+     "netDebt": 241912.0,
+     "borrowingSource": "change in official net debt: 2019 Ontario Budget, Table 3.15 Ten-Year Review (budget.ontario.ca/2019/chapter-3.html)",
+     "status": "actual"
     },
     "2012": {
-     "revenue": 126588.0,
      "taxes": 91932.0,
      "interest": 11477.0,
-     "balance": -12467.0,
-     "netFinancialWorth": -253913.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 18035.0,
+     "netDebt": 259947.0,
+     "borrowingSource": "change in official net debt: 2019 Ontario Budget, Table 3.15 Ten-Year Review (budget.ontario.ca/2019/chapter-3.html)",
+     "status": "actual"
     },
     "2013": {
-     "revenue": 128537.0,
      "taxes": 93081.0,
      "interest": 11575.0,
-     "balance": -12814.0,
-     "netFinancialWorth": -264342.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 16222.0,
+     "netDebt": 276169.0,
+     "borrowingSource": "change in official net debt: 2019 Ontario Budget, Table 3.15 Ten-Year Review (budget.ontario.ca/2019/chapter-3.html)",
+     "status": "actual"
     },
     "2014": {
-     "revenue": 130917.0,
      "taxes": 95694.0,
      "interest": 11694.0,
-     "balance": -13814.0,
-     "netFinancialWorth": -294156.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 18388.0,
+     "netDebt": 294557.0,
+     "borrowingSource": "change in official net debt: 2019 Ontario Budget, Table 3.15 Ten-Year Review (budget.ontario.ca/2019/chapter-3.html)",
+     "status": "actual"
     },
     "2015": {
-     "revenue": 140381.0,
      "taxes": 103106.0,
      "interest": 11789.0,
-     "balance": -7884.0,
-     "netFinancialWorth": -276464.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 11800.0,
+     "netDebt": 306357.0,
+     "borrowingSource": "change in official net debt: 2019 Ontario Budget, Table 3.15 Ten-Year Review (budget.ontario.ca/2019/chapter-3.html)",
+     "status": "actual"
     },
     "2016": {
-     "revenue": 147716.0,
      "taxes": 108880.0,
      "interest": 11992.0,
-     "balance": -4033.0,
-     "netFinancialWorth": -268802.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 7720.0,
+     "netDebt": 314077.0,
+     "borrowingSource": "change in official net debt: 2019 Ontario Budget, Table 3.15 Ten-Year Review (budget.ontario.ca/2019/chapter-3.html)",
+     "status": "actual"
     },
     "2017": {
-     "revenue": 155691.0,
      "taxes": 117251.0,
      "interest": 12321.0,
-     "balance": -5573.0,
-     "netFinancialWorth": -257136.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 9757.0,
+     "netDebt": 323068.0,
+     "borrowingSource": "change in official net debt: 2019 Ontario Budget, Table 3.15 Ten-Year Review (budget.ontario.ca/2019/chapter-3.html)",
+     "status": "actual"
     },
     "2018": {
-     "revenue": 162183.0,
      "taxes": 120671.0,
      "interest": 13113.0,
-     "balance": -8805.0,
-     "netFinancialWorth": -268322.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 14555.0,
+     "netDebt": 337623.0,
+     "borrowingSource": "change in official net debt: 2026 Ontario Budget, Table 3.12 10-Year Review (budget.ontario.ca/2026/chapter-3.html); 2025-26 is interim",
+     "status": "actual"
     },
     "2019": {
-     "revenue": 164162.0,
      "taxes": 122185.0,
      "interest": 13546.0,
-     "balance": -13132.0,
-     "netFinancialWorth": -291569.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 14759.0,
+     "netDebt": 352382.0,
+     "borrowingSource": "change in official net debt: 2026 Ontario Budget, Table 3.12 10-Year Review (budget.ontario.ca/2026/chapter-3.html); 2025-26 is interim",
+     "status": "actual"
     },
     "2020": {
-     "revenue": 169193.0,
      "taxes": 121645.0,
      "interest": 12901.0,
-     "balance": -18961.0,
-     "netFinancialWorth": -306619.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 20119.0,
+     "netDebt": 372501.0,
+     "borrowingSource": "change in official net debt: 2026 Ontario Budget, Table 3.12 10-Year Review (budget.ontario.ca/2026/chapter-3.html); 2025-26 is interim",
+     "status": "actual"
     },
     "2021": {
-     "revenue": 192538.0,
      "taxes": 144784.0,
      "interest": 13195.0,
-     "balance": -7219.0,
-     "netFinancialWorth": -282762.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 10341.0,
+     "netDebt": 382842.0,
+     "borrowingSource": "change in official net debt: 2026 Ontario Budget, Table 3.12 10-Year Review (budget.ontario.ca/2026/chapter-3.html); 2025-26 is interim",
+     "status": "actual"
     },
     "2022": {
-     "revenue": 199845.0,
      "taxes": 149892.0,
      "interest": 14544.0,
-     "balance": -6932.0,
-     "netFinancialWorth": -272753.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 16964.0,
+     "netDebt": 399806.0,
+     "borrowingSource": "change in official net debt: 2026 Ontario Budget, Table 3.12 10-Year Review (budget.ontario.ca/2026/chapter-3.html); 2025-26 is interim",
+     "status": "actual"
     },
     "2023": {
-     "revenue": 213918.0,
      "taxes": 155795.0,
      "interest": 15586.0,
-     "balance": -12280.0,
-     "netFinancialWorth": -274226.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 9955.0,
+     "netDebt": 409761.0,
+     "borrowingSource": "change in official net debt: 2026 Ontario Budget, Table 3.12 10-Year Review (budget.ontario.ca/2026/chapter-3.html); 2025-26 is interim",
+     "status": "actual"
     },
     "2024": {
-     "revenue": 225801.0,
      "taxes": 165835.0,
      "interest": 16783.0,
-     "balance": -15951.0,
-     "netFinancialWorth": -298738.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 17289.0,
+     "netDebt": 427050.0,
+     "borrowingSource": "change in official net debt: 2026 Ontario Budget, Table 3.12 10-Year Review (budget.ontario.ca/2026/chapter-3.html); 2025-26 is interim",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 165835.0,
+     "interest": 16783.0,
+     "borrowing": 32312.0,
+     "netDebt": 459362.0,
+     "borrowingSource": "change in official net debt: 2026 Ontario Budget, Table 3.12 10-Year Review (budget.ontario.ca/2026/chapter-3.html); 2025-26 is interim",
+     "status": "estimate",
+     "notes": [
+      "2025-26 net debt is the province's interim/forecast figure; taxes and interest carried forward from 2024-25."
+     ]
     }
    }
   },
-  "CA-AB-local": {
-   "label": "All municipalities in Alberta",
+  "CA-ON-local": {
+   "label": "All municipalities in Ontario",
    "years": {
     "2000": {
-     "revenue": 5207.059,
-     "taxes": 2282.188,
-     "interest": 370.479,
-     "balance": 578.049,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 10762.438,
+     "interest": 512.76,
+     "borrowing": -206.0,
+     "netDebt": -65.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2001": {
-     "revenue": 5551.9400000000005,
-     "taxes": 2484.45,
-     "interest": 337.742,
-     "balance": 568.916,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 11488.458,
+     "interest": 492.446,
+     "borrowing": 443.0,
+     "netDebt": 378.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2002": {
-     "revenue": 5579.957,
-     "taxes": 2566.5550000000003,
-     "interest": 321.486,
-     "balance": 521.76,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 11949.264,
+     "interest": 515.747,
+     "borrowing": -2373.0,
+     "netDebt": -1995.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2003": {
-     "revenue": 5954.801,
-     "taxes": 2752.515,
-     "interest": 327.595,
-     "balance": 475.529,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 12760.219000000001,
+     "interest": 519.7520000000001,
+     "borrowing": -930.0,
+     "netDebt": -2925.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2004": {
-     "revenue": 6713.4980000000005,
-     "taxes": 2999.776,
-     "interest": 328.543,
-     "balance": 853.226,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 13323.955,
+     "interest": 516.783,
+     "borrowing": 1247.0,
+     "netDebt": -1678.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2005": {
-     "revenue": 6954.169,
-     "taxes": 3041.996,
-     "interest": 324.891,
-     "balance": 559.549,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 13748.073,
+     "interest": 530.476,
+     "borrowing": -13.58,
+     "netDebt": null,
+     "borrowingSource": "StatCan FMS deficit (10-10-0042)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": null,
+     "interest": null,
+     "borrowing": -1235.0,
+     "netDebt": -1325.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2008": {
-     "revenue": 10005.0,
-     "taxes": 5166.0,
-     "interest": 220.0,
-     "balance": 1805.0,
-     "netFinancialWorth": -3116.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 18866.0,
+     "interest": 572.0,
+     "borrowing": 1020.0,
+     "netDebt": -2469.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2009": {
-     "revenue": 11064.0,
-     "taxes": 5884.0,
-     "interest": 265.0,
-     "balance": 2386.0,
-     "netFinancialWorth": -304.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 18876.0,
+     "interest": 624.0,
+     "borrowing": 1278.0,
+     "netDebt": -1383.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2010": {
-     "revenue": 11536.0,
-     "taxes": 6149.0,
-     "interest": 304.0,
-     "balance": 2166.0,
-     "netFinancialWorth": -1212.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 19774.0,
+     "interest": 701.0,
+     "borrowing": -5637.0,
+     "netDebt": 1460.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2011": {
-     "revenue": 12372.0,
-     "taxes": 6590.0,
-     "interest": 338.0,
-     "balance": 2225.0,
-     "netFinancialWorth": -3155.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 20242.0,
+     "interest": 734.0,
+     "borrowing": 1718.0,
+     "netDebt": 3385.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2012": {
-     "revenue": 12823.0,
-     "taxes": 7140.0,
-     "interest": 343.0,
-     "balance": 2062.0,
-     "netFinancialWorth": -3336.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 21223.0,
+     "interest": 788.0,
+     "borrowing": -1326.0,
+     "netDebt": 2579.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2013": {
-     "revenue": 15228.0,
-     "taxes": 8011.0,
-     "interest": 354.0,
-     "balance": 3123.0,
-     "netFinancialWorth": -3073.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 21539.0,
+     "interest": 831.0,
+     "borrowing": -1325.0,
+     "netDebt": 3167.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2014": {
-     "revenue": 15087.0,
-     "taxes": 8421.0,
-     "interest": 366.0,
-     "balance": 2422.0,
-     "netFinancialWorth": -3174.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 22589.0,
+     "interest": 877.0,
+     "borrowing": 483.0,
+     "netDebt": 2410.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2015": {
-     "revenue": 15395.0,
-     "taxes": 9152.0,
-     "interest": 372.0,
-     "balance": 2177.0,
-     "netFinancialWorth": -2838.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 23870.0,
+     "interest": 885.0,
+     "borrowing": -278.0,
+     "netDebt": 4594.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2016": {
-     "revenue": 16892.0,
-     "taxes": 9494.0,
-     "interest": 234.0,
-     "balance": 2668.0,
-     "netFinancialWorth": -2446.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 24618.0,
+     "interest": 893.0,
+     "borrowing": -16.0,
+     "netDebt": 4459.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2017": {
-     "revenue": 17731.0,
-     "taxes": 9096.0,
-     "interest": 225.0,
-     "balance": 3225.0,
-     "netFinancialWorth": -4632.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 26078.0,
+     "interest": 889.0,
+     "borrowing": 602.0,
+     "netDebt": 4501.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2018": {
-     "revenue": 16649.0,
-     "taxes": 9533.0,
-     "interest": 225.0,
-     "balance": 1834.0,
-     "netFinancialWorth": -4385.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 26936.0,
+     "interest": 908.0,
+     "borrowing": -3942.0,
+     "netDebt": 1498.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2019": {
-     "revenue": 16616.0,
-     "taxes": 9516.0,
-     "interest": 230.0,
-     "balance": 1827.0,
-     "netFinancialWorth": -5302.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 28792.0,
+     "interest": 921.0,
+     "borrowing": -5738.0,
+     "netDebt": 1540.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2020": {
-     "revenue": 17312.0,
-     "taxes": 9185.0,
-     "interest": 211.0,
-     "balance": 2507.0,
-     "netFinancialWorth": -6481.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 28504.0,
+     "interest": 946.0,
+     "borrowing": -6110.0,
+     "netDebt": 1088.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2021": {
-     "revenue": 17453.0,
-     "taxes": 9364.0,
-     "interest": 196.0,
-     "balance": 2063.0,
-     "netFinancialWorth": -5454.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 30668.0,
+     "interest": 939.0,
+     "borrowing": -5682.0,
+     "netDebt": -4398.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2022": {
-     "revenue": 17313.0,
-     "taxes": 9951.0,
-     "interest": 207.0,
-     "balance": 581.0,
-     "netFinancialWorth": -5849.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 32117.0,
+     "interest": 973.0,
+     "borrowing": -1182.0,
+     "netDebt": -9204.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2023": {
-     "revenue": 19152.0,
-     "taxes": 10666.0,
-     "interest": 397.0,
-     "balance": 1682.0,
-     "netFinancialWorth": -7851.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 34122.0,
+     "interest": 1033.0,
+     "borrowing": -9238.0,
+     "netDebt": -881.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2024": {
-     "revenue": 20431.0,
-     "taxes": 10955.0,
-     "interest": 511.0,
-     "balance": 2034.0,
-     "netFinancialWorth": -6970.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 34974.0,
+     "interest": 1023.0,
+     "borrowing": -1320.0,
+     "netDebt": -6751.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     }
    }
   },
@@ -986,475 +648,412 @@
    "label": "Government of Alberta (incl. hospitals, schools, colleges)",
    "years": {
     "2000": {
-     "revenue": 20570.0,
-     "taxes": 11504.0,
-     "interest": 1509.0,
-     "balance": 2620.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
-    },
-    "2001": {
-     "revenue": 28594.0,
      "taxes": 11861.0,
      "interest": 1503.0,
-     "balance": 7923.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -6388.0,
+     "netDebt": -9042.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
-    "2002": {
-     "revenue": 23078.0,
+    "2001": {
      "taxes": 12641.0,
      "interest": 1198.0,
-     "balance": -426.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -772.0,
+     "netDebt": -9814.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
-    "2003": {
-     "revenue": 24471.0,
+    "2002": {
      "taxes": 13459.0,
      "interest": 872.0,
-     "balance": 3044.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -1882.0,
+     "netDebt": -11696.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
-    "2004": {
-     "revenue": 27098.0,
+    "2003": {
      "taxes": 13555.0,
      "interest": 640.0,
-     "balance": 4579.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -3911.0,
+     "netDebt": -15607.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
-    "2005": {
-     "revenue": 30324.0,
+    "2004": {
      "taxes": 14550.0,
      "interest": 664.0,
-     "balance": 5242.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -4788.0,
+     "netDebt": -20395.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
-    "2006": {
-     "revenue": 36909.0,
+    "2005": {
      "taxes": 15478.0,
      "interest": 577.0,
-     "balance": 8841.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -7923.0,
+     "netDebt": -28318.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
-    "2007": {
-     "revenue": 39604.0,
+    "2006": {
      "taxes": 19621.0,
      "interest": 584.0,
-     "balance": 9087.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -7729.0,
+     "netDebt": -36047.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 21656.0,
+     "interest": 576.0,
+     "borrowing": -3363.0,
+     "netDebt": -39410.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
     "2008": {
-     "revenue": 43775.0,
      "taxes": 21479.0,
      "interest": 175.0,
-     "balance": 4475.0,
-     "netFinancialWorth": 38166.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 2456.0,
+     "netDebt": -36954.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
     "2009": {
-     "revenue": 39143.0,
      "taxes": 20139.0,
      "interest": 145.0,
-     "balance": -2099.0,
-     "netFinancialWorth": 36790.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 3937.0,
+     "netDebt": -33017.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
     "2010": {
-     "revenue": 39026.0,
      "taxes": 18460.0,
      "interest": 60.0,
-     "balance": -3869.0,
-     "netFinancialWorth": 32347.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 4903.0,
+     "netDebt": -28114.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
     "2011": {
-     "revenue": 43741.0,
      "taxes": 20227.0,
      "interest": 74.0,
-     "balance": -945.0,
-     "netFinancialWorth": 28567.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 1386.0,
+     "netDebt": -26728.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
     "2012": {
-     "revenue": 42591.0,
      "taxes": 22911.0,
      "interest": 61.0,
-     "balance": -4936.0,
-     "netFinancialWorth": 27483.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 3987.0,
+     "netDebt": -22741.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
     "2013": {
-     "revenue": 48253.0,
      "taxes": 24500.0,
      "interest": 127.0,
-     "balance": -1337.0,
-     "netFinancialWorth": 28051.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 1464.0,
+     "netDebt": -13032.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2013-14 Annual Report, Historical Fiscal Summary 1995-96 to 2013-14 (fiscal plan basis)",
+     "status": "actual"
     },
     "2014": {
-     "revenue": 49081.0,
      "taxes": 25379.0,
      "interest": 395.0,
-     "balance": -1289.0,
-     "netFinancialWorth": 26988.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": -22.0,
+     "netDebt": -13054.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2015": {
-     "revenue": 43400.0,
      "taxes": 24762.0,
      "interest": 507.0,
-     "balance": -10181.0,
-     "netFinancialWorth": 18489.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 9135.0,
+     "netDebt": -3919.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2016": {
-     "revenue": 43571.0,
      "taxes": 24597.0,
      "interest": 698.0,
-     "balance": -13966.0,
-     "netFinancialWorth": 8272.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 12820.0,
+     "netDebt": 8901.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2017": {
-     "revenue": 44507.0,
      "taxes": 24944.0,
      "interest": 1114.0,
-     "balance": -14588.0,
-     "netFinancialWorth": -2455.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 10443.0,
+     "netDebt": 19344.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2018": {
-     "revenue": 51873.0,
      "taxes": 28499.0,
      "interest": 1604.0,
-     "balance": -10246.0,
-     "netFinancialWorth": -11334.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 8133.0,
+     "netDebt": 27477.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2019": {
-     "revenue": 50596.0,
      "taxes": 25605.0,
      "interest": 1832.0,
-     "balance": -14358.0,
-     "netFinancialWorth": -25703.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 12667.0,
+     "netDebt": 40144.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2020": {
-     "revenue": 47663.0,
      "taxes": 23731.0,
      "interest": 2208.0,
-     "balance": -16492.0,
-     "netFinancialWorth": -39058.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 19693.0,
+     "netDebt": 59837.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2021": {
-     "revenue": 65792.0,
      "taxes": 28574.0,
      "interest": 2553.0,
-     "balance": -2506.0,
-     "netFinancialWorth": -28841.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": -844.0,
+     "netDebt": 58993.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2022": {
-     "revenue": 78000.0,
      "taxes": 32342.0,
      "interest": 2600.0,
-     "balance": 8050.0,
-     "netFinancialWorth": -11967.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": -13379.0,
+     "netDebt": 45614.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2023": {
-     "revenue": 78169.0,
      "taxes": 32926.0,
      "interest": 2777.0,
-     "balance": 3472.0,
-     "netFinancialWorth": -4668.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": -4250.0,
+     "netDebt": 41364.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
     },
     "2024": {
-     "revenue": 83360.0,
      "taxes": 35768.0,
      "interest": 3018.0,
-     "balance": 5066.0,
-     "netFinancialWorth": -2911.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": -7027.0,
+     "netDebt": 34337.0,
+     "borrowingSource": "change in official net debt: Government of Alberta 2024-25 Annual Report, Historical Fiscal Summary 2013-14 to 2024-25",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 35768.0,
+     "interest": 3018.0,
+     "borrowing": 5362.0,
+     "netDebt": 39699.0,
+     "borrowingSource": "change in official net debt: Alberta Budget 2026 fiscal plan tables, Historical Fiscal Summary (2025-26 forecast)",
+     "status": "estimate",
+     "notes": [
+      "2025-26 net debt is the province's interim/forecast figure; taxes and interest carried forward from 2024-25."
+     ]
     }
    }
   },
-  "CA-BC-local": {
-   "label": "All municipalities in British Columbia",
+  "CA-AB-local": {
+   "label": "All municipalities in Alberta",
    "years": {
     "2000": {
-     "revenue": 4830.941,
-     "taxes": 2727.411,
-     "interest": 342.289,
-     "balance": -65.711,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 2282.188,
+     "interest": 370.479,
+     "borrowing": 419.0,
+     "netDebt": 383.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2001": {
-     "revenue": 5015.8460000000005,
-     "taxes": 2848.342,
-     "interest": 352.52500000000003,
-     "balance": -23.688,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 2484.45,
+     "interest": 337.742,
+     "borrowing": -1051.0,
+     "netDebt": -668.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2002": {
-     "revenue": 4982.736,
-     "taxes": 2934.1710000000003,
-     "interest": 350.88800000000003,
-     "balance": -341.795,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 2566.5550000000003,
+     "interest": 321.486,
+     "borrowing": -526.0,
+     "netDebt": -1194.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2003": {
-     "revenue": 5264.41,
-     "taxes": 3010.623,
-     "interest": 347.67,
-     "balance": -541.8770000000001,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 2752.515,
+     "interest": 327.595,
+     "borrowing": 233.0,
+     "netDebt": -961.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2004": {
-     "revenue": 5461.484,
-     "taxes": 3098.721,
-     "interest": 348.738,
-     "balance": -755.3050000000001,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 2999.776,
+     "interest": 328.543,
+     "borrowing": -314.0,
+     "netDebt": -1275.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
     "2005": {
-     "revenue": 5641.426,
-     "taxes": 3219.272,
-     "interest": 355.307,
-     "balance": -974.14,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0042"
+     "taxes": 3041.996,
+     "interest": 324.891,
+     "borrowing": -559.549,
+     "netDebt": null,
+     "borrowingSource": "StatCan FMS deficit (10-10-0042)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": null,
+     "interest": null,
+     "borrowing": -417.0,
+     "netDebt": 1061.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2008": {
-     "revenue": 8772.0,
-     "taxes": 4577.0,
-     "interest": 471.0,
-     "balance": 1102.0,
-     "netFinancialWorth": 911.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 5166.0,
+     "interest": 220.0,
+     "borrowing": 769.0,
+     "netDebt": 3116.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2009": {
-     "revenue": 9033.0,
-     "taxes": 4909.0,
-     "interest": 453.0,
-     "balance": 760.0,
-     "netFinancialWorth": -477.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 5884.0,
+     "interest": 265.0,
+     "borrowing": 171.0,
+     "netDebt": 304.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2010": {
-     "revenue": 10090.0,
-     "taxes": 5313.0,
-     "interest": 444.0,
-     "balance": 1450.0,
-     "netFinancialWorth": -739.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 6149.0,
+     "interest": 304.0,
+     "borrowing": 1532.0,
+     "netDebt": 1212.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2011": {
-     "revenue": 9963.0,
-     "taxes": 5307.0,
-     "interest": 452.0,
-     "balance": 1015.0,
-     "netFinancialWorth": -648.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 6590.0,
+     "interest": 338.0,
+     "borrowing": 792.0,
+     "netDebt": 3155.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2012": {
-     "revenue": 9987.0,
-     "taxes": 5534.0,
-     "interest": 430.0,
-     "balance": 902.0,
-     "netFinancialWorth": 152.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 7140.0,
+     "interest": 343.0,
+     "borrowing": 2022.0,
+     "netDebt": 3336.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2013": {
-     "revenue": 10188.0,
-     "taxes": 5860.0,
-     "interest": 411.0,
-     "balance": 888.0,
-     "netFinancialWorth": 933.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 8011.0,
+     "interest": 354.0,
+     "borrowing": 842.0,
+     "netDebt": 3073.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2014": {
-     "revenue": 10761.0,
-     "taxes": 6146.0,
-     "interest": 399.0,
-     "balance": 1393.0,
-     "netFinancialWorth": 1761.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 8421.0,
+     "interest": 366.0,
+     "borrowing": -714.0,
+     "netDebt": 3174.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2015": {
-     "revenue": 11233.0,
-     "taxes": 6396.0,
-     "interest": 389.0,
-     "balance": 1504.0,
-     "netFinancialWorth": 2576.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 9152.0,
+     "interest": 372.0,
+     "borrowing": -202.0,
+     "netDebt": 2838.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2016": {
-     "revenue": 12313.0,
-     "taxes": 6789.0,
-     "interest": 391.0,
-     "balance": 2291.0,
-     "netFinancialWorth": 3834.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 9494.0,
+     "interest": 234.0,
+     "borrowing": -801.0,
+     "netDebt": 2446.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2017": {
-     "revenue": 12964.0,
-     "taxes": 7345.0,
-     "interest": 405.0,
-     "balance": 2469.0,
-     "netFinancialWorth": 4923.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 9096.0,
+     "interest": 225.0,
+     "borrowing": 271.0,
+     "netDebt": 4632.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2018": {
-     "revenue": 14215.0,
-     "taxes": 7977.0,
-     "interest": 388.0,
-     "balance": 3147.0,
-     "netFinancialWorth": 5851.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 9533.0,
+     "interest": 225.0,
+     "borrowing": -1127.0,
+     "netDebt": 4385.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2019": {
-     "revenue": 14566.0,
-     "taxes": 7950.0,
-     "interest": 385.0,
-     "balance": 2881.0,
-     "netFinancialWorth": 6758.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 9516.0,
+     "interest": 230.0,
+     "borrowing": -1854.0,
+     "netDebt": 5302.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2020": {
-     "revenue": 15130.0,
-     "taxes": 8028.0,
-     "interest": 352.0,
-     "balance": 3411.0,
-     "netFinancialWorth": 8503.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 9185.0,
+     "interest": 211.0,
+     "borrowing": -2800.0,
+     "netDebt": 6481.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2021": {
-     "revenue": 15788.0,
-     "taxes": 8949.0,
-     "interest": 344.0,
-     "balance": 3173.0,
-     "netFinancialWorth": 11792.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 9364.0,
+     "interest": 196.0,
+     "borrowing": -3335.0,
+     "netDebt": 5454.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2022": {
-     "revenue": 18739.0,
-     "taxes": 9529.0,
-     "interest": 349.0,
-     "balance": 4617.0,
-     "netFinancialWorth": 14213.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 9951.0,
+     "interest": 207.0,
+     "borrowing": -2167.0,
+     "netDebt": 5849.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2023": {
-     "revenue": 18117.0,
-     "taxes": 9772.0,
-     "interest": 389.0,
-     "balance": 2370.0,
-     "netFinancialWorth": 16109.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 10666.0,
+     "interest": 397.0,
+     "borrowing": -1706.0,
+     "netDebt": 7851.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     },
     "2024": {
-     "revenue": 19301.0,
-     "taxes": 10262.0,
-     "interest": 440.0,
-     "balance": 2586.0,
-     "netFinancialWorth": 15157.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0020"
+     "taxes": 10955.0,
+     "interest": 511.0,
+     "borrowing": -1756.0,
+     "netDebt": 6970.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
     }
    }
   },
@@ -1462,309 +1061,402 @@
    "label": "Government of British Columbia (incl. hospitals, schools, colleges)",
    "years": {
     "2000": {
-     "revenue": 25804.0,
-     "taxes": 17467.0,
-     "interest": 2881.0,
-     "balance": -1317.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
-    },
-    "2001": {
-     "revenue": 28067.0,
      "taxes": 18204.0,
      "interest": 3005.0,
-     "balance": 153.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -675.0,
+     "netDebt": 23136.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
     },
-    "2002": {
-     "revenue": 27007.0,
+    "2001": {
      "taxes": 18122.0,
      "interest": 2801.0,
-     "balance": -2249.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": 1661.0,
+     "netDebt": 24797.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2010, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
-    "2003": {
-     "revenue": 26382.0,
+    "2002": {
      "taxes": 16975.0,
      "interest": 2587.0,
-     "balance": -2203.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": 2894.0,
+     "netDebt": 27691.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2010, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
-    "2004": {
-     "revenue": 28186.0,
+    "2003": {
      "taxes": 18779.0,
      "interest": 2350.0,
-     "balance": -542.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": 1185.0,
+     "netDebt": 28876.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2010, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
-    "2005": {
-     "revenue": 32351.0,
+    "2004": {
      "taxes": 20274.0,
      "interest": 2267.0,
-     "balance": 3467.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -1724.0,
+     "netDebt": 27152.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2010, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
-    "2006": {
-     "revenue": 34250.0,
+    "2005": {
      "taxes": 22210.0,
      "interest": 2160.0,
-     "balance": 3589.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -1242.0,
+     "netDebt": 25910.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2010, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
-    "2007": {
-     "revenue": 36037.0,
+    "2006": {
      "taxes": 24071.0,
      "interest": 2255.0,
-     "balance": 3330.0,
-     "basis": "FMS",
-     "status": "actual",
-     "table": "10-10-0040"
+     "borrowing": -2568.0,
+     "netDebt": 23342.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2010, Table A2.3 (net liabilities)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 25161.0,
+     "interest": 2225.0,
+     "borrowing": -802.0,
+     "netDebt": 22540.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2010, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
     "2008": {
-     "revenue": 40229.0,
      "taxes": 24398.0,
      "interest": 2091.0,
-     "balance": -1112.0,
-     "netFinancialWorth": -11492.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 2323.0,
+     "netDebt": 24863.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2010, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
     "2009": {
-     "revenue": 39873.0,
      "taxes": 23327.0,
      "interest": 2069.0,
-     "balance": -2140.0,
-     "netFinancialWorth": -14015.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 3174.0,
+     "netDebt": 28037.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2010, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
     "2010": {
-     "revenue": 42184.0,
      "taxes": 25062.0,
      "interest": 2178.0,
-     "balance": -673.0,
-     "netFinancialWorth": -16671.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 2654.0,
+     "netDebt": 32026.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2014, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
     "2011": {
-     "revenue": 43302.0,
      "taxes": 26504.0,
      "interest": 2284.0,
-     "balance": -3061.0,
-     "netFinancialWorth": -24357.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 3732.0,
+     "netDebt": 35758.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2014, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
     "2012": {
-     "revenue": 44672.0,
      "taxes": 27331.0,
      "interest": 2275.0,
-     "balance": -1865.0,
-     "netFinancialWorth": -25676.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 2258.0,
+     "netDebt": 38016.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2014, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
     "2013": {
-     "revenue": 46885.0,
      "taxes": 27384.0,
      "interest": 2368.0,
-     "balance": -161.0,
-     "netFinancialWorth": -22903.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 761.0,
+     "netDebt": 38777.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2014, Table A2.3 (net liabilities)",
+     "status": "actual"
     },
     "2014": {
-     "revenue": 49156.0,
      "taxes": 29811.0,
      "interest": 2370.0,
-     "balance": 1081.0,
-     "netFinancialWorth": -26524.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 366.0,
+     "netDebt": 37815.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2015": {
-     "revenue": 51679.0,
      "taxes": 31584.0,
      "interest": 2673.0,
-     "balance": 1281.0,
-     "netFinancialWorth": -23027.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 1702.0,
+     "netDebt": 39517.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2016": {
-     "revenue": 54671.0,
      "taxes": 34811.0,
      "interest": 2486.0,
-     "balance": 2297.0,
-     "netFinancialWorth": -18101.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": -1286.0,
+     "netDebt": 38231.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2017": {
-     "revenue": 57301.0,
      "taxes": 36144.0,
      "interest": 2539.0,
-     "balance": 2581.0,
-     "netFinancialWorth": -16221.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 4180.0,
+     "netDebt": 42411.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2018": {
-     "revenue": 62508.0,
      "taxes": 39652.0,
      "interest": 2609.0,
-     "balance": 3679.0,
-     "netFinancialWorth": -16959.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 498.0,
+     "netDebt": 42909.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2019": {
-     "revenue": 61988.0,
      "taxes": 39796.0,
      "interest": 2627.0,
-     "balance": -284.0,
-     "netFinancialWorth": -19174.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 3221.0,
+     "netDebt": 46130.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2020": {
-     "revenue": 66081.0,
      "taxes": 38616.0,
      "interest": 2604.0,
-     "balance": -5483.0,
-     "netFinancialWorth": -21556.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 8019.0,
+     "netDebt": 54149.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2021": {
-     "revenue": 75035.0,
      "taxes": 47097.0,
      "interest": 2642.0,
-     "balance": -1651.0,
-     "netFinancialWorth": -14916.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 2525.0,
+     "netDebt": 56674.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2022": {
-     "revenue": 84952.0,
      "taxes": 56425.0,
      "interest": 2864.0,
-     "balance": 1785.0,
-     "netFinancialWorth": -8596.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 3265.0,
+     "netDebt": 59939.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2023": {
-     "revenue": 85025.0,
      "taxes": 53127.0,
      "interest": 3321.0,
-     "balance": -5744.0,
-     "netFinancialWorth": -19328.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 11318.0,
+     "netDebt": 71257.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     },
     "2024": {
-     "revenue": 88331.0,
      "taxes": 56106.0,
      "interest": 4303.0,
-     "balance": -8903.0,
-     "netFinancialWorth": -31520.0,
-     "basis": "GFS",
-     "status": "actual",
-     "table": "10-10-0147 minus 10-10-0020"
+     "borrowing": 16049.0,
+     "netDebt": 87306.0,
+     "borrowingSource": "change in official net debt: BC Financial and Economic Review 2025, Table A2.2 (net liabilities)",
+     "status": "actual"
     }
    }
-  }
- },
- "cityCheck": {
-  "toronto": {
-   "2018": {
-    "revenue": 13837.225,
-    "taxes": 5663.318,
-    "interest": 328.0,
-    "netOperatingBalance": 1434.0
-   },
-   "2019": {
-    "revenue": 14383.143,
-    "taxes": 5947.953,
-    "interest": 337.40500000000003,
-    "netOperatingBalance": 1630.135
-   },
-   "2020": {
-    "revenue": 14008.007,
-    "taxes": 5944.3150000000005,
-    "interest": 345.69100000000003,
-    "netOperatingBalance": 1623.411
-   }
   },
-  "calgary": {
-   "2018": {
-    "revenue": 4894.662,
-    "taxes": 2659.111,
-    "interest": 110.998,
-    "netOperatingBalance": 1020.625
-   },
-   "2019": {
-    "revenue": 5243.892,
-    "taxes": 2649.9210000000003,
-    "interest": 109.23400000000001,
-    "netOperatingBalance": 1330.323
-   },
-   "2020": {
-    "revenue": 4640.927,
-    "taxes": 2554.525,
-    "interest": 111.376,
-    "netOperatingBalance": 792.125
-   }
-  },
-  "vancouver": {
-   "2018": {
-    "revenue": 1978.893,
-    "taxes": 1090.1770000000001,
-    "interest": 38.562,
-    "netOperatingBalance": 391.69
-   },
-   "2019": {
-    "revenue": 1966.836,
-    "taxes": 1006.193,
-    "interest": 40.072,
-    "netOperatingBalance": 300.723
-   },
-   "2020": {
-    "revenue": 1858.1870000000001,
-    "taxes": 1061.367,
-    "interest": 34.156,
-    "netOperatingBalance": 228.977
+  "CA-BC-local": {
+   "label": "All municipalities in British Columbia",
+   "years": {
+    "2000": {
+     "taxes": 2727.411,
+     "interest": 342.289,
+     "borrowing": -1599.0,
+     "netDebt": -1851.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 2848.342,
+     "interest": 352.52500000000003,
+     "borrowing": -592.0,
+     "netDebt": -2443.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 2934.1710000000003,
+     "interest": 350.88800000000003,
+     "borrowing": 1369.0,
+     "netDebt": -1074.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 3010.623,
+     "interest": 347.67,
+     "borrowing": -174.0,
+     "netDebt": -1248.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 3098.721,
+     "interest": 348.738,
+     "borrowing": -494.0,
+     "netDebt": -1742.0,
+     "borrowingSource": "change in StatCan FMS net debt (10-10-0055)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 3219.272,
+     "interest": 355.307,
+     "borrowing": 974.14,
+     "netDebt": null,
+     "borrowingSource": "StatCan FMS deficit (10-10-0042)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": null,
+     "interest": null,
+     "borrowing": -262.0,
+     "netDebt": -2346.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 4577.0,
+     "interest": 471.0,
+     "borrowing": 6.0,
+     "netDebt": -911.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 4909.0,
+     "interest": 453.0,
+     "borrowing": -435.0,
+     "netDebt": 477.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 5313.0,
+     "interest": 444.0,
+     "borrowing": -748.0,
+     "netDebt": 739.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 5307.0,
+     "interest": 452.0,
+     "borrowing": -1280.0,
+     "netDebt": 648.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 5534.0,
+     "interest": 430.0,
+     "borrowing": -753.0,
+     "netDebt": -152.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 5860.0,
+     "interest": 411.0,
+     "borrowing": -894.0,
+     "netDebt": -933.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 6146.0,
+     "interest": 399.0,
+     "borrowing": -1016.0,
+     "netDebt": -1761.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 6396.0,
+     "interest": 389.0,
+     "borrowing": -816.0,
+     "netDebt": -2576.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 6789.0,
+     "interest": 391.0,
+     "borrowing": -1179.0,
+     "netDebt": -3834.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 7345.0,
+     "interest": 405.0,
+     "borrowing": -1685.0,
+     "netDebt": -4923.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 7977.0,
+     "interest": 388.0,
+     "borrowing": -1332.0,
+     "netDebt": -5851.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 7950.0,
+     "interest": 385.0,
+     "borrowing": -1819.0,
+     "netDebt": -6758.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 8028.0,
+     "interest": 352.0,
+     "borrowing": -1461.0,
+     "netDebt": -8503.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 8949.0,
+     "interest": 344.0,
+     "borrowing": -2002.0,
+     "netDebt": -11792.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 9529.0,
+     "interest": 349.0,
+     "borrowing": -2208.0,
+     "netDebt": -14213.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 9772.0,
+     "interest": 389.0,
+     "borrowing": -3097.0,
+     "netDebt": -16109.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 10262.0,
+     "interest": 440.0,
+     "borrowing": -2083.0,
+     "netDebt": -15157.0,
+     "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
+     "status": "actual"
+    }
    }
   }
  }

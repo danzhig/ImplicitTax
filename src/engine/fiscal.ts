@@ -1,26 +1,24 @@
-// Turns a government's yearly fiscal numbers into your personal share (docs/PLAN.md §1.1, §1.4).
+// Turns a government's yearly fiscal numbers into your personal share (docs/PLAN.md §1).
 //
-//   deficitRatio  = −balance / taxRevenue     (positive = deficit)
-//   interestRatio =  interest / taxRevenue
-//   D (borrowed interest)      = yourTaxes × min(max(deficitRatio, 0), interestRatio)
-//   C (interest paid by taxes) = yourTaxes × interestRatio − D
-//   B (borrowed for programs)  = yourTaxes × deficitRatio − D   (negative in surplus years)
+//   borrowRatio   = borrowing / taxRevenue    (borrowing = increase in net debt; negative = paid down)
+//   interestRatio = interest / taxRevenue
+//   borrowed      = yourTaxes × borrowRatio   -> added to your implicit rate
+//   interestCost  = yourTaxes × interestRatio -> already inside the taxes you pay; shown separately
+//   debtShare     = yourTaxes × netDebt / taxRevenue
 //
-// Interest counts as borrowed first (primary-balance convention), so in a year where a
-// government borrows less than its interest bill, all of the borrowing is "compounding".
+// "Your share" = your share of that government's tax revenue (tax-share method, decision D4).
 
 import caFiscal from '../../data/fiscal/ca.json';
 import type { Level, LevelDeferred } from './types';
 
 export interface FiscalYear {
-  revenue: number;
-  taxes: number;
+  taxes: number | null;
   interest: number | null;
-  balance: number | null;
-  netFinancialWorth?: number | null;
-  basis: string;
-  status: string;
-  table: string;
+  borrowing: number | null;
+  netDebt: number | null;
+  borrowingSource: string | null;
+  status: 'actual' | 'estimate' | string;
+  notes?: string[];
 }
 
 export interface FiscalSeries {
@@ -43,8 +41,12 @@ export function seriesYears(id: string): number[] {
   return s ? Object.keys(s.years).map(Number).sort((a, b) => a - b) : [];
 }
 
+const usable = (y?: FiscalYear) => !!y && y.borrowing !== null && !!y.taxes;
+
+/** Latest year with actual (not estimated) borrowing and tax data. */
 export function latestYear(id: string): number | null {
-  const ys = seriesYears(id).filter((y) => SERIES[id].years[y].balance !== null);
+  const s = SERIES[id];
+  const ys = seriesYears(id).filter((y) => usable(s.years[y]) && s.years[y].status === 'actual');
   return ys.length ? ys[ys.length - 1] : null;
 }
 
@@ -59,36 +61,41 @@ export function deferredForLevel(link: LevelLink, yourTaxes: number, year: numbe
   const s = SERIES[link.seriesId];
   const y = year === 'latest' ? latestYear(link.seriesId) : year;
   const fy = s && y !== null ? s.years[String(y)] : undefined;
-  const empty: LevelDeferred = {
+  const base: LevelDeferred = {
     level: link.level,
     seriesId: link.seriesId,
     seriesLabel: s?.label ?? link.seriesId,
-    year: fy ? y : null,
+    year: usable(fy) ? y : null,
     yourTaxes,
-    deficitRatio: null,
+    borrowRatio: null,
     interestRatio: null,
-    borrowedForPrograms: 0,
-    interestFromTaxes: 0,
-    borrowedForInterest: 0,
+    borrowed: 0,
+    interestCost: 0,
     debtShare: null,
-    basis: fy?.basis ?? null,
+    source: fy?.borrowingSource ?? null,
+    estimate: fy?.status === 'estimate',
     isProxy: link.isProxy,
   };
-  if (!fy || fy.balance === null || fy.interest === null || !fy.taxes) return empty;
-
-  const deficitRatio = -fy.balance / fy.taxes;
-  const interestRatio = fy.interest / fy.taxes;
-  const D = yourTaxes * Math.min(Math.max(deficitRatio, 0), interestRatio);
-  const C = yourTaxes * interestRatio - D;
-  const B = yourTaxes * deficitRatio - D;
-  const nfw = fy.netFinancialWorth;
+  if (!fy || !usable(fy)) return base;
+  const borrowRatio = fy.borrowing! / fy.taxes!;
+  const interestRatio = fy.interest !== null ? fy.interest / fy.taxes! : null;
   return {
-    ...empty,
-    deficitRatio,
+    ...base,
+    borrowRatio,
     interestRatio,
-    borrowedForPrograms: B,
-    interestFromTaxes: C,
-    borrowedForInterest: D,
-    debtShare: nfw === null || nfw === undefined ? null : yourTaxes * (-nfw / fy.taxes),
+    borrowed: yourTaxes * borrowRatio,
+    interestCost: interestRatio === null ? 0 : yourTaxes * interestRatio,
+    debtShare: fy.netDebt === null ? null : (yourTaxes * fy.netDebt) / fy.taxes!,
   };
+}
+
+/** Your share of a government's net debt in a given year, using your share of its LATEST tax revenue.
+ *  Holding your share fixed shows how the debt itself has grown, in nominal dollars. */
+export function debtShareAtFixedShare(seriesId: string, yourTaxes: number, year: number): number | null {
+  const s = SERIES[seriesId];
+  const ly = latestYear(seriesId);
+  if (!s || ly === null) return null;
+  const nd = s.years[String(year)]?.netDebt;
+  const taxesNow = s.years[String(ly)].taxes!;
+  return nd === null || nd === undefined ? null : (yourTaxes * nd) / taxesNow;
 }

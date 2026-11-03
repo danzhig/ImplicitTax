@@ -61,17 +61,28 @@ describe('combined marginal income tax rates (published 2026 values)', () => {
   });
 });
 
-describe('borrowing decomposition', () => {
-  it('splits deficit and interest without double counting', () => {
+describe('borrowing share', () => {
+  it('scales with your taxes and the borrowing ratio', () => {
     const d = deferredForLevel({ level: 'federal', seriesId: 'CA-federal', isProxy: false }, 10000, 2020);
-    expect(d.deficitRatio).not.toBeNull();
-    expect(d.borrowedForPrograms + d.borrowedForInterest).toBeCloseTo(10000 * d.deficitRatio!, 6);
-    expect(d.interestFromTaxes + d.borrowedForInterest).toBeCloseTo(10000 * d.interestRatio!, 6);
+    expect(d.borrowRatio).not.toBeNull();
+    expect(d.borrowed).toBeCloseTo(10000 * d.borrowRatio!, 6);
+    expect(d.interestCost).toBeCloseTo(10000 * d.interestRatio!, 6);
+    expect(d.borrowed).toBeGreaterThan(5000); // FY2020-21: net debt rose by about as much as a year of tax revenue
   });
-  it('gives a credit in surplus years', () => {
+  it('gives a credit when debt is paid down', () => {
     const d = deferredForLevel({ level: 'federal', seriesId: 'CA-federal', isProxy: false }, 10000, 2007);
-    expect(d.borrowedForPrograms).toBeLessThan(0);
-    expect(d.borrowedForInterest).toBe(0);
+    expect(d.borrowed).toBeLessThan(0);
+  });
+  it('uses official provincial net debt (Ontario borrowed every year since 2006)', () => {
+    for (const y of [2016, 2017, 2021, 2024]) {
+      const d = deferredForLevel({ level: 'provincial', seriesId: 'CA-ON', isProxy: false }, 10000, y);
+      expect(d.borrowed).toBeGreaterThan(0);
+    }
+  });
+  it('leaves a gap rather than inventing a number', () => {
+    const d = deferredForLevel({ level: 'federal', seriesId: 'CA-federal', isProxy: false }, 10000, 2008);
+    expect(d.borrowRatio).toBeNull();
+    expect(d.borrowed).toBe(0);
   });
 });
 

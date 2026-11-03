@@ -1,29 +1,37 @@
-"""Build data/fiscal/ca.json from StatCan government finance tables.
+"""Build data/fiscal/ca.json: how much each Canadian government borrowed on your behalf each year,
+its interest bill and its net debt.
 
 Usage: python3 scripts/build_fiscal_ca.py <cache-dir-from-fetch_statcan.sh>
 
-All money is in CAD millions. For each government and year we keep:
-  revenue     total revenue (incl. transfers from other governments)
-  taxes       taxes + social contributions (the "tax base" used to allocate deficits)
-  interest    interest expense (debt charges)
-  balance     accrual operating balance: revenue - expense (expense includes depreciation of
-              infrastructure, so long-lived capital is spread over its useful life).
-              Negative = deficit. This is the GFS "net operating balance".
-  netFinancialWorth  stock at year end: financial assets - liabilities (negative = net debt)
-Why not GFS "net lending/borrowing"? In StatCan's provincial tables the non-financial asset
-flows include revaluations (e.g. Alberta's oil reserves), which makes net lending swing by
-tens of billions. The operating balance is clean and consistent across all levels.
-Sources and bases:
-  GFS = Canadian Government Finance Statistics (current standard, accrual)
-  FMS = Financial Management System (older StatCan basis, used to extend history before 2007)
+Borrowing = increase in net debt (liabilities minus financial assets). That is the money actually
+borrowed: operating deficits plus borrowing for infrastructure, net of financial assets bought with
+it. It can only fall when a government runs a cash surplus and pays debt down.
+
+Sources (the cleanest available for each level):
+  Federal      public accounts net debt at March 31 (StatCan 10-10-0002, from 2009) and the
+               historical net federal debt (10-10-0048, to FY2007-08).
+  Provinces    each province's own published net debt (data/fiscal/ca_official_net_debt.csv:
+               Ontario budgets and Form 18-K, Alberta annual reports, BC Financial and Economic
+               Reviews). Older years: StatCan FMS net debt (10-10-0055) or deficit (10-10-0040).
+  Municipal    national accounts net borrowing (StatCan 36-10-0450, transactions only, 2007+);
+               older years FMS (10-10-0055 / 10-10-0042). Net debt level from GFS (10-10-0020).
+  Taxes and interest (the base for splitting borrowing between taxpayers): StatCan GFS from 2008
+               (fiscal year 10-10-0016; provinces 10-10-0147 minus 10-10-0020) and FMS before.
+  CPP/QPP are separate pension funds and are excluded everywhere. StatCan treats public-sector
+  pension plans as outside government, so pension-fund surpluses never reduce net debt here.
+
+Year labels: federal and provincial years are fiscal years labelled by the year they START in
+(2016 = April 2016 to March 2017). Municipal years are calendar years. Amounts in CAD millions.
 """
 import csv, json, sys, datetime, pathlib
 from collections import defaultdict
 
+ROOT = pathlib.Path(__file__).resolve().parent.parent
 CACHE = pathlib.Path(sys.argv[1])
-OUT = pathlib.Path(__file__).resolve().parent.parent / "data" / "fiscal" / "ca.json"
+OUT = ROOT / "data" / "fiscal" / "ca.json"
+OFFICIAL = ROOT / "data" / "fiscal" / "ca_official_net_debt.csv"
 PROVINCES = {"Ontario": "ON", "Alberta": "AB", "British Columbia": "BC"}
-FIRST_YEAR = 2000
+FIRST, LAST = 2000, 2025
 
 
 def rows(name):
@@ -38,164 +46,246 @@ def num(v, scale=1.0):
         return None
 
 
+def blank():
+    return {"taxes": None, "interest": None, "borrowing": None, "netDebt": None,
+            "borrowingSource": None, "status": "actual", "notes": []}
+
+
 series = {}
 
 
-def put(key, label, year, rec):
-    s = series.setdefault(key, {"label": label, "years": {}})
-    s["years"][str(year)] = rec
+def get(key, label, L):
+    return series.setdefault(key, {"label": label, "years": {}})["years"].setdefault(str(L), blank())
 
 
-# ---------- Federal: GFS annual (calendar years), table 10-10-0172 ----------
-fed = defaultdict(dict)
-for r in rows("10100172"):
-    if r["Government sectors"] != "Federal government":
-        continue
-    fed[int(r["REF_DATE"])][r["Statement of government operations and balance sheet"]] = num(r["VALUE"])
-for y, v in sorted(fed.items()):
-    if y < FIRST_YEAR or v.get("Revenue") is None:
-        continue
-    put("CA-federal", "Government of Canada", y, {
-        "revenue": v["Revenue"],
-        "taxes": (v.get("Taxes") or 0) + (v.get("Social contributions") or 0),
-        "interest": v["Interest"],
-        "balance": v["Net operating balance"],
-        "netFinancialWorth": v.get("Net financial worth"),
-        "basis": "GFS", "status": "actual", "table": "10-10-0172",
-    })
+# ------------------------------------------------------------------ StatCan sources
+# FMS: REF_DATE = fiscal year ENDING in that year -> label = REF - 1 (municipal FMS is calendar).
+FMS_TAX = ["Income taxes", "Consumption taxes", "Property and related taxes", "Other taxes",
+           "Health and drug insurance premiums", "Contributions to social security plans"]
+fms = defaultdict(lambda: defaultdict(dict))
+for r in rows("10100040"):
+    fms[(r["GEO"], r["Government sectors"][:7])][int(r["REF_DATE"]) - 1][r["Revenue and expenditure"]] = num(r["VALUE"])
+fms_nfd = defaultdict(dict)
+for r in rows("10100055"):
+    v = num(r["VALUE"])
+    if v is not None:
+        local = r["Government sectors"].startswith("Local")
+        fms_nfd[(r["GEO"], r["Government sectors"][:7])][int(r["REF_DATE"]) - (0 if local else 1)] = v
+fms_local = defaultdict(lambda: defaultdict(dict))
+for r in rows("10100042"):
+    fms_local[r["GEO"]][int(r["REF_DATE"])][r["Revenue and expenditure"]] = num(r["VALUE"], 0.001)
+
+ITEMS = ["Taxes [11]", "Social contributions [12]", "Interest expense [24]"]
 
 
-# ---------- Provinces and municipalities: GFS 2008+ (fiscal year closest to Dec 31) ----------
-# Provincial level = consolidated provincial + local public sector (table 10-10-0147)
-# minus municipalities (10-10-0020). This keeps hospitals, school boards, colleges and
-# universities with the province (as provincial public accounts do) and leaves cities separate.
-# Balances and taxes are not affected by consolidation, so the subtraction is exact for them;
-# revenue and interest are approximate (inter-government transfers/interest are netted out).
-ITEMS = ["Revenue [1]", "Taxes [11]", "Social contributions [12]", "Interest expense [24]", "Net operating balance"]
-
-
-def gfs_by_province(table, component=None):
+def gfs(table, component=None, geos=PROVINCES):
     out = defaultdict(lambda: defaultdict(dict))
     for r in rows(table):
-        if r["GEO"] not in PROVINCES:
+        if r["GEO"] not in geos or (component and r["Public sector components"] != component):
             continue
-        if component and r["Public sector components"] != component:
+        v, item = num(r["VALUE"]), r["Statement of operations and balance sheet"]
+        if v is None:
             continue
-        item = r["Statement of operations and balance sheet"]
-        val = num(r["VALUE"])
-        if val is None:
-            continue
-        if r["Display value"].startswith("Trans") and item in ITEMS:
-            out[r["GEO"]][int(r["REF_DATE"])][item] = val
+        if r["Display value"].startswith("Trans") and item in ITEMS + ["Revenue [1]"]:
+            out[r["GEO"]][int(r["REF_DATE"])][item] = v
         elif r["Display value"] == "Stocks" and item == "Net financial worth":
-            out[r["GEO"]][int(r["REF_DATE"])]["NFW"] = val
+            out[r["GEO"]][int(r["REF_DATE"])]["NFW"] = v
     return out
 
 
-def complete(v):
-    return all(k in v for k in ITEMS)
+muni = gfs("10100020")
+cons = gfs("10100147", "Consolidated provincial-territorial and local governments")
+sna_local = defaultdict(dict)
+for r in rows("36100450"):
+    if r["GEO"] in PROVINCES and r["Levels of government"] == "Local general governments" \
+            and r["Estimates"] == "Equals: net lending or net borrowing" and num(r["VALUE"]) is not None:
+        sna_local[r["GEO"]][int(r["REF_DATE"])] = num(r["VALUE"])
 
+# ------------------------------------------------------------------ federal
+FED = ("CA-federal", "Government of Canada")
+for r in rows("10100048"):
+    if r["Government debt"] == "Net federal government financial debt" and num(r["VALUE"]) is not None:
+        L = int(r["REF_DATE"]) - 1
+        if L >= FIRST - 1:
+            y = get(*FED, L)
+            y["netDebt"], y["_stock"] = num(r["VALUE"]), "historical"
+pa_net, monthly_balance, pdc, rev = {}, {}, defaultdict(float), defaultdict(float)
+for r in rows("10100002"):
+    if r["Central government debt"] == "B. Net debt, (C - D)" and num(r["VALUE"]) is not None:
+        pa_net[r["REF_DATE"]] = num(r["VALUE"])
+for r in rows("10100133"):
+    v = num(r["VALUE"])
+    if v is None:
+        continue
+    yy, mm = map(int, r["REF_DATE"].split("-"))
+    L = yy if mm >= 4 else yy - 1
+    item = r["Central government operations"]
+    if item.startswith("A. Budgetary balance"):
+        monthly_balance[r["REF_DATE"]] = v
+    elif item == "Public debt charges":
+        pdc[L] += v
+    elif item == "B. Revenues":
+        rev[L] += v
+for ref, v in pa_net.items():
+    yy, mm = map(int, ref.split("-"))
+    if mm == 3:
+        y = get(*FED, yy - 1)
+        y["netDebt"], y["_stock"] = v, "public accounts"
+# Monthly net debt starts September 2009: back out March 2009 by undoing Apr-Sep 2009 balances.
+first = min(pa_net)
+y = get(*FED, 2008)
+y["netDebt"] = pa_net[first] + sum(v for k, v in monthly_balance.items() if "2009-04" <= k <= first)
+y["_stock"] = "public accounts"
+y["notes"].append("March 2009 net debt estimated from September 2009 and the monthly budget balances in between.")
 
-muni = gfs_by_province("10100020")
-cons = gfs_by_province("10100147", "Consolidated provincial-territorial and local governments")
-for geo in PROVINCES:
-    for y, m in muni[geo].items():
-        if not complete(m):
-            continue
-        put(f"CA-{PROVINCES[geo]}-local", f"All municipalities in {geo}", y, {
-            "revenue": m["Revenue [1]"],
-            "taxes": m["Taxes [11]"] + m["Social contributions [12]"],
-            "interest": m["Interest expense [24]"],
-            "balance": m["Net operating balance"],
-            "netFinancialWorth": m.get("NFW"),
-            "basis": "GFS", "status": "actual", "table": "10-10-0020",
-        })
-        c = cons[geo].get(y)
-        if not c or not complete(c):
-            continue
-        put(f"CA-{PROVINCES[geo]}", f"Government of {geo} (incl. hospitals, schools, colleges)", y, {
-            "revenue": c["Revenue [1]"] - m["Revenue [1]"],
-            "taxes": (c["Taxes [11]"] + c["Social contributions [12]"]) - (m["Taxes [11]"] + m["Social contributions [12]"]),
-            "interest": c["Interest expense [24]"] - m["Interest expense [24]"],
-            "balance": c["Net operating balance"] - m["Net operating balance"],
-            "netFinancialWorth": (c["NFW"] - m["NFW"]) if "NFW" in c and "NFW" in m else None,
-            "basis": "GFS", "status": "actual", "table": "10-10-0147 minus 10-10-0020",
-        })
+gfs_fed = defaultdict(dict)
+for r in rows("10100016"):
+    if r["Display value"].startswith("Trans") and num(r["VALUE"]) is not None:
+        gfs_fed[int(r["REF_DATE"])][r["Statement of operations and balance sheet"]] = num(r["VALUE"])
+for L in range(FIRST, LAST + 1):
+    y, p = get(*FED, L), get(*FED, L - 1)
+    f = fms[("Canada", "Federal")].get(L)
+    if L <= 2007 and f:
+        y["taxes"] = sum(f.get(k) or 0 for k in FMS_TAX)
+        y["interest"] = f.get("Debt charges")
+    else:
+        g = gfs_fed.get(L, {})
+        if "Taxes [11]" in g:
+            y["taxes"] = g["Taxes [11]"] + (g.get("Social contributions [12]") or 0)
+        elif L == LAST:
+            g0 = gfs_fed[L - 1]
+            y["taxes"] = (g0["Taxes [11]"] + (g0.get("Social contributions [12]") or 0)) * rev[L] / rev[L - 1]
+            y["status"] = "estimate"
+            y["notes"].append("Tax revenue estimated from monthly revenue growth; StatCan GFS figures not yet published.")
+        y["interest"] = pdc.get(L) or g.get("Interest expense [24]")
+    if y["netDebt"] is not None and p["netDebt"] is not None:
+        y["borrowing"] = y["netDebt"] - p["netDebt"]
+        if y.get("_stock") == p.get("_stock"):
+            y["borrowingSource"] = f"change in {y['_stock']} net debt"
+        else:
+            # The two net debt series use different definitions; their difference is not borrowing.
+            y["borrowing"] = None
+            y["notes"].append("No figure: the net debt series switches from StatCan's historical federal debt to public accounts net debt here.")
 
+# ------------------------------------------------------------------ provinces
+official = defaultdict(lambda: defaultdict(dict))  # prov -> series -> year -> (value, source)
+series_order = defaultdict(list)
+with open(OFFICIAL) as fh:
+    for r in csv.DictReader(fh):
+        official[r["province"]][r["series"]][int(r["year"])] = (float(r["net_debt"]), r["source"])
+        if r["series"] not in series_order[r["province"]]:
+            series_order[r["province"]].append(r["series"])
+# newest series last in file order per province (file is written oldest -> newest)
 
-# ---------- Before 2007: FMS basis ----------
-fms = defaultdict(lambda: defaultdict(dict))
-for r in rows("10100040"):
-    if r["GEO"] in PROVINCES and r["Government sectors"].startswith("Provincial"):
-        fms[r["GEO"]][int(r["REF_DATE"])][r["Revenue and expenditure"]] = num(r["VALUE"])
-FMS_TAX = ["Income taxes", "Consumption taxes", "Property and related taxes", "Other taxes",
-           "Health and drug insurance premiums", "Contributions to social security plans"]
-for geo, years in fms.items():
-    for y, v in years.items():
-        if y < FIRST_YEAR or y >= 2008 or v.get("Total revenue") is None:
-            continue
-        put(f"CA-{PROVINCES[geo]}", f"Government of {geo}", y, {
-            "revenue": v["Total revenue"],
-            "taxes": sum(v.get(k) or 0 for k in FMS_TAX),
-            "interest": v.get("Debt charges"),
-            "balance": v.get("Surplus (+) / deficit (-)"),
-            "basis": "FMS", "status": "actual", "table": "10-10-0040",
-        })
+for geo, code in PROVINCES.items():
+    key = (f"CA-{code}", f"Government of {geo} (incl. hospitals, schools, colleges)")
+    order = series_order[code][::-1]  # newest first
+    for L in range(FIRST - 1, LAST + 1):
+        y = get(*key, L)
+        # net debt level: newest official series that has the year, else StatCan FMS
+        for s in order:
+            if L in official[code][s]:
+                y["netDebt"], src = official[code][s][L]
+                y["_netDebtSource"] = src
+                break
+        else:
+            if L in fms_nfd[(geo, "Provinc")]:
+                y["netDebt"] = fms_nfd[(geo, "Provinc")][L]
+                y["_netDebtSource"] = "StatCan FMS net debt (10-10-0055)"
+        # borrowing: change within the newest official series that has both years
+        for s in order:
+            o = official[code][s]
+            if L in o and L - 1 in o:
+                y["borrowing"] = o[L][0] - o[L - 1][0]
+                y["borrowingSource"] = f"change in official net debt: {o[L][1]}"
+                break
+        else:
+            # crossing from an older edition to a newer one (restatements are usually small)
+            newer = next((s for s in order if L in official[code][s]), None)
+            older = next((s for s in order if s != newer and L - 1 in official[code][s]), None)
+            if newer and older:
+                y["borrowing"] = official[code][newer][L][0] - official[code][older][L - 1][0]
+                y["borrowingSource"] = f"change in official net debt across editions: {official[code][newer][L][1]}"
+            elif L in fms_nfd[(geo, "Provinc")] and L - 1 in fms_nfd[(geo, "Provinc")]:
+                y["borrowing"] = fms_nfd[(geo, "Provinc")][L] - fms_nfd[(geo, "Provinc")][L - 1]
+                y["borrowingSource"] = "change in StatCan FMS net debt (10-10-0055)"
+            elif fms[(geo, "Provinc")].get(L, {}).get("Surplus (+) / deficit (-)") is not None:
+                y["borrowing"] = -fms[(geo, "Provinc")][L]["Surplus (+) / deficit (-)"]
+                y["borrowingSource"] = "StatCan FMS deficit (10-10-0040); no net debt figure for this year"
+        # taxes and interest
+        m, c = muni[geo].get(L, {}), cons[geo].get(L, {})
+        if L >= 2008 and all(k in c and k in m for k in ITEMS):
+            y["taxes"] = (c["Taxes [11]"] + c["Social contributions [12]"]) - (m["Taxes [11]"] + m["Social contributions [12]"])
+            y["interest"] = c["Interest expense [24]"] - m["Interest expense [24]"]
+        elif fms[(geo, "Provinc")].get(L):
+            f = fms[(geo, "Provinc")][L]
+            y["taxes"] = sum(f.get(k) or 0 for k in FMS_TAX)
+            y["interest"] = f.get("Debt charges")
+        if L == 2025 and y["netDebt"] is not None:
+            prev = series[key[0]]["years"].get(str(L - 1), {})
+            y["taxes"] = y["taxes"] or prev.get("taxes")
+            y["interest"] = y["interest"] or prev.get("interest")
+            y["status"] = "estimate"
+            y["notes"].append("2025-26 net debt is the province's interim/forecast figure; taxes and interest carried forward from 2024-25.")
 
-fmsl = defaultdict(lambda: defaultdict(dict))
-for r in rows("10100042"):
-    if r["GEO"] in PROVINCES:
-        fmsl[r["GEO"]][int(r["REF_DATE"])][r["Revenue and expenditure"]] = num(r["VALUE"], 0.001)  # thousands -> millions
-LOCAL_TAX = ["Property and related taxes, revenue", "Consumption taxes, revenue", "Other taxes, revenue"]
-for geo, years in fmsl.items():
-    for y, v in years.items():
-        if y < FIRST_YEAR or y >= 2008 or v.get("Total revenue") is None:
-            continue
-        put(f"CA-{PROVINCES[geo]}-local", f"All municipalities in {geo}", y, {
-            "revenue": v["Total revenue"],
-            "taxes": sum(v.get(k) or 0 for k in LOCAL_TAX),
-            "interest": v.get("Debt charges, expenditures"),
-            "balance": v.get("Surplus (+) / deficit (-)"),
-            "basis": "FMS", "status": "actual", "table": "10-10-0042",
-        })
+    # ------------------------------------------------------------------ municipalities (calendar years)
+    lkey = (f"CA-{code}-local", f"All municipalities in {geo}")
+    for L in range(FIRST - 1, LAST + 1):
+        z = get(*lkey, L)
+        m = muni[geo].get(L, {})
+        if "NFW" in m:
+            z["netDebt"] = -m["NFW"]
+        elif L in fms_nfd[(geo, "Local g")]:
+            z["netDebt"] = fms_nfd[(geo, "Local g")][L]
+        if L in sna_local[geo]:
+            z["borrowing"] = -sna_local[geo][L]
+            z["borrowingSource"] = "national accounts net borrowing (StatCan 36-10-0450)"
+        elif L in fms_nfd[(geo, "Local g")] and L - 1 in fms_nfd[(geo, "Local g")]:
+            z["borrowing"] = fms_nfd[(geo, "Local g")][L] - fms_nfd[(geo, "Local g")][L - 1]
+            z["borrowingSource"] = "change in StatCan FMS net debt (10-10-0055)"
+        elif fms_local[geo].get(L, {}).get("Surplus (+) / deficit (-)") is not None:
+            z["borrowing"] = -fms_local[geo][L]["Surplus (+) / deficit (-)"]
+            z["borrowingSource"] = "StatCan FMS deficit (10-10-0042)"
+        if L >= 2007 and "Taxes [11]" in m and "Interest expense [24]" in m:
+            z["taxes"] = m["Taxes [11]"] + (m.get("Social contributions [12]") or 0)
+            z["interest"] = m["Interest expense [24]"]
+        elif fms_local[geo].get(L, {}).get("Total revenue") is not None:
+            f = fms_local[geo][L]
+            z["taxes"] = sum(f.get(k) or 0 for k in ["Property and related taxes, revenue", "Consumption taxes, revenue", "Other taxes, revenue"])
+            z["interest"] = f.get("Debt charges, expenditures")
 
-# ---------- Individual cities, 2018-2020 (cross-check only) ----------
-CITY_GEO = {"Toronto (C), Ontario": "toronto", "Calgary (CY), Alberta": "calgary", "Vancouver (CY), British Columbia": "vancouver"}
-city = defaultdict(lambda: defaultdict(dict))
-for r in rows("10100169"):
-    if r["GEO"] in CITY_GEO:
-        city[CITY_GEO[r["GEO"]]][int(r["REF_DATE"])][r["Statement of operations and balance sheet"]] = num(r["VALUE"], 0.001)
-city_check = {}
-for cid, years in city.items():
-    for y, v in years.items():
-        city_check.setdefault(cid, {})[str(y)] = {
-            "revenue": v.get("Revenue [1]"),
-            "taxes": (v.get("Taxes [11]") or 0) + (v.get("Social contributions [12]") or 0),
-            "interest": v.get("Interest expense [24]"),
-            "netOperatingBalance": v.get("Net operating balance"),
-        }
-
+# ------------------------------------------------------------------ tidy and write
 for s in series.values():
-    s["years"] = dict(sorted(s["years"].items()))
+    keep = {}
+    for k, v in sorted(s["years"].items()):
+        if int(k) < FIRST or all(v[f] is None for f in ("taxes", "borrowing", "netDebt")):
+            continue
+        for f in [f for f in v if f.startswith("_")]:
+            del v[f]
+        if not v["notes"]:
+            del v["notes"]
+        keep[k] = v
+    s["years"] = keep
 
 out = {
     "generated": datetime.date.today().isoformat(),
     "currency": "CAD", "unit": "millions",
     "notes": [
-        "Federal: calendar years (GFS annual, table 10-10-0172). CPP/QPP are a separate sector and excluded.",
-        "Provinces and municipalities: GFS 2008+ uses the fiscal year closest to Dec 31 (e.g. 2024 = FY2024-25).",
-        "Provincial level = consolidated provincial + local public sector minus municipalities, so hospitals, school boards and colleges count with the province.",
-        "Before 2008 the older FMS basis is used (tables 10-10-0040 and 10-10-0042); there is a series break at 2008. FMS provincial figures cover core government only.",
-        "Local government 2006-2007 is missing (FMS ends 2005, GFS operating balances start 2008).",
-        "balance = accrual operating balance (GFS net operating balance); negative = deficit.",
-        "City lines use all municipalities in the province as a proxy; city-specific data (2018-2020) is kept in cityCheck.",
+        "Borrowing = increase in net debt (debts minus financial assets): operating deficits plus borrowing for infrastructure. Negative = debt paid down.",
+        "Federal and provincial years are fiscal years labelled by the year they start (2016 = April 2016 to March 2017). Municipal years are calendar years.",
+        "Federal: public accounts net debt (StatCan 10-10-0002) from 2009; historical net federal debt (10-10-0048) before.",
+        "Provinces: each province's own published net debt (Ontario budgets and Form 18-K, Alberta annual reports, BC Financial and Economic Reviews); see data/fiscal/ca_official_net_debt.csv. Ontario before 2006 uses StatCan FMS net debt.",
+        "Municipalities: national accounts net borrowing (transactions only, StatCan 36-10-0450) from 2007; StatCan FMS before; 2006 missing. City lines use all municipalities in the province.",
+        "Taxes and interest come from StatCan government finance statistics. CPP/QPP are excluded everywhere.",
     ],
     "series": series,
-    "cityCheck": city_check,
 }
-OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(json.dumps(out, indent=1))
 print(f"wrote {OUT}")
 for k, s in series.items():
-    ys = list(s["years"])
-    print(k, ys[0], "->", ys[-1], len(ys), "years")
+    print(f"\n== {k}")
+    for yk, v in s["years"].items():
+        fmt = lambda x: "      -" if x is None else f"{x/1000:7.1f}"
+        t, b = v["taxes"], v["borrowing"]
+        ratio = f"{b / t * 100:6.1f}%" if b is not None and t else "     -"
+        print(f"  {yk} tax {fmt(t)} borrow {fmt(b)} int {fmt(v['interest'])} netDebt {fmt(v['netDebt'])} b/t {ratio} {v['status'][:3]} | {(v['borrowingSource'] or '')[:70]}")

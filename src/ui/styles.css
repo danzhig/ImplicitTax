@@ -81,6 +81,8 @@ main { min-width: 0; }
 .field-input input:focus { outline: none; }
 .field-input:focus-within, .field select:focus, .name-field input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .suffix { padding: 0 9px 0 2px; color: var(--muted); font-size: 12px; }
+.local { color: var(--muted); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.currency-note { margin: 0 0 10px; }
 input[type='range'] { width: 100%; accent-color: var(--accent); }
 .check { display: flex; gap: 8px; align-items: flex-start; margin: 4px 0 10px; color: var(--text-2); }
 .check input { margin-top: 3px; accent-color: var(--accent); }
