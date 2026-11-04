@@ -168,7 +168,7 @@ out = {
     "notes": [
         "Borrowing = net borrowing in the national accounts (ESA 2010 B.9): the increase in financial liabilities minus financial assets from transactions, so revaluations of assets never count.",
         "Social security funds are excluded, like the CPP. Luxembourg's and Switzerland's build large pension reserves whose surpluses would otherwise hide central government borrowing. Social contributions are therefore not allocated any borrowing.",
-        "Norway's central government includes the oil fund (GPFG): petroleum revenue and fund returns are saved, so it shows large net lending (negative borrowing).",
+        "Norway's central government includes the oil fund (GPFG): petroleum revenue and fund returns are saved, so it shows large net lending (negative borrowing). Unlike the CPP, which holds contributions owned by members and can only pay pensions, the oil fund is owned by the state and pays for the budget every year, so its saving is a real credit to residents and is kept.",
         "Ireland 2010 includes the bank recapitalisations (about EUR 30bn of capital transfers).",
         "Bavaria and Zurich are shown through all German Länder and all Swiss cantons; every city through all local governments in its country.",
         "UK: ONS public sector finances, fiscal years April-March (2024 = 2024-25). Taxes include National Insurance, which is part of central government. Local interest excludes interest paid to central government (PWLB).",

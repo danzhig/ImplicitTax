@@ -24,7 +24,10 @@ EUR 0.864, CHF 0.7984, GBP 0.7443, NOK 9.5396, DKK 6.4567 (CAD comes out at 1.38
 - Denmark: Eurostat withholds the central government balance for 2024-25; Statistics Denmark table
   OFF3 gives it (net lending DKK 112bn in 2024, 90bn in 2025).
 - Norway's central government includes the oil fund, so it shows large net lending (about -38% of its
-  taxes in 2025): Oslo's "borrowed on your behalf" is negative. **Decision to confirm with the user.**
+  taxes in 2025): Oslo's "borrowed on your behalf" is negative. **Decided (user): keep it.** The CPP
+  is excluded because it holds contributions owned by members and can only pay pensions; it cannot
+  cover a deficit. The oil fund is owned by the state and transfers money to the budget every year, so
+  its saving works like a benefit to residents and stays in the calculation.
 - Ireland 2010 includes about EUR 30bn of bank recapitalisations.
 - Proxies: Bavaria = all Länder, Zurich canton = all cantons, every city = all local governments.
 

@@ -90,7 +90,7 @@ export function MethodView() {
         <ul>
           <li><b>Borrowing</b> is national-accounts net borrowing (B.9) by level of government, from Eurostat (Switzerland, Germany, Luxembourg, Ireland, Norway,
             Denmark), the ONS for the UK and Statistics Denmark for its latest years. Social security funds are left out, like the CPP: Luxembourg's and
-            Switzerland's build large pension reserves. Norway's central government includes the oil fund, so it shows saving, not borrowing.</li>
+            Switzerland's build large pension reserves. Norway's central government includes the oil fund, so it shows saving, not borrowing. That credit is kept on purpose: unlike the CPP, whose assets belong to its members and can only pay pensions, the oil fund is owned by the state and pays part of the budget every year.</li>
           <li><b>Germany (Munich):</b> 2026 tariff, solidarity surcharge, 25% flat tax on capital income, church tax (optional); pension, health, care and
             unemployment insurance, with pension, health and care deducted from taxable income; Kindergeld or the child allowance, whichever is better. Income tax and
             VAT are shared between the federal government, Bavaria and Munich in their legal proportions.</li>
