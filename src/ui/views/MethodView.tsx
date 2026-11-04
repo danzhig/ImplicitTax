@@ -1,4 +1,5 @@
 import consumption from '../../../data/consumption/ca.json';
+import usConsumption from '../../../data/consumption/us.json';
 import { FISCAL_NOTES } from '../../engine';
 
 export function MethodView() {
@@ -19,13 +20,18 @@ export function MethodView() {
           <li><b>Your share</b> = the taxes you pay that government × (what it borrowed ÷ its tax revenue). If Ottawa's net debt rose 12¢ for every $1 of tax it
             collected, your federal taxes are effectively 12% higher.</li>
           <li><b>Interest</b> on past debt is shown separately. It is already part of what your taxes pay for, so it is never added again.</li>
-          <li><b>Sources, chosen to avoid accounting adjustments:</b> federal public-accounts net debt (Statistics Canada); each province's own published
+          <li><b>Sources (Canada), chosen to avoid accounting adjustments:</b> federal public-accounts net debt (Statistics Canada); each province's own published
             net debt (Ontario budgets, Alberta annual reports, BC Financial and Economic Reviews); municipal net borrowing from the national accounts, which
             records only actual transactions. CPP and QPP are separate pension funds and are excluded, and pension-fund surpluses never reduce debt here.</li>
+          <li><b>Sources (US):</b> federal borrowing is the change in debt held by the public (OMB Historical Tables), so trust-fund balances such as Social
+            Security never offset it. States and local governments use the Census Bureau's Annual Survey of State and Local Government Finances: the change in
+            total debt outstanding, or long-term debt issued minus retired where survey formats change. US states report gross debt, not net debt, so their
+            savings funds are not subtracted.</li>
           <li><b>Provinces</b> include their hospitals, school boards, colleges and universities. <b>Cities</b> use all municipalities in the province as a
-            stand-in. Municipalities mostly run surpluses because they may not borrow for operating costs.</li>
-          <li><b>History</b> holds your persona and today's tax rules fixed and applies each year's borrowing and interest. Years are fiscal years starting
-            in April (2016 = 2016-17), except municipal years, which are calendar years.</li>
+            stand-in; US cities use all local governments in the state (counties, cities, school and special districts). Municipalities mostly run surpluses because they may not borrow for operating costs.</li>
+          <li><b>History</b> holds your persona and today's tax rules fixed and applies each year's borrowing and interest. Canadian years are fiscal years starting
+            in April (2016 = 2016-17), except municipal years, which are calendar years. US federal years end September 30; state and local years are
+            the governments' own fiscal years ending in that year.</li>
           <li><b>Inflation is excluded on purpose.</b> Borrowing is already counted in full, and inflating debt away is one way it gets paid, so counting both
             would be double counting.</li>
         </ul>
@@ -56,9 +62,36 @@ export function MethodView() {
         </ul>
       </section>
       <section className="block">
+        <h2>United States: what's modelled</h2>
+        <ul>
+          <li>2026 federal income tax after the 2025 tax law: brackets, $16,100 standard deduction, the $40,400 state-and-local tax deduction cap (phased down above
+            $505,000), $2,200 child tax credit, 0/15/20% rates on dividends and long-term gains, 3.8% net investment income tax, senior deduction.</li>
+          <li>Filing status follows the persona: single, or married filing jointly with a partner.</li>
+          <li>Payroll: Social Security 6.2% up to $184,500, Medicare 1.45% plus 0.9% above $200,000. The self-employed pay both halves and deduct half. State programs:
+            New York paid family leave and disability, California SDI, Washington paid leave and WA Cares. US payroll taxes give no income tax credit except
+            the self-employed deduction.</li>
+          <li>State and city income tax: New York (with its high-income recapture) and New York City; California (2025 schedules, the latest published, plus the
+            1% surcharge over $1M); Washington's capital gains tax; Texas has none.</li>
+          <li>Sales tax at the rate households actually pay on their spending basket ({usConsumption.notes[2]}).</li>
+          <li>Property tax by city, including homestead exemptions; transfer taxes (NYC mansion and mortgage recording taxes, San Francisco transfer tax,
+            Washington and Seattle excise tax) spread over the years you keep the home. Fuel, vehicle taxes and tariffs as in Canada.</li>
+        </ul>
+        <h3>Known gaps</h3>
+        <ul>
+          <li>No alternative minimum tax, earned income credit, state credits for renters or children, or Social Security benefit taxation.</li>
+          <li>California has not published 2026 schedules yet; 2025 schedules are used.</li>
+          <li>New York City and Seattle property tax rates are effective-rate estimates; San Francisco transfer tax tiers and Houston impact fees still need checking.</li>
+          <li>2001 and 2003 state and local borrowing use national ratios (the Census only published US totals those years) and are marked as estimates.</li>
+        </ul>
+      </section>
+      <section className="block">
         <h2>Data notes</h2>
-        <ul>{FISCAL_NOTES.map((n) => <li key={n}>{n}</li>)}</ul>
+        <h3>Canada</h3>
+        <ul>{FISCAL_NOTES.CA.map((n) => <li key={n}>{n}</li>)}</ul>
         <ul>{consumption.notes.map((n) => <li key={n}>{n}</li>)}</ul>
+        <h3>United States</h3>
+        <ul>{FISCAL_NOTES.US.map((n) => <li key={n}>{n}</li>)}</ul>
+        <ul>{usConsumption.notes.map((n) => <li key={n}>{n}</li>)}</ul>
         <p className="fine">Not tax advice. Everything runs in your browser; personas are stored only on your device.</p>
       </section>
     </div>

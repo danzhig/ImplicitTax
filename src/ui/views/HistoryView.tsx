@@ -1,3 +1,4 @@
+import { PlaceOptions } from '../components/PlaceOptions';
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
 import { history, PLACES, placeById, type HistoryRow } from '../../engine';
@@ -8,7 +9,7 @@ import { placeName } from '../model';
 import { useStore } from '../store';
 
 const EVENTS: [number, string][] = [[2008, 'Financial crisis'], [2015, 'Oil crash'], [2020, 'Pandemic'], [2022, 'Rate hikes'], [2025, 'Tariffs']];
-const LEVELS = [['federal', 'Federal'], ['provincial', 'Provincial'], ['local', 'City*']] as const;
+const LEVELS = [['federal', 'Federal'], ['provincial', 'Province / state'], ['local', 'Local*']] as const;
 
 function eventLines(selectedYear: number | 'latest') {
   const t = chartTheme();
@@ -95,7 +96,9 @@ export function HistoryView() {
   }, [rows, v, fx, years]);
 
   const last = rows[rows.length - 1];
-  const totalDebtNow = last ? LEVELS.reduce((s, [k]) => s + (last.debt[k] ?? 0), 0) / fx : 0;
+  // Each level's latest published year (US state and local figures lag the federal ones by a year).
+  const latestDebt = (k: (typeof LEVELS)[number][0]) => [...rows].reverse().find((r) => r.debt[k] !== null)?.debt[k] ?? 0;
+  const totalDebtNow = LEVELS.reduce((s, [k]) => s + latestDebt(k), 0) / fx;
 
   return (
     <div className="view">
@@ -108,7 +111,7 @@ export function HistoryView() {
         <div className="toolbar">
           <h2>Borrowed on your behalf each year</h2>
           <label className="field inline"><span className="field-label">City</span>
-            <select value={cityId} onChange={(e) => setCity(e.target.value)}>{PLACES.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}</select>
+            <select value={cityId} onChange={(e) => setCity(e.target.value)}><PlaceOptions /></select>
           </label>
         </div>
         <p className="lede">Your share of each government's new borrowing (the increase in its net debt) in {placeName(cityId)}, as a share of your income.
@@ -124,11 +127,12 @@ export function HistoryView() {
       <section className="block">
         <h2>Public debt you carry</h2>
         <p className="lede">Your share of each government's accumulated net debt in {placeName(cityId)}, in USD. Your share of today's tax revenue is held
-          fixed, so the bars show how the debt itself has built up. Today: <b>{usd(totalDebtNow)}</b>. Below zero = net financial assets
+          fixed, so the bars show how the debt itself has built up. Today (latest year for each level): <b>{usd(totalDebtNow)}</b>. Below zero = net financial assets
           (Alberta before 2016, and most municipalities).</p>
         <EChart option={debtChart} height={320} ariaLabel="Your share of public net debt over time" />
-        <p className="fine">Years are fiscal years starting in April (2016 = 2016-17), except city figures, which are calendar years. * City = all municipalities in the province.
-          Federal 2008-09 uses the audited deficit because the net debt series changes definition that year; city 2006 uses Canada-wide municipal figures.
+        <p className="fine">Canada: fiscal years starting in April (2016 = 2016-17); municipal figures are calendar years. US: federal fiscal years end September 30
+          (2016 = Oct 2015-Sep 2016); state and local figures are government fiscal years ending in that year, mostly June 30. * Local = all local governments in the province or state.
+          Canada: federal 2008-09 uses the audited deficit because the net debt series changes definition that year; city 2006 uses Canada-wide municipal figures.
           (est.) = estimates, or interim and forecast figures from the latest budgets.</p>
       </section>
     </div>

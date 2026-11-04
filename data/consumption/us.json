@@ -1,0 +1,99 @@
+{
+ "generated": "2026-11-04",
+ "spendingYear": 2024,
+ "notes": [
+  "Spending mix: BEA personal consumption expenditures by state (SAPCE1, 2024); health care and financial services reduced to the out-of-pocket share.",
+  "Taxable shares per category are estimates from each state's sales tax rules (groceries exempt in all four states; NY exempts clothing under $110; WA and TX tax many services; CA taxes few services).",
+  "Combined 2026 rates: NYC 8.875%, San Francisco 8.625%, Seattle 10.55%, Houston 8.25%."
+ ],
+ "cities": {
+  "nyc": {
+   "state": "NY",
+   "stateRate": 0.04,
+   "localRate": 0.04875,
+   "note": "NYC 8.875% = NY 4% + NYC 4.5% + MTA district 0.375%",
+   "taxableShare": 0.4683,
+   "groceryShare": 0.1201,
+   "basket": {
+    "Groceries and drinks for home": 0.1201,
+    "Clothing and footwear": 0.0513,
+    "Furnishings and household equipment": 0.0398,
+    "Recreational goods": 0.0456,
+    "Other durable goods": 0.0249,
+    "Other nondurable goods (incl. medicines)": 0.1617,
+    "Health care (out of pocket)": 0.0411,
+    "Transportation services": 0.068,
+    "Recreation services": 0.0616,
+    "Restaurants and hotels": 0.134,
+    "Financial services and insurance (explicit fees)": 0.0766,
+    "Other services (telecom, personal care, education, legal)": 0.1752
+   }
+  },
+  "sf": {
+   "state": "CA",
+   "stateRate": 0.039375,
+   "localRate": 0.046875,
+   "note": "San Francisco 8.625%; the state keeps 3.9375% of the 7.25% base rate, the rest funds counties, cities and districts",
+   "taxableShare": 0.4317,
+   "groceryShare": 0.1299,
+   "basket": {
+    "Groceries and drinks for home": 0.1299,
+    "Clothing and footwear": 0.0551,
+    "Furnishings and household equipment": 0.0407,
+    "Recreational goods": 0.0583,
+    "Other durable goods": 0.0275,
+    "Other nondurable goods (incl. medicines)": 0.1215,
+    "Health care (out of pocket)": 0.036,
+    "Transportation services": 0.069,
+    "Recreation services": 0.0884,
+    "Restaurants and hotels": 0.1455,
+    "Financial services and insurance (explicit fees)": 0.0676,
+    "Other services (telecom, personal care, education, legal)": 0.1604
+   }
+  },
+  "seattle": {
+   "state": "WA",
+   "stateRate": 0.065,
+   "localRate": 0.0405,
+   "note": "Seattle 10.55% from Jan 1, 2026 = WA 6.5% + local 4.05% (incl. Sound Transit)",
+   "taxableShare": 0.5449,
+   "groceryShare": 0.1327,
+   "basket": {
+    "Groceries and drinks for home": 0.1327,
+    "Clothing and footwear": 0.0432,
+    "Furnishings and household equipment": 0.0433,
+    "Recreational goods": 0.0859,
+    "Other durable goods": 0.0243,
+    "Other nondurable goods (incl. medicines)": 0.1205,
+    "Health care (out of pocket)": 0.034,
+    "Transportation services": 0.0883,
+    "Recreation services": 0.0833,
+    "Restaurants and hotels": 0.1221,
+    "Financial services and insurance (explicit fees)": 0.0612,
+    "Other services (telecom, personal care, education, legal)": 0.1613
+   }
+  },
+  "houston": {
+   "state": "TX",
+   "stateRate": 0.0625,
+   "localRate": 0.02,
+   "note": "Houston 8.25% = TX 6.25% + city 1% + METRO 1%",
+   "taxableShare": 0.5339,
+   "groceryShare": 0.1408,
+   "basket": {
+    "Groceries and drinks for home": 0.1408,
+    "Clothing and footwear": 0.0518,
+    "Furnishings and household equipment": 0.0474,
+    "Recreational goods": 0.0629,
+    "Other durable goods": 0.0282,
+    "Other nondurable goods (incl. medicines)": 0.1555,
+    "Health care (out of pocket)": 0.0316,
+    "Transportation services": 0.0569,
+    "Recreation services": 0.0749,
+    "Restaurants and hotels": 0.1373,
+    "Financial services and insurance (explicit fees)": 0.07,
+    "Other services (telecom, personal care, education, legal)": 0.1428
+   }
+  }
+ }
+}

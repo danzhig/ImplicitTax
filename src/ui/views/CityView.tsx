@@ -1,13 +1,14 @@
+import { PlaceOptions } from '../components/PlaceOptions';
 import { useMemo, useState } from 'react';
 import type { EChartsOption } from 'echarts';
-import { PLACES } from '../../engine';
+import { placeById } from '../../engine';
 import type { Level, PlaceResult } from '../../engine/types';
 import { axisStyle, baseOption, EChart, useThemeVersion } from '../charts/EChart';
 import { chartTheme, money, pct, usd } from '../format';
 import { placeName, toUsd } from '../model';
 import { useStore } from '../store';
 
-const LEVEL_LABEL: Record<Level, string> = { federal: 'Federal', provincial: 'Provincial', local: 'City / regional', social: 'CPP fund' };
+const levelNames = (r: PlaceResult): Record<Level, string> => placeById(r.placeId).levelNames;
 
 function Waterfall({ r }: { r: PlaceResult }) {
   const v = useThemeVersion();
@@ -17,7 +18,7 @@ function Waterfall({ r }: { r: PlaceResult }) {
     const steps: { label: string; value: number; kind: 'total' | 'step'; color: string }[] = [
       { label: 'Gross income', value: u(r.grossIncome), kind: 'total', color: t.axis },
       { label: 'Income tax', value: -u(r.byCategory.income), kind: 'step', color: t.series[0] },
-      { label: 'CPP / EI', value: -u(r.byCategory.payroll), kind: 'step', color: t.series[1] },
+      { label: 'Payroll taxes', value: -u(r.byCategory.payroll), kind: 'step', color: t.series[1] },
       { label: 'Sales & fuel', value: -u(r.byCategory.consumption), kind: 'step', color: t.series[2] },
       { label: 'Property', value: -u(r.byCategory.property), kind: 'step', color: t.series[3] },
       ...(Math.abs(r.byCategory.benefit) > 0.5 ? [{ label: 'Benefits', value: -u(r.byCategory.benefit), kind: 'step' as const, color: t.series[5] }] : []),
@@ -71,6 +72,7 @@ function FlowSankey({ r }: { r: PlaceResult }) {
   const v = useThemeVersion();
   const option = useMemo<EChartsOption>(() => {
     const t = chartTheme();
+    const LEVEL_LABEL = levelNames(r);
     const u = (x: number) => Math.max(0, Math.round(toUsd(r, x)));
     const nodes: { name: string; depth: number; itemStyle: { color: string } }[] = [];
     const links: { source: string; target: string; value: number; lineStyle?: object }[] = [];
@@ -87,7 +89,7 @@ function FlowSankey({ r }: { r: PlaceResult }) {
     node('Your income', 0, t.axis);
     if (u(borrowedTotal) > 0) node('Borrowed on your behalf', 1, t.series[4]);
     const cats: [string, keyof PlaceResult['byCategory'], number][] = [
-      ['Income tax', 'income', 0], ['CPP / EI', 'payroll', 1], ['Sales & fuel', 'consumption', 2], ['Property', 'property', 3],
+      ['Income tax', 'income', 0], ['Payroll taxes', 'payroll', 1], ['Sales & fuel', 'consumption', 2], ['Property', 'property', 3],
     ];
     for (const [label, key, slot] of cats) if (r.byCategory[key] > 0.5) { node(label, 1, t.series[slot]); link('Your income', label, u(r.byCategory[key])); }
 
@@ -119,9 +121,9 @@ function FlowSankey({ r }: { r: PlaceResult }) {
     // Colour each stream by what it carries: income flows take their destination's colour, flows out of
     // a tax type keep that colour, and flows out of a government take the colour of what they pay for.
     const colorOf = (name: string) => nodes.find((n) => n.name === name)?.itemStyle.color ?? t.muted;
-    const levelNames = new Set(levels.map((l) => LEVEL_LABEL[l]));
+    const levelSet = new Set(levels.map((l) => LEVEL_LABEL[l]));
     for (const l of links) {
-      const c = l.source === 'Your income' || levelNames.has(l.source) ? colorOf(l.target) : colorOf(l.source);
+      const c = l.source === 'Your income' || levelSet.has(l.source) ? colorOf(l.target) : colorOf(l.source);
       l.lineStyle = { color: c };
     }
     const used = new Set(links.flatMap((x) => [x.source, x.target]));
@@ -156,7 +158,7 @@ function BorrowingTable({ r }: { r: PlaceResult }) {
         <tbody>
           {r.deferred.map((d) => (
             <tr key={d.level}>
-              <td>{d.seriesLabel}{d.isProxy ? ' *' : ''} <span className="muted">({d.year === null ? 'no data' : fy(d.year, d.level)}{d.estimate ? ', estimate' : ''})</span></td>
+              <td>{d.seriesLabel}{d.isProxy ? ' *' : ''} <span className="muted">({d.year === null ? 'no data' : fy(d.year, d.level, placeById(r.placeId).countryCode)}{d.estimate ? ', estimate' : ''})</span></td>
               <td className="num">{u(d.yourTaxes)}</td>
               <td className="num">{d.borrowRatio === null ? '–' : pct(d.borrowRatio)}</td>
               <td className="num strong">{u(d.borrowed)}</td>
@@ -172,15 +174,17 @@ function BorrowingTable({ r }: { r: PlaceResult }) {
       </table>
       <p className="fine">Borrowing = the increase in each government's net debt that year (debts minus financial assets), so it includes borrowing for
         infrastructure; negative = debt paid down. Interest is already inside the taxes you pay, so it is shown but not added again.
-        * City figures use all municipalities in the province.</p>
+        * Local figures use all local governments in the {placeById(r.placeId).countryCode === 'US' ? 'state (cities, counties, school and special districts)' : 'province'}.</p>
     </div>
   );
 }
 
-const fy = (year: number, level: Level) => (level === 'local' ? String(year) : `${year}-${String((year + 1) % 100).padStart(2, '0')}`);
+const fy = (year: number, level: Level, country: string) =>
+  country === 'US' ? `FY${year}` : level === 'local' ? String(year) : `${year}-${String((year + 1) % 100).padStart(2, '0')}`;
 
 function LineItems({ r }: { r: PlaceResult }) {
   const [open, setOpen] = useState<string | null>(null);
+  const LEVEL_LABEL = levelNames(r);
   return (
     <div className="scroll-x">
       <table className="items">
@@ -227,7 +231,7 @@ export function CityView({ results }: { results: PlaceResult[] }) {
         <label className="field inline">
           <span className="field-label">City</span>
           <select value={r.placeId} onChange={(e) => setCity(e.target.value)}>
-            {PLACES.map((p) => <option key={p.id} value={p.id}>{p.name}, {p.region}</option>)}
+            <PlaceOptions withRegion />
           </select>
         </label>
         <div className="kpis">

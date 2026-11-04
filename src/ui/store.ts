@@ -84,8 +84,8 @@ export const useStore = create<State>((set, get) => {
     options: DEFAULT_OPTIONS,
     tab: 'compare',
     cityId: 'toronto',
-    fromId: 'calgary',
-    toId: 'toronto',
+    fromId: 'toronto',
+    toId: 'nyc',
     setWorking: (p) => { set({ working: p }); save(); },
     update: (f) => {
       const p = structuredClone(get().working);

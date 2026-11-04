@@ -2,8 +2,10 @@
 
 import { calculateCanada } from './ca/calculate';
 import { CITIES, FX_CAD_PER_USD } from './ca/params2026';
+import { calculateUs } from './us/calculate';
+import { US_CITIES } from './us/params2026';
 import { debtShareAtFixedShare, seriesYears } from './fiscal';
-import type { CalcOptions, Persona, PlaceResult } from './types';
+import type { CalcOptions, Level, Persona, PlaceResult } from './types';
 
 export * from './types';
 export { FISCAL_NOTES, getSeries, seriesYears } from './fiscal';
@@ -12,7 +14,10 @@ export interface Place {
   id: string;
   name: string;
   region: string;
-  country: string;
+  country: 'Canada' | 'United States';
+  countryCode: 'CA' | 'US';
+  /** What each level is called in this country. */
+  levelNames: Record<Level, string>;
   currency: string;
   /** Local currency per USD. */
   fx: number;
@@ -21,16 +26,37 @@ export interface Place {
   calculate: (p: Persona, opts: CalcOptions) => PlaceResult;
 }
 
-export const PLACES: Place[] = Object.values(CITIES).map((c) => ({
+const CA_LEVELS: Record<Level, string> = { federal: 'Federal', provincial: 'Provincial', local: 'City / regional', social: 'CPP fund' };
+const US_LEVELS: Record<Level, string> = { federal: 'Federal', provincial: 'State', local: 'City, county & schools', social: 'Pension fund' };
+const US_STATE_NAMES = { NY: 'New York', CA: 'California', WA: 'Washington', TX: 'Texas' } as const;
+
+const CANADA: Place[] = Object.values(CITIES).map((c) => ({
   id: c.id,
   name: c.name,
   region: c.province === 'AB' ? 'Alberta' : c.province === 'ON' ? 'Ontario' : 'British Columbia',
   country: 'Canada',
+  countryCode: 'CA',
+  levelNames: CA_LEVELS,
   currency: 'CAD',
   fx: FX_CAD_PER_USD,
   series: { federal: 'CA-federal', provincial: `CA-${c.province}`, local: `CA-${c.province}-local` },
   calculate: (p, o) => calculateCanada(p, c.id, o),
 }));
+
+const UNITED_STATES: Place[] = Object.values(US_CITIES).map((c) => ({
+  id: c.id,
+  name: c.name,
+  region: US_STATE_NAMES[c.state],
+  country: 'United States',
+  countryCode: 'US',
+  levelNames: US_LEVELS,
+  currency: 'USD',
+  fx: 1,
+  series: { federal: 'US-federal', provincial: `US-${c.state}`, local: `US-${c.state}-local` },
+  calculate: (p, o) => calculateUs(p, c.id, o),
+}));
+
+export const PLACES: Place[] = [...CANADA, ...UNITED_STATES];
 
 export const placeById = (id: string) => PLACES.find((p) => p.id === id)!;
 

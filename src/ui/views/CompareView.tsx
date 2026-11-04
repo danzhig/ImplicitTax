@@ -72,7 +72,7 @@ export function LevelBars({ results }: { results: PlaceResult[] }) {
     const t = chartTheme();
     const sorted = [...results].sort((a, b) => a.implicitRate - b.implicitRate);
     const levels: { key: 'federal' | 'provincial' | 'local' | 'social'; label: string }[] = [
-      { key: 'federal', label: 'Federal' }, { key: 'provincial', label: 'Provincial' }, { key: 'local', label: 'City / regional' }, { key: 'social', label: 'CPP (pension fund)' },
+      { key: 'federal', label: 'Federal' }, { key: 'provincial', label: 'Province / state' }, { key: 'local', label: 'City & local' }, { key: 'social', label: 'Pension fund' },
     ];
     const val = (r: PlaceResult, k: string) => {
       const d = r.deferred.find((x) => x.level === k);
@@ -160,7 +160,7 @@ export function CompareView({ results }: { results: PlaceResult[] }) {
       </section>
       <section className="block">
         <h2>Which government gets it</h2>
-        <p className="lede">Taxes plus borrowing, split by level. City borrowing uses all municipalities in the province as a stand-in.</p>
+        <p className="lede">Taxes plus borrowing, split by level. Local borrowing uses all local governments in the province or state as a stand-in.</p>
         <LevelBars results={results} />
       </section>
       <section className="block">

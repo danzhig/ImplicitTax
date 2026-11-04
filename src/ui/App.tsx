@@ -89,7 +89,7 @@ export function App() {
           {tab === 'curve' && <CurveView />}
           {tab === 'personas' && <PersonasView />}
           {tab === 'method' && <MethodView />}
-          <footer>Phase 1: Calgary, Toronto and Vancouver. 2026 tax rules, Statistics Canada fiscal data. Amounts in USD at {results[0].fx.toFixed(3)} CAD/USD. Not tax advice.</footer>
+          <footer>Canada and US cities. 2026 tax rules; fiscal data from Statistics Canada, provincial accounts, OMB and the Census Bureau. Amounts in USD (CAD at {results[0].fx.toFixed(3)} per USD). Not tax advice.</footer>
         </main>
       </div>
     </div>

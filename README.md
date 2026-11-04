@@ -7,9 +7,10 @@ federal, provincial/state and city levels, expressed as a single percentage of y
 Build a persona (income, wealth, home, car) in USD, then move it between cities to see which
 kind of tax regime you'd be leaving and entering.
 
-**Status:** Phase 1 done: Calgary, Toronto and Vancouver, 2026 tax rules, fiscal history
-2000–2025 from Statistics Canada. The plan for all 15 cities is in [docs/PLAN.md](docs/PLAN.md);
-Canada's research notes are in [data/rules/ca/RESEARCH.md](data/rules/ca/RESEARCH.md).
+**Status:** Phase 1 (Canada: Calgary, Toronto, Vancouver) and Phase 2 (US: New York City, San Francisco,
+Seattle, Houston) done, with 2026 tax rules and fiscal history from 2000. The plan for all 15 cities is in
+[docs/PLAN.md](docs/PLAN.md); research notes are in [data/rules/ca/RESEARCH.md](data/rules/ca/RESEARCH.md)
+and [data/rules/us/RESEARCH.md](data/rules/us/RESEARCH.md).
 
 ## What you can see
 
@@ -57,20 +58,39 @@ python3 scripts/build_fiscal_ca.py /tmp/statcan
 python3 scripts/build_consumption_ca.py /tmp/statcan
 ```
 
-Tax parameters live in `src/engine/ca/params2026.ts`, each with its source and status.
+United States (OMB, Census, BEA):
+
+```bash
+scripts/fetch_us.sh /tmp/us
+```
+
+```bash
+python3 scripts/us_census_parse.py /tmp/us/census /tmp/us/census_parsed.json
+```
+
+```bash
+python3 scripts/build_fiscal_us.py /tmp/us/omb /tmp/us/census_parsed.json
+```
+
+```bash
+python3 scripts/build_consumption_us.py /tmp/us/bea
+```
+
+Tax parameters live in `src/engine/ca/params2026.ts` and `src/engine/us/params2026.ts`, each with its source and status.
 
 ## Layout
 
 ```
 src/engine/         pure TypeScript calculation engine (no DOM)
   ca/               Canada: parameters, income tax + CPP/EI, full city calculation
+  us/               United States: parameters, federal/state/city income tax + FICA, full city calculation
   fiscal.ts         borrowing share: programs vs. interest, without double counting
 src/ui/             React app (ECharts charts, zustand state)
-data/fiscal/        government finance history (built from StatCan)
-data/consumption/   effective sales tax rates and spending patterns (built from StatCan)
-data/rules/ca/      research dossier
+data/fiscal/        government finance history (StatCan, provincial accounts, OMB, Census)
+data/consumption/   effective sales tax rates and spending patterns (StatCan, BEA)
+data/rules/*/       research dossiers
 scripts/            data fetch/build scripts
-tests/              engine tests (CPP/EI maximums, published marginal rates, decomposition)
+tests/              engine tests (CPP/EI and FICA maximums, published rates, history coverage)
 ```
 
 Not tax advice.

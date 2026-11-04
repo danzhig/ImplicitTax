@@ -1,0 +1,1931 @@
+{
+ "generated": "2026-11-04",
+ "currency": "USD",
+ "unit": "millions",
+ "notes": [
+  "Federal: fiscal years ending September 30. Borrowing = increase in debt held by the public (OMB Historical Table 7.1); trust-fund holdings such as Social Security are excluded. Interest = net interest (Table 3.1). Taxes = total receipts (Table 2.1).",
+  "States and local governments: Census Annual Survey of State and Local Government Finances, by government fiscal year (most end June 30). Borrowing = change in debt outstanding; where that is not available, long-term debt issued minus retired.",
+  "US state and local debt is gross debt and includes utility debt repaid from user charges; US governments do not publish a comparable net debt.",
+  "2001 and 2003 state and local figures use US-wide ratios: Census published no state detail for those years.",
+  "City lines use all local governments in the state (cities, counties, school districts and special districts)."
+ ],
+ "series": {
+  "US-federal": {
+   "label": "US federal government",
+   "years": {
+    "2000": {
+     "taxes": 2025191.0,
+     "interest": 222949.0,
+     "borrowing": -222559.0,
+     "netDebt": 3409804.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 1991082.0,
+     "interest": 206167.0,
+     "borrowing": -90189.0,
+     "netDebt": 3319615.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 1853136.0,
+     "interest": 170949.0,
+     "borrowing": 220812.0,
+     "netDebt": 3540427.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 1782314.0,
+     "interest": 153073.0,
+     "borrowing": 373016.0,
+     "netDebt": 3913443.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 1880114.0,
+     "interest": 160245.0,
+     "borrowing": 382101.0,
+     "netDebt": 4295544.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 2153611.0,
+     "interest": 183986.0,
+     "borrowing": 296668.0,
+     "netDebt": 4592212.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 2406869.0,
+     "interest": 226603.0,
+     "borrowing": 236760.0,
+     "netDebt": 4828972.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 2567985.0,
+     "interest": 237109.0,
+     "borrowing": 206157.0,
+     "netDebt": 5035129.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 2523991.0,
+     "interest": 252757.0,
+     "borrowing": 767921.0,
+     "netDebt": 5803050.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 2104989.0,
+     "interest": 186902.0,
+     "borrowing": 1741657.0,
+     "netDebt": 7544707.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 2162706.0,
+     "interest": 196194.0,
+     "borrowing": 1474175.0,
+     "netDebt": 9018882.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 2303466.0,
+     "interest": 229962.0,
+     "borrowing": 1109305.0,
+     "netDebt": 10128187.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 2449990.0,
+     "interest": 220408.0,
+     "borrowing": 1152944.0,
+     "netDebt": 11281131.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 2775106.0,
+     "interest": 220885.0,
+     "borrowing": 701582.0,
+     "netDebt": 11982713.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 3021491.0,
+     "interest": 228956.0,
+     "borrowing": 797186.0,
+     "netDebt": 12779899.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 3249890.0,
+     "interest": 223181.0,
+     "borrowing": 336793.0,
+     "netDebt": 13116692.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 3267965.0,
+     "interest": 240033.0,
+     "borrowing": 1050932.0,
+     "netDebt": 14167624.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 3316184.0,
+     "interest": 262551.0,
+     "borrowing": 497815.0,
+     "netDebt": 14665439.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 3329907.0,
+     "interest": 324975.0,
+     "borrowing": 1084128.0,
+     "netDebt": 15749567.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 3463364.0,
+     "interest": 375158.0,
+     "borrowing": 1051133.0,
+     "netDebt": 16800700.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 3421164.0,
+     "interest": 345470.0,
+     "borrowing": 4215969.0,
+     "netDebt": 21016669.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 4047111.0,
+     "interest": 352338.0,
+     "borrowing": 1267371.0,
+     "netDebt": 22284040.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 4897339.0,
+     "interest": 475887.0,
+     "borrowing": 1969405.0,
+     "netDebt": 24253445.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 4440948.0,
+     "interest": 658267.0,
+     "borrowing": 1982147.0,
+     "netDebt": 26235592.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 4919884.0,
+     "interest": 879879.0,
+     "borrowing": 1958274.0,
+     "netDebt": 28193866.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 5236421.0,
+     "interest": 970065.0,
+     "borrowing": 1973358.0,
+     "netDebt": 30167224.0,
+     "borrowingSource": "change in federal debt held by the public (OMB Historical Table 7.1)",
+     "status": "actual"
+    }
+   }
+  },
+  "US-NY": {
+   "label": "State of New York",
+   "years": {
+    "2000": {
+     "taxes": 41735.841,
+     "interest": 4258.648,
+     "borrowing": 2191.661,
+     "netDebt": 78615.99,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 559679.125,
+     "interest": 31197.858,
+     "borrowing": 30632.901,
+     "netDebt": 83297.392,
+     "borrowingSource": "US-wide state government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2002": {
+     "taxes": 43262.137,
+     "interest": 4606.308,
+     "borrowing": 1832.036,
+     "netDebt": 87978.79400000001,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 548990.867,
+     "interest": 33039.976,
+     "borrowing": 62907.39,
+     "netDebt": 92949.656,
+     "borrowingSource": "US-wide state government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2004": {
+     "taxes": 45826.429000000004,
+     "interest": 4000.478,
+     "borrowing": 4385.981,
+     "netDebt": 97920.518,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 51326.444,
+     "interest": 4380.1320000000005,
+     "borrowing": 4543.96,
+     "netDebt": 102564.586,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 57402.97,
+     "interest": 4694.772,
+     "borrowing": 2741.593,
+     "netDebt": 105306.179,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 63161.582,
+     "interest": 4785.608,
+     "borrowing": 4778.650000000001,
+     "netDebt": 110084.829,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 65244.75,
+     "interest": 4974.321,
+     "borrowing": 4155.398,
+     "netDebt": 114240.227,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 64756.423,
+     "interest": 5505.131,
+     "borrowing": 8411.403,
+     "netDebt": 122651.63,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 63807.61,
+     "interest": 5333.051,
+     "borrowing": 6877.871,
+     "netDebt": 129529.501,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 67945.152,
+     "interest": 5424.718,
+     "borrowing": 5399.004,
+     "netDebt": 134928.505,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 71545.745,
+     "interest": 5691.486,
+     "borrowing": 7585.268,
+     "netDebt": 142513.77300000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 73667.171,
+     "interest": 5735.285,
+     "borrowing": 351.127,
+     "netDebt": 142864.9,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 76978.982,
+     "interest": 5814.323,
+     "borrowing": 542.724,
+     "netDebt": 143407.624,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 78201.753,
+     "interest": 5758.664,
+     "borrowing": 472.853,
+     "netDebt": 143880.477,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 81380.073,
+     "interest": 5676.53,
+     "borrowing": 106.163,
+     "netDebt": 143986.64,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 79678.037,
+     "interest": 5732.135,
+     "borrowing": 2257.3940000000002,
+     "netDebt": 145204.588,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 86870.101,
+     "interest": 5990.2880000000005,
+     "borrowing": 2754.443,
+     "netDebt": 147959.03100000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 85368.973,
+     "interest": 5904.428,
+     "borrowing": 2785.498,
+     "netDebt": 150744.529,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 92720.854,
+     "interest": 6093.942,
+     "borrowing": 5259.667,
+     "netDebt": 156004.196,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 93503.736,
+     "interest": 6274.198,
+     "borrowing": 14351.018,
+     "netDebt": 170355.214,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 132147.203,
+     "interest": 5907.411,
+     "borrowing": -27988.965,
+     "netDebt": 142366.249,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 125459.496,
+     "interest": 5199.982,
+     "borrowing": -13768.702000000001,
+     "netDebt": 128597.547,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 119935.019,
+     "interest": 5309.252,
+     "borrowing": -8011.7480000000005,
+     "netDebt": 120585.799,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    }
+   }
+  },
+  "US-NY-local": {
+   "label": "All local governments in New York",
+   "years": {
+    "2000": {
+     "taxes": 45132.347,
+     "interest": 6663.799,
+     "borrowing": 4773.7660000000005,
+     "netDebt": 98933.91,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 354439.491,
+     "interest": 53232.742,
+     "borrowing": 38369.094,
+     "netDebt": 103136.4035,
+     "borrowingSource": "US-wide local government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2002": {
+     "taxes": 45615.975,
+     "interest": 5555.0560000000005,
+     "borrowing": 7134.9130000000005,
+     "netDebt": 107338.897,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 389980.887,
+     "interest": 55900.455,
+     "borrowing": 67659.435,
+     "netDebt": 115412.046,
+     "borrowingSource": "US-wide local government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2004": {
+     "taxes": 55599.833,
+     "interest": 5852.002,
+     "borrowing": 6391.964,
+     "netDebt": 123485.195,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 60557.072,
+     "interest": 5716.524,
+     "borrowing": 7349.341,
+     "netDebt": 130325.444,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 65703.71,
+     "interest": 6130.232,
+     "borrowing": 5732.848,
+     "netDebt": 136058.29200000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 70862.196,
+     "interest": 6859.548,
+     "borrowing": 17142.38,
+     "netDebt": 153200.672,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 72916.067,
+     "interest": 7071.756,
+     "borrowing": 5726.045,
+     "netDebt": 158926.717,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 71832.455,
+     "interest": 7575.759,
+     "borrowing": 15755.890000000001,
+     "netDebt": 174682.60700000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 73530.09,
+     "interest": 7590.973,
+     "borrowing": 11853.23,
+     "netDebt": 186535.837,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 77216.672,
+     "interest": 8233.171,
+     "borrowing": 13187.636,
+     "netDebt": 199723.473,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 80715.697,
+     "interest": 10123.677,
+     "borrowing": 4900.923,
+     "netDebt": 204624.396,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 85625.37700000001,
+     "interest": 10794.327,
+     "borrowing": 5673.477,
+     "netDebt": 210297.873,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 90587.898,
+     "interest": 10858.809000000001,
+     "borrowing": -1359.232,
+     "netDebt": 208938.641,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 94183.032,
+     "interest": 10472.882,
+     "borrowing": -170.498,
+     "netDebt": 208768.143,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 96407.946,
+     "interest": 11053.99,
+     "borrowing": 1888.73,
+     "netDebt": 210656.873,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 98213.099,
+     "interest": 11284.308,
+     "borrowing": 1113.173,
+     "netDebt": 210285.998,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 103112.2,
+     "interest": 11439.019,
+     "borrowing": -2731.1820000000002,
+     "netDebt": 207554.816,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 106549.24,
+     "interest": 11935.124,
+     "borrowing": 4097.359,
+     "netDebt": 211652.17500000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 108708.86200000001,
+     "interest": 11512.951000000001,
+     "borrowing": 8531.666000000001,
+     "netDebt": 220183.84100000001,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 111710.128,
+     "interest": 11639.48,
+     "borrowing": -6174.99,
+     "netDebt": 214008.851,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 118887.542,
+     "interest": 11510.763,
+     "borrowing": -15350.984,
+     "netDebt": 198657.867,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 122209.479,
+     "interest": 12456.664,
+     "borrowing": 5035.851,
+     "netDebt": 203693.718,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 125565.951,
+     "interest": 12356.025,
+     "borrowing": 8375.448,
+     "netDebt": 212069.166,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    }
+   }
+  },
+  "US-CA": {
+   "label": "State of California",
+   "years": {
+    "2000": {
+     "taxes": 83807.959,
+     "interest": 2620.635,
+     "borrowing": 3153.465,
+     "netDebt": 57170.067,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 559679.125,
+     "interest": 31197.858,
+     "borrowing": 30632.901,
+     "netDebt": 64207.285,
+     "borrowingSource": "US-wide state government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2002": {
+     "taxes": 77755.376,
+     "interest": 3966.946,
+     "borrowing": 117.321,
+     "netDebt": 71244.503,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 548990.867,
+     "interest": 33039.976,
+     "borrowing": 62907.39,
+     "netDebt": 88382.1545,
+     "borrowingSource": "US-wide state government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2004": {
+     "taxes": 85721.48300000001,
+     "interest": 4208.9,
+     "borrowing": 20187.253,
+     "netDebt": 105519.806,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 98434.685,
+     "interest": 4658.0070000000005,
+     "borrowing": 1855.923,
+     "netDebt": 107372.729,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 111346.857,
+     "interest": 5716.857,
+     "borrowing": 2043.877,
+     "netDebt": 109416.606,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 114736.981,
+     "interest": 5784.317,
+     "borrowing": 5285.191,
+     "netDebt": 114701.797,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 117361.97600000001,
+     "interest": 6084.752,
+     "borrowing": 7227.781,
+     "netDebt": 121929.57800000001,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 101007.459,
+     "interest": 6220.851000000001,
+     "borrowing": 12835.296,
+     "netDebt": 134764.874,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 107195.465,
+     "interest": 6711.987,
+     "borrowing": 14164.233,
+     "netDebt": 148929.107,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 119164.086,
+     "interest": 7651.166,
+     "borrowing": 741.847,
+     "netDebt": 149670.954,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 115178.568,
+     "interest": 7677.988,
+     "borrowing": 3857.663,
+     "netDebt": 153528.617,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 133184.246,
+     "interest": 7492.325,
+     "borrowing": -1342.605,
+     "netDebt": 152186.01200000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 138087.357,
+     "interest": 7448.964,
+     "borrowing": 4621.856,
+     "netDebt": 156807.86800000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 151234.534,
+     "interest": 7395.706,
+     "borrowing": -5092.861,
+     "netDebt": 151715.007,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 155191.714,
+     "interest": 7186.92,
+     "borrowing": 109.169,
+     "netDebt": 151824.176,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 159051.926,
+     "interest": 7069.122,
+     "borrowing": 2287.9990000000003,
+     "netDebt": 147103.818,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 178437.038,
+     "interest": 7171.8730000000005,
+     "borrowing": 2271.55,
+     "netDebt": 149375.36800000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 187638.267,
+     "interest": 5353.251,
+     "borrowing": -6030.374,
+     "netDebt": 143344.994,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 172977.355,
+     "interest": 5348.351,
+     "borrowing": -365.894,
+     "netDebt": 142979.1,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 248188.154,
+     "interest": 5246.821,
+     "borrowing": 1334.643,
+     "netDebt": 144313.74300000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 282894.652,
+     "interest": 5261.607,
+     "borrowing": 15259.826000000001,
+     "netDebt": 159573.56900000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 217707.953,
+     "interest": 5204.573,
+     "borrowing": 2427.223,
+     "netDebt": 162000.79200000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 265550.679,
+     "interest": 5387.747,
+     "borrowing": 4390.01,
+     "netDebt": 166390.802,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    }
+   }
+  },
+  "US-CA-local": {
+   "label": "All local governments in California",
+   "years": {
+    "2000": {
+     "taxes": 36259.622,
+     "interest": 6564.198,
+     "borrowing": 2440.453,
+     "netDebt": 120749.554,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 354439.491,
+     "interest": 53232.742,
+     "borrowing": 38369.094,
+     "netDebt": 129588.2865,
+     "borrowingSource": "US-wide local government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2002": {
+     "taxes": 42668.69,
+     "interest": 6907.2970000000005,
+     "borrowing": 6512.6,
+     "netDebt": 138427.019,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 389980.887,
+     "interest": 55900.455,
+     "borrowing": 67659.435,
+     "netDebt": 151667.39299999998,
+     "borrowingSource": "US-wide local government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2004": {
+     "taxes": 48320.62,
+     "interest": 7818.318,
+     "borrowing": 7129.932,
+     "netDebt": 164907.767,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 48239.918,
+     "interest": 7663.805,
+     "borrowing": 9362.792,
+     "netDebt": 179418.133,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 58698.632,
+     "interest": 7941.875,
+     "borrowing": 11837.321,
+     "netDebt": 191255.454,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 65037.569,
+     "interest": 9279.346,
+     "borrowing": 24579.564000000002,
+     "netDebt": 215835.018,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 68653.4,
+     "interest": 9642.464,
+     "borrowing": 3263.846,
+     "netDebt": 219098.864,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 70143.444,
+     "interest": 10319.27,
+     "borrowing": 20976.36,
+     "netDebt": 240075.22400000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 67832.125,
+     "interest": 10898.316,
+     "borrowing": 16658.275,
+     "netDebt": 256733.499,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 68764.865,
+     "interest": 11740.832,
+     "borrowing": 14318.049,
+     "netDebt": 271051.548,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 68143.8,
+     "interest": 11636.696,
+     "borrowing": -2771.716,
+     "netDebt": 268279.832,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 70180.869,
+     "interest": 11858.619,
+     "borrowing": 1132.378,
+     "netDebt": 269412.21,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 73114.479,
+     "interest": 11859.995,
+     "borrowing": -612.692,
+     "netDebt": 268799.518,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 77608.404,
+     "interest": 12027.831,
+     "borrowing": 800.985,
+     "netDebt": 269600.503,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 83301.739,
+     "interest": 12189.451000000001,
+     "borrowing": 16474.964,
+     "netDebt": 286075.467,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 88376.235,
+     "interest": 12769.385,
+     "borrowing": 12357.198,
+     "netDebt": 315093.933,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 94996.2,
+     "interest": 13560.34,
+     "borrowing": 28672.766,
+     "netDebt": 343766.699,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 102231.998,
+     "interest": 13954.514000000001,
+     "borrowing": 18651.358,
+     "netDebt": 362418.05700000003,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 104305.729,
+     "interest": 14251.598,
+     "borrowing": 16645.488,
+     "netDebt": 379063.545,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 112436.435,
+     "interest": 14343.802,
+     "borrowing": 20679.283,
+     "netDebt": 399742.828,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 120457.852,
+     "interest": 13126.206,
+     "borrowing": -213.494,
+     "netDebt": 399529.33400000003,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 129822.033,
+     "interest": 13937.063,
+     "borrowing": 19514.795000000002,
+     "netDebt": 419044.129,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 135059.342,
+     "interest": 15228.01,
+     "borrowing": 11766.559000000001,
+     "netDebt": 430810.688,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    }
+   }
+  },
+  "US-WA": {
+   "label": "State of Washington",
+   "years": {
+    "2000": {
+     "taxes": 12567.383,
+     "interest": 606.891,
+     "borrowing": 656.811,
+     "netDebt": 11734.299,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 559679.125,
+     "interest": 31197.858,
+     "borrowing": 30632.901,
+     "netDebt": 12643.2375,
+     "borrowingSource": "US-wide state government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2002": {
+     "taxes": 12628.567000000001,
+     "interest": 673.936,
+     "borrowing": 937.921,
+     "netDebt": 13552.176,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 548990.867,
+     "interest": 33039.976,
+     "borrowing": 62907.39,
+     "netDebt": 14662.937,
+     "borrowingSource": "US-wide state government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2004": {
+     "taxes": 13895.346,
+     "interest": 753.5980000000001,
+     "borrowing": 1107.419,
+     "netDebt": 15773.698,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 14839.634,
+     "interest": 782.789,
+     "borrowing": 1249.515,
+     "netDebt": 17023.263,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 16410.977,
+     "interest": 836.02,
+     "borrowing": 1305.9180000000001,
+     "netDebt": 18329.181,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 17705.98,
+     "interest": 940.373,
+     "borrowing": 2729.377,
+     "netDebt": 21058.558,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 17959.833,
+     "interest": 1039.159,
+     "borrowing": 2465.451,
+     "netDebt": 23524.009000000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 16407.536,
+     "interest": 1110.674,
+     "borrowing": 1079.21,
+     "netDebt": 24603.219,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 16106.154,
+     "interest": 1166.932,
+     "borrowing": 2918.88,
+     "netDebt": 27522.099000000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 17411.033,
+     "interest": 1269.733,
+     "borrowing": 631.463,
+     "netDebt": 28153.562,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 17624.715,
+     "interest": 1353.204,
+     "borrowing": 936.57,
+     "netDebt": 29090.132,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 18787.187,
+     "interest": 1289.645,
+     "borrowing": 1384.201,
+     "netDebt": 30474.333000000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 19447.899,
+     "interest": 1363.63,
+     "borrowing": 1126.683,
+     "netDebt": 31601.016,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 20644.454,
+     "interest": 1414.999,
+     "borrowing": 630.951,
+     "netDebt": 32231.967,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 22280.088,
+     "interest": 1439.737,
+     "borrowing": 819.318,
+     "netDebt": 33051.285,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 23995.147,
+     "interest": 1503.28,
+     "borrowing": -3206.275,
+     "netDebt": 29649.920000000002,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 26574.89,
+     "interest": 1519.6770000000001,
+     "borrowing": 3.7560000000000002,
+     "netDebt": 29653.676,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 27992.437,
+     "interest": 1407.578,
+     "borrowing": -406.322,
+     "netDebt": 29247.354,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 29017.067,
+     "interest": 1435.426,
+     "borrowing": 363.606,
+     "netDebt": 29610.96,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 32614.091,
+     "interest": 1430.917,
+     "borrowing": 595.642,
+     "netDebt": 30206.602,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 36071.826,
+     "interest": 1135.631,
+     "borrowing": -662.3240000000001,
+     "netDebt": 29544.278000000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 38025.42,
+     "interest": 1157.391,
+     "borrowing": 141.837,
+     "netDebt": 29686.115,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 37342.055,
+     "interest": 1204.738,
+     "borrowing": 932.542,
+     "netDebt": 30618.657,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    }
+   }
+  },
+  "US-WA-local": {
+   "label": "All local governments in Washington",
+   "years": {
+    "2000": {
+     "taxes": 6166.482,
+     "interest": 1378.497,
+     "borrowing": 1227.684,
+     "netDebt": 26962.945,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 354439.491,
+     "interest": 53232.742,
+     "borrowing": 38369.094,
+     "netDebt": 29485.6595,
+     "borrowingSource": "US-wide local government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2002": {
+     "taxes": 6884.936,
+     "interest": 1521.166,
+     "borrowing": 3043.0080000000003,
+     "netDebt": 32008.374,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 389980.887,
+     "interest": 55900.455,
+     "borrowing": 67659.435,
+     "netDebt": 33302.427,
+     "borrowingSource": "US-wide local government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2004": {
+     "taxes": 7529.582,
+     "interest": 1621.016,
+     "borrowing": 1246.3220000000001,
+     "netDebt": 34596.48,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 8129.328,
+     "interest": 1509.885,
+     "borrowing": 1532.423,
+     "netDebt": 36025.804000000004,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 8731.213,
+     "interest": 1662.164,
+     "borrowing": 2300.5,
+     "netDebt": 38326.304000000004,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 9829.621000000001,
+     "interest": 1820.142,
+     "borrowing": 2018.778,
+     "netDebt": 40345.082,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 10595.988,
+     "interest": 1863.53,
+     "borrowing": 705.697,
+     "netDebt": 41050.779,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 10760.516,
+     "interest": 1878.752,
+     "borrowing": 1059.371,
+     "netDebt": 42110.15,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 10961.116,
+     "interest": 1875.27,
+     "borrowing": 1492.09,
+     "netDebt": 43602.24,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 11380.52,
+     "interest": 2011.1580000000001,
+     "borrowing": 2345.132,
+     "netDebt": 45947.372,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 11823.826000000001,
+     "interest": 2104.097,
+     "borrowing": 1134.655,
+     "netDebt": 47082.027,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 12070.231,
+     "interest": 2013.612,
+     "borrowing": -71.45700000000001,
+     "netDebt": 47010.57,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 12782.275,
+     "interest": 1942.756,
+     "borrowing": 1700.3,
+     "netDebt": 48710.87,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 13554.343,
+     "interest": 1953.191,
+     "borrowing": 347.88100000000003,
+     "netDebt": 49058.751000000004,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 14578.677,
+     "interest": 1972.516,
+     "borrowing": 3553.953,
+     "netDebt": 52612.704,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 15659.733,
+     "interest": 2076.676,
+     "borrowing": 1456.665,
+     "netDebt": 54969.411,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 16914.891,
+     "interest": 2188.723,
+     "borrowing": 2892.7400000000002,
+     "netDebt": 57862.151,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 17605.045000000002,
+     "interest": 2232.634,
+     "borrowing": 1005.5980000000001,
+     "netDebt": 58867.749,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 18495.864,
+     "interest": 2309.254,
+     "borrowing": 1021.999,
+     "netDebt": 59889.748,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 19040.353,
+     "interest": 2302.991,
+     "borrowing": 90.741,
+     "netDebt": 59980.489,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 21695.041,
+     "interest": 2248.034,
+     "borrowing": 1008.362,
+     "netDebt": 60988.851,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 22575.628,
+     "interest": 2171.916,
+     "borrowing": 901.674,
+     "netDebt": 61890.525,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 23904.711,
+     "interest": 2269.741,
+     "borrowing": 1152.38,
+     "netDebt": 63042.905,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    }
+   }
+  },
+  "US-TX": {
+   "label": "State of Texas",
+   "years": {
+    "2000": {
+     "taxes": 27424.142,
+     "interest": 1032.28,
+     "borrowing": 638.307,
+     "netDebt": 19228.15,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 559679.125,
+     "interest": 31197.858,
+     "borrowing": 30632.901,
+     "netDebt": 19826.224000000002,
+     "borrowingSource": "US-wide state government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2002": {
+     "taxes": 28662.395,
+     "interest": 904.26,
+     "borrowing": 1070.904,
+     "netDebt": 20424.298,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 548990.867,
+     "interest": 33039.976,
+     "borrowing": 62907.39,
+     "netDebt": 21875.2875,
+     "borrowingSource": "US-wide state government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2004": {
+     "taxes": 30751.86,
+     "interest": 1016.0600000000001,
+     "borrowing": 1523.16,
+     "netDebt": 23326.277000000002,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 32784.942,
+     "interest": 833.802,
+     "borrowing": 1595.374,
+     "netDebt": 18153.032,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 36591.749,
+     "interest": 1018.821,
+     "borrowing": 6348.353,
+     "netDebt": 24501.385000000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 40314.714,
+     "interest": 1043.989,
+     "borrowing": -244.924,
+     "netDebt": 24256.461,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 45536.833,
+     "interest": 1189.733,
+     "borrowing": 9331.238,
+     "netDebt": 33587.699,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 41779.699,
+     "interest": 1242.925,
+     "borrowing": -3149.539,
+     "netDebt": 30438.16,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 39516.186,
+     "interest": 1170.209,
+     "borrowing": 11595.411,
+     "netDebt": 42033.571,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 43146.096,
+     "interest": 1424.087,
+     "borrowing": -3503.233,
+     "netDebt": 38530.338,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 47991.11,
+     "interest": 1315.997,
+     "borrowing": 7096.055,
+     "netDebt": 45626.393000000004,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 51801.01,
+     "interest": 1322.934,
+     "borrowing": -6001.7210000000005,
+     "netDebt": 39624.672,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 55146.619,
+     "interest": 1202.635,
+     "borrowing": 2230.434,
+     "netDebt": 41855.106,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 55086.438,
+     "interest": 1204.811,
+     "borrowing": 6182.898,
+     "netDebt": 48038.004,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 52132.817,
+     "interest": 1219.575,
+     "borrowing": 1319.179,
+     "netDebt": 49357.183000000005,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 53612.926,
+     "interest": 1304.988,
+     "borrowing": 2647.5480000000002,
+     "netDebt": 50955.563,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 60328.843,
+     "interest": 1681.348,
+     "borrowing": 582.148,
+     "netDebt": 51537.711,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 63314.37,
+     "interest": 1842.39,
+     "borrowing": 2412.544,
+     "netDebt": 53950.255000000005,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 61014.301,
+     "interest": 1962.836,
+     "borrowing": 3936.4700000000003,
+     "netDebt": 57886.725,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 65377.43,
+     "interest": 1792.846,
+     "borrowing": -5222.45,
+     "netDebt": 52664.275,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 81654.478,
+     "interest": 1503.974,
+     "borrowing": 11345.385,
+     "netDebt": 64009.66,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 87328.717,
+     "interest": 1652.604,
+     "borrowing": -10536.242,
+     "netDebt": 53473.418,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 87365.012,
+     "interest": 1807.637,
+     "borrowing": 16577.143,
+     "netDebt": 70050.561,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    }
+   }
+  },
+  "US-TX-local": {
+   "label": "All local governments in Texas",
+   "years": {
+    "2000": {
+     "taxes": 24802.393,
+     "interest": 4665.076,
+     "borrowing": 3143.206,
+     "netDebt": 80946.696,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 354439.491,
+     "interest": 53232.742,
+     "borrowing": 38369.094,
+     "netDebt": 89874.07,
+     "borrowingSource": "US-wide local government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2002": {
+     "taxes": 30318.113,
+     "interest": 5152.727,
+     "borrowing": 6736.693,
+     "netDebt": 98801.444,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 389980.887,
+     "interest": 55900.455,
+     "borrowing": 67659.435,
+     "netDebt": 111135.349,
+     "borrowingSource": "US-wide local government figures; Census published no state detail for this year",
+     "status": "estimate",
+     "notes": [
+      "Census published only US-wide totals this year; US-wide ratios are used.",
+      "Debt outstanding interpolated between the years either side."
+     ]
+    },
+    "2004": {
+     "taxes": 33948.228,
+     "interest": 6009.876,
+     "borrowing": 9072.47,
+     "netDebt": 123469.254,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 36368.238,
+     "interest": 5792.947,
+     "borrowing": 9070.36,
+     "netDebt": 133947.89800000002,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 39014.407,
+     "interest": 6223.27,
+     "borrowing": 9200.286,
+     "netDebt": 143148.184,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 41676.357,
+     "interest": 7545.7,
+     "borrowing": 19268.328,
+     "netDebt": 162416.51200000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 41657.383,
+     "interest": 8417.782000000001,
+     "borrowing": 20394.082000000002,
+     "netDebt": 182810.594,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 46229.311,
+     "interest": 8825.676,
+     "borrowing": 17917.920000000002,
+     "netDebt": 200728.514,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 47843.996,
+     "interest": 9268.779,
+     "borrowing": 10879.534,
+     "netDebt": 211608.048,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 48165.818,
+     "interest": 9602.441,
+     "borrowing": 10426.138,
+     "netDebt": 222034.18600000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 49124.667,
+     "interest": 9697.152,
+     "borrowing": 3352.415,
+     "netDebt": 225386.601,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 51216.919,
+     "interest": 9918.791000000001,
+     "borrowing": 2040.422,
+     "netDebt": 227427.02300000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 53931.756,
+     "interest": 9895.266,
+     "borrowing": -401.522,
+     "netDebt": 227025.50100000002,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 58229.289000000004,
+     "interest": 10065.09,
+     "borrowing": 2227.488,
+     "netDebt": 229252.989,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 61334.141,
+     "interest": 9646.002,
+     "borrowing": 1812.461,
+     "netDebt": 231065.45,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 64527.265,
+     "interest": 9564.147,
+     "borrowing": 1403.887,
+     "netDebt": 242147.479,
+     "borrowingSource": "long-term debt issued minus retired (Census)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 68782.363,
+     "interest": 9845.291000000001,
+     "borrowing": 2067.561,
+     "netDebt": 244215.04,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 74293.84,
+     "interest": 10288.635,
+     "borrowing": 10176.299,
+     "netDebt": 254391.339,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 77598.586,
+     "interest": 10581.618,
+     "borrowing": 12092.53,
+     "netDebt": 266483.869,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 78843.441,
+     "interest": 10454.665,
+     "borrowing": 6268.014,
+     "netDebt": 272751.88300000003,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 82052.647,
+     "interest": 9995.047,
+     "borrowing": -525.725,
+     "netDebt": 272226.158,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 87687.72200000001,
+     "interest": 10603.1,
+     "borrowing": 32482.794,
+     "netDebt": 304708.952,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 90212.84,
+     "interest": 11714.867,
+     "borrowing": 14567.281,
+     "netDebt": 319276.233,
+     "borrowingSource": "change in debt outstanding (Census)",
+     "status": "actual"
+    }
+   }
+  }
+ }
+}

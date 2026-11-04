@@ -1,6 +1,6 @@
+import { PlaceOptions } from '../components/PlaceOptions';
 import { useMemo } from 'react';
 import type { EChartsOption } from 'echarts';
-import { PLACES } from '../../engine';
 import type { PlaceResult } from '../../engine/types';
 import { axisStyle, baseOption, EChart, useThemeVersion } from '../charts/EChart';
 import { chartTheme, pct, signedPct, signedUsd, usd } from '../format';
@@ -46,11 +46,11 @@ export function MoveView({ results }: { results: PlaceResult[] }) {
     <div className="view">
       <div className="toolbar start">
         <label className="field inline"><span className="field-label">Moving from</span>
-          <select value={a.placeId} onChange={(e) => setMove(e.target.value, b.placeId)}>{PLACES.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}</select>
+          <select value={a.placeId} onChange={(e) => setMove(e.target.value, b.placeId)}><PlaceOptions /></select>
         </label>
         <button className="swap" onClick={() => setMove(b.placeId, a.placeId)} aria-label="Swap">⇄</button>
         <label className="field inline"><span className="field-label">to</span>
-          <select value={b.placeId} onChange={(e) => setMove(a.placeId, e.target.value)}>{PLACES.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}</select>
+          <select value={b.placeId} onChange={(e) => setMove(a.placeId, e.target.value)}><PlaceOptions /></select>
         </label>
       </div>
       <section className="block verdict">

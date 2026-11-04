@@ -9,7 +9,9 @@ function useLocal() {
   const cityId = useStore((s) => s.cityId);
   const place = placeById(cityId);
   return (usd: number) =>
-    `≈ ${(usd * place.fx).toLocaleString('en-US', { maximumFractionDigits: 0 })} ${place.currency} in ${place.name} (${place.fx.toFixed(3)} ${place.currency}/USD)`;
+    place.currency === 'USD'
+      ? `${place.name} uses USD`
+      : `≈ ${(usd * place.fx).toLocaleString('en-US', { maximumFractionDigits: 0 })} ${place.currency} in ${place.name} (${place.fx.toFixed(3)} ${place.currency}/USD)`;
 }
 
 function Num({ label, value, onChange, step = 1000, hint, suffix = 'USD' }: {

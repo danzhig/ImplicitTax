@@ -9,6 +9,7 @@
 // "Your share" = your share of that government's tax revenue (tax-share method, decision D4).
 
 import caFiscal from '../../data/fiscal/ca.json';
+import usFiscal from '../../data/fiscal/us.json';
 import type { Level, LevelDeferred } from './types';
 
 export interface FiscalYear {
@@ -28,9 +29,10 @@ export interface FiscalSeries {
 
 const SERIES: Record<string, FiscalSeries> = {
   ...(caFiscal.series as unknown as Record<string, FiscalSeries>),
+  ...(usFiscal.series as unknown as Record<string, FiscalSeries>),
 };
 
-export const FISCAL_NOTES: string[] = [...caFiscal.notes];
+export const FISCAL_NOTES: Record<'CA' | 'US', string[]> = { CA: [...caFiscal.notes], US: [...usFiscal.notes] };
 
 export function getSeries(id: string): FiscalSeries | undefined {
   return SERIES[id];

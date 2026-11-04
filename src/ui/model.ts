@@ -14,7 +14,7 @@ export interface Segment {
 /** Stack order = palette order, so adjacent segments keep the validated colour separation. */
 export const SEGMENTS: Segment[] = [
   { key: 'income', label: 'Income tax', slot: 0, hint: 'Federal and provincial income tax, surtaxes, health premium' },
-  { key: 'payroll', label: 'CPP / EI', slot: 1, hint: 'Payroll contributions (employee side; both sides if self-employed)' },
+  { key: 'payroll', label: 'Payroll taxes', slot: 1, hint: 'CPP/EI in Canada; Social Security, Medicare and state programs in the US (employee side; both sides if self-employed)' },
   { key: 'consumption', label: 'Sales, fuel & tariffs', slot: 2, hint: 'GST/HST/PST, fuel taxes, vehicle taxes, customs duties' },
   { key: 'property', label: 'Property & transfer', slot: 3, hint: 'Property tax, land transfer tax, development charges' },
   { key: 'borrowed', label: 'Borrowed on your behalf', slot: 4, hint: 'Your share of the increase in each government\'s net debt this year (negative = debt paid down)' },
