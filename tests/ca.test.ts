@@ -99,7 +99,7 @@ describe('full city calculation', () => {
       const r = calculate(DEFAULT_PERSONA, place.id, DEFAULT_OPTIONS);
       expect(r.paidNowRate).toBeGreaterThan(0.2);
       expect(r.paidNowRate).toBeLessThan(0.5);
-      expect(r.implicitRate).toBeGreaterThan(r.paidNowRate - 0.1);
+      expect(r.implicitRate).toBeGreaterThan(r.paidNowRate - 0.15); // Norway saves oil revenue: about -10%
       const sum = r.lineItems.reduce((s, i) => s + i.amount, 0);
       expect(sum).toBeCloseTo(r.paidNow, 6);
       expect(history(DEFAULT_PERSONA, place.id, DEFAULT_OPTIONS).length).toBeGreaterThan(20);

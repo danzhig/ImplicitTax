@@ -1,0 +1,47 @@
+{
+ "generated": "2026-11-04",
+ "weightsYear": 2025,
+ "countries": {
+  "DE": {
+   "standardRate": 0.19,
+   "vatShareOfSpending": 0.099,
+   "weightsFrom": "DE"
+  },
+  "CH": {
+   "standardRate": 0.081,
+   "vatShareOfSpending": 0.0387,
+   "weightsFrom": "CH"
+  },
+  "UK": {
+   "standardRate": 0.2,
+   "vatShareOfSpending": 0.12,
+   "weightsFrom": "IE"
+  },
+  "LU": {
+   "standardRate": 0.17,
+   "vatShareOfSpending": 0.0751,
+   "weightsFrom": "LU"
+  },
+  "IE": {
+   "standardRate": 0.23,
+   "vatShareOfSpending": 0.1078,
+   "weightsFrom": "IE"
+  },
+  "NO": {
+   "standardRate": 0.25,
+   "vatShareOfSpending": 0.1485,
+   "weightsFrom": "NO"
+  },
+  "DK": {
+   "standardRate": 0.25,
+   "vatShareOfSpending": 0.1704,
+   "weightsFrom": "DK"
+  }
+ },
+ "notes": [
+  "VAT share of everyday spending (excluding rent, home energy, vehicles and fuel): Eurostat HICP 2025 spending weights by category, with each category's 2026 VAT rate.",
+  "Germany cut VAT on restaurant food to 7% from January 2026; Ireland cuts VAT on food services from 13.5% to 9% from July 2026.",
+  "The UK left the HICP after 2020, so Ireland's spending mix is used with UK VAT rates.",
+  "Health, education, insurance and financial services are exempt (no VAT charged), so their share lowers the effective rate."
+ ]
+}

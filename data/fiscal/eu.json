@@ -1,0 +1,3430 @@
+{
+ "generated": "2026-11-04",
+ "unit": "millions of national currency",
+ "notes": [
+  "Borrowing = net borrowing in the national accounts (ESA 2010 B.9): the increase in financial liabilities minus financial assets from transactions, so revaluations of assets never count.",
+  "Social security funds are excluded, like the CPP. Luxembourg's and Switzerland's build large pension reserves whose surpluses would otherwise hide central government borrowing. Social contributions are therefore not allocated any borrowing.",
+  "Norway's central government includes the oil fund (GPFG): petroleum revenue and fund returns are saved, so it shows large net lending (negative borrowing).",
+  "Ireland 2010 includes the bank recapitalisations (about EUR 30bn of capital transfers).",
+  "Bavaria and Zurich are shown through all German L\u00e4nder and all Swiss cantons; every city through all local governments in its country.",
+  "UK: ONS public sector finances, fiscal years April-March (2024 = 2024-25). Taxes include National Insurance, which is part of central government. Local interest excludes interest paid to central government (PWLB).",
+  "Net debt: minus net financial worth from Eurostat financial balance sheets (market values); Switzerland: Federal Finance Administration net debt; UK: ONS general government net debt split by sector.",
+  "Denmark: Eurostat withholds the central government balance for the latest years, so Statistics Denmark's own figure (table OFF3) is used."
+ ],
+ "series": {
+  "DE-federal": {
+   "label": "German federal government (Bund)",
+   "years": {
+    "2000": {
+     "taxes": 248291.0,
+     "interest": 44287.0,
+     "borrowing": 23805.0,
+     "netDebt": 620132.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 240548.0,
+     "interest": 42501.0,
+     "borrowing": 24788.0,
+     "netDebt": 643047.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 240888.0,
+     "interest": 42127.0,
+     "borrowing": 38238.0,
+     "netDebt": 684850.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 246659.0,
+     "interest": 40040.0,
+     "borrowing": 31329.0,
+     "netDebt": 711954.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 240318.0,
+     "interest": 39120.0,
+     "borrowing": 41551.0,
+     "netDebt": 765378.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 249126.0,
+     "interest": 38565.0,
+     "borrowing": 46939.0,
+     "netDebt": 800053.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 265232.0,
+     "interest": 38998.0,
+     "borrowing": 33650.0,
+     "netDebt": 803614.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 291544.0,
+     "interest": 40792.0,
+     "borrowing": 14565.0,
+     "netDebt": 787488.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 301045.0,
+     "interest": 41781.0,
+     "borrowing": 14237.0,
+     "netDebt": 870516.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 295150.0,
+     "interest": 39470.0,
+     "borrowing": 37321.0,
+     "netDebt": 873387.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 295640.0,
+     "interest": 37418.0,
+     "borrowing": 87612.0,
+     "netDebt": 933236.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 322784.0,
+     "interest": 41171.0,
+     "borrowing": 25697.0,
+     "netDebt": 1013688.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 333519.0,
+     "interest": 38059.0,
+     "borrowing": 16102.0,
+     "netDebt": 1027784.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 346707.0,
+     "interest": 28808.0,
+     "borrowing": -132.0,
+     "netDebt": 1035639.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 359635.0,
+     "interest": 26605.0,
+     "borrowing": -17023.0,
+     "netDebt": 1059751.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 370090.0,
+     "interest": 23752.0,
+     "borrowing": -17956.0,
+     "netDebt": 1008421.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 378136.0,
+     "interest": 20609.0,
+     "borrowing": -14999.0,
+     "netDebt": 1000270.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 399090.0,
+     "interest": 18254.0,
+     "borrowing": -10266.0,
+     "netDebt": 965086.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 410405.0,
+     "interest": 17154.0,
+     "borrowing": -22400.0,
+     "netDebt": 953823.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 421023.0,
+     "interest": 15074.0,
+     "borrowing": -18184.0,
+     "netDebt": 915452.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 385268.0,
+     "interest": 10721.0,
+     "borrowing": 91289.0,
+     "netDebt": 1087959.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 422343.0,
+     "interest": 10555.0,
+     "borrowing": 132542.0,
+     "netDebt": 1156201.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 449165.0,
+     "interest": 16836.0,
+     "borrowing": 110940.0,
+     "netDebt": 1082575.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 451066.0,
+     "interest": 24647.0,
+     "borrowing": 91523.0,
+     "netDebt": 1151624.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 471113.0,
+     "interest": 31676.0,
+     "borrowing": 60947.0,
+     "netDebt": 1104269.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 485767.0,
+     "interest": 33050.0,
+     "borrowing": 85269.0,
+     "netDebt": 997973.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "DE-BY": {
+   "label": "All German L\u00e4nder",
+   "years": {
+    "2000": {
+     "taxes": 194421.0,
+     "interest": 18423.0,
+     "borrowing": 11352.0,
+     "netDebt": 205141.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 183853.0,
+     "interest": 18917.0,
+     "borrowing": 31327.0,
+     "netDebt": 232262.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 181290.0,
+     "interest": 19426.0,
+     "borrowing": 35271.0,
+     "netDebt": 275546.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 182186.0,
+     "interest": 20278.0,
+     "borrowing": 35702.0,
+     "netDebt": 306145.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 183899.0,
+     "interest": 20097.0,
+     "borrowing": 29155.0,
+     "netDebt": 334196.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 184537.0,
+     "interest": 20392.0,
+     "borrowing": 23905.0,
+     "netDebt": 361770.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 199480.0,
+     "interest": 21162.0,
+     "borrowing": 12839.0,
+     "netDebt": 359049.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 216912.0,
+     "interest": 21451.0,
+     "borrowing": -2009.0,
+     "netDebt": 342620.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 223347.0,
+     "interest": 21991.0,
+     "borrowing": 3269.0,
+     "netDebt": 354966.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 208331.0,
+     "interest": 20872.0,
+     "borrowing": 20026.0,
+     "netDebt": 367335.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 205897.0,
+     "interest": 21461.0,
+     "borrowing": 21861.0,
+     "netDebt": 385561.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 219494.0,
+     "interest": 21898.0,
+     "borrowing": 10688.0,
+     "netDebt": 422322.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 231173.0,
+     "interest": 21437.0,
+     "borrowing": 5644.0,
+     "netDebt": 425419.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 240173.0,
+     "interest": 18805.0,
+     "borrowing": 2356.0,
+     "netDebt": 415415.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 250613.0,
+     "interest": 17017.0,
+     "borrowing": -1864.0,
+     "netDebt": 438287.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 265526.0,
+     "interest": 15279.0,
+     "borrowing": -4641.0,
+     "netDebt": 432600.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 286739.0,
+     "interest": 13723.0,
+     "borrowing": -7309.0,
+     "netDebt": 440068.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 296561.0,
+     "interest": 13050.0,
+     "borrowing": -13076.0,
+     "netDebt": 412759.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 313324.0,
+     "interest": 11771.0,
+     "borrowing": -10735.0,
+     "netDebt": 402034.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 326305.0,
+     "interest": 10239.0,
+     "borrowing": -12856.0,
+     "netDebt": 407963.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 320129.0,
+     "interest": 9067.0,
+     "borrowing": 31299.0,
+     "netDebt": 459403.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 364184.0,
+     "interest": 8764.0,
+     "borrowing": -6030.0,
+     "netDebt": 411877.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 393826.0,
+     "interest": 8630.0,
+     "borrowing": -19655.0,
+     "netDebt": 302364.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 387513.0,
+     "interest": 9433.0,
+     "borrowing": 5643.0,
+     "netDebt": 290991.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 398452.0,
+     "interest": 10481.0,
+     "borrowing": 23046.0,
+     "netDebt": 297776.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 418948.0,
+     "interest": 11649.0,
+     "borrowing": 14602.0,
+     "netDebt": 282181.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "DE-BY-local": {
+   "label": "All German municipalities",
+   "years": {
+    "2000": {
+     "taxes": 57661.0,
+     "interest": 4959.0,
+     "borrowing": 289.0,
+     "netDebt": -36993.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 54788.0,
+     "interest": 4859.0,
+     "borrowing": 7319.0,
+     "netDebt": -35214.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 53509.0,
+     "interest": 4624.0,
+     "borrowing": 10365.0,
+     "netDebt": -23983.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 53302.0,
+     "interest": 4807.0,
+     "borrowing": 12783.0,
+     "netDebt": -13442.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 58071.0,
+     "interest": 4627.0,
+     "borrowing": 7478.0,
+     "netDebt": -7783.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 61549.0,
+     "interest": 4583.0,
+     "borrowing": 3820.0,
+     "netDebt": -9755.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 68733.0,
+     "interest": 5059.0,
+     "borrowing": 1266.0,
+     "netDebt": -17943.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 74014.0,
+     "interest": 5498.0,
+     "borrowing": -6221.0,
+     "netDebt": -51448.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 77724.0,
+     "interest": 5366.0,
+     "borrowing": -4113.0,
+     "netDebt": -74201.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 69332.0,
+     "interest": 4870.0,
+     "borrowing": 7519.0,
+     "netDebt": -69434.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 70730.0,
+     "interest": 4984.0,
+     "borrowing": 10058.0,
+     "netDebt": -54585.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 77250.0,
+     "interest": 4913.0,
+     "borrowing": 2201.0,
+     "netDebt": -64411.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 81629.0,
+     "interest": 4681.0,
+     "borrowing": -1519.0,
+     "netDebt": -73066.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 84111.0,
+     "interest": 4284.0,
+     "borrowing": -11.0,
+     "netDebt": -76043.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 86530.0,
+     "interest": 3885.0,
+     "borrowing": 454.0,
+     "netDebt": -73588.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 92146.0,
+     "interest": 3782.0,
+     "borrowing": -2635.0,
+     "netDebt": -88130.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 98348.0,
+     "interest": 3512.0,
+     "borrowing": -5382.0,
+     "netDebt": -95730.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 103642.0,
+     "interest": 3120.0,
+     "borrowing": -10287.0,
+     "netDebt": -118071.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 109149.0,
+     "interest": 2834.0,
+     "borrowing": -15783.0,
+     "netDebt": -141261.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 111945.0,
+     "interest": 2677.0,
+     "borrowing": -6979.0,
+     "netDebt": -152757.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 103507.0,
+     "interest": 2551.0,
+     "borrowing": -6324.0,
+     "netDebt": -178430.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 119992.0,
+     "interest": 2386.0,
+     "borrowing": -6457.0,
+     "netDebt": -187112.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 130677.0,
+     "interest": 2546.0,
+     "borrowing": -8223.0,
+     "netDebt": -199792.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 133548.0,
+     "interest": 3050.0,
+     "borrowing": 6636.0,
+     "netDebt": -211505.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 137580.0,
+     "interest": 3755.0,
+     "borrowing": 23693.0,
+     "netDebt": -203281.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 142242.0,
+     "interest": 4315.0,
+     "borrowing": 30970.0,
+     "netDebt": -196273.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "CH-federal": {
+   "label": "Swiss Confederation",
+   "years": {
+    "2000": {
+     "taxes": 47949.7,
+     "interest": 3478.9,
+     "borrowing": 3023.9,
+     "netDebt": 95910.72685692001,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 44363.2,
+     "interest": 3386.3,
+     "borrowing": 3091.8,
+     "netDebt": 103776.57089503,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 44240.6,
+     "interest": 3431.1,
+     "borrowing": 10696.2,
+     "netDebt": 111203.32061156,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 44774.3,
+     "interest": 3101.2,
+     "borrowing": 2938.2,
+     "netDebt": 115241.56584767,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 46299.5,
+     "interest": 3165.1,
+     "borrowing": 2265.5,
+     "netDebt": 120561.75491114,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 49070.399999999994,
+     "interest": 3560.5,
+     "borrowing": -174.7,
+     "netDebt": 122409.72425167,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 52527.600000000006,
+     "interest": 3979.5,
+     "borrowing": -3186.8,
+     "netDebt": 118539.98943373,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 53750.7,
+     "interest": 3608.1,
+     "borrowing": 5060.8,
+     "netDebt": 126025.71389245,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 60147.799999999996,
+     "interest": 3335.2,
+     "borrowing": -4957.3,
+     "netDebt": 125982.88293016,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 59281.8,
+     "interest": 2970.8,
+     "borrowing": -3002.8,
+     "netDebt": 117651.1753433,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 60117.700000000004,
+     "interest": 2844.9,
+     "borrowing": -2951.8,
+     "netDebt": 116647.99234625,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 62466.8,
+     "interest": 2602.3,
+     "borrowing": -1384.0,
+     "netDebt": 113873.22058735999,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 60613.3,
+     "interest": 2368.9,
+     "borrowing": -66.9,
+     "netDebt": 112373.7801857,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 62371.0,
+     "interest": 2112.9,
+     "borrowing": -320.3,
+     "netDebt": 111177.34513641,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 62511.8,
+     "interest": 1968.7,
+     "borrowing": 16.9,
+     "netDebt": 110817.67593917,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 65337.8,
+     "interest": 1898.6,
+     "borrowing": -1719.4,
+     "netDebt": 110472.86085438999,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 66352.29999999999,
+     "interest": 1671.5,
+     "borrowing": -938.4,
+     "netDebt": 110220.3909709,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 69338.4,
+     "interest": 1412.2,
+     "borrowing": -3531.8,
+     "netDebt": 115255.31614756,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 70550.2,
+     "interest": 1161.8,
+     "borrowing": -4980.4,
+     "netDebt": 117282.39253903,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 71705.1,
+     "interest": 1061.2,
+     "borrowing": -4518.5,
+     "netDebt": 109434.24560709,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 68950.70000000001,
+     "interest": 910.2,
+     "borrowing": 14812.4,
+     "netDebt": 124189.94748214,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 72004.6,
+     "interest": 777.9,
+     "borrowing": 11793.4,
+     "netDebt": 137983.38566687,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 73115.2,
+     "interest": 890.6,
+     "borrowing": 1046.9,
+     "netDebt": 139334.83787242998,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 76572.20000000001,
+     "interest": 1268.4,
+     "borrowing": 1408.8,
+     "netDebt": 142733.90017876,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 81022.6,
+     "interest": 1264.7,
+     "borrowing": 1217.2,
+     "netDebt": 141832.58452337,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 83474.6,
+     "interest": 1026.6,
+     "borrowing": 1020.4,
+     "netDebt": 139296.09028802,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "CH-ZH": {
+   "label": "All Swiss cantons",
+   "years": {
+    "2000": {
+     "taxes": 29236.300000000003,
+     "interest": 2276.6,
+     "borrowing": -68.8,
+     "netDebt": 49013.94236867,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 30505.199999999997,
+     "interest": 2146.4,
+     "borrowing": 725.1,
+     "netDebt": 47651.16066788,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 32336.6,
+     "interest": 1958.9,
+     "borrowing": 1020.3,
+     "netDebt": 48013.98304177,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 31265.399999999998,
+     "interest": 1776.9,
+     "borrowing": 2589.2,
+     "netDebt": 49522.685766329996,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 32791.1,
+     "interest": 1793.4,
+     "borrowing": 2668.7,
+     "netDebt": 50662.94370216,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 34478.3,
+     "interest": 1719.1,
+     "borrowing": 1000.4,
+     "netDebt": 37671.43301384,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 36312.0,
+     "interest": 1603.2,
+     "borrowing": -1646.8,
+     "netDebt": 35244.00637895,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 38831.700000000004,
+     "interest": 1486.9,
+     "borrowing": -3422.4,
+     "netDebt": 33606.31658964,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 39717.700000000004,
+     "interest": 1443.0,
+     "borrowing": -4036.6,
+     "netDebt": 29533.77838259,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 39986.2,
+     "interest": 1209.1,
+     "borrowing": -2353.9,
+     "netDebt": 25379.22797501,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 40463.7,
+     "interest": 1124.2,
+     "borrowing": -1357.5,
+     "netDebt": 23713.09057791,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 41569.2,
+     "interest": 1038.1,
+     "borrowing": -1343.4,
+     "netDebt": 25442.13341187,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 42230.200000000004,
+     "interest": 1039.4,
+     "borrowing": 954.6,
+     "netDebt": 29267.06675564,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 42926.9,
+     "interest": 955.4,
+     "borrowing": 4309.7,
+     "netDebt": 28227.51456099,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 44089.6,
+     "interest": 869.1,
+     "borrowing": 2052.3,
+     "netDebt": 29598.1086731,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 44997.0,
+     "interest": 848.2,
+     "borrowing": -478.3,
+     "netDebt": 31875.10517414,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 46179.9,
+     "interest": 770.6,
+     "borrowing": -821.5,
+     "netDebt": 31495.732554850103,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 47006.0,
+     "interest": 729.5,
+     "borrowing": -2219.5,
+     "netDebt": 30444.748902599902,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 48632.7,
+     "interest": 611.3,
+     "borrowing": -2786.7,
+     "netDebt": 28588.07028906,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 50105.8,
+     "interest": 569.1,
+     "borrowing": -3452.4,
+     "netDebt": 32523.81675372,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 50216.9,
+     "interest": 625.9,
+     "borrowing": 3749.9,
+     "netDebt": 31309.926078189997,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 51506.0,
+     "interest": 566.9,
+     "borrowing": -2919.3,
+     "netDebt": 28955.433739250002,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 54248.3,
+     "interest": 532.7,
+     "borrowing": -4883.6,
+     "netDebt": 24245.065594810003,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 56116.8,
+     "interest": 530.2,
+     "borrowing": 125.3,
+     "netDebt": 23353.406690450003,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 57607.299999999996,
+     "interest": 597.7,
+     "borrowing": -66.0,
+     "netDebt": 22846.740206240098,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 59091.799999999996,
+     "interest": 599.0,
+     "borrowing": -1478.4,
+     "netDebt": 21368.340206240096,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual",
+     "notes": [
+      "Net debt not yet published: last year's figure plus this year's borrowing."
+     ]
+    }
+   }
+  },
+  "CH-ZH-local": {
+   "label": "All Swiss communes",
+   "years": {
+    "2000": {
+     "taxes": 20701.0,
+     "interest": 1902.7,
+     "borrowing": -1109.7,
+     "netDebt": 19754.87731078,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 21629.5,
+     "interest": 1780.1,
+     "borrowing": -1064.8,
+     "netDebt": 18809.67033977,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 21769.8,
+     "interest": 1713.3,
+     "borrowing": -952.9,
+     "netDebt": 17834.84034278,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 21202.3,
+     "interest": 1523.4,
+     "borrowing": 319.9,
+     "netDebt": 18025.67046598,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 21399.399999999998,
+     "interest": 1342.1,
+     "borrowing": -237.0,
+     "netDebt": 19105.645582869998,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 21643.100000000002,
+     "interest": 1287.0,
+     "borrowing": -69.0,
+     "netDebt": 18359.04982424,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 22662.0,
+     "interest": 1198.4,
+     "borrowing": -1013.1,
+     "netDebt": 15824.116931600001,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 24028.0,
+     "interest": 1149.5,
+     "borrowing": -2117.5,
+     "netDebt": 13974.13060067,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 24610.399999999998,
+     "interest": 1183.6,
+     "borrowing": -345.6,
+     "netDebt": 17325.19513851,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 24918.899999999998,
+     "interest": 1202.1,
+     "borrowing": 321.4,
+     "netDebt": 18492.780506469997,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 24886.3,
+     "interest": 1154.0,
+     "borrowing": 611.1,
+     "netDebt": 18638.879919670002,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 25605.5,
+     "interest": 1045.2,
+     "borrowing": 121.9,
+     "netDebt": 18850.08022517,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 25727.2,
+     "interest": 977.4,
+     "borrowing": 752.6,
+     "netDebt": 19791.054471159998,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 26348.0,
+     "interest": 865.6,
+     "borrowing": 1284.4,
+     "netDebt": 21015.033632119997,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 27089.2,
+     "interest": 810.4,
+     "borrowing": 1658.7,
+     "netDebt": 19833.34417692,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 27841.600000000002,
+     "interest": 805.1,
+     "borrowing": 652.9,
+     "netDebt": 18938.440715999997,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 28764.5,
+     "interest": 709.6,
+     "borrowing": 347.1,
+     "netDebt": 15142.89300691,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 29392.3,
+     "interest": 557.2,
+     "borrowing": 603.6,
+     "netDebt": 15234.21390979,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 30258.9,
+     "interest": 487.4,
+     "borrowing": -218.2,
+     "netDebt": 11441.0193213,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 30802.9,
+     "interest": 445.7,
+     "borrowing": 625.5,
+     "netDebt": 4957.4432346700105,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 30824.3,
+     "interest": 406.3,
+     "borrowing": 1286.4,
+     "netDebt": 5468.0652169900095,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 32040.5,
+     "interest": 380.6,
+     "borrowing": 203.7,
+     "netDebt": 4221.34217014001,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 33786.2,
+     "interest": 388.0,
+     "borrowing": -644.7,
+     "netDebt": 2792.88845380999,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 35100.899999999994,
+     "interest": 395.5,
+     "borrowing": 576.0,
+     "netDebt": 2874.78354160001,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 36483.8,
+     "interest": 472.2,
+     "borrowing": 1718.4,
+     "netDebt": 3156.5242637900196,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 37248.1,
+     "interest": 531.2,
+     "borrowing": 1102.1,
+     "netDebt": 4258.6242637900195,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual",
+     "notes": [
+      "Net debt not yet published: last year's figure plus this year's borrowing."
+     ]
+    }
+   }
+  },
+  "LU-federal": {
+   "label": "Luxembourg central government",
+   "years": {
+    "2000": {
+     "taxes": 5922.200000000001,
+     "interest": 69.6,
+     "borrowing": -684.0,
+     "netDebt": -7066.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 6020.099999999999,
+     "interest": 69.5,
+     "borrowing": -715.9,
+     "netDebt": -7584.4,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 6279.599999999999,
+     "interest": 63.3,
+     "borrowing": -31.1,
+     "netDebt": -7500.4,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 6500.1,
+     "interest": 61.0,
+     "borrowing": 332.8,
+     "netDebt": -7776.4,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 6758.6,
+     "interest": 53.2,
+     "borrowing": 765.8,
+     "netDebt": -7367.3,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 7568.1,
+     "interest": 52.7,
+     "borrowing": 562.2,
+     "netDebt": -7675.3,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 8243.2,
+     "interest": 59.5,
+     "borrowing": -78.6,
+     "netDebt": -9804.5,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 9102.599999999999,
+     "interest": 79.7,
+     "borrowing": -499.4,
+     "netDebt": -11877.4,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 9447.699999999999,
+     "interest": 109.4,
+     "borrowing": -101.5,
+     "netDebt": -9886.6,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 9397.1,
+     "interest": 131.8,
+     "borrowing": 892.9,
+     "netDebt": -9568.8,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 10220.2,
+     "interest": 171.3,
+     "borrowing": 934.2,
+     "netDebt": -8627.8,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 10695.6,
+     "interest": 214.1,
+     "borrowing": 786.4,
+     "netDebt": -7293.5,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 11553.8,
+     "interest": 214.4,
+     "borrowing": 846.6,
+     "netDebt": -7414.5,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 12234.4,
+     "interest": 241.8,
+     "borrowing": 536.9,
+     "netDebt": -7857.3,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 12936.4,
+     "interest": 207.0,
+     "borrowing": 263.6,
+     "netDebt": -7649.1,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 12824.6,
+     "interest": 201.6,
+     "borrowing": 280.7,
+     "netDebt": -7046.2,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 13582.1,
+     "interest": 207.0,
+     "borrowing": 80.1,
+     "netDebt": -7281.1,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 14652.3,
+     "interest": 212.0,
+     "borrowing": 238.0,
+     "netDebt": -6873.6,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 16522.0,
+     "interest": 209.6,
+     "borrowing": -606.7,
+     "netDebt": -7589.7,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 17303.1,
+     "interest": 203.3,
+     "borrowing": -231.0,
+     "netDebt": -8057.5,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 17060.2,
+     "interest": 142.5,
+     "borrowing": 2844.8,
+     "netDebt": -5177.4,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 19826.2,
+     "interest": 110.7,
+     "borrowing": -60.1,
+     "netDebt": -7497.2,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 20990.5,
+     "interest": 118.1,
+     "borrowing": 668.1,
+     "netDebt": -9646.2,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 22830.4,
+     "interest": 207.0,
+     "borrowing": 1516.5,
+     "netDebt": -7971.1,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 24914.399999999998,
+     "interest": 240.8,
+     "borrowing": 489.5,
+     "netDebt": -8229.2,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 25353.600000000002,
+     "interest": 288.2,
+     "borrowing": 2293.7,
+     "netDebt": -7521.9,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "LU-local": {
+   "label": "Luxembourg communes",
+   "years": {
+    "2000": {
+     "taxes": 495.1,
+     "interest": 16.6,
+     "borrowing": -110.5,
+     "netDebt": -428.9,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 507.1,
+     "interest": 17.2,
+     "borrowing": -31.9,
+     "netDebt": -524.3,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 573.0,
+     "interest": 14.8,
+     "borrowing": -29.4,
+     "netDebt": -493.7,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 585.8,
+     "interest": 14.6,
+     "borrowing": 0.5,
+     "netDebt": -381.6,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 502.90000000000003,
+     "interest": 11.8,
+     "borrowing": 28.7,
+     "netDebt": -385.5,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 505.4,
+     "interest": 14.4,
+     "borrowing": 91.5,
+     "netDebt": -361.1,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 533.7,
+     "interest": 21.4,
+     "borrowing": -71.1,
+     "netDebt": -333.4,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 596.4,
+     "interest": 32.0,
+     "borrowing": -138.3,
+     "netDebt": -578.6,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 631.4,
+     "interest": 36.5,
+     "borrowing": -169.6,
+     "netDebt": -796.3,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 638.0,
+     "interest": 17.4,
+     "borrowing": 49.1,
+     "netDebt": -834.8,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 654.3000000000001,
+     "interest": 11.2,
+     "borrowing": -66.9,
+     "netDebt": -784.4,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 743.4,
+     "interest": 14.6,
+     "borrowing": -134.3,
+     "netDebt": -933.8,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 675.6,
+     "interest": 13.3,
+     "borrowing": -228.1,
+     "netDebt": -1104.2,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 624.5,
+     "interest": 6.5,
+     "borrowing": -160.0,
+     "netDebt": -1612.7,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 612.1,
+     "interest": 6.1,
+     "borrowing": -142.9,
+     "netDebt": -1823.6,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 670.9,
+     "interest": 4.1,
+     "borrowing": -159.5,
+     "netDebt": -2085.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 784.6999999999999,
+     "interest": 2.5,
+     "borrowing": -137.4,
+     "netDebt": -2241.7,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 870.3,
+     "interest": 2.6,
+     "borrowing": -81.4,
+     "netDebt": -2433.4,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 1081.5,
+     "interest": 3.2,
+     "borrowing": -240.3,
+     "netDebt": -2467.5,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 1185.7,
+     "interest": 4.0,
+     "borrowing": -297.6,
+     "netDebt": -2816.6,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 1038.7,
+     "interest": 4.1,
+     "borrowing": -43.8,
+     "netDebt": -2887.5,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 1103.4,
+     "interest": 3.8,
+     "borrowing": -61.0,
+     "netDebt": -3035.5,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 1079.4,
+     "interest": 5.7,
+     "borrowing": 159.3,
+     "netDebt": -2929.5,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 1373.6000000000001,
+     "interest": 28.3,
+     "borrowing": 253.7,
+     "netDebt": -2807.6,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 1699.8000000000002,
+     "interest": 38.2,
+     "borrowing": -65.6,
+     "netDebt": -2800.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 1806.6999999999998,
+     "interest": 25.4,
+     "borrowing": -4.4,
+     "netDebt": -2959.6,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "IE-federal": {
+   "label": "Irish central government",
+   "years": {
+    "2000": {
+     "taxes": 28588.5,
+     "interest": 2071.4,
+     "borrowing": -4776.5,
+     "netDebt": 17084.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 29555.600000000002,
+     "interest": 1714.5,
+     "borrowing": -1023.0,
+     "netDebt": 15059.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 31982.3,
+     "interest": 1741.8,
+     "borrowing": 40.6,
+     "netDebt": 18367.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 35172.4,
+     "interest": 1728.2,
+     "borrowing": 201.5,
+     "netDebt": 17247.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 39174.0,
+     "interest": 1676.5,
+     "borrowing": -1522.3,
+     "netDebt": 14658.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 43354.899999999994,
+     "interest": 1714.1,
+     "borrowing": -1792.0,
+     "netDebt": 13467.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 49592.4,
+     "interest": 1820.6,
+     "borrowing": -4315.9,
+     "netDebt": 6585.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 51114.1,
+     "interest": 1969.5,
+     "borrowing": -324.8,
+     "netDebt": 3312.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 44593.8,
+     "interest": 2385.1,
+     "borrowing": 12133.4,
+     "netDebt": 25573.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 37400.1,
+     "interest": 3393.8,
+     "borrowing": 20954.0,
+     "netDebt": 43021.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 36558.200000000004,
+     "interest": 4725.4,
+     "borrowing": 52717.1,
+     "netDebt": 78739.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 37530.6,
+     "interest": 5746.1,
+     "borrowing": 22756.0,
+     "netDebt": 106425.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 39458.9,
+     "interest": 7275.5,
+     "borrowing": 14696.6,
+     "netDebt": 138207.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 41110.5,
+     "interest": 7738.9,
+     "borrowing": 11329.3,
+     "netDebt": 147981.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 45104.7,
+     "interest": 7576.0,
+     "borrowing": 7344.6,
+     "netDebt": 164243.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 49361.4,
+     "interest": 6919.0,
+     "borrowing": 5739.2,
+     "netDebt": 162844.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 51459.5,
+     "interest": 6262.4,
+     "borrowing": 2797.2,
+     "netDebt": 164401.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 54340.9,
+     "interest": 5902.3,
+     "borrowing": 1638.2,
+     "netDebt": 160210.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 59072.700000000004,
+     "interest": 5300.6,
+     "borrowing": 831.2,
+     "netDebt": 162482.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 63147.299999999996,
+     "interest": 4610.8,
+     "borrowing": -373.8,
+     "netDebt": 161923.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 60809.5,
+     "interest": 3817.9,
+     "borrowing": 15206.4,
+     "netDebt": 180054.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 74592.8,
+     "interest": 3286.3,
+     "borrowing": 5058.2,
+     "netDebt": 172889.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 87287.0,
+     "interest": 3306.9,
+     "borrowing": -7014.3,
+     "netDebt": 131309.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 91932.90000000001,
+     "interest": 3496.7,
+     "borrowing": -5373.8,
+     "netDebt": 131133.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 101074.9,
+     "interest": 3484.9,
+     "borrowing": -21428.3,
+     "netDebt": 107713.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 109721.1,
+     "interest": 3163.8,
+     "borrowing": -8349.0,
+     "netDebt": 97428.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "IE-local": {
+   "label": "Irish local authorities",
+   "years": {
+    "2000": {
+     "taxes": 587.4,
+     "interest": 124.2,
+     "borrowing": 134.2,
+     "netDebt": -13.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 657.9,
+     "interest": 147.2,
+     "borrowing": 557.1,
+     "netDebt": 1162.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 747.2,
+     "interest": 167.2,
+     "borrowing": 437.1,
+     "netDebt": 1712.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 836.4,
+     "interest": 150.0,
+     "borrowing": -422.3,
+     "netDebt": 1377.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 885.9,
+     "interest": 129.4,
+     "borrowing": -117.4,
+     "netDebt": 1122.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 1039.4,
+     "interest": 120.0,
+     "borrowing": -333.1,
+     "netDebt": 858.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 1094.0,
+     "interest": 146.1,
+     "borrowing": -322.0,
+     "netDebt": 572.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 1259.8,
+     "interest": 175.0,
+     "borrowing": 368.4,
+     "netDebt": 1659.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 1295.3,
+     "interest": 212.8,
+     "borrowing": 681.3,
+     "netDebt": 2381.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 1329.8,
+     "interest": 126.0,
+     "borrowing": 106.9,
+     "netDebt": 2496.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 1332.2,
+     "interest": 102.5,
+     "borrowing": 21.0,
+     "netDebt": 2455.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 1344.9,
+     "interest": 140.7,
+     "borrowing": 233.2,
+     "netDebt": 2573.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 1481.1,
+     "interest": 119.7,
+     "borrowing": 146.5,
+     "netDebt": 2603.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 1406.6,
+     "interest": 121.6,
+     "borrowing": 141.6,
+     "netDebt": 2522.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 1463.7,
+     "interest": 86.7,
+     "borrowing": -272.6,
+     "netDebt": 2414.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 1515.0,
+     "interest": 68.2,
+     "borrowing": -378.2,
+     "netDebt": 1862.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 1529.1,
+     "interest": 81.6,
+     "borrowing": -188.7,
+     "netDebt": 2061.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 1590.8,
+     "interest": 69.5,
+     "borrowing": -63.8,
+     "netDebt": 1779.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 1674.1,
+     "interest": 63.9,
+     "borrowing": 2.6,
+     "netDebt": 1675.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 1718.6,
+     "interest": 86.4,
+     "borrowing": 581.2,
+     "netDebt": 2256.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 938.3000000000001,
+     "interest": 78.6,
+     "borrowing": 287.8,
+     "netDebt": 2565.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 1384.2,
+     "interest": 106.5,
+     "borrowing": 485.3,
+     "netDebt": 3072.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 1870.2,
+     "interest": 124.1,
+     "borrowing": 715.0,
+     "netDebt": 3830.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 1923.2,
+     "interest": 160.1,
+     "borrowing": 1132.1,
+     "netDebt": 4962.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 2310.9,
+     "interest": 216.9,
+     "borrowing": 1702.7,
+     "netDebt": 6663.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 2090.1,
+     "interest": 264.8,
+     "borrowing": 2239.2,
+     "netDebt": 8222.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "NO-federal": {
+   "label": "Norwegian central government (incl. the oil fund)",
+   "years": {
+    "2000": {
+     "taxes": 481757.0,
+     "interest": 19217.0,
+     "borrowing": -232166.0,
+     "netDebt": -1070587.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 493330.0,
+     "interest": 23387.0,
+     "borrowing": -217146.0,
+     "netDebt": -1379766.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 515370.0,
+     "interest": 21859.0,
+     "borrowing": -140346.0,
+     "netDebt": -1293578.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 513803.0,
+     "interest": 25654.0,
+     "borrowing": -132997.0,
+     "netDebt": -1591296.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 587336.0,
+     "interest": 23891.0,
+     "borrowing": -204211.0,
+     "netDebt": -1899066.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 668142.0,
+     "interest": 28539.0,
+     "borrowing": -294318.0,
+     "netDebt": -2475014.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 756169.0,
+     "interest": 47356.0,
+     "borrowing": -399222.0,
+     "netDebt": -3029824.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 787438.0,
+     "interest": 51484.0,
+     "borrowing": -412561.0,
+     "netDebt": -3320878.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 865289.0,
+     "interest": 42136.0,
+     "borrowing": -512951.0,
+     "netDebt": -3314468.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 774057.0,
+     "interest": 25721.0,
+     "borrowing": -272843.0,
+     "netDebt": -3840733.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 846918.0,
+     "interest": 21694.0,
+     "borrowing": -304889.0,
+     "netDebt": -4354375.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 930516.0,
+     "interest": 19496.0,
+     "borrowing": -392420.0,
+     "netDebt": -4584403.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 970250.0,
+     "interest": 14559.0,
+     "borrowing": -424804.0,
+     "netDebt": -5149938.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 952391.0,
+     "interest": 13659.0,
+     "borrowing": -351530.0,
+     "netDebt": -6508957.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 928271.0,
+     "interest": 13134.0,
+     "borrowing": -293971.0,
+     "netDebt": -7968321.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 884273.0,
+     "interest": 13206.0,
+     "borrowing": -197135.0,
+     "netDebt": -9013301.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 879443.0,
+     "interest": 11119.0,
+     "borrowing": -138697.0,
+     "netDebt": -9161745.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 940167.0,
+     "interest": 9533.0,
+     "borrowing": -177126.0,
+     "netDebt": -10325015.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 1044290.0,
+     "interest": 10874.0,
+     "borrowing": -295698.0,
+     "netDebt": -10110861.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 1061138.0,
+     "interest": 10457.0,
+     "borrowing": -269661.0,
+     "netDebt": -11976731.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 959761.0,
+     "interest": 10516.0,
+     "borrowing": 72079.0,
+     "netDebt": -12758104.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 1338498.0,
+     "interest": 7879.0,
+     "borrowing": -428968.0,
+     "netDebt": -14819626.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 2053133.0,
+     "interest": 14669.0,
+     "borrowing": -1509525.0,
+     "netDebt": -15257855.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 1672910.0,
+     "interest": 28925.0,
+     "borrowing": -887364.0,
+     "netDebt": -18508438.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 1622410.0,
+     "interest": 45867.0,
+     "borrowing": -735362.0,
+     "netDebt": -22566294.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 1624704.0,
+     "interest": 46422.0,
+     "borrowing": -612653.0,
+     "netDebt": -23899888.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "NO-local": {
+   "label": "Norwegian municipalities and counties",
+   "years": {
+    "2000": {
+     "taxes": 94842.0,
+     "interest": 4461.0,
+     "borrowing": 5095.0,
+     "netDebt": 1382.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 107531.0,
+     "interest": 7383.0,
+     "borrowing": 10761.0,
+     "netDebt": 10907.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 85349.0,
+     "interest": 6762.0,
+     "borrowing": -848.0,
+     "netDebt": 10081.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 98872.0,
+     "interest": 4010.0,
+     "borrowing": 15990.0,
+     "netDebt": 25185.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 102910.0,
+     "interest": 2573.0,
+     "borrowing": 10473.0,
+     "netDebt": 31502.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 112346.0,
+     "interest": 3401.0,
+     "borrowing": 337.0,
+     "netDebt": 37869.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 119417.0,
+     "interest": 5925.0,
+     "borrowing": 1382.0,
+     "netDebt": 29659.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 123700.0,
+     "interest": 10708.0,
+     "borrowing": 10442.0,
+     "netDebt": 31765.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 127576.0,
+     "interest": 11328.0,
+     "borrowing": 27047.0,
+     "netDebt": 73854.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 138935.0,
+     "interest": 8973.0,
+     "borrowing": 24128.0,
+     "netDebt": 90616.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 147661.0,
+     "interest": 9237.0,
+     "borrowing": 21653.0,
+     "netDebt": 110331.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 142139.0,
+     "interest": 10879.0,
+     "borrowing": 19461.0,
+     "netDebt": 132721.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 153393.0,
+     "interest": 10956.0,
+     "borrowing": 16730.0,
+     "netDebt": 133349.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 162399.0,
+     "interest": 10464.0,
+     "borrowing": 23918.0,
+     "netDebt": 145799.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 169268.0,
+     "interest": 10820.0,
+     "borrowing": 23979.0,
+     "netDebt": 168497.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 183968.0,
+     "interest": 10198.0,
+     "borrowing": 10000.0,
+     "netDebt": 160647.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 194739.0,
+     "interest": 8914.0,
+     "borrowing": 13024.0,
+     "netDebt": 167361.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 202946.0,
+     "interest": 8390.0,
+     "borrowing": 12128.0,
+     "netDebt": 174975.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 213578.0,
+     "interest": 8444.0,
+     "borrowing": 19988.0,
+     "netDebt": 185813.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 219835.0,
+     "interest": 10549.0,
+     "borrowing": 35337.0,
+     "netDebt": 212059.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 223965.0,
+     "interest": 8211.0,
+     "borrowing": 22703.0,
+     "netDebt": 186523.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 283603.0,
+     "interest": 6375.0,
+     "borrowing": -16963.0,
+     "netDebt": 164725.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 255330.0,
+     "interest": 12972.0,
+     "borrowing": 48682.0,
+     "netDebt": 220331.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 268060.0,
+     "interest": 25217.0,
+     "borrowing": 44306.0,
+     "netDebt": 273916.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 280209.0,
+     "interest": 32697.0,
+     "borrowing": 49665.0,
+     "netDebt": 293817.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 302724.0,
+     "interest": 35230.0,
+     "borrowing": 31415.0,
+     "netDebt": 304099.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "DK-federal": {
+   "label": "Danish central government",
+   "years": {
+    "2000": {
+     "taxes": 421022.0,
+     "interest": 47162.0,
+     "borrowing": -17039.0,
+     "netDebt": 433814.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 417751.0,
+     "interest": 41017.0,
+     "borrowing": -9592.0,
+     "netDebt": 409817.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 429509.0,
+     "interest": 38814.0,
+     "borrowing": -7281.0,
+     "netDebt": 390525.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 439065.0,
+     "interest": 34961.0,
+     "borrowing": -9472.0,
+     "netDebt": 374484.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 474995.0,
+     "interest": 32703.0,
+     "borrowing": -31413.0,
+     "netDebt": 343633.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 528468.0,
+     "interest": 26362.0,
+     "borrowing": -89150.0,
+     "netDebt": 235660.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 541139.0,
+     "interest": 23369.0,
+     "borrowing": -91857.0,
+     "netDebt": 134529.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 617056.0,
+     "interest": 21107.0,
+     "borrowing": -96343.0,
+     "netDebt": 79795.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 608973.0,
+     "interest": 18468.0,
+     "borrowing": -69305.0,
+     "netDebt": 6475.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 575401.0,
+     "interest": 25494.0,
+     "borrowing": 35471.0,
+     "netDebt": 25265.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 599576.0,
+     "interest": 27802.0,
+     "borrowing": 44621.0,
+     "netDebt": 61992.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 612765.0,
+     "interest": 28370.0,
+     "borrowing": 35542.0,
+     "netDebt": 194271.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 640669.0,
+     "interest": 26499.0,
+     "borrowing": 62113.0,
+     "netDebt": 308374.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 672247.0,
+     "interest": 26473.0,
+     "borrowing": 22889.0,
+     "netDebt": 268954.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 744941.0,
+     "interest": 23405.0,
+     "borrowing": -24358.0,
+     "netDebt": 327002.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 714909.0,
+     "interest": 23488.0,
+     "borrowing": 23583.0,
+     "netDebt": 337776.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 716701.0,
+     "interest": 20476.0,
+     "borrowing": 1751.0,
+     "netDebt": 319031.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 743612.0,
+     "interest": 15110.0,
+     "borrowing": -31880.0,
+     "netDebt": 246595.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 737519.0,
+     "interest": 16220.0,
+     "borrowing": -18067.0,
+     "netDebt": 204542.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 817365.0,
+     "interest": 15062.0,
+     "borrowing": -93924.0,
+     "netDebt": 75104.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 814140.0,
+     "interest": 10184.0,
+     "borrowing": -1531.0,
+     "netDebt": -67609.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 909289.0,
+     "interest": 10368.0,
+     "borrowing": -97016.0,
+     "netDebt": -76309.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 881246.0,
+     "interest": 16376.0,
+     "borrowing": -92173.0,
+     "netDebt": -255795.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 903589.0,
+     "interest": 12921.0,
+     "borrowing": -91998.0,
+     "netDebt": -307536.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 977475.0,
+     "interest": 16064.0,
+     "borrowing": -112147.0,
+     "netDebt": -426257.0,
+     "borrowingSource": "Statistics Denmark table OFF3, central government net lending",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 1014564.0,
+     "interest": 18020.0,
+     "borrowing": -89748.0,
+     "netDebt": -547650.0,
+     "borrowingSource": "Statistics Denmark table OFF3, central government net lending",
+     "status": "actual"
+    }
+   }
+  },
+  "DK-local": {
+   "label": "Danish municipalities and regions",
+   "years": {
+    "2000": {
+     "taxes": 191666.0,
+     "interest": 3607.0,
+     "borrowing": 694.0,
+     "netDebt": -50091.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 204918.0,
+     "interest": 3669.0,
+     "borrowing": 2036.0,
+     "netDebt": -51998.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 211846.0,
+     "interest": 3344.0,
+     "borrowing": 3828.0,
+     "netDebt": -60960.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 218065.0,
+     "interest": 3143.0,
+     "borrowing": 7932.0,
+     "netDebt": -89677.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 223189.0,
+     "interest": 3198.0,
+     "borrowing": -1832.0,
+     "netDebt": -104649.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 232071.0,
+     "interest": 3559.0,
+     "borrowing": 7156.0,
+     "netDebt": -109962.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 240803.0,
+     "interest": 4577.0,
+     "borrowing": 3435.0,
+     "netDebt": -120521.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 192106.0,
+     "interest": 5277.0,
+     "borrowing": 4197.0,
+     "netDebt": -140090.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 199678.0,
+     "interest": 7039.0,
+     "borrowing": 6753.0,
+     "netDebt": -149152.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 198864.0,
+     "interest": 5580.0,
+     "borrowing": 10978.0,
+     "netDebt": -148023.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 217258.0,
+     "interest": 4209.0,
+     "borrowing": 1440.0,
+     "netDebt": -136734.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 221825.0,
+     "interest": 5074.0,
+     "borrowing": -2245.0,
+     "netDebt": -138310.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 228565.0,
+     "interest": 4542.0,
+     "borrowing": -1051.0,
+     "netDebt": -138934.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 235883.0,
+     "interest": 3679.0,
+     "borrowing": -4607.0,
+     "netDebt": -162440.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 241773.0,
+     "interest": 3390.0,
+     "borrowing": -3484.0,
+     "netDebt": -167976.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 249169.0,
+     "interest": 2081.0,
+     "borrowing": -5048.0,
+     "netDebt": -169745.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 257890.0,
+     "interest": 1810.0,
+     "borrowing": -7839.0,
+     "netDebt": -188900.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 265874.0,
+     "interest": 1600.0,
+     "borrowing": -5081.0,
+     "netDebt": -197838.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 269263.0,
+     "interest": 1817.0,
+     "borrowing": -200.0,
+     "netDebt": -197277.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 278448.0,
+     "interest": 1968.0,
+     "borrowing": -4690.0,
+     "netDebt": -201702.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 294636.0,
+     "interest": 1873.0,
+     "borrowing": -6534.0,
+     "netDebt": -222325.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 311051.0,
+     "interest": 2291.0,
+     "borrowing": -5882.0,
+     "netDebt": -240613.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 315905.0,
+     "interest": 3563.0,
+     "borrowing": -3438.0,
+     "netDebt": -270092.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 331097.0,
+     "interest": 5782.0,
+     "borrowing": -5235.0,
+     "netDebt": -265124.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 343352.0,
+     "interest": 6496.0,
+     "borrowing": -10945.0,
+     "netDebt": -268671.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 355282.0,
+     "interest": 6771.0,
+     "borrowing": -1121.0,
+     "netDebt": -268227.0,
+     "borrowingSource": "Eurostat gov_10a_main, net borrowing (B.9)",
+     "status": "actual"
+    }
+   }
+  },
+  "UK-federal": {
+   "label": "UK central government",
+   "years": {
+    "2000": {
+     "taxes": 351847.0,
+     "interest": 26891.0,
+     "borrowing": -13067.0,
+     "netDebt": 296853.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 356855.0,
+     "interest": 23015.0,
+     "borrowing": 2378.0,
+     "netDebt": 303369.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 361199.0,
+     "interest": 21747.0,
+     "borrowing": 29630.0,
+     "netDebt": 333126.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 390579.0,
+     "interest": 23221.0,
+     "borrowing": 37742.0,
+     "netDebt": 380668.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 419613.0,
+     "interest": 25885.0,
+     "borrowing": 41016.0,
+     "netDebt": 439555.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 449357.0,
+     "interest": 27797.0,
+     "borrowing": 36010.0,
+     "netDebt": 473746.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 477306.0,
+     "interest": 30763.0,
+     "borrowing": 34884.0,
+     "netDebt": 511674.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 502471.0,
+     "interest": 33699.0,
+     "borrowing": 44210.0,
+     "netDebt": 545063.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 482589.0,
+     "interest": 33535.0,
+     "borrowing": 101363.0,
+     "netDebt": 703631.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 475700.0,
+     "interest": 33675.0,
+     "borrowing": 150282.0,
+     "netDebt": 925993.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 511633.0,
+     "interest": 48724.0,
+     "borrowing": 138211.0,
+     "netDebt": 1078165.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 530811.0,
+     "interest": 52217.0,
+     "borrowing": 113165.0,
+     "netDebt": 1170599.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 537107.0,
+     "interest": 50694.0,
+     "borrowing": 123922.0,
+     "netDebt": 1248007.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 559676.0,
+     "interest": 50379.0,
+     "borrowing": 101104.0,
+     "netDebt": 1324515.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 580954.0,
+     "interest": 46542.0,
+     "borrowing": 93756.0,
+     "netDebt": 1410140.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 602325.0,
+     "interest": 46342.0,
+     "borrowing": 78841.0,
+     "netDebt": 1455585.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 643391.0,
+     "interest": 49872.0,
+     "borrowing": 45323.0,
+     "netDebt": 1493905.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 665636.0,
+     "interest": 56120.0,
+     "borrowing": 51993.0,
+     "netDebt": 1537443.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 697916.0,
+     "interest": 50240.0,
+     "borrowing": 32861.0,
+     "netDebt": 1567522.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 704258.0,
+     "interest": 50342.0,
+     "borrowing": 57371.0,
+     "netDebt": 1601010.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 672258.0,
+     "interest": 41032.0,
+     "borrowing": 322595.0,
+     "netDebt": 1901713.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 792442.0,
+     "interest": 70988.0,
+     "borrowing": 132482.0,
+     "netDebt": 2021326.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 885568.0,
+     "interest": 107820.0,
+     "borrowing": 122588.0,
+     "netDebt": 2207340.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 930136.0,
+     "interest": 83003.0,
+     "borrowing": 148003.0,
+     "netDebt": 2397478.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 965928.0,
+     "interest": 85261.0,
+     "borrowing": 150073.0,
+     "netDebt": 2581348.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 1053071.0,
+     "interest": 96839.0,
+     "borrowing": 126460.0,
+     "netDebt": 2718244.0,
+     "borrowingSource": "ONS public sector finances: central government net borrowing (NMFJ)",
+     "status": "actual"
+    }
+   }
+  },
+  "UK-London-local": {
+   "label": "All UK local authorities",
+   "years": {
+    "2000": {
+     "taxes": 13644.0,
+     "interest": 322.0,
+     "borrowing": -2313.0,
+     "netDebt": 40860.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2001": {
+     "taxes": 14598.0,
+     "interest": 277.0,
+     "borrowing": 2576.0,
+     "netDebt": 40667.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2002": {
+     "taxes": 16005.0,
+     "interest": 246.0,
+     "borrowing": 794.0,
+     "netDebt": 38118.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2003": {
+     "taxes": 18140.0,
+     "interest": 233.0,
+     "borrowing": -236.0,
+     "netDebt": 34975.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2004": {
+     "taxes": 19289.0,
+     "interest": 381.0,
+     "borrowing": 3538.0,
+     "netDebt": 34171.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2005": {
+     "taxes": 20421.0,
+     "interest": 432.0,
+     "borrowing": 5979.0,
+     "netDebt": 37737.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 21492.0,
+     "interest": 407.0,
+     "borrowing": 3667.0,
+     "netDebt": 37195.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 22687.0,
+     "interest": 515.0,
+     "borrowing": 1009.0,
+     "netDebt": 35983.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 23636.0,
+     "interest": 564.0,
+     "borrowing": 5607.0,
+     "netDebt": 43715.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 24168.0,
+     "interest": 283.0,
+     "borrowing": 5887.0,
+     "netDebt": 48844.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 24842.0,
+     "interest": 353.0,
+     "borrowing": 4927.0,
+     "netDebt": 49127.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 24962.0,
+     "interest": 432.0,
+     "borrowing": 11578.0,
+     "netDebt": 58978.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 25275.0,
+     "interest": 362.0,
+     "borrowing": 564.0,
+     "netDebt": 59366.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 26473.0,
+     "interest": 375.0,
+     "borrowing": -1342.0,
+     "netDebt": 57342.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 27325.0,
+     "interest": 570.0,
+     "borrowing": 512.0,
+     "netDebt": 57469.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 28149.0,
+     "interest": 628.0,
+     "borrowing": 4090.0,
+     "netDebt": 59734.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 29687.0,
+     "interest": 687.0,
+     "borrowing": 8890.0,
+     "netDebt": 64376.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 31409.0,
+     "interest": 673.0,
+     "borrowing": 9216.0,
+     "netDebt": 71405.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 33451.0,
+     "interest": 734.0,
+     "borrowing": 7237.0,
+     "netDebt": 76073.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 35714.0,
+     "interest": 590.0,
+     "borrowing": 5698.0,
+     "netDebt": 82006.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 36733.0,
+     "interest": 730.0,
+     "borrowing": -5310.0,
+     "netDebt": 79985.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 39444.0,
+     "interest": 803.0,
+     "borrowing": -38.0,
+     "netDebt": 78042.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 41577.0,
+     "interest": 870.0,
+     "borrowing": 12521.0,
+     "netDebt": 91380.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 44081.0,
+     "interest": 1108.0,
+     "borrowing": 12976.0,
+     "netDebt": 103928.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 46849.0,
+     "interest": 1099.0,
+     "borrowing": 19723.0,
+     "netDebt": 113494.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 49541.0,
+     "interest": 1129.0,
+     "borrowing": 17387.0,
+     "netDebt": 120954.0,
+     "borrowingSource": "ONS public sector finances: local government net borrowing (NMOE)",
+     "status": "actual"
+    }
+   }
+  }
+ }
+}

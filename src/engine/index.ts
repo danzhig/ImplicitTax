@@ -4,6 +4,9 @@ import { calculateCanada } from './ca/calculate';
 import { CITIES, FX_CAD_PER_USD } from './ca/params2026';
 import { calculateUs } from './us/calculate';
 import { US_CITIES } from './us/params2026';
+import { calculateEu } from './eu/calculate';
+import { EU_CITIES, FX as EU_FX } from './eu/params2026';
+import type { EuCountry } from './eu/common';
 import { debtShareAtFixedShare, seriesYears } from './fiscal';
 import type { CalcOptions, Level, Persona, PlaceResult } from './types';
 
@@ -14,15 +17,15 @@ export interface Place {
   id: string;
   name: string;
   region: string;
-  country: 'Canada' | 'United States';
-  countryCode: 'CA' | 'US';
+  country: string;
+  countryCode: 'CA' | 'US' | EuCountry;
   /** What each level is called in this country. */
   levelNames: Record<Level, string>;
   currency: string;
   /** Local currency per USD. */
   fx: number;
-  /** Fiscal series behind each level, for the history views. */
-  series: { federal: string; provincial: string; local: string };
+  /** Fiscal series behind each level, for the history views. Null where there is no middle level. */
+  series: { federal: string; provincial: string | null; local: string };
   calculate: (p: Persona, opts: CalcOptions) => PlaceResult;
 }
 
@@ -56,7 +59,23 @@ const UNITED_STATES: Place[] = Object.values(US_CITIES).map((c) => ({
   calculate: (p, o) => calculateUs(p, c.id, o),
 }));
 
-export const PLACES: Place[] = [...CANADA, ...UNITED_STATES];
+const EUROPE: Place[] = Object.values(EU_CITIES).map((c) => ({
+  id: c.id,
+  name: c.name,
+  region: c.region,
+  country: c.countryName,
+  countryCode: c.country,
+  levelNames: c.levelNames,
+  currency: EU_FX[c.country].currency,
+  fx: EU_FX[c.country].perUsd,
+  series: c.series,
+  calculate: (p, o) => calculateEu(p, c.id, o),
+}));
+
+export const PLACES: Place[] = [...CANADA, ...UNITED_STATES, ...EUROPE];
+
+/** Levels of government that exist in a place (no middle level in unitary countries). */
+export const placeLevels = (p: Place): Lvl[] => LVLS.filter((l) => p.series[l] !== null);
 
 export const placeById = (id: string) => PLACES.find((p) => p.id === id)!;
 
@@ -108,7 +127,8 @@ export interface HistoryRow {
 export function history(persona: Persona, placeId: string, opts: CalcOptions): HistoryRow[] {
   const place = placeById(placeId);
   const years = new Set<number>();
-  for (const id of Object.values(place.series)) seriesYears(id).forEach((y) => years.add(y));
+  for (const id of Object.values(place.series)) if (id) seriesYears(id).forEach((y) => years.add(y));
+  const levels = placeLevels(place);
   const now = calculate(persona, placeId, { ...opts, year: 'latest' });
   const taxesNow = Object.fromEntries(now.deferred.map((d) => [d.level, d.yourTaxes])) as Record<Lvl, number>;
   return [...years].sort((a, b) => a - b).map((year) => {
@@ -120,13 +140,17 @@ export function history(persona: Persona, placeId: string, opts: CalcOptions): H
     let complete = true;
     let estimate = false;
     for (const lvl of LVLS) {
+      if (!levels.includes(lvl)) {
+        borrowed[lvl] = null; interest[lvl] = null; debt[lvl] = null;
+        continue;
+      }
       const d = r.deferred.find((x) => x.level === lvl)!;
       const has = d.borrowRatio !== null;
       if (!has) complete = false;
       if (d.estimate) estimate = true;
       borrowed[lvl] = has ? d.borrowed / g : null;
       interest[lvl] = d.interestRatio !== null ? d.interestCost / g : null;
-      debt[lvl] = debtShareAtFixedShare(place.series[lvl], taxesNow[lvl], year);
+      debt[lvl] = debtShareAtFixedShare(place.series[lvl]!, taxesNow[lvl], year);
     }
     return { year, paidNow: r.paidNowRate, borrowed, interest, debt, implicit: complete ? r.implicitRate : null, estimate };
   });
