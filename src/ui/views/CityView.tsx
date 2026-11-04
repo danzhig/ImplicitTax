@@ -174,13 +174,22 @@ function BorrowingTable({ r }: { r: PlaceResult }) {
       </table>
       <p className="fine">Borrowing = the increase in each government's net debt that year (debts minus financial assets), so it includes borrowing for
         infrastructure; negative = debt paid down. Interest is already inside the taxes you pay, so it is shown but not added again.
-        * Local figures use all local governments in the {placeById(r.placeId).countryCode === 'US' ? 'state (cities, counties, school and special districts)' : 'province'}.</p>
+        * {proxyNote(placeById(r.placeId).countryCode)}</p>
     </div>
   );
 }
 
+const proxyNote = (c: string) =>
+  c === 'US' ? 'Local figures use all local governments in the state (cities, counties, school and special districts).'
+    : c === 'CA' ? 'Local figures use all municipalities in the province.'
+      : c === 'DE' ? 'Bavaria is shown through all 16 Länder and Munich through all German municipalities.'
+        : c === 'CH' ? 'The canton is shown through all 26 cantons and the city through all Swiss communes.'
+          : 'Local figures use all local governments in the country.';
+
 const fy = (year: number, level: Level, country: string) =>
-  country === 'US' ? `FY${year}` : level === 'local' ? String(year) : `${year}-${String((year + 1) % 100).padStart(2, '0')}`;
+  country === 'US' ? `FY${year}`
+    : country === 'UK' || (country === 'CA' && level !== 'local') ? `${year}-${String((year + 1) % 100).padStart(2, '0')}`
+      : String(year);
 
 function LineItems({ r }: { r: PlaceResult }) {
   const [open, setOpen] = useState<string | null>(null);

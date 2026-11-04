@@ -125,7 +125,7 @@ export function PersonaPanel() {
       <Section title="Income (per year)">
         <Num label="Salary" value={p.income.employment} onChange={(v) => set((x) => { x.income.employment = v; })} />
         <Num label="Self-employment profit" value={p.income.selfEmployment} onChange={(v) => set((x) => { x.income.selfEmployment = v; })}
-          hint="Self-employed people pay both the employee and employer halves of CPP." />
+          hint="Self-employed people usually pay both the employee and employer halves of social contributions." />
         <Num label="Retirement contribution (RRSP/401k)" value={p.retirementContribution} onChange={(v) => set((x) => { x.retirementContribution = v; })} />
         <Check label="Work out investment income from my savings" checked={p.income.deriveInvestmentIncome}
           onChange={(v) => set((x) => { x.income.deriveInvestmentIncome = v; })}
@@ -146,6 +146,7 @@ export function PersonaPanel() {
           <Num label="Partner's salary" value={p.household.partnerEmployment} onChange={(v) => set((x) => { x.household.partnerEmployment = v; })} />
         )}
         <Num label="Children under 6" value={p.household.childrenUnder6} step={1} suffix="" onChange={(v) => set((x) => { x.household.childrenUnder6 = Math.round(v); })} />
+        <Check label="Church member (church tax in Germany, Switzerland, Denmark)" checked={p.churchMember} onChange={(v) => set((x) => { x.churchMember = v; })} />
         <Num label="Children 6–17" value={p.household.children6to17} step={1} suffix="" onChange={(v) => set((x) => { x.household.children6to17 = Math.round(v); })} />
       </Section>
 

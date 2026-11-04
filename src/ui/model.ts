@@ -13,10 +13,10 @@ export interface Segment {
 
 /** Stack order = palette order, so adjacent segments keep the validated colour separation. */
 export const SEGMENTS: Segment[] = [
-  { key: 'income', label: 'Income tax', slot: 0, hint: 'Federal and provincial income tax, surtaxes, health premium' },
-  { key: 'payroll', label: 'Payroll taxes', slot: 1, hint: 'CPP/EI in Canada; Social Security, Medicare and state programs in the US (employee side; both sides if self-employed)' },
-  { key: 'consumption', label: 'Sales, fuel & tariffs', slot: 2, hint: 'GST/HST/PST, fuel taxes, vehicle taxes, customs duties' },
-  { key: 'property', label: 'Property & transfer', slot: 3, hint: 'Property tax, land transfer tax, development charges' },
+  { key: 'income', label: 'Income tax', slot: 0, hint: 'Income taxes at every level, surtaxes and surcharges, taxes on investment income' },
+  { key: 'payroll', label: 'Payroll taxes', slot: 1, hint: 'Social contributions: CPP/EI, FICA, National Insurance, European social insurance (employee side; both sides if self-employed)' },
+  { key: 'consumption', label: 'Sales, VAT, fuel & tariffs', slot: 2, hint: 'GST/HST/PST, sales tax, VAT, fuel and energy taxes, vehicle taxes, customs duties' },
+  { key: 'property', label: 'Property, wealth & transfer', slot: 3, hint: 'Property tax, council tax, wealth tax, land transfer tax and stamp duty, development charges' },
   { key: 'borrowed', label: 'Borrowed on your behalf', slot: 4, hint: 'Your share of the increase in each government\'s net debt this year (negative = debt paid down)' },
   { key: 'benefit', label: 'Benefits received', slot: 5, hint: 'Cash benefits, when "net of cash transfers" is on' },
 ];

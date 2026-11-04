@@ -5,7 +5,7 @@
 > persona across 15 cities so you can see what kind of tax regime you're leaving and
 > entering.
 
-Status: **Phase 1 (Canada) and Phase 2 (US) built**: Calgary, Toronto, Vancouver, New York City, San Francisco, Seattle, Houston. See README.md, data/rules/ca/RESEARCH.md and data/rules/us/RESEARCH.md. Section 9 lists the decisions that need an
+Status: **Phases 1-3 built** (Canada, US, Europe): 14 cities; Singapore (Phase 4) remains. See README.md, data/rules/ca/RESEARCH.md, data/rules/us/RESEARCH.md and data/rules/eu/RESEARCH.md. Section 9 lists the decisions that need an
 answer before (or during) the build. Section 10 lists things that are easy to miss.
 
 ---
@@ -465,7 +465,7 @@ calendar year it mostly covers, and document the choice.
 | **0. Decisions + schema** | Answer §9, define persona, rule, fiscal and output schemas | Specs + empty engine skeleton, Vercel deploy working |
 | **1. Canada end-to-end** ✅ | Federal + AB/ON/BC income tax, CPP/EI, GST/HST/PST, fuel and home-energy taxes, property tax, LTT, fiscal history for 3 levels × 3 cities | Calgary vs Toronto vs Vancouver fully working: all charts, 3 persona slots. Proves the concept. |
 | **2. USA** ✅ | Federal (current law), NY + NYC, CA, WA, TX (Houston), FICA, sales tax, property, tariffs, federal/state/city fiscal history | First cross-border "move my persona" |
-| **3. Europe** | CH (ZH), LU, IE, NO, DK, UK, DE | Wealth tax, church tax, VAT-heavy regimes, surplus regimes |
+| **3. Europe** ✅ | CH (ZH), LU, IE, NO, DK, UK, DE | Wealth tax, church tax, VAT-heavy regimes, surplus regimes |
 | **4. Singapore** | SG | CPF handling, COE, ABSD |
 | **5. Depth** | Rate curves, r−g view, newcomer regimes, corporate incidence, sensitivity toggles | Credibility and nuance |
 | **6. Hardening** | Golden tests for all places, source citations everywhere, accessibility, mobile layout | Public-ready |

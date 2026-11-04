@@ -1,5 +1,6 @@
 import consumption from '../../../data/consumption/ca.json';
 import usConsumption from '../../../data/consumption/us.json';
+import euConsumption from '../../../data/consumption/eu.json';
 import { FISCAL_NOTES } from '../../engine';
 
 export function MethodView() {
@@ -85,6 +86,32 @@ export function MethodView() {
         </ul>
       </section>
       <section className="block">
+        <h2>Europe: what's modelled</h2>
+        <ul>
+          <li><b>Borrowing</b> is national-accounts net borrowing (B.9) by level of government, from Eurostat (Switzerland, Germany, Luxembourg, Ireland, Norway,
+            Denmark), the ONS for the UK and Statistics Denmark for its latest years. Social security funds are left out, like the CPP: Luxembourg's and
+            Switzerland's build large pension reserves. Norway's central government includes the oil fund, so it shows saving, not borrowing.</li>
+          <li><b>Germany (Munich):</b> 2026 tariff, solidarity surcharge, 25% flat tax on capital income, church tax (optional); pension, health, care and
+            unemployment insurance, with pension, health and care deducted from taxable income; Kindergeld or the child allowance, whichever is better. Income tax and
+            VAT are shared between the federal government, Bavaria and Munich in their legal proportions.</li>
+          <li><b>Switzerland (Zurich):</b> federal, cantonal (95%) and city (119%) income and wealth tax from the official 2026 tariffs; imputed rent on owned homes
+            with mortgage interest deductible; AHV/IV/EO and unemployment insurance. Pillar 2 and mandatory health insurance premiums are shown but not counted
+            (mandatory savings and insurance, decision D2).</li>
+          <li><b>United Kingdom (London):</b> 2026-27 income tax by slices (earnings, savings, dividends), capital gains tax, National Insurance, council tax (also paid by
+            tenants), stamp duty land tax, child benefit with the high income charge.</li>
+          <li><b>Luxembourg, Ireland, Norway, Denmark:</b> 2026 income tax scales and credits; Luxembourg's employment fund surcharge and dependency insurance; Ireland's
+            USC and PRSI; Norway's bracket tax, national insurance and wealth tax (homes at 25%); Denmark's AM-bidrag, municipal tax and the new 2026 middle tax.</li>
+          <li><b>VAT</b> is the share of everyday spending that goes to VAT, from Eurostat spending weights by category and each country's 2026 rates:{' '}
+            {Object.entries(euConsumption.countries).map(([c, v]) => `${c} ${(v.vatShareOfSpending * 100).toFixed(1)}%`).join(', ')}.</li>
+        </ul>
+        <h3>Known gaps</h3>
+        <ul>
+          <li>Bavaria, Zurich and every European city are shown through all governments at their level (all Länder, all cantons, all local governments).</li>
+          <li>Car registration taxes (Norway, Denmark, Ireland) and home energy taxes are simplified; Oslo's property tax and Luxembourg's family allowance are estimates.</li>
+          <li>Newcomer regimes (UK FIG, Danish researcher scheme, Irish SARP, Swiss lump-sum) are not modelled; Luxembourg single parents use class 1.</li>
+        </ul>
+      </section>
+      <section className="block">
         <h2>Data notes</h2>
         <h3>Canada</h3>
         <ul>{FISCAL_NOTES.CA.map((n) => <li key={n}>{n}</li>)}</ul>
@@ -92,6 +119,9 @@ export function MethodView() {
         <h3>United States</h3>
         <ul>{FISCAL_NOTES.US.map((n) => <li key={n}>{n}</li>)}</ul>
         <ul>{usConsumption.notes.map((n) => <li key={n}>{n}</li>)}</ul>
+        <h3>Europe</h3>
+        <ul>{FISCAL_NOTES.EU.map((n) => <li key={n}>{n}</li>)}</ul>
+        <ul>{euConsumption.notes.map((n) => <li key={n}>{n}</li>)}</ul>
         <p className="fine">Not tax advice. Everything runs in your browser; personas are stored only on your device.</p>
       </section>
     </div>

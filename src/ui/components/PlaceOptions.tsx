@@ -1,15 +1,17 @@
-import { PLACES } from '../../engine';
+import { PLACES, type Place } from '../../engine';
 
-const COUNTRIES: [string, string][] = [['CA', 'Canada'], ['US', 'United States']];
+export type Region = 'CA' | 'US' | 'EU';
+export const REGIONS: [Region, string][] = [['CA', 'Canada'], ['US', 'United States'], ['EU', 'Europe']];
+export const regionOf = (p: Place): Region => (p.countryCode === 'CA' || p.countryCode === 'US' ? p.countryCode : 'EU');
 
-/** City <option>s grouped by country. */
+/** City <option>s grouped by region. */
 export function PlaceOptions({ withRegion = false }: { withRegion?: boolean }) {
   return (
     <>
-      {COUNTRIES.map(([code, name]) => (
+      {REGIONS.map(([code, name]) => (
         <optgroup key={code} label={name}>
-          {PLACES.filter((p) => p.countryCode === code).map((p) => (
-            <option key={p.id} value={p.id}>{p.name}{withRegion ? `, ${p.region}` : ''}</option>
+          {PLACES.filter((p) => regionOf(p) === code).map((p) => (
+            <option key={p.id} value={p.id}>{p.name}{withRegion ? `, ${p.region === p.name ? p.country : p.region}` : ''}</option>
           ))}
         </optgroup>
       ))}

@@ -37,9 +37,10 @@ export function CategoryBars({ results, height = 300 }: { results: PlaceResult[]
     const t = chartTheme();
     const sorted = [...results].sort((a, b) => a.implicitRate - b.implicitRate);
     const segs = SEGMENTS.filter((s) => sorted.some((r) => Math.abs(segmentValue(r, s.key)) > 0.5));
+    const lastPositive = sorted.map((r) => segs.reduce((last, s, i) => (segmentValue(r, s.key) > 0 ? i : last), 0));
     return {
       ...baseOption(),
-      grid: { left: 90, right: 70, top: 84, bottom: 30 },
+      grid: { left: 120, right: 70, top: 84, bottom: 30 },
       tooltip: {
         ...(baseOption().tooltip as object),
         trigger: 'axis',
@@ -48,19 +49,21 @@ export function CategoryBars({ results, height = 300 }: { results: PlaceResult[]
       },
       xAxis: { type: 'value', ...axisStyle(), axisLabel: { color: t.muted, formatter: (x: number) => pct(x, 0) } },
       yAxis: { type: 'category', data: sorted.map((r) => placeName(r.placeId)), ...axisStyle(), axisLabel: { color: t.textSecondary } },
-      series: segs.map((s, i) => ({
+      legend: { ...(baseOption().legend as object), data: segs.map((s) => s.label) },
+      series: [...segs.map((s, i) => ({
         name: s.label,
-        type: 'bar',
+        type: 'bar' as const,
         stack: 'total',
         barWidth: 22,
         itemStyle: { color: t.series[s.slot], borderColor: t.surface, borderWidth: 1, borderRadius: i === segs.length - 1 ? [0, 4, 4, 0] : 0 },
         emphasis: { focus: 'series' },
-        data: sorted.map((r) => segmentValue(r, s.key) / r.grossIncome),
-        label: i === segs.length - 1 ? {
-          show: true, position: 'right', color: t.text, fontWeight: 600,
-          formatter: (p: { dataIndex: number }) => pct(sorted[p.dataIndex].implicitRate),
-        } : undefined,
+        // The total label sits on each row's last positive segment, so it ends up right of the bar even when borrowing is negative.
+        data: sorted.map((r, row) => ({
+          value: segmentValue(r, s.key) / r.grossIncome,
+          label: i === lastPositive[row] ? { show: true, position: 'right', color: t.text, fontWeight: 600, formatter: () => pct(r.implicitRate) } : { show: false },
+        })),
       })),
+    ] as unknown as EChartsOption['series'],
     };
   }, [results, v]);
   return <EChart option={option} height={height} ariaLabel="Implicit income tax rate by city, stacked by tax type" />;
@@ -72,7 +75,7 @@ export function LevelBars({ results }: { results: PlaceResult[] }) {
     const t = chartTheme();
     const sorted = [...results].sort((a, b) => a.implicitRate - b.implicitRate);
     const levels: { key: 'federal' | 'provincial' | 'local' | 'social'; label: string }[] = [
-      { key: 'federal', label: 'Federal' }, { key: 'provincial', label: 'Province / state' }, { key: 'local', label: 'City & local' }, { key: 'social', label: 'Pension fund' },
+      { key: 'federal', label: 'Federal' }, { key: 'provincial', label: 'Province / state / canton' }, { key: 'local', label: 'City & local' }, { key: 'social', label: 'Social insurance funds' },
     ];
     const val = (r: PlaceResult, k: string) => {
       const d = r.deferred.find((x) => x.level === k);
@@ -80,7 +83,7 @@ export function LevelBars({ results }: { results: PlaceResult[] }) {
     };
     return {
       ...baseOption(),
-      grid: { left: 90, right: 30, top: 70, bottom: 30 },
+      grid: { left: 120, right: 30, top: 70, bottom: 30 },
       tooltip: { ...(baseOption().tooltip as object), trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: (x) => pct(Number(x)) },
       xAxis: { type: 'value', ...axisStyle(), axisLabel: { color: t.muted, formatter: (x: number) => pct(x, 0) } },
       yAxis: { type: 'category', data: sorted.map((r) => placeName(r.placeId)), ...axisStyle(), axisLabel: { color: t.textSecondary } },
@@ -91,7 +94,7 @@ export function LevelBars({ results }: { results: PlaceResult[] }) {
       })),
     };
   }, [results, v]);
-  return <EChart option={option} height={260} ariaLabel="Implicit tax by level of government" />;
+  return <EChart option={option} height={100 + results.length * 30} ariaLabel="Implicit tax by level of government" />;
 }
 
 export function CompareTable({ results }: { results: PlaceResult[] }) {
@@ -155,12 +158,12 @@ export function CompareView({ results }: { results: PlaceResult[] }) {
       <section className="block">
         <h2>Where the implicit rate comes from</h2>
         <p className="lede">Every tax you pay plus your share of what each government borrowed this year (the increase in its net debt), as a share of your gross income. Click a city card for its full breakdown.</p>
-        <CategoryBars results={results} height={330} />
+        <CategoryBars results={results} height={110 + results.length * 30} />
         <CompareTable results={results} />
       </section>
       <section className="block">
         <h2>Which government gets it</h2>
-        <p className="lede">Taxes plus borrowing, split by level. Local borrowing uses all local governments in the province or state as a stand-in.</p>
+        <p className="lede">Taxes plus borrowing, split by level. Local borrowing uses all local governments in the province, state or country as a stand-in.</p>
         <LevelBars results={results} />
       </section>
       <section className="block">

@@ -1,5 +1,5 @@
-import { PlaceOptions } from '../components/PlaceOptions';
-import { useMemo } from 'react';
+import { PlaceOptions, REGIONS, regionOf, type Region } from '../components/PlaceOptions';
+import { useMemo, useState } from 'react';
 import type { EChartsOption } from 'echarts';
 import { history, PLACES, placeById, type HistoryRow } from '../../engine';
 import type { CalcOptions, Persona } from '../../engine/types';
@@ -40,6 +40,9 @@ export function HistoryView() {
   const rows: HistoryRow[] = all[cityId] ?? Object.values(all)[0];
   const years = rows.map(yearLabel);
   const fx = placeById(cityId).fx;
+  const [regionPick, setRegion] = useState<Region | null>(null);
+  const region = regionPick ?? regionOf(placeById(cityId));
+  const shown = PLACES.filter((p) => regionOf(p) === region);
 
   const allCities = useMemo<EChartsOption>(() => {
     const t = chartTheme();
@@ -49,13 +52,13 @@ export function HistoryView() {
       tooltip: { ...(baseOption().tooltip as object), trigger: 'axis', valueFormatter: (x) => (x === null || x === undefined ? 'no data' : pct(Number(x))) },
       xAxis: { type: 'category', data: years, ...axisStyle(), boundaryGap: false },
       yAxis: { type: 'value', ...axisStyle(), scale: true, axisLabel: { color: t.muted, formatter: (x: number) => pct(x, 0) } },
-      series: PLACES.map((p, i) => ({
+      series: shown.map((p, i) => ({
         name: p.name, type: 'line', symbolSize: 6, connectNulls: false, lineStyle: { width: 2 }, itemStyle: { color: t.series[i] },
         data: all[p.id].map((r) => r.implicit),
         ...(i === 0 ? { markLine: eventLines(options.year) } : {}),
       })),
     };
-  }, [all, v, options.year, years]);
+  }, [all, v, options.year, years, region]);
 
   const stacked = (field: 'borrowed' | 'interest', fmtDigits: number): EChartsOption => {
     const t = chartTheme();
@@ -103,7 +106,14 @@ export function HistoryView() {
   return (
     <div className="view">
       <section className="block">
-        <h2>Implicit rate over time, all cities</h2>
+        <div className="toolbar">
+          <h2>Implicit rate over time</h2>
+          <div className="seg" role="group" aria-label="Region">
+            {REGIONS.map(([code, name]) => (
+              <button key={code} className={region === code ? 'on' : ''} aria-pressed={region === code} onClick={() => setRegion(code)}>{name}</button>
+            ))}
+          </div>
+        </div>
         <p className="lede">Your persona and today's tax rules held fixed. Only each government's borrowing changes from year to year. Gaps mean missing data, not zero.</p>
         <EChart option={allCities} height={320} ariaLabel="Implicit rate by year for each city" />
       </section>
@@ -128,10 +138,11 @@ export function HistoryView() {
         <h2>Public debt you carry</h2>
         <p className="lede">Your share of each government's accumulated net debt in {placeName(cityId)}, in USD. Your share of today's tax revenue is held
           fixed, so the bars show how the debt itself has built up. Today (latest year for each level): <b>{usd(totalDebtNow)}</b>. Below zero = net financial assets
-          (Alberta before 2016, and most municipalities).</p>
+          (Alberta before 2016, Norway's oil fund, Luxembourg, and many municipalities).</p>
         <EChart option={debtChart} height={320} ariaLabel="Your share of public net debt over time" />
         <p className="fine">Canada: fiscal years starting in April (2016 = 2016-17); municipal figures are calendar years. US: federal fiscal years end September 30
-          (2016 = Oct 2015-Sep 2016); state and local figures are government fiscal years ending in that year, mostly June 30. * Local = all local governments in the province or state.
+          (2016 = Oct 2015-Sep 2016); state and local figures are government fiscal years ending in that year, mostly June 30. Europe: calendar years, except the UK
+          (fiscal years starting in April). * Local = all local governments in the province, state or country; Bavaria and Zurich are shown through all Länder and all cantons.
           Canada: federal 2008-09 uses the audited deficit because the net debt series changes definition that year; city 2006 uses Canada-wide municipal figures.
           (est.) = estimates, or interim and forecast figures from the latest budgets.</p>
       </section>
