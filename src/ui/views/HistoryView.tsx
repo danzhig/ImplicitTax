@@ -128,7 +128,8 @@ export function HistoryView() {
           (Alberta before 2016, and most municipalities).</p>
         <EChart option={debtChart} height={320} ariaLabel="Your share of public net debt over time" />
         <p className="fine">Years are fiscal years starting in April (2016 = 2016-17), except city figures, which are calendar years. * City = all municipalities in the province.
-          Federal FY2008-09 is blank because the net debt series changes definition that year. (est.) = interim or forecast figures from the latest budgets.</p>
+          Federal 2008-09 uses the audited deficit because the net debt series changes definition that year; city 2006 uses Canada-wide municipal figures.
+          (est.) = estimates, or interim and forecast figures from the latest budgets.</p>
       </section>
     </div>
   );

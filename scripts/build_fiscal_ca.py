@@ -95,14 +95,25 @@ def gfs(table, component=None, geos=PROVINCES):
 
 muni = gfs("10100020")
 cons = gfs("10100147", "Consolidated provincial-territorial and local governments")
-sna_local = defaultdict(dict)
+# National accounts, municipal level: net lending, taxes and interest by province (2007+) ...
+SNA_ITEMS = {"Equals: net lending or net borrowing": "nl", "Taxes on production and imports": "tax",
+             "Taxes on incomes": "tax", "Contributions to social insurance plans": "tax", "Interest on debt": "int"}
+sna_local = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
 for r in rows("36100450"):
     if r["GEO"] in PROVINCES and r["Levels of government"] == "Local general governments" \
-            and r["Estimates"] == "Equals: net lending or net borrowing" and num(r["VALUE"]) is not None:
-        sna_local[r["GEO"]][int(r["REF_DATE"])] = num(r["VALUE"])
+            and r["Estimates"] in SNA_ITEMS and num(r["VALUE"]) is not None:
+        sna_local[r["GEO"]][int(r["REF_DATE"])][SNA_ITEMS[r["Estimates"]]] += num(r["VALUE"])
+# ... and Canada-wide (quarterly, summed) for years before provincial detail exists.
+sna_local_canada = defaultdict(lambda: defaultdict(float))
+for r in rows("36100477"):
+    if r["Levels of government"] == "Local general governments" and r["Seasonal adjustment"] == "Unadjusted" \
+            and r["Estimates"] in SNA_ITEMS and num(r["VALUE"]) is not None:
+        sna_local_canada[int(r["REF_DATE"][:4])][SNA_ITEMS[r["Estimates"]]] += num(r["VALUE"])
 
 # ------------------------------------------------------------------ federal
 FED = ("CA-federal", "Government of Canada")
+# Audited budgetary deficit, CAD millions, for the year where the two net debt series meet.
+FED_DEFICIT_AT_BREAK = {2008: 5800}  # FY2008-09: -5.8 billion, Budget 2010 Table 4.2.3 (budget.canada.ca/2010)
 for r in rows("10100048"):
     if r["Government debt"] == "Net federal government financial debt" and num(r["VALUE"]) is not None:
         L = int(r["REF_DATE"]) - 1
@@ -163,9 +174,12 @@ for L in range(FIRST, LAST + 1):
         if y.get("_stock") == p.get("_stock"):
             y["borrowingSource"] = f"change in {y['_stock']} net debt"
         else:
-            # The two net debt series use different definitions; their difference is not borrowing.
-            y["borrowing"] = None
-            y["notes"].append("No figure: the net debt series switches from StatCan's historical federal debt to public accounts net debt here.")
+            # The two net debt series use different definitions, so their difference is not borrowing.
+            # Use the audited public accounts deficit for that year instead (net capital spending
+            # federally is small, so this is close to the net debt change).
+            y["borrowing"] = FED_DEFICIT_AT_BREAK.get(L)
+            y["borrowingSource"] = "public accounts budgetary deficit (Budget 2010, Table 4.2.3); net debt series changes definition this year"
+            y["notes"].append("Net debt series switches from StatCan's historical federal debt to public accounts net debt this year, so the audited deficit is used.")
 
 # ------------------------------------------------------------------ provinces
 official = defaultdict(lambda: defaultdict(dict))  # prov -> series -> year -> (value, source)
@@ -238,7 +252,8 @@ for geo, code in PROVINCES.items():
         elif L in fms_nfd[(geo, "Local g")]:
             z["netDebt"] = fms_nfd[(geo, "Local g")][L]
         if L in sna_local[geo]:
-            z["borrowing"] = -sna_local[geo][L]
+            a = sna_local[geo][L]
+            z["borrowing"], z["taxes"], z["interest"] = -a["nl"], a["tax"], a["int"]
             z["borrowingSource"] = "national accounts net borrowing (StatCan 36-10-0450)"
         elif L in fms_nfd[(geo, "Local g")] and L - 1 in fms_nfd[(geo, "Local g")]:
             z["borrowing"] = fms_nfd[(geo, "Local g")][L] - fms_nfd[(geo, "Local g")][L - 1]
@@ -246,9 +261,16 @@ for geo, code in PROVINCES.items():
         elif fms_local[geo].get(L, {}).get("Surplus (+) / deficit (-)") is not None:
             z["borrowing"] = -fms_local[geo][L]["Surplus (+) / deficit (-)"]
             z["borrowingSource"] = "StatCan FMS deficit (10-10-0042)"
-        if L >= 2007 and "Taxes [11]" in m and "Interest expense [24]" in m:
-            z["taxes"] = m["Taxes [11]"] + (m.get("Social contributions [12]") or 0)
-            z["interest"] = m["Interest expense [24]"]
+        elif FIRST <= L < 2007 and sna_local_canada.get(L):
+            # No provincial municipal figures for this year: use all Canadian municipalities.
+            # Only the ratios (borrowing / taxes, interest / taxes) are used, so totals are fine.
+            a = sna_local_canada[L]
+            z["borrowing"], z["taxes"], z["interest"] = -a["nl"], a["tax"], a["int"]
+            z["borrowingSource"] = "Canada-wide municipal net borrowing (StatCan 36-10-0477); no provincial figure for this year"
+            z["status"] = "estimate"
+            z["notes"].append("Provincial municipal figures are not published for this year; all Canadian municipalities are used.")
+        if z["taxes"] is not None:
+            pass  # national accounts figures set above
         elif fms_local[geo].get(L, {}).get("Total revenue") is not None:
             f = fms_local[geo][L]
             z["taxes"] = sum(f.get(k) or 0 for k in ["Property and related taxes, revenue", "Consumption taxes, revenue", "Other taxes, revenue"])
@@ -273,9 +295,9 @@ out = {
     "notes": [
         "Borrowing = increase in net debt (debts minus financial assets): operating deficits plus borrowing for infrastructure. Negative = debt paid down.",
         "Federal and provincial years are fiscal years labelled by the year they start (2016 = April 2016 to March 2017). Municipal years are calendar years.",
-        "Federal: public accounts net debt (StatCan 10-10-0002) from 2009; historical net federal debt (10-10-0048) before.",
+        "Federal: public accounts net debt (StatCan 10-10-0002) from 2009; historical net federal debt (10-10-0048) before; FY2008-09, where the two meet, uses the audited deficit (Budget 2010).",
         "Provinces: each province's own published net debt (Ontario budgets and Form 18-K, Alberta annual reports, BC Financial and Economic Reviews); see data/fiscal/ca_official_net_debt.csv. Ontario before 2006 uses StatCan FMS net debt.",
-        "Municipalities: national accounts net borrowing (transactions only, StatCan 36-10-0450) from 2007; StatCan FMS before; 2006 missing. City lines use all municipalities in the province.",
+        "Municipalities: national accounts net borrowing, taxes and interest (transactions only, StatCan 36-10-0450) from 2007; StatCan FMS before; 2006 uses Canada-wide municipal figures (36-10-0477). City lines use all municipalities in the province.",
         "Taxes and interest come from StatCan government finance statistics. CPP/QPP are excluded everywhere.",
     ],
     "series": series,

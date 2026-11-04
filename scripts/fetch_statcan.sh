@@ -7,6 +7,7 @@ OUT="${1:?cache dir required}"
 mkdir -p "$OUT"
 cd "$OUT"
 TABLES=(
+  36100477 # National accounts: government revenue, spending and net lending, Canada, quarterly 1961+
   36100450 # National accounts: government revenue, spending and net lending by province and level, 2007+
   10100016 # GFS federal government, fiscal years 2007+
   10100048 # Federal government net debt, fiscal years to 2007-08

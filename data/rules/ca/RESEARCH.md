@@ -78,11 +78,11 @@ interest rates rise (it showed Ontario repaying 24 billion dollars in 2021, whic
 
 | Level | Source | Years |
 |---|---|---|
-| Federal | Public accounts net debt at March 31, StatCan 10-10-0002 (monthly); historical net federal debt 10-10-0048 before | 2000-01 to 2025-26; FY2008-09 blank (series changes definition) |
+| Federal | Public accounts net debt at March 31, StatCan 10-10-0002 (monthly); historical net federal debt 10-10-0048 before | 2000-01 to 2025-26; FY2008-09 uses the audited 5.8B deficit (Budget 2010, Table 4.2.3) because the two net debt series meet there |
 | Ontario | 2026 Budget Table 3.12 and 2019 Budget Table 3.15 (10-year reviews); Form 18-K 2010 (net debt 2007-2010); StatCan FMS before 2006 | 2000-01 to 2025-26 (interim) |
 | Alberta | Annual Report 2013-14 (Historical Fiscal Summary 1995-96 to 2013-14) and 2024-25 (2013-14 to 2024-25); Budget 2026 tables for 2025-26 forecast | 2000-01 to 2025-26 |
 | BC | Financial and Economic Review 2010, 2014 and 2025 (Statement of Financial Position, net liabilities); FMS for 2000-01 | 2000-01 to 2024-25 |
-| Municipal | National accounts net borrowing (StatCan 36-10-0450, transactions only) from 2007; FMS before; net debt level from GFS 10-10-0020 | 2000 to 2024; 2006 missing |
+| Municipal | National accounts net borrowing, taxes and interest (StatCan 36-10-0450, transactions only) from 2007; FMS before; 2006 uses Canada-wide municipal figures (36-10-0477); net debt level from GFS 10-10-0020 | 2000 to 2024 |
 
 All official provincial figures are in data/fiscal/ca_official_net_debt.csv with their source.
 Taxes and interest (the base for splitting borrowing) come from StatCan GFS (2008+) and FMS (before).

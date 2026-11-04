@@ -1,13 +1,13 @@
 {
- "generated": "2026-11-03",
+ "generated": "2026-11-04",
  "currency": "CAD",
  "unit": "millions",
  "notes": [
   "Borrowing = increase in net debt (debts minus financial assets): operating deficits plus borrowing for infrastructure. Negative = debt paid down.",
   "Federal and provincial years are fiscal years labelled by the year they start (2016 = April 2016 to March 2017). Municipal years are calendar years.",
-  "Federal: public accounts net debt (StatCan 10-10-0002) from 2009; historical net federal debt (10-10-0048) before.",
+  "Federal: public accounts net debt (StatCan 10-10-0002) from 2009; historical net federal debt (10-10-0048) before; FY2008-09, where the two meet, uses the audited deficit (Budget 2010).",
   "Provinces: each province's own published net debt (Ontario budgets and Form 18-K, Alberta annual reports, BC Financial and Economic Reviews); see data/fiscal/ca_official_net_debt.csv. Ontario before 2006 uses StatCan FMS net debt.",
-  "Municipalities: national accounts net borrowing (transactions only, StatCan 36-10-0450) from 2007; StatCan FMS before; 2006 missing. City lines use all municipalities in the province.",
+  "Municipalities: national accounts net borrowing, taxes and interest (transactions only, StatCan 36-10-0450) from 2007; StatCan FMS before; 2006 uses Canada-wide municipal figures (36-10-0477). City lines use all municipalities in the province.",
   "Taxes and interest come from StatCan government finance statistics. CPP/QPP are excluded everywhere."
  ],
  "series": {
@@ -81,13 +81,13 @@
     "2008": {
      "taxes": 217645.0,
      "interest": 29319.0,
-     "borrowing": null,
+     "borrowing": 5800,
      "netDebt": 524804.0,
-     "borrowingSource": null,
+     "borrowingSource": "public accounts budgetary deficit (Budget 2010, Table 4.2.3); net debt series changes definition this year",
      "status": "actual",
      "notes": [
       "March 2009 net debt estimated from September 2009 and the monthly budget balances in between.",
-      "No figure: the net debt series switches from StatCan's historical federal debt to public accounts net debt here."
+      "Net debt series switches from StatCan's historical federal debt to public accounts net debt this year, so the audited deficit is used."
      ]
     },
     "2009": {
@@ -498,145 +498,156 @@
      "borrowingSource": "StatCan FMS deficit (10-10-0042)",
      "status": "actual"
     },
+    "2006": {
+     "taxes": 43026.0,
+     "interest": 3151.0,
+     "borrowing": 228.0,
+     "netDebt": null,
+     "borrowingSource": "Canada-wide municipal net borrowing (StatCan 36-10-0477); no provincial figure for this year",
+     "status": "estimate",
+     "notes": [
+      "Provincial municipal figures are not published for this year; all Canadian municipalities are used."
+     ]
+    },
     "2007": {
-     "taxes": null,
-     "interest": null,
+     "taxes": 23695.0,
+     "interest": 578.0,
      "borrowing": -1235.0,
      "netDebt": -1325.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2008": {
-     "taxes": 18866.0,
-     "interest": 572.0,
+     "taxes": 24633.0,
+     "interest": 1045.0,
      "borrowing": 1020.0,
      "netDebt": -2469.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2009": {
-     "taxes": 18876.0,
-     "interest": 624.0,
+     "taxes": 25394.0,
+     "interest": 1066.0,
      "borrowing": 1278.0,
      "netDebt": -1383.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2010": {
-     "taxes": 19774.0,
-     "interest": 701.0,
+     "taxes": 26287.0,
+     "interest": 1279.0,
      "borrowing": -5637.0,
      "netDebt": 1460.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2011": {
-     "taxes": 20242.0,
-     "interest": 734.0,
+     "taxes": 26861.0,
+     "interest": 1415.0,
      "borrowing": 1718.0,
      "netDebt": 3385.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2012": {
-     "taxes": 21223.0,
-     "interest": 788.0,
+     "taxes": 27829.0,
+     "interest": 1479.0,
      "borrowing": -1326.0,
      "netDebt": 2579.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2013": {
-     "taxes": 21539.0,
-     "interest": 831.0,
+     "taxes": 28029.0,
+     "interest": 1556.0,
      "borrowing": -1325.0,
      "netDebt": 3167.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2014": {
-     "taxes": 22589.0,
-     "interest": 877.0,
+     "taxes": 29160.0,
+     "interest": 1444.0,
      "borrowing": 483.0,
      "netDebt": 2410.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2015": {
-     "taxes": 23870.0,
-     "interest": 885.0,
+     "taxes": 30522.0,
+     "interest": 1432.0,
      "borrowing": -278.0,
      "netDebt": 4594.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2016": {
-     "taxes": 24618.0,
-     "interest": 893.0,
+     "taxes": 31495.0,
+     "interest": 1423.0,
      "borrowing": -16.0,
      "netDebt": 4459.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2017": {
-     "taxes": 26078.0,
-     "interest": 889.0,
+     "taxes": 33022.0,
+     "interest": 1396.0,
      "borrowing": 602.0,
      "netDebt": 4501.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2018": {
-     "taxes": 26936.0,
-     "interest": 908.0,
+     "taxes": 33987.0,
+     "interest": 1385.0,
      "borrowing": -3942.0,
      "netDebt": 1498.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2019": {
-     "taxes": 28792.0,
-     "interest": 921.0,
+     "taxes": 36114.0,
+     "interest": 1382.0,
      "borrowing": -5738.0,
      "netDebt": 1540.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2020": {
-     "taxes": 28504.0,
-     "interest": 946.0,
+     "taxes": 35901.0,
+     "interest": 1378.0,
      "borrowing": -6110.0,
      "netDebt": 1088.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2021": {
-     "taxes": 30668.0,
-     "interest": 939.0,
+     "taxes": 38146.0,
+     "interest": 1332.0,
      "borrowing": -5682.0,
      "netDebt": -4398.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2022": {
-     "taxes": 32117.0,
-     "interest": 973.0,
+     "taxes": 39192.0,
+     "interest": 1322.0,
      "borrowing": -1182.0,
      "netDebt": -9204.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2023": {
-     "taxes": 34122.0,
-     "interest": 1033.0,
+     "taxes": 41339.0,
+     "interest": 1379.0,
      "borrowing": -9238.0,
      "netDebt": -881.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2024": {
-     "taxes": 34974.0,
-     "interest": 1023.0,
+     "taxes": 42309.0,
+     "interest": 1385.0,
      "borrowing": -1320.0,
      "netDebt": -6751.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
@@ -911,57 +922,68 @@
      "borrowingSource": "StatCan FMS deficit (10-10-0042)",
      "status": "actual"
     },
+    "2006": {
+     "taxes": 43026.0,
+     "interest": 3151.0,
+     "borrowing": 228.0,
+     "netDebt": null,
+     "borrowingSource": "Canada-wide municipal net borrowing (StatCan 36-10-0477); no provincial figure for this year",
+     "status": "estimate",
+     "notes": [
+      "Provincial municipal figures are not published for this year; all Canadian municipalities are used."
+     ]
+    },
     "2007": {
-     "taxes": null,
-     "interest": null,
+     "taxes": 4703.0,
+     "interest": 169.0,
      "borrowing": -417.0,
      "netDebt": 1061.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2008": {
-     "taxes": 5166.0,
-     "interest": 220.0,
+     "taxes": 5216.0,
+     "interest": 295.0,
      "borrowing": 769.0,
      "netDebt": 3116.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2009": {
-     "taxes": 5884.0,
-     "interest": 265.0,
+     "taxes": 5892.0,
+     "interest": 303.0,
      "borrowing": 171.0,
      "netDebt": 304.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2010": {
-     "taxes": 6149.0,
-     "interest": 304.0,
+     "taxes": 6150.0,
+     "interest": 346.0,
      "borrowing": 1532.0,
      "netDebt": 1212.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2011": {
-     "taxes": 6590.0,
-     "interest": 338.0,
+     "taxes": 6591.0,
+     "interest": 381.0,
      "borrowing": 792.0,
      "netDebt": 3155.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2012": {
-     "taxes": 7140.0,
-     "interest": 343.0,
+     "taxes": 7141.0,
+     "interest": 387.0,
      "borrowing": 2022.0,
      "netDebt": 3336.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2013": {
-     "taxes": 8011.0,
-     "interest": 354.0,
+     "taxes": 8009.0,
+     "interest": 353.0,
      "borrowing": 842.0,
      "netDebt": 3073.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
@@ -969,87 +991,87 @@
     },
     "2014": {
      "taxes": 8421.0,
-     "interest": 366.0,
+     "interest": 416.0,
      "borrowing": -714.0,
      "netDebt": 3174.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2015": {
-     "taxes": 9152.0,
-     "interest": 372.0,
+     "taxes": 9155.0,
+     "interest": 416.0,
      "borrowing": -202.0,
      "netDebt": 2838.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2016": {
-     "taxes": 9494.0,
-     "interest": 234.0,
+     "taxes": 9506.0,
+     "interest": 279.0,
      "borrowing": -801.0,
      "netDebt": 2446.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2017": {
-     "taxes": 9096.0,
-     "interest": 225.0,
+     "taxes": 9114.0,
+     "interest": 267.0,
      "borrowing": 271.0,
      "netDebt": 4632.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2018": {
-     "taxes": 9533.0,
-     "interest": 225.0,
+     "taxes": 9554.0,
+     "interest": 265.0,
      "borrowing": -1127.0,
      "netDebt": 4385.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2019": {
-     "taxes": 9516.0,
-     "interest": 230.0,
+     "taxes": 9563.0,
+     "interest": 272.0,
      "borrowing": -1854.0,
      "netDebt": 5302.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2020": {
-     "taxes": 9185.0,
-     "interest": 211.0,
+     "taxes": 9256.0,
+     "interest": 252.0,
      "borrowing": -2800.0,
      "netDebt": 6481.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2021": {
-     "taxes": 9364.0,
-     "interest": 196.0,
+     "taxes": 9439.0,
+     "interest": 233.0,
      "borrowing": -3335.0,
      "netDebt": 5454.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2022": {
-     "taxes": 9951.0,
-     "interest": 207.0,
+     "taxes": 10075.0,
+     "interest": 226.0,
      "borrowing": -2167.0,
      "netDebt": 5849.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2023": {
-     "taxes": 10666.0,
-     "interest": 397.0,
+     "taxes": 10784.0,
+     "interest": 426.0,
      "borrowing": -1706.0,
      "netDebt": 7851.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2024": {
-     "taxes": 10955.0,
-     "interest": 511.0,
+     "taxes": 11117.0,
+     "interest": 521.0,
      "borrowing": -1756.0,
      "netDebt": 6970.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
@@ -1313,97 +1335,108 @@
      "borrowingSource": "StatCan FMS deficit (10-10-0042)",
      "status": "actual"
     },
+    "2006": {
+     "taxes": 43026.0,
+     "interest": 3151.0,
+     "borrowing": 228.0,
+     "netDebt": null,
+     "borrowingSource": "Canada-wide municipal net borrowing (StatCan 36-10-0477); no provincial figure for this year",
+     "status": "estimate",
+     "notes": [
+      "Provincial municipal figures are not published for this year; all Canadian municipalities are used."
+     ]
+    },
     "2007": {
-     "taxes": null,
-     "interest": null,
+     "taxes": 4390.0,
+     "interest": 430.0,
      "borrowing": -262.0,
      "netDebt": -2346.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2008": {
-     "taxes": 4577.0,
-     "interest": 471.0,
+     "taxes": 4626.0,
+     "interest": 558.0,
      "borrowing": 6.0,
      "netDebt": -911.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2009": {
-     "taxes": 4909.0,
-     "interest": 453.0,
+     "taxes": 4902.0,
+     "interest": 526.0,
      "borrowing": -435.0,
      "netDebt": 477.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2010": {
-     "taxes": 5313.0,
-     "interest": 444.0,
+     "taxes": 5262.0,
+     "interest": 534.0,
      "borrowing": -748.0,
      "netDebt": 739.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2011": {
-     "taxes": 5307.0,
-     "interest": 452.0,
+     "taxes": 5230.0,
+     "interest": 556.0,
      "borrowing": -1280.0,
      "netDebt": 648.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2012": {
-     "taxes": 5534.0,
-     "interest": 430.0,
+     "taxes": 5427.0,
+     "interest": 528.0,
      "borrowing": -753.0,
      "netDebt": -152.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2013": {
-     "taxes": 5860.0,
-     "interest": 411.0,
+     "taxes": 5846.0,
+     "interest": 476.0,
      "borrowing": -894.0,
      "netDebt": -933.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2014": {
-     "taxes": 6146.0,
-     "interest": 399.0,
+     "taxes": 6166.0,
+     "interest": 428.0,
      "borrowing": -1016.0,
      "netDebt": -1761.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2015": {
-     "taxes": 6396.0,
-     "interest": 389.0,
+     "taxes": 6395.0,
+     "interest": 415.0,
      "borrowing": -816.0,
      "netDebt": -2576.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2016": {
-     "taxes": 6789.0,
-     "interest": 391.0,
+     "taxes": 6788.0,
+     "interest": 416.0,
      "borrowing": -1179.0,
      "netDebt": -3834.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2017": {
-     "taxes": 7345.0,
-     "interest": 405.0,
+     "taxes": 7344.0,
+     "interest": 429.0,
      "borrowing": -1685.0,
      "netDebt": -4923.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2018": {
-     "taxes": 7977.0,
-     "interest": 388.0,
+     "taxes": 7976.0,
+     "interest": 418.0,
      "borrowing": -1332.0,
      "netDebt": -5851.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
@@ -1411,23 +1444,23 @@
     },
     "2019": {
      "taxes": 7950.0,
-     "interest": 385.0,
+     "interest": 411.0,
      "borrowing": -1819.0,
      "netDebt": -6758.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2020": {
-     "taxes": 8028.0,
-     "interest": 352.0,
+     "taxes": 8027.0,
+     "interest": 381.0,
      "borrowing": -1461.0,
      "netDebt": -8503.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2021": {
-     "taxes": 8949.0,
-     "interest": 344.0,
+     "taxes": 8948.0,
+     "interest": 368.0,
      "borrowing": -2002.0,
      "netDebt": -11792.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
@@ -1435,23 +1468,23 @@
     },
     "2022": {
      "taxes": 9529.0,
-     "interest": 349.0,
+     "interest": 366.0,
      "borrowing": -2208.0,
      "netDebt": -14213.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2023": {
-     "taxes": 9772.0,
-     "interest": 389.0,
+     "taxes": 9774.0,
+     "interest": 405.0,
      "borrowing": -3097.0,
      "netDebt": -16109.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",
      "status": "actual"
     },
     "2024": {
-     "taxes": 10262.0,
-     "interest": 440.0,
+     "taxes": 10259.0,
+     "interest": 444.0,
      "borrowing": -2083.0,
      "netDebt": -15157.0,
      "borrowingSource": "national accounts net borrowing (StatCan 36-10-0450)",

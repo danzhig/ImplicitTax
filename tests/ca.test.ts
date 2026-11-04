@@ -79,10 +79,17 @@ describe('borrowing share', () => {
       expect(d.borrowed).toBeGreaterThan(0);
     }
   });
-  it('leaves a gap rather than inventing a number', () => {
+  it('uses the audited deficit where the federal net debt series changes definition (FY2008-09)', () => {
     const d = deferredForLevel({ level: 'federal', seriesId: 'CA-federal', isProxy: false }, 10000, 2008);
-    expect(d.borrowRatio).toBeNull();
-    expect(d.borrowed).toBe(0);
+    expect(d.borrowRatio).not.toBeNull();
+    expect(d.source).toMatch(/Budget 2010/);
+  });
+  it('has a complete implicit-rate history for every city, 2000 to 2024', () => {
+    for (const place of PLACES) {
+      const rows = history(DEFAULT_PERSONA, place.id, DEFAULT_OPTIONS).filter((r) => r.year <= 2024);
+      expect(rows.map((r) => r.year)).toEqual(Array.from({ length: 25 }, (_, i) => 2000 + i));
+      expect(rows.every((r) => r.implicit !== null)).toBe(true);
+    }
   });
 });
 
