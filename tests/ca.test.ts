@@ -84,10 +84,11 @@ describe('borrowing share', () => {
     expect(d.borrowRatio).not.toBeNull();
     expect(d.source).toMatch(/Budget 2010/);
   });
-  it('has a complete implicit-rate history for every city, 2000 to 2024', () => {
+  it('has a complete implicit-rate history for every city, 2000 (Singapore: FY2005) to 2024', () => {
     for (const place of PLACES) {
+      const first = place.id === 'singapore' ? 2005 : 2000;
       const rows = history(DEFAULT_PERSONA, place.id, DEFAULT_OPTIONS).filter((r) => r.year <= 2024);
-      expect(rows.map((r) => r.year)).toEqual(Array.from({ length: 25 }, (_, i) => 2000 + i));
+      expect(rows.map((r) => r.year)).toEqual(Array.from({ length: 2025 - first }, (_, i) => first + i));
       expect(rows.every((r) => r.implicit !== null)).toBe(true);
     }
   });

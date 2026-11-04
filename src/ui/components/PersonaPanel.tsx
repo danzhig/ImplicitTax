@@ -178,7 +178,8 @@ export function PersonaPanel() {
                 <Num label="Years you keep the home" value={p.housing.holdingYears} step={1} suffix="yrs" onChange={(v) => set((x) => { x.housing.holdingYears = Math.max(1, Math.round(v)); })} />
                 <Check label="First-time buyer" checked={p.housing.firstTimeBuyer} onChange={(v) => set((x) => { x.housing.firstTimeBuyer = v; })} />
                 <Check label="New build (development charges)" checked={p.housing.newBuild} onChange={(v) => set((x) => { x.housing.newBuild = v; })} />
-                <Check label="Buying as a foreigner" checked={p.housing.foreignBuyer} onChange={(v) => set((x) => { x.housing.foreignBuyer = v; })} />
+                <Check label="Buying as a foreigner" checked={p.housing.foreignBuyer} onChange={(v) => set((x) => { x.housing.foreignBuyer = v; })}
+                  hint="Foreign-buyer taxes on homes. In Singapore it also means you are on a work pass: no CPF, and 60% extra stamp duty." />
               </>
             )}
           </>

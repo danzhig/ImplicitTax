@@ -89,7 +89,7 @@ export function App() {
           {tab === 'curve' && <CurveView />}
           {tab === 'personas' && <PersonasView />}
           {tab === 'method' && <MethodView />}
-          <footer>Canada, US and European cities. 2026 tax rules; fiscal data from Statistics Canada, provincial accounts, OMB, the Census Bureau, Eurostat, ONS, the Swiss Federal Finance Administration and Statistics Denmark. Amounts in USD at 2026 average exchange rates. Not tax advice.</footer>
+          <footer>Canada, US, European cities and Singapore. 2026 tax rules; fiscal data from Statistics Canada, provincial accounts, OMB, the Census Bureau, Eurostat, ONS, the Swiss Federal Finance Administration, Statistics Denmark and SingStat. Amounts in USD at 2026 average exchange rates. Not tax advice.</footer>
         </main>
       </div>
     </div>

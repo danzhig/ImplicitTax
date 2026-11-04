@@ -184,11 +184,11 @@ const proxyNote = (c: string) =>
     : c === 'CA' ? 'Local figures use all municipalities in the province.'
       : c === 'DE' ? 'Bavaria is shown through all 16 Länder and Munich through all German municipalities.'
         : c === 'CH' ? 'The canton is shown through all 26 cantons and the city through all Swiss communes.'
-          : 'Local figures use all local governments in the country.';
+          : c === 'SG' ? 'Singapore has one level of government.' : 'Local figures use all local governments in the country.';
 
 const fy = (year: number, level: Level, country: string) =>
   country === 'US' ? `FY${year}`
-    : country === 'UK' || (country === 'CA' && level !== 'local') ? `${year}-${String((year + 1) % 100).padStart(2, '0')}`
+    : country === 'UK' || country === 'SG' || (country === 'CA' && level !== 'local') ? `${year}-${String((year + 1) % 100).padStart(2, '0')}`
       : String(year);
 
 function LineItems({ r }: { r: PlaceResult }) {

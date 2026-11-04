@@ -11,6 +11,7 @@
 import caFiscal from '../../data/fiscal/ca.json';
 import usFiscal from '../../data/fiscal/us.json';
 import euFiscal from '../../data/fiscal/eu.json';
+import sgFiscal from '../../data/fiscal/sg.json';
 import type { Level, LevelDeferred } from './types';
 
 export interface FiscalYear {
@@ -32,9 +33,10 @@ const SERIES: Record<string, FiscalSeries> = {
   ...(caFiscal.series as unknown as Record<string, FiscalSeries>),
   ...(usFiscal.series as unknown as Record<string, FiscalSeries>),
   ...(euFiscal.series as unknown as Record<string, FiscalSeries>),
+  ...(sgFiscal.series as unknown as Record<string, FiscalSeries>),
 };
 
-export const FISCAL_NOTES: Record<'CA' | 'US' | 'EU', string[]> = { CA: [...caFiscal.notes], US: [...usFiscal.notes], EU: [...euFiscal.notes] };
+export const FISCAL_NOTES: Record<'CA' | 'US' | 'EU' | 'SG', string[]> = { CA: [...caFiscal.notes], US: [...usFiscal.notes], EU: [...euFiscal.notes], SG: [...sgFiscal.notes] };
 
 export function getSeries(id: string): FiscalSeries | undefined {
   return SERIES[id];

@@ -1,0 +1,199 @@
+{
+ "generated": "2026-11-04",
+ "unit": "millions of SGD",
+ "notes": [
+  "Singapore: financial years April-March (2024 = FY2024-25). Borrowing = minus the official overall budget surplus, which includes the Net Investment Returns Contribution from the reserves (up to half of their expected long-term real returns).",
+  "Singapore does not borrow to spend: government bonds (SGS, SSGS) are issued to invest or to meet CPF demand, and since 2021 some long-lived infrastructure is financed under SINGA. Deficits such as FY2020 (pandemic) were paid by drawing on past reserves, which shows here as positive borrowing.",
+  "The reserves are not disclosed, so there is no net debt (or net asset) figure; interest on debt is not shown.",
+  "Tax revenue includes COE vehicle quota premiums, which this tool counts as a car tax. Data before FY2005 are not published in this table."
+ ],
+ "series": {
+  "SG-federal": {
+   "label": "Government of Singapore",
+   "years": {
+    "2005": {
+     "taxes": 26008.100000000002,
+     "interest": null,
+     "borrowing": -1485.6,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2006": {
+     "taxes": 28920.5,
+     "interest": null,
+     "borrowing": 55.1,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2007": {
+     "taxes": 37303.8,
+     "interest": null,
+     "borrowing": -7656.1,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2008": {
+     "taxes": 38076.200000000004,
+     "interest": null,
+     "borrowing": -239.1,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2009": {
+     "taxes": 37239.9,
+     "interest": null,
+     "borrowing": 819.2,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2010": {
+     "taxes": 43450.1,
+     "interest": null,
+     "borrowing": -980.1,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2011": {
+     "taxes": 48188.1,
+     "interest": null,
+     "borrowing": -4002.7,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2012": {
+     "taxes": 52690.6,
+     "interest": null,
+     "borrowing": -5821.1,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2013": {
+     "taxes": 53867.299999999996,
+     "interest": null,
+     "borrowing": -4998.2,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2014": {
+     "taxes": 57503.9,
+     "interest": null,
+     "borrowing": -571.5,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2015": {
+     "taxes": 61072.100000000006,
+     "interest": null,
+     "borrowing": 4049.7,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2016": {
+     "taxes": 65249.9,
+     "interest": null,
+     "borrowing": -6124.8,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2017": {
+     "taxes": 72158.70000000001,
+     "interest": null,
+     "borrowing": -10861.0,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2018": {
+     "taxes": 69819.0,
+     "interest": null,
+     "borrowing": -3338.5,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2019": {
+     "taxes": 70510.5,
+     "interest": null,
+     "borrowing": -844.7,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2020": {
+     "taxes": 63705.7,
+     "interest": null,
+     "borrowing": 51567.0,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2021": {
+     "taxes": 77978.7,
+     "interest": null,
+     "borrowing": -1227.0,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2022": {
+     "taxes": 86470.90000000001,
+     "interest": null,
+     "borrowing": 405.2,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2023": {
+     "taxes": 98817.8,
+     "interest": null,
+     "borrowing": 5970.0,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2024": {
+     "taxes": 110255.4,
+     "interest": null,
+     "borrowing": -2306.6,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "actual"
+    },
+    "2025": {
+     "taxes": 124493.0,
+     "interest": null,
+     "borrowing": -10563.7,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "estimate",
+     "notes": [
+      "Revised estimate (Budget 2026)."
+     ]
+    },
+    "2026": {
+     "taxes": 128841.59999999999,
+     "interest": null,
+     "borrowing": -4176.0,
+     "netDebt": null,
+     "borrowingSource": "SingStat M130561 (MOF): Overall Budget Surplus/(Deficit), sign flipped",
+     "status": "estimate",
+     "notes": [
+      "Budget estimate."
+     ]
+    }
+   }
+  }
+ }
+}

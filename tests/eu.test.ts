@@ -109,7 +109,7 @@ describe('Switzerland 2026 (Zurich)', () => {
 });
 
 describe('European places', () => {
-  const eu = PLACES.filter((p) => !['CA', 'US'].includes(p.countryCode));
+  const eu = PLACES.filter((p) => !['CA', 'US', 'SG'].includes(p.countryCode));
   it('has the seven European cities', () => {
     expect(eu.map((p) => p.id).sort()).toEqual(['copenhagen', 'dublin', 'london', 'luxembourg', 'munich', 'oslo', 'zurich']);
   });

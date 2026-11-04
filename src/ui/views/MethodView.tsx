@@ -1,6 +1,7 @@
 import consumption from '../../../data/consumption/ca.json';
 import usConsumption from '../../../data/consumption/us.json';
 import euConsumption from '../../../data/consumption/eu.json';
+import sgConsumption from '../../../data/consumption/sg.json';
 import { FISCAL_NOTES } from '../../engine';
 
 export function MethodView() {
@@ -112,6 +113,26 @@ export function MethodView() {
         </ul>
       </section>
       <section className="block">
+        <h2>Singapore: what's modelled</h2>
+        <ul>
+          <li>Income tax at resident rates (0%-24%) for income earned in 2026 (YA 2027). Dividends, bank interest and capital gains are not taxed.</li>
+          <li><b>CPF</b> (20% of wages up to S$102,000) goes into your own accounts, so it is shown for context but not counted as tax, like Swiss pillar 2
+            (decision D2). Its income tax relief is counted. Foreigners on work passes pay no CPF (tick "buying as a foreigner").</li>
+          <li><b>Cars:</b> the certificate of entitlement (COE, 2026 average S$121,792 for small cars) is bought from the government, so it counts as a car tax,
+            spread over its 10 years; plus the additional registration fee (100%-250% of the car's value, partly refunded when deregistered), 20% excise, GST
+            and road tax.</li>
+          <li>Property tax on the annual value (owner-occupier rates 0%-32%, with the 2026 rebate); buyer's stamp duty 1%-6%; 60% extra for foreign buyers.</li>
+          <li>GST 9% on almost everything: {(sgConsumption.gstShareOfSpending * 100).toFixed(1)}% of everyday spending.</li>
+          <li><b>Borrowing</b> is minus the official overall budget surplus, which includes the yearly contribution from reserve returns (decision D22, like
+            Norway's oil fund). Singapore issues bonds only to invest, so FY2020's deficit was paid from past reserves.</li>
+        </ul>
+        <h3>Known gaps</h3>
+        <ul>
+          <li>No net debt or net asset figure (the reserves are not disclosed), so the debt chart is empty for Singapore; fiscal history starts in FY2005.</li>
+          <li>The GST share, home energy taxes and the ARF tiers are estimates; one-off household payouts (GST vouchers, CDC vouchers) are not modelled.</li>
+        </ul>
+      </section>
+      <section className="block">
         <h2>Data notes</h2>
         <h3>Canada</h3>
         <ul>{FISCAL_NOTES.CA.map((n) => <li key={n}>{n}</li>)}</ul>
@@ -122,6 +143,9 @@ export function MethodView() {
         <h3>Europe</h3>
         <ul>{FISCAL_NOTES.EU.map((n) => <li key={n}>{n}</li>)}</ul>
         <ul>{euConsumption.notes.map((n) => <li key={n}>{n}</li>)}</ul>
+        <h3>Singapore</h3>
+        <ul>{FISCAL_NOTES.SG.map((n) => <li key={n}>{n}</li>)}</ul>
+        <ul>{sgConsumption.notes.map((n) => <li key={n}>{n}</li>)}</ul>
         <p className="fine">Not tax advice. Everything runs in your browser; personas are stored only on your device.</p>
       </section>
     </div>

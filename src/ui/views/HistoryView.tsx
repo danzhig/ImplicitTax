@@ -142,7 +142,7 @@ export function HistoryView() {
         <EChart option={debtChart} height={320} ariaLabel="Your share of public net debt over time" />
         <p className="fine">Canada: fiscal years starting in April (2016 = 2016-17); municipal figures are calendar years. US: federal fiscal years end September 30
           (2016 = Oct 2015-Sep 2016); state and local figures are government fiscal years ending in that year, mostly June 30. Europe: calendar years, except the UK
-          (fiscal years starting in April). * Local = all local governments in the province, state or country; Bavaria and Zurich are shown through all Länder and all cantons.
+          (fiscal years starting in April). Singapore: fiscal years starting in April, from FY2005; it publishes no net debt. * Local = all local governments in the province, state or country; Bavaria and Zurich are shown through all Länder and all cantons.
           Canada: federal 2008-09 uses the audited deficit because the net debt series changes definition that year; city 2006 uses Canada-wide municipal figures.
           (est.) = estimates, or interim and forecast figures from the latest budgets.</p>
       </section>

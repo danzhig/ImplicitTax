@@ -7,6 +7,7 @@ import { US_CITIES } from './us/params2026';
 import { calculateEu } from './eu/calculate';
 import { EU_CITIES, FX as EU_FX } from './eu/params2026';
 import type { EuCountry } from './eu/common';
+import { calculateSingapore, FX_SGD_PER_USD } from './sg/calculate';
 import { debtShareAtFixedShare, seriesYears } from './fiscal';
 import type { CalcOptions, Level, Persona, PlaceResult } from './types';
 
@@ -18,14 +19,14 @@ export interface Place {
   name: string;
   region: string;
   country: string;
-  countryCode: 'CA' | 'US' | EuCountry;
+  countryCode: 'CA' | 'US' | EuCountry | 'SG';
   /** What each level is called in this country. */
   levelNames: Record<Level, string>;
   currency: string;
   /** Local currency per USD. */
   fx: number;
   /** Fiscal series behind each level, for the history views. Null where there is no middle level. */
-  series: { federal: string; provincial: string | null; local: string };
+  series: { federal: string; provincial: string | null; local: string | null };
   calculate: (p: Persona, opts: CalcOptions) => PlaceResult;
 }
 
@@ -72,7 +73,15 @@ const EUROPE: Place[] = Object.values(EU_CITIES).map((c) => ({
   calculate: (p, o) => calculateEu(p, c.id, o),
 }));
 
-export const PLACES: Place[] = [...CANADA, ...UNITED_STATES, ...EUROPE];
+const SINGAPORE: Place = {
+  id: 'singapore', name: 'Singapore', region: 'Singapore', country: 'Singapore', countryCode: 'SG',
+  levelNames: { federal: 'Government of Singapore', provincial: '-', local: '-', social: 'CPF' },
+  currency: 'SGD', fx: FX_SGD_PER_USD,
+  series: { federal: 'SG-federal', provincial: null, local: null },
+  calculate: (p, o) => calculateSingapore(p, o),
+};
+
+export const PLACES: Place[] = [...CANADA, ...UNITED_STATES, ...EUROPE, SINGAPORE];
 
 /** Levels of government that exist in a place (no middle level in unitary countries). */
 export const placeLevels = (p: Place): Lvl[] => LVLS.filter((l) => p.series[l] !== null);

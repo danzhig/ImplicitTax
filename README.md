@@ -8,10 +8,11 @@ Build a persona (income, wealth, home, car) in USD, then move it between cities 
 kind of tax regime you'd be leaving and entering.
 
 **Status:** Phase 1 (Canada: Calgary, Toronto, Vancouver), Phase 2 (US: New York City, San Francisco,
-Seattle, Houston) and Phase 3 (Europe: Munich, Zurich, London, Luxembourg, Dublin, Oslo, Copenhagen) done,
+Seattle, Houston), Phase 3 (Europe: Munich, Zurich, London, Luxembourg, Dublin, Oslo, Copenhagen) and Phase 4 (Singapore) done:
+all 15 cities,
 with 2026 tax rules and fiscal history from 2000. The plan for all 15 cities is in
 [docs/PLAN.md](docs/PLAN.md); research notes are in [data/rules/ca/RESEARCH.md](data/rules/ca/RESEARCH.md)
-[data/rules/us/RESEARCH.md](data/rules/us/RESEARCH.md) and [data/rules/eu/RESEARCH.md](data/rules/eu/RESEARCH.md).
+[data/rules/us/RESEARCH.md](data/rules/us/RESEARCH.md), [data/rules/eu/RESEARCH.md](data/rules/eu/RESEARCH.md) and [data/rules/sg/RESEARCH.md](data/rules/sg/RESEARCH.md).
 
 ## What you can see
 
@@ -91,6 +92,12 @@ python3 scripts/build_fiscal_eu.py /tmp/eu
 python3 scripts/build_consumption_eu.py /tmp/eu
 ```
 
+Singapore (SingStat):
+
+```bash
+python3 scripts/build_fiscal_sg.py /tmp/sg
+```
+
 Zurich tax tariffs (sampled from the Swiss federal tax calculator):
 
 ```bash
@@ -106,6 +113,7 @@ src/engine/         pure TypeScript calculation engine (no DOM)
   ca/               Canada: parameters, income tax + CPP/EI, full city calculation
   us/               United States: parameters, federal/state/city income tax + FICA, full city calculation
   eu/               Europe: one module per country (DE, CH, UK, LU, IE, NO, DK), property, shared calculation
+  sg/               Singapore: income tax, CPF, property, stamp duties, GST, COE and car taxes
   fiscal.ts         borrowing share: programs vs. interest, without double counting
 src/ui/             React app (ECharts charts, zustand state)
 data/fiscal/        government finance history (StatCan, provincial accounts, OMB, Census, Eurostat, ONS)
